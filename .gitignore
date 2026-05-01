@@ -1,0 +1,7 @@
+.DS_Store
+.venv/
+__pycache__/
+*.pyc
+
+# Too large for normal GitHub pushes. Regenerate locally or move to Git LFS if needed.
+collatz_certificate.json

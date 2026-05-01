@@ -1,0 +1,2124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Collatz Certificate Review Dashboard</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #061018;
+      --panel: rgba(10, 28, 40, 0.68);
+      --panel-strong: rgba(13, 39, 55, 0.84);
+      --panel-soft: rgba(135, 214, 232, 0.08);
+      --ink: #ecfbff;
+      --muted: #9fc0ca;
+      --line: rgba(169, 235, 255, 0.22);
+      --line-bright: rgba(151, 242, 255, 0.52);
+      --green: #72ffc5;
+      --green-soft: rgba(57, 255, 181, 0.13);
+      --amber: #ffe18a;
+      --amber-soft: rgba(255, 211, 111, 0.13);
+      --red: #ff7f9a;
+      --red-soft: rgba(255, 86, 119, 0.13);
+      --blue: #88e8ff;
+      --blue-soft: rgba(95, 211, 255, 0.14);
+      --violet: #c8b6ff;
+      --code: #dffbff;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+      --glass: saturate(150%) blur(18px);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        linear-gradient(115deg, rgba(8, 28, 40, 0.95) 0%, rgba(5, 16, 25, 1) 44%, rgba(10, 22, 36, 1) 100%),
+        repeating-linear-gradient(90deg, rgba(136, 232, 255, 0.055) 0 1px, transparent 1px 76px),
+        repeating-linear-gradient(0deg, rgba(136, 232, 255, 0.04) 0 1px, transparent 1px 76px);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.08), transparent 22%),
+        linear-gradient(90deg, transparent 0 18%, rgba(124, 232, 255, 0.06) 18% 18.2%, transparent 18.2% 100%),
+        linear-gradient(90deg, transparent 0 61%, rgba(114, 255, 197, 0.045) 61% 61.15%, transparent 61.15% 100%);
+      mix-blend-mode: screen;
+      opacity: 0.75;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 999;
+      background:
+        radial-gradient(circle at 50% 42%, var(--flash-color, transparent), transparent 44%),
+        linear-gradient(90deg, transparent, var(--flash-color, transparent), transparent);
+      mix-blend-mode: screen;
+      opacity: 0;
+    }
+
+    body.phase-flash::after {
+      animation: phaseFlash 520ms ease-out;
+    }
+
+    @keyframes phaseFlash {
+      0% { opacity: 0; }
+      18% { opacity: 0.42; }
+      100% { opacity: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body.phase-flash::after { animation: none; }
+    }
+
+    a { color: var(--blue); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    a:hover { color: #c8f6ff; }
+
+    .wrap {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: relative;
+      padding: 36px 0 22px;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(135, 232, 255, 0.10), rgba(5, 16, 24, 0.18)),
+        rgba(5, 16, 24, 0.62);
+      overflow: hidden;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(137, 241, 255, 0.9), rgba(114, 255, 197, 0.65), transparent);
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 0 0 10px;
+      text-shadow: 0 0 18px rgba(136, 232, 255, 0.45);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.1rem, 6vw, 5rem);
+      line-height: 0.98;
+      letter-spacing: 0;
+      max-width: 980px;
+      color: #f4fdff;
+      text-shadow: 0 0 30px rgba(136, 232, 255, 0.28);
+    }
+
+    .hero-copy {
+      max-width: 850px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      margin: 18px 0 0;
+    }
+
+    .public-summary {
+      max-width: 900px;
+      margin: 22px 0 0;
+      background: var(--panel);
+      border: 1px solid var(--line-bright);
+      border-left: 5px solid var(--blue);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      backdrop-filter: var(--glass);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .public-summary::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.16), transparent 32%),
+        linear-gradient(90deg, transparent, rgba(136, 232, 255, 0.08), transparent);
+      opacity: 0.85;
+    }
+
+    .public-summary h2 {
+      position: relative;
+      margin: 0 0 10px;
+      font-size: clamp(1.45rem, 3vw, 2.45rem);
+      line-height: 1.05;
+    }
+
+    .public-summary p,
+    .public-summary .formula-banner,
+    .public-summary .math-hook,
+    .public-summary .audit-points {
+      position: relative;
+    }
+
+    .lane-line {
+      font-size: clamp(1.35rem, 4vw, 2.65rem);
+      line-height: 1.03;
+      font-weight: 850;
+      margin: 12px 0;
+    }
+
+    .formula-banner {
+      display: inline-block;
+      max-width: 100%;
+      margin: 10px 0;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: rgba(1, 12, 18, 0.82);
+      border: 1px solid rgba(136, 232, 255, 0.34);
+      color: #e9f6ee;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: clamp(0.95rem, 2.5vw, 1.35rem);
+      overflow-wrap: anywhere;
+      box-shadow: inset 0 0 24px rgba(114, 255, 197, 0.09), 0 0 24px rgba(136, 232, 255, 0.08);
+    }
+
+    .audit-points {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin: 14px 0;
+    }
+
+    .audit-point {
+      background: var(--green-soft);
+      border: 1px solid rgba(114, 255, 197, 0.34);
+      border-radius: 8px;
+      padding: 10px;
+      min-width: 0;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.10);
+    }
+
+    .audit-point strong {
+      display: block;
+      color: var(--green);
+      font-size: 1.35rem;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .status-strip {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+      gap: 16px;
+      margin: 24px 0 8px;
+      align-items: stretch;
+    }
+
+    .status-panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      backdrop-filter: var(--glass);
+    }
+
+    .pass {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--green);
+      background: var(--green-soft);
+      border: 1px solid rgba(114, 255, 197, 0.40);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-weight: 800;
+      font-size: 0.86rem;
+      box-shadow: 0 0 22px rgba(114, 255, 197, 0.12);
+    }
+
+    .review-needed {
+      color: var(--amber);
+      background: var(--amber-soft);
+      border: 1px solid rgba(255, 225, 138, 0.34);
+      border-radius: 8px;
+      padding: 12px;
+      margin-top: 14px;
+      font-weight: 650;
+    }
+
+    .math-hook {
+      margin: 14px 0 0;
+      padding: 13px 14px;
+      border-radius: 8px;
+      background: var(--blue-soft);
+      border: 1px solid rgba(136, 232, 255, 0.34);
+      color: #dcf8ff;
+      font-weight: 800;
+      font-size: 1.02rem;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(4, 14, 22, 0.74);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-inner {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 10px 0;
+    }
+
+    .nav-inner a {
+      flex: 0 0 auto;
+      border: 1px solid var(--line);
+      background: rgba(12, 34, 49, 0.78);
+      border-radius: 999px;
+      padding: 7px 12px;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .nav-inner a:hover {
+      border-color: var(--line-bright);
+      box-shadow: 0 0 18px rgba(136, 232, 255, 0.15);
+    }
+
+    main { padding: 24px 0 48px; }
+
+    section {
+      margin: 28px 0;
+      scroll-margin-top: 68px;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: clamp(1.45rem, 3vw, 2.2rem);
+      line-height: 1.08;
+    }
+
+    h3 {
+      margin: 0 0 8px;
+      font-size: 1.06rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+
+    .card {
+      grid-column: span 4;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+      min-width: 0;
+      backdrop-filter: var(--glass);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before,
+    .chain-step::after,
+    .file-link::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(135deg, rgba(255,255,255,0.12), transparent 36%);
+      opacity: 0.7;
+    }
+
+    .card.wide { grid-column: span 8; }
+    .card.full { grid-column: 1 / -1; }
+    .card.half { grid-column: span 6; }
+
+    .metric {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 850;
+      line-height: 1;
+      margin: 8px 0;
+      color: #f5feff;
+      text-shadow: 0 0 22px rgba(136, 232, 255, 0.22);
+    }
+
+    .metric-label {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .plain-list {
+      padding-left: 1.15rem;
+      margin: 8px 0 0;
+    }
+
+    .plain-list li { margin: 6px 0; }
+
+    .audit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+    }
+
+    .audit-item {
+      border: 1px solid var(--line);
+      background: rgba(7, 24, 35, 0.64);
+      border-radius: 8px;
+      padding: 12px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .audit-name {
+      font-weight: 750;
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .audit-pass {
+      color: var(--green);
+      background: var(--green-soft);
+      border: 1px solid rgba(114, 255, 197, 0.38);
+      border-radius: 999px;
+      padding: 3px 8px;
+      font-size: 0.8rem;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+      overflow-wrap: anywhere;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 10px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: rgba(135, 214, 232, 0.10);
+    }
+
+    code, .code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      background: rgba(1, 13, 20, 0.78);
+      border: 1px solid rgba(136, 232, 255, 0.22);
+      border-radius: 5px;
+      padding: 0.12rem 0.32rem;
+      color: var(--code);
+      overflow-wrap: anywhere;
+    }
+
+    pre {
+      margin: 10px 0 0;
+      padding: 14px;
+      border-radius: 8px;
+      overflow-x: auto;
+      background: rgba(1, 12, 18, 0.88);
+      border: 1px solid rgba(136, 232, 255, 0.22);
+      color: #e9f6ee;
+      font-size: 0.92rem;
+      line-height: 1.45;
+    }
+
+    .chain {
+      counter-reset: chain;
+      display: grid;
+      gap: 12px;
+    }
+
+    .chain-step {
+      position: relative;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px 16px 16px 58px;
+      box-shadow: var(--shadow);
+      backdrop-filter: var(--glass);
+      overflow: hidden;
+    }
+
+    .chain-step::before {
+      counter-increment: chain;
+      content: counter(chain);
+      position: absolute;
+      left: 16px;
+      top: 16px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: linear-gradient(180deg, #8cf2ff, #487dff);
+      font-weight: 850;
+      box-shadow: 0 0 22px rgba(136, 232, 255, 0.28);
+    }
+
+    .boundary {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14px;
+    }
+
+    .boundary .card { grid-column: auto; }
+
+    .claim { border-top: 4px solid var(--green); }
+    .not-claim { border-top: 4px solid var(--red); }
+    .review { border-top: 4px solid var(--amber); }
+
+    .file-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 10px;
+    }
+
+    .file-link {
+      display: block;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      text-decoration: none;
+      color: var(--ink);
+      box-shadow: var(--shadow);
+      backdrop-filter: var(--glass);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .file-link:hover {
+      border-color: var(--line-bright);
+      transform: translateY(-1px);
+    }
+
+    .file-link span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-top: 3px;
+    }
+
+    .scanner-shell {
+      position: relative;
+      grid-column: 1 / -1;
+      min-height: 420px;
+      border: 1px solid var(--line-bright);
+      background:
+        radial-gradient(circle at 50% 42%, rgba(0, 0, 0, 0.92) 0 5%, rgba(58, 145, 193, 0.34) 5.2% 6%, transparent 6.4%),
+        radial-gradient(circle at 50% 42%, transparent 0 16%, rgba(136, 232, 255, 0.18) 16.2% 16.8%, transparent 17%),
+        radial-gradient(circle at 50% 42%, transparent 0 26%, rgba(114, 255, 197, 0.12) 26.2% 26.8%, transparent 27%),
+        linear-gradient(145deg, rgba(5, 17, 27, 0.92), rgba(8, 31, 45, 0.72));
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: var(--shadow), inset 0 0 80px rgba(136, 232, 255, 0.08);
+      overflow: hidden;
+      backdrop-filter: var(--glass);
+    }
+
+    .scanner-shell::before {
+      content: "";
+      position: absolute;
+      width: 72%;
+      aspect-ratio: 1;
+      left: 14%;
+      top: -10%;
+      border-radius: 50%;
+      border: 1px solid rgba(136, 232, 255, 0.16);
+      box-shadow:
+        0 0 0 36px rgba(136, 232, 255, 0.025),
+        0 0 0 82px rgba(114, 255, 197, 0.018),
+        0 0 80px rgba(136, 232, 255, 0.12);
+      pointer-events: none;
+    }
+
+    .scanner-shell > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .scanner-controls {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 150px auto auto;
+      gap: 10px;
+      align-items: end;
+      margin-top: 12px;
+    }
+
+    label {
+      display: block;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin: 0 0 6px;
+    }
+
+    textarea,
+    input {
+      width: 100%;
+      border: 1px solid rgba(136, 232, 255, 0.28);
+      border-radius: 8px;
+      background: rgba(1, 12, 18, 0.78);
+      color: var(--ink);
+      padding: 11px 12px;
+      font: inherit;
+      outline: none;
+      box-shadow: inset 0 0 26px rgba(136, 232, 255, 0.04);
+    }
+
+    textarea {
+      min-height: 88px;
+      resize: vertical;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+
+    textarea:focus,
+    input:focus {
+      border-color: var(--line-bright);
+      box-shadow: 0 0 0 3px rgba(136, 232, 255, 0.10), inset 0 0 26px rgba(136, 232, 255, 0.06);
+    }
+
+    button {
+      border: 1px solid rgba(114, 255, 197, 0.46);
+      border-radius: 8px;
+      background: linear-gradient(180deg, rgba(114, 255, 197, 0.24), rgba(67, 142, 255, 0.18));
+      color: var(--ink);
+      padding: 11px 14px;
+      font: inherit;
+      font-weight: 850;
+      cursor: pointer;
+      box-shadow: 0 0 24px rgba(114, 255, 197, 0.10);
+      white-space: nowrap;
+    }
+
+    button:hover {
+      border-color: rgba(136, 232, 255, 0.72);
+      box-shadow: 0 0 30px rgba(136, 232, 255, 0.18);
+    }
+
+    .scanner-output {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 12px;
+    }
+
+    .scan-card {
+      grid-column: span 4;
+      border: 1px solid var(--line);
+      background: rgba(8, 24, 36, 0.72);
+      border-radius: 8px;
+      padding: 14px;
+      backdrop-filter: var(--glass);
+      min-width: 0;
+    }
+
+    .scan-card.wide { grid-column: span 8; }
+    .scan-card.full { grid-column: 1 / -1; }
+
+    .scan-kv {
+      display: grid;
+      grid-template-columns: minmax(120px, 0.8fr) minmax(0, 1.2fr);
+      gap: 8px 10px;
+      font-size: 0.93rem;
+    }
+
+    .scan-kv div:nth-child(odd) {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .scan-kv div:nth-child(even) {
+      overflow-wrap: anywhere;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+
+    .danger-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 6px 0 12px;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-weight: 900;
+      letter-spacing: 0.03em;
+      border: 1px solid var(--line);
+      background: var(--blue-soft);
+      color: var(--blue);
+    }
+
+    .danger-fast,
+    .danger-certified {
+      background: var(--green-soft);
+      border-color: rgba(114, 255, 197, 0.42);
+      color: var(--green);
+    }
+
+    .danger-debt,
+    .danger-highb {
+      background: var(--amber-soft);
+      border-color: rgba(255, 225, 138, 0.42);
+      color: var(--amber);
+    }
+
+    .danger-monster {
+      background: rgba(200, 182, 255, 0.16);
+      border-color: rgba(200, 182, 255, 0.42);
+      color: var(--violet);
+    }
+
+    .danger-open {
+      background: var(--red-soft);
+      border-color: rgba(255, 127, 154, 0.42);
+      color: var(--red);
+    }
+
+    .badge-gold {
+      display: inline-block;
+      margin: 8px 0;
+      border: 1px solid rgba(255, 225, 138, 0.54);
+      background: linear-gradient(180deg, rgba(255, 225, 138, 0.22), rgba(255, 188, 86, 0.10));
+      color: #ffe9a6;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-weight: 900;
+      box-shadow: 0 0 24px rgba(255, 225, 138, 0.10);
+    }
+
+    .see-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .see-item {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 11px;
+      background: rgba(1, 12, 18, 0.42);
+    }
+
+    .muted-note {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .orbit-visual {
+      position: relative;
+      min-height: 330px;
+      border: 1px solid rgba(136, 232, 255, 0.26);
+      border-radius: 8px;
+      background:
+        radial-gradient(circle at 50% 50%, #020609 0 9%, rgba(11, 65, 88, 0.75) 9.5% 11%, transparent 12%),
+        radial-gradient(circle at 50% 50%, transparent 0 28%, rgba(136, 232, 255, 0.14) 28.2% 28.8%, transparent 29%),
+        radial-gradient(circle at 50% 50%, transparent 0 39%, rgba(114, 255, 197, 0.10) 39.2% 39.8%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(136, 232, 255, 0.10), transparent 62%);
+      overflow: hidden;
+    }
+
+    .orbit-visual::before {
+      content: "";
+      position: absolute;
+      inset: 20px;
+      border-radius: 50%;
+      border: 1px dashed rgba(136, 232, 255, 0.22);
+      transform: rotate(-18deg) scaleX(1.22);
+    }
+
+    .orbit-center {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 54px;
+      height: 54px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: radial-gradient(circle, #000 0 45%, rgba(136, 232, 255, 0.28) 48% 58%, transparent 60%);
+      box-shadow: 0 0 45px rgba(0, 0, 0, 0.95), 0 0 65px rgba(136, 232, 255, 0.22);
+    }
+
+    .orbit-core-label {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: min(220px, 60%);
+      min-height: 54px;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      pointer-events: none;
+      z-index: 4;
+      text-shadow: 0 0 12px rgba(0,0,0,0.9), 0 0 24px rgba(136,232,255,0.45);
+    }
+
+    .orbit-core-label strong {
+      display: block;
+      color: var(--blue);
+      font-size: 0.82rem;
+      line-height: 1.1;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .orbit-core-label span {
+      display: block;
+      color: var(--ink);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 0.78rem;
+      line-height: 1.25;
+      max-height: 2.5em;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .orbit-particle {
+      position: absolute;
+      left: calc(50% + var(--px, 0px));
+      top: calc(50% + var(--py, 0px));
+      width: 18px;
+      height: 18px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: var(--particle, var(--blue));
+      border: 2px solid rgba(255,255,255,0.82);
+      box-shadow: 0 0 24px var(--particle, var(--blue)), 0 0 52px rgba(136, 232, 255, 0.18);
+      transition: left 180ms ease, top 180ms ease, background 180ms ease;
+      z-index: 3;
+    }
+
+    .orbit-marker {
+      position: absolute;
+      left: calc(50% + var(--x));
+      top: calc(50% + var(--y));
+      width: var(--s, 9px);
+      height: var(--s, 9px);
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: var(--m, var(--blue));
+      box-shadow: 0 0 16px var(--m, var(--blue));
+      border: 1px solid rgba(255,255,255,0.72);
+    }
+
+    .orbit-caption {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 10px;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .orbit-hud {
+      margin-top: 10px;
+      display: grid;
+      gap: 6px;
+      width: 100%;
+      min-height: 134px;
+      padding: 12px;
+      border: 1px solid rgba(136, 232, 255, 0.22);
+      border-radius: 8px;
+      background: rgba(1, 12, 18, 0.64);
+      backdrop-filter: blur(12px);
+    }
+
+    .orbit-phase {
+      display: inline-flex;
+      width: max-content;
+      max-width: 100%;
+      min-height: 30px;
+      align-items: center;
+      border-radius: 999px;
+      padding: 5px 9px;
+      border: 1px solid rgba(136, 232, 255, 0.36);
+      color: var(--blue);
+      background: rgba(136, 232, 255, 0.10);
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .orbit-readout {
+      display: grid;
+      grid-template-columns: repeat(4, auto minmax(0, 1fr));
+      gap: 4px 10px;
+      font-size: 0.88rem;
+      min-height: 24px;
+      align-items: center;
+    }
+
+    .orbit-readout span:nth-child(odd) {
+      color: var(--muted);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .orbit-readout span:nth-child(even) {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      min-width: 0;
+      max-width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .orbit-controls {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) 96px;
+      gap: 8px;
+      align-items: center;
+      margin-top: 6px;
+      min-height: 38px;
+    }
+
+    .orbit-controls button,
+    .orbit-controls select {
+      min-height: 36px;
+      border-radius: 8px;
+    }
+
+    .orbit-controls input[type="range"] {
+      padding: 0;
+      box-shadow: none;
+      accent-color: var(--blue);
+    }
+
+    .bar-shell {
+      height: 12px;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid rgba(136, 232, 255, 0.26);
+      background: rgba(1, 12, 18, 0.68);
+      margin: 8px 0 12px;
+    }
+
+    .bar-fill {
+      height: 100%;
+      width: var(--w, 0%);
+      background: linear-gradient(90deg, var(--green), var(--blue));
+      box-shadow: 0 0 20px rgba(136, 232, 255, 0.22);
+    }
+
+    .parity-word {
+      max-height: 92px;
+      overflow: auto;
+      border: 1px solid rgba(136, 232, 255, 0.22);
+      border-radius: 8px;
+      padding: 10px;
+      background: rgba(1, 12, 18, 0.60);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      overflow-wrap: anywhere;
+      line-height: 1.7;
+    }
+
+    details.math-drawer {
+      grid-column: 1 / -1;
+      border: 1px solid var(--line);
+      background: rgba(8, 24, 36, 0.72);
+      border-radius: 8px;
+      padding: 14px;
+      backdrop-filter: var(--glass);
+    }
+
+    details.math-drawer summary {
+      cursor: pointer;
+      font-weight: 900;
+      color: var(--blue);
+    }
+
+    .trace-wrap {
+      overflow-x: auto;
+      max-height: 420px;
+      border: 1px solid rgba(136, 232, 255, 0.18);
+      border-radius: 8px;
+    }
+
+    .trace-wrap table {
+      min-width: 760px;
+      margin: 0;
+    }
+
+    .trace-note {
+      color: var(--amber);
+      font-weight: 800;
+    }
+
+    .footer {
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      padding: 22px 0 34px;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 850px) {
+      .status-strip, .boundary { grid-template-columns: 1fr; }
+      .audit-points { grid-template-columns: 1fr 1fr; }
+      .scanner-controls { grid-template-columns: 1fr; }
+      .orbit-readout { grid-template-columns: 86px minmax(0, 1fr); }
+      .orbit-controls { grid-template-columns: 1fr; }
+      .scan-card, .scan-card.wide { grid-column: 1 / -1; }
+      .card, .card.wide, .card.half { grid-column: 1 / -1; }
+      header { padding-top: 22px; }
+      .chain-step { padding-left: 16px; padding-top: 54px; }
+    }
+
+    @media (max-width: 520px) {
+      .audit-points { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <p class="eyebrow">Collatz certificate review packet</p>
+      <h1>What if Collatz doesn't need every number counted?</h1>
+      <p class="hero-copy">
+        This dashboard summarizes a symbolic certificate pipeline that passed its internal audit under exact integer arithmetic.
+        It is built for outside review, not trust. The key question is whether the certificate framework is logically exhaustive.
+      </p>
+
+      <div class="public-summary">
+        <h2>Not every number. Every lane.</h2>
+        <p>
+          This certificate workbench turns Collatz paths into symbolic descent lanes:
+        </p>
+        <div class="formula-banner">T^m(n) = (3^o &middot; n + b) / 2^c</div>
+        <p>
+          If the halving force beats the odd-growth force, the lane receives a finite threshold certificate.
+        </p>
+        <div class="math-hook">
+          If the residue partition is exhaustive and the quotient abstraction is valid, the arithmetic audit is already closed.
+        </div>
+        <div class="audit-points" aria-label="Internal audit headline counts">
+          <div class="audit-point"><strong>578 / 578</strong>parent lanes processed</div>
+          <div class="audit-point"><strong>0</strong>open local keys</div>
+          <div class="audit-point"><strong>0</strong>higher-cap needs</div>
+          <div class="audit-point"><strong>0</strong>conflicts</div>
+        </div>
+        <p>
+          This is not an official proof claim. It is a certificate packet for independent review.
+        </p>
+        <p class="lane-line">Do not believe it. Audit it.</p>
+      </div>
+
+      <div class="status-strip">
+        <div class="status-panel">
+          <span class="pass">PASS_CERTIFICATE_PIPELINE</span>
+          <h2 style="margin-top:14px">Internal audit passed for the included packet.</h2>
+          <p>
+            All tracked parent obstructions were covered by the certificate pipeline under exact integer arithmetic.
+            Independent mathematical review is still required to verify that the certificate framework is logically exhaustive.
+          </p>
+        </div>
+        <div class="status-panel">
+          <h3>Important boundary</h3>
+          <p>
+            This is not independent proof acceptance. This is a review packet: scripts, reports, hashes, and a map of the
+            structural lemmas that should be attacked first.
+          </p>
+          <div class="review-needed">Reviewer task: verify the framework, not just the arithmetic reports.</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav aria-label="Page sections">
+    <div class="wrap nav-inner">
+      <a href="#overview">Overview</a>
+      <a href="#scanner">Any-Seed Scanner</a>
+      <a href="#audit">Audit Status</a>
+      <a href="#chain">Certificate Chain</a>
+      <a href="#math">Math Map</a>
+      <a href="#questions">Reviewer Questions</a>
+      <a href="#files">Files</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section id="overview">
+      <h2>Overview For Humans</h2>
+      <div class="grid">
+        <article class="card half">
+          <h3>What is being checked?</h3>
+          <p>
+            The packet checks whether a finite set of symbolic residue lanes has descent certificates. A lane certificate
+            says that every number in that lane eventually drops below itself, after which strong induction can take over.
+          </p>
+        </article>
+        <article class="card half">
+          <h3>What does B mean?</h3>
+          <p>
+            For a symbolic formula <span class="code">T^m(n) = (3^o n + b) / 2^c</span>, a positive gap
+            <span class="code">2^c - 3^o</span> gives a threshold <span class="code">B</span>. Above that threshold,
+            the lane descends. Below it, the direct bridge checks the small cases.
+          </p>
+        </article>
+        <article class="card half">
+          <h3>Why the direct bridge matters</h3>
+          <p>
+            Every final threshold in the packet lands at or below <span class="code">200001</span>. The direct bridge
+            verifies every odd number from <span class="code">3</span> through <span class="code">200001</span> with
+            zero failures.
+          </p>
+        </article>
+        <article class="card half">
+          <h3>What should reviewers attack?</h3>
+          <p>
+            The arithmetic reports passed internally. The higher-value review is structural: residue exhaustiveness,
+            quotient abstraction validity, cap-stopped row closure, local-key state completeness, and no sampled evidence
+            in the proof path.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="scanner">
+      <h2>Any-Seed Lane Scanner</h2>
+      <div class="grid">
+        <div class="scanner-shell">
+          <h3>Paste any positive integer, or a packet of seeds</h3>
+          <p class="muted-note">
+            Runtime arithmetic uses JavaScript <span class="code">BigInt</span>. The live scanner classifies the route it sees.
+            Put one seed per line to compare wildly different seeds. Use the same-lane packet helper to generate seeds with the same residue mod <span class="code">65536</span>.
+          </p>
+          <div aria-label="Danger label legend">
+            <span class="danger-label danger-fast">FAST DECAY</span>
+            <span class="danger-label danger-certified">CERTIFIED DESCENT</span>
+            <span class="danger-label danger-debt">DEBT RETURN</span>
+            <span class="danger-label danger-highb">HIGH-B THEN CERTIFIED</span>
+            <span class="danger-label danger-monster">MONSTER DELAY</span>
+            <span class="danger-label danger-open">OPEN / NEEDS REVIEW</span>
+          </div>
+          <div class="scanner-controls">
+            <div>
+              <label for="seedInput">Seed packet</label>
+              <textarea id="seedInput" spellcheck="false">534052031</textarea>
+            </div>
+            <div>
+              <label for="stepLimitInput">Step limit</label>
+              <input id="stepLimitInput" type="number" min="1" max="1000000" value="100000">
+            </div>
+            <button id="sameLaneBtn" type="button">Same-Lane Packet</button>
+            <button id="scanSeedBtn" type="button">Scan Seed(s)</button>
+          </div>
+          <div id="scannerOutput" class="scanner-output" aria-live="polite">
+            <div class="scan-card full">
+              <span class="danger-label">READY</span>
+              <p>Enter a positive integer and scan. The result will show identity, finite-door route data, lane lookup status, and certificate highlights.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="audit">
+      <h2>Audit Status</h2>
+      <div class="grid">
+        <article class="card">
+          <div class="metric">578 / 578</div>
+          <div class="metric-label">depth &gt;18 parents processed</div>
+        </article>
+        <article class="card">
+          <div class="metric">22,020,096</div>
+          <div class="metric-label">exact siblings verified</div>
+        </article>
+        <article class="card">
+          <div class="metric">889</div>
+          <div class="metric-label">frontier open states analyzed</div>
+        </article>
+        <article class="card">
+          <div class="metric">359</div>
+          <div class="metric-label">high-B states eventually certified</div>
+        </article>
+        <article class="card">
+          <div class="metric">0</div>
+          <div class="metric-label">local keys still open</div>
+        </article>
+        <article class="card">
+          <div class="metric">0</div>
+          <div class="metric-label">conflicts</div>
+        </article>
+        <article class="card">
+          <div class="metric">200001</div>
+          <div class="metric-label">direct bridge upper bound</div>
+        </article>
+        <article class="card">
+          <div class="metric">199,242</div>
+          <div class="metric-label">max final B in frontier audit</div>
+        </article>
+        <article class="card full">
+          <h3>Final audit grid</h3>
+          <div class="audit-grid" aria-label="Final audit pass statuses">
+            <div class="audit-item"><span class="audit-name">Parent coverage</span><span class="audit-pass">PASS</span></div>
+            <div class="audit-item"><span class="audit-name">Local keys</span><span class="audit-pass">PASS</span></div>
+            <div class="audit-item"><span class="audit-name">Covered-but-cap-reached</span><span class="audit-pass">PASS</span></div>
+            <div class="audit-item"><span class="audit-name">Frontier coverage</span><span class="audit-pass">PASS</span></div>
+            <div class="audit-item"><span class="audit-name">B-control</span><span class="audit-pass">PASS</span></div>
+            <div class="audit-item"><span class="audit-name">Return map</span><span class="audit-pass">PASS</span></div>
+            <div class="audit-item"><span class="audit-name">Direct bridge</span><span class="audit-pass">PASS</span></div>
+            <div class="audit-item"><span class="audit-name">Exact depth</span><span class="audit-pass">PASS</span></div>
+            <div class="audit-item"><span class="audit-name">Exact arithmetic</span><span class="audit-pass">PASS</span></div>
+          </div>
+        </article>
+        <article class="card half">
+          <h3>Parent status counts</h3>
+          <table>
+            <thead><tr><th>Status</th><th>Count</th></tr></thead>
+            <tbody>
+              <tr><td><code>CLOSED_BY_QUOTIENT</code></td><td>228</td></tr>
+              <tr><td><code>CLOSED_WITH_LOCAL_KEYS</code></td><td>64</td></tr>
+              <tr><td><code>COVERED_BUT_CAP_REACHED</code></td><td>286</td></tr>
+              <tr><td>Unprocessed</td><td>0</td></tr>
+              <tr><td><code>NEEDS_HIGHER_LOCAL_CAP</code></td><td>0</td></tr>
+            </tbody>
+          </table>
+        </article>
+        <article class="card half">
+          <h3>Local and high-B controls</h3>
+          <table>
+            <thead><tr><th>Check</th><th>Value</th></tr></thead>
+            <tbody>
+              <tr><td>Local keys attempted</td><td>64</td></tr>
+              <tr><td>Local keys certified</td><td>50</td></tr>
+              <tr><td>Local high-B certified</td><td>14</td></tr>
+              <tr><td>High-B chains still open</td><td>0</td></tr>
+              <tr><td>Max later B</td><td>193,928</td></tr>
+            </tbody>
+          </table>
+        </article>
+      </div>
+    </section>
+
+    <section id="chain">
+      <h2>Certificate Chain</h2>
+      <div class="chain">
+        <article class="chain-step">
+          <h3>Direct bridge</h3>
+          <p>Every odd number in <span class="code">[3, 200001]</span> is directly verified. Failures: <strong>0</strong>.</p>
+        </article>
+        <article class="chain-step">
+          <h3>Exact depth closure</h3>
+          <p>Depth <span class="code">&lt;=18</span> is closed by exact sibling enumeration only: <strong>198 / 198</strong> parents and <strong>22,020,096</strong> sibling checks, with no sampled rows.</p>
+        </article>
+        <article class="chain-step">
+          <h3>Parent coverage</h3>
+          <p>All <strong>578</strong> depth <span class="code">&gt;18</span> parents are processed. There are no unprocessed parent IDs and no duplicate parent IDs in the final audit.</p>
+        </article>
+        <article class="chain-step">
+          <h3>Frontier return map</h3>
+          <p>All <strong>889</strong> exported open debt states return. The return-map audit reports <strong>0</strong> still-debt-at-cap states and <strong>0</strong> conflicts.</p>
+        </article>
+        <article class="chain-step">
+          <h3>B-control</h3>
+          <p>The <strong>359</strong> high-B return states are not accepted immediately. Each maps to a later certified state with final <span class="code">B &lt;= 200001</span>.</p>
+        </article>
+        <article class="chain-step">
+          <h3>Final audit</h3>
+          <p>The final audit confirms that the tracked certificate pipeline reports agree and that all final thresholds fall inside the direct bridge.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="math">
+      <h2>Math Map For Reviewers</h2>
+      <div class="grid">
+        <article class="card wide">
+          <h3>Symbolic lane formula</h3>
+          <p>
+            The raw Collatz iterate is tracked as
+            <span class="code">T^m(n) = (3^o n + b) / 2^c</span>. The proof-critical comparison is exact:
+            <span class="code">gap = 2^c - 3^o</span>. If <span class="code">gap &gt; 0</span>, then the lane descends for
+            every <span class="code">n &gt; B</span>, where <span class="code">B = (b + gap - 1) // gap</span>.
+          </p>
+          <pre>T^m(n) &lt; n
+(3^o n + b) / 2^c &lt; n
+b &lt; n(2^c - 3^o)
+n &gt; ceil(b / (2^c - 3^o))</pre>
+        </article>
+        <article class="card">
+          <h3>Exact arithmetic</h3>
+          <p>Integer powers, integer gap comparison, and integer ceiling are used for proof checks. Floating delta fields are diagnostic only.</p>
+        </article>
+        <article class="card half">
+          <h3>What passed computationally</h3>
+          <ul class="plain-list">
+            <li>All tracked parent obstructions are covered in the final audit.</li>
+            <li>Exact depth closure excludes sampled rows.</li>
+            <li>High-B cases map back inside the bridge.</li>
+            <li>Still-open local keys and conflicts are zero.</li>
+          </ul>
+        </article>
+        <article class="card half">
+          <h3>What needs structural review</h3>
+          <ul class="plain-list">
+            <li>Residue partition exhaustiveness.</li>
+            <li>Quotient keys as full equivalence classes.</li>
+            <li>Logical closure of cap-reached rows.</li>
+            <li>State completeness of local-key continuations.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="questions">
+      <h2>Reviewer Questions</h2>
+      <div class="grid">
+        <article class="card full">
+          <h3>Please attack these first</h3>
+          <ol class="plain-list">
+            <li>Are the residue parent classes exhaustive?</li>
+            <li>Does exact depth <span class="code">&lt;=18</span> plus the 578 depth <span class="code">&gt;18</span> parents cover all odd <span class="code">n &gt; 1</span>?</li>
+            <li>Does a quotient key preserve all proof-relevant state, or only observed representatives?</li>
+            <li>Are <span class="code">COVERED_BUT_CAP_REACHED</span> rows logically closed, not merely cap-stopped?</li>
+            <li>Does each local-key continuation start from state-complete exact affine data?</li>
+            <li>Are any sampled-only results used as proof-critical closure?</li>
+            <li>Can the final audit be independently reproduced from the packet files?</li>
+          </ol>
+        </article>
+      </div>
+    </section>
+
+    <section id="files">
+      <h2>Files And Commands</h2>
+      <div class="grid">
+        <article class="card full">
+          <h3>Run the packet audit</h3>
+          <pre>cd collatz_certificate_final
+python3 final_certificate_audit.py
+python3 -m json.tool final_certificate_audit_report.json
+python3 -m py_compile final_certificate_audit.py</pre>
+        </article>
+        <article class="card full">
+          <h3>Open the key files</h3>
+          <div class="file-links">
+            <a class="file-link" href="FINAL_AUDIT_SUMMARY.md">Final audit summary<span>Human-readable final status and counts</span></a>
+            <a class="file-link" href="CERTIFICATE_FRAMEWORK_THEOREM.md">Framework theorem<span>The theorem/lemma map for review</span></a>
+            <a class="file-link" href="CLAIM_BOUNDARY.md">Claim boundary<span>What the packet claims and does not claim</span></a>
+            <a class="file-link" href="REVIEWER_QUESTIONS.md">Reviewer questions<span>Attack list for outside review</span></a>
+            <a class="file-link" href="final_certificate_audit_report.json">Final audit report<span>Machine-readable final audit</span></a>
+            <a class="file-link" href="exact_depth_closure_report.json">Exact depth closure report<span>Depth <=18 exact enumeration</span></a>
+            <a class="file-link" href="quotient_parent_batch_report.json">Parent batch report<span>578 depth >18 parent rows</span></a>
+            <a class="file-link" href="frontier_return_map_report.json">Frontier return map report<span>889 open states and return classifications</span></a>
+            <a class="file-link" href="b_control_report.json">B-control report<span>High-B return chains</span></a>
+            <a class="file-link" href="direct_bridge_report.json">Direct bridge report<span>Odd n from 3 to 200001</span></a>
+            <a class="file-link" href="MANIFEST.json">Manifest<span>Included files and SHA-256 hashes</span></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Claim Boundary</h2>
+      <div class="boundary">
+        <article class="card claim">
+          <h3>What this packet claims</h3>
+          <ul class="plain-list">
+            <li>The internal certificate pipeline passed.</li>
+            <li>Tracked parent obstructions were covered by exact integer arithmetic reports.</li>
+            <li>Final thresholds fall inside the directly verified bridge.</li>
+          </ul>
+        </article>
+        <article class="card not-claim">
+          <h3>What it does not claim</h3>
+          <ul class="plain-list">
+            <li>It does not claim independent mathematical acceptance.</li>
+            <li>It does not replace peer review.</li>
+            <li>It does not ask reviewers to trust the packet.</li>
+          </ul>
+        </article>
+        <article class="card review">
+          <h3>What remains</h3>
+          <ul class="plain-list">
+            <li>Check whether the residue framework is exhaustive.</li>
+            <li>Check whether quotient classes preserve the needed state.</li>
+            <li>Check whether cap-stopped rows are truly closed.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      Static dashboard generated from the included certificate packet reports. No browser-side JSON fetch is required.
+    </div>
+  </footer>
+  <script>
+    const CERTIFICATE_PACKET = {
+      bridgeLimit: 200001n,
+      directOddMin: 3n,
+      directOddMax: 200001n,
+      finalMaxB: 199242n,
+      highBStates: 359,
+      highBMaxLaterB: 193928n,
+      highBMaxStartingB: 72525508n,
+      frontierOpenStates: 889,
+      localKeysStillOpen: 0,
+      conflicts: 0
+    };
+
+    const $ = (id) => document.getElementById(id);
+
+    function cleanSeed(raw) {
+      return String(raw || "").replace(/[\s,_]/g, "");
+    }
+
+    function parsePositiveBigInt(raw) {
+      const cleaned = cleanSeed(raw);
+      if (!/^[0-9]+$/.test(cleaned)) {
+        throw new Error("Enter digits only. Spaces, commas, and underscores are okay; signs and decimals are not.");
+      }
+      const n = BigInt(cleaned);
+      if (n <= 0n) throw new Error("Seed must be a positive integer.");
+      return n;
+    }
+
+    function fmtBig(n) {
+      const s = n.toString();
+      return s.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    function abbreviateBig(n, max = 80) {
+      const s = n.toString();
+      if (s.length <= max) return fmtBig(n);
+      const left = s.slice(0, 34);
+      const right = s.slice(-24);
+      return `${left}…${right} (${s.length} digits)`;
+    }
+
+    function percentFromCounts(num, den) {
+      if (den === 0) return "0.00%";
+      const scaled = BigInt(num) * 10000n / BigInt(den);
+      const whole = scaled / 100n;
+      const frac = String(scaled % 100n).padStart(2, "0");
+      return `${whole}.${frac}%`;
+    }
+
+    function scaledRatio(num, den) {
+      if (den === 0n) return "n/a";
+      const scaled = num * 10000n / den;
+      const whole = scaled / 10000n;
+      const frac = String((scaled % 10000n) / 100n).padStart(2, "0");
+      return `${whole}.${frac}x`;
+    }
+
+    function fixed(value, digits = 2) {
+      if (!Number.isFinite(value)) return "n/a";
+      return value.toFixed(digits);
+    }
+
+    function isPowerOfTwo(n) {
+      return n > 0n && (n & (n - 1n)) === 0n;
+    }
+
+    function trailingOnes(binary) {
+      let count = 0;
+      for (let i = binary.length - 1; i >= 0 && binary[i] === "1"; i--) count++;
+      return count;
+    }
+
+    function seedIdentity(seed) {
+      const decimal = seed.toString();
+      const binary = seed.toString(2);
+      const ones = [...binary].reduce((acc, ch) => acc + (ch === "1" ? 1 : 0), 0);
+      return {
+        seed,
+        digits: decimal.length,
+        bitLength: binary.length,
+        parity: seed % 2n === 0n ? "even" : "odd",
+        mod3: seed % 3n,
+        mod6: seed % 6n,
+        mod12: seed % 12n,
+        trailingOnes: trailingOnes(binary),
+        binaryDensity: `${ones}/${binary.length} (${percentFromCounts(ones, binary.length)})`
+      };
+    }
+
+    function runAnyRoute(seed, maxSteps) {
+      let n = seed;
+      let steps = 0;
+      let peak = seed;
+      let peakStep = 0;
+      let oddCount = 0;
+      let evenCount = 0;
+      let maxOddRun = 0;
+      let maxEvenRun = 0;
+      let currentParity = null;
+      let currentRun = 0;
+      let belowSelf = null;
+      let belowSelfStep = null;
+      let anchor = isPowerOfTwo(n) ? n : null;
+      let anchorStep = anchor === null ? null : 0;
+      let collector = n === 1n ? 1n : null;
+      let collectorStep = collector === null ? null : 0;
+      let bridgeEntry = seed % 2n === 1n && seed >= CERTIFICATE_PACKET.directOddMin && seed <= CERTIFICATE_PACKET.directOddMax ? seed : null;
+      let bridgeEntryStep = bridgeEntry === null ? null : 0;
+      let door = seed === 1n ? "COLLECTOR" : null;
+      let a = 1n;
+      let b = 0n;
+      let c = 0;
+      let o = 0;
+      const trace = [];
+      const parityOE = [];
+      const parityBits = [];
+      const traceLimit = 80;
+
+      while (steps < maxSteps && door === null) {
+        const before = n;
+        const parity = n % 2n === 0n ? "even" : "odd";
+        const parityShort = parity === "odd" ? "O" : "E";
+        const parityBit = parity === "odd" ? "1" : "0";
+        const action = parity === "odd" ? "3n + 1" : "n / 2";
+        let note = "";
+        if (parity === currentParity) currentRun++;
+        else {
+          currentParity = parity;
+          currentRun = 1;
+        }
+        if (parity === "odd") {
+          oddCount++;
+          o++;
+          b = 3n * b + (1n << BigInt(c));
+          a = 3n * a;
+          if (currentRun > maxOddRun) maxOddRun = currentRun;
+          n = 3n * n + 1n;
+        } else {
+          evenCount++;
+          c++;
+          if (currentRun > maxEvenRun) maxEvenRun = currentRun;
+          n = n / 2n;
+        }
+        steps++;
+        parityOE.push(parityShort);
+        parityBits.push(parityBit);
+        if (n > peak) peak = n;
+        if (n === peak) peakStep = steps;
+
+        if (n === 1n) {
+          collector = 1n;
+          collectorStep = steps;
+          door = "COLLECTOR";
+          note = note ? `${note}; collector` : "collector";
+        }
+        if (anchor === null && isPowerOfTwo(n)) {
+          anchor = n;
+          anchorStep = steps;
+          note = note ? `${note}; anchor` : "anchor";
+        }
+        if (bridgeEntry === null && n % 2n === 1n && n >= CERTIFICATE_PACKET.directOddMin && n <= CERTIFICATE_PACKET.directOddMax) {
+          bridgeEntry = n;
+          bridgeEntryStep = steps;
+          note = note ? `${note}; bridge` : "bridge";
+        }
+        if (belowSelf === null && n < seed) {
+          belowSelf = n;
+          belowSelfStep = steps;
+          if (door === null) door = "BELOW_SELF";
+          note = note ? `${note}; below self` : "below self";
+        }
+        if (steps === peakStep) {
+          note = note ? `${note}; peak` : "peak";
+        }
+        if (trace.length < traceLimit) {
+          trace.push({ step: steps, before, parity, action, after: n, note });
+        }
+      }
+
+      if (door === null && steps >= maxSteps) door = "OPEN / NEEDS REVIEW";
+      const delayPerBit = steps / Math.max(1, seed.toString(2).length);
+      const delayPerDigit = steps / Math.max(1, seed.toString().length);
+      const peakTimingRatio = steps === 0 ? 0 : peakStep / steps;
+      const peakTiming = steps === 0 ? "start" : peakTimingRatio <= 0.33 ? "early" : peakTimingRatio <= 0.66 ? "middle" : "late";
+      const oddRatio = oddCount + evenCount === 0 ? 0 : oddCount / (oddCount + evenCount);
+      const gasBrakesDelta = c - o * Math.log2(3);
+
+      return {
+        steps,
+        door,
+        belowSelf,
+        belowSelfStep,
+        anchor,
+        anchorStep,
+        collector,
+        collectorStep,
+        bridgeEntry,
+        bridgeEntryStep,
+        peak,
+        peakStep,
+        peakTiming,
+        amp: scaledRatio(peak, seed),
+        oddCount,
+        evenCount,
+        oddRatio,
+        maxOddRun,
+        maxEvenRun,
+        finalValue: n,
+        reachedLimit: door === "OPEN / NEEDS REVIEW",
+        trace,
+        parityOE,
+        parityBits,
+        affine: { a, b, c, o },
+        diagnostics: { delayPerBit, delayPerDigit, gasBrakesDelta }
+      };
+    }
+
+    function classifyDanger(identity, route) {
+      if (route.reachedLimit) return ["OPEN / NEEDS REVIEW", "danger-open"];
+      if (route.steps > 1000 || route.diagnostics.delayPerBit > 18 || route.peak.toString().length > identity.digits + 8) return ["MONSTER DELAY", "danger-monster"];
+      if (route.door === "BELOW_SELF" && route.steps <= 8) return ["FAST DECAY", "danger-fast"];
+      if (route.door === "BELOW_SELF" || route.door === "COLLECTOR") return ["CERTIFIED DESCENT", "danger-certified"];
+      return ["DEBT RETURN", "danger-debt"];
+    }
+
+    function laneLookup(seed, identity, route) {
+      const lines = [];
+      if (seed >= CERTIFICATE_PACKET.directOddMin && seed <= CERTIFICATE_PACKET.directOddMax && seed % 2n === 1n) {
+        lines.push(["Direct bridge", "Inside odd bridge range [3, 200001]; direct bridge report has zero failures."]);
+      } else if (seed % 2n === 0n) {
+        lines.push(["Even seed", "Runtime route descends by halving; certificate lane lookup is normally stated for odd residue lanes."]);
+      } else {
+        lines.push(["Certificate lane lookup", "Runtime route classified; certificate lane lookup requires review packet index."]);
+      }
+      lines.push(["Residue fingerprint", `mod 65536 = ${seed % 65536n}; mod 12 = ${identity.mod12}`]);
+      lines.push(["Tracked packet", `${CERTIFICATE_PACKET.frontierOpenStates} frontier states, ${CERTIFICATE_PACKET.highBStates} high-B chains, ${CERTIFICATE_PACKET.conflicts} conflicts.`]);
+      return lines;
+    }
+
+    function kvRows(rows) {
+      return rows.map(([k, v]) => `<div>${k}</div><div>${v}</div>`).join("");
+    }
+
+    function residueRows(seed) {
+      return [3n, 6n, 12n, 16n, 32n, 64n, 256n, 65536n].map((m) => [`mod ${m}`, seed % m]);
+    }
+
+    function milestoneValue(value, step) {
+      if (value === null || step === null) return "not reached";
+      return `${abbreviateBig(value, 48)} at step ${step}`;
+    }
+
+    function orbitVisual(route) {
+      const milestones = [
+        { step: 0, color: "#88e8ff", size: 8, label: "seed" },
+        { step: route.peakStep, color: "#c8b6ff", size: 11, label: "peak" },
+        { step: route.bridgeEntryStep, color: "#ffe18a", size: 12, label: "bridge" },
+        { step: route.belowSelfStep, color: "#72ffc5", size: 13, label: "below self" },
+        { step: route.reachedLimit ? route.steps : null, color: "#ff7f9a", size: 13, label: "step cap" }
+      ].filter((m) => m.step !== null && m.step !== undefined);
+      const total = Math.max(1, route.steps);
+      const markers = milestones.map((m, index) => {
+        const angle = -95 + 300 * (m.step / total) + index * 8;
+        const rad = angle * Math.PI / 180;
+        const radius = 88 + (index % 3) * 18;
+        const x = Math.cos(rad) * radius;
+        const y = Math.sin(rad) * radius * 0.62;
+        return `<span class="orbit-marker" title="${m.label}: step ${m.step}" style="--x:${fixed(x, 1)}px; --y:${fixed(y, 1)}px; --s:${m.size}px; --m:${m.color}"></span>`;
+      }).join("");
+      return `
+        <div class="orbit-visual">
+          <div class="orbit-center"></div>
+          <div class="orbit-core-label">
+            <strong id="orbitCoreStep">step 0</strong>
+            <span id="orbitCoreValue">seed</span>
+          </div>
+          <div id="orbitParticle" class="orbit-particle" aria-hidden="true"></div>
+          ${markers}
+          <div class="orbit-caption">Orbit Lab markers: cyan seed, violet peak, gold bridge, green below-self, red step cap.</div>
+        </div>
+        <div class="orbit-hud">
+          <span id="orbitPhase" class="orbit-phase">runtime orbit model</span>
+          <div class="orbit-readout">
+            <span>step</span><span id="orbitStep">0</span>
+            <span>value</span><span id="orbitValue">seed</span>
+            <span>action</span><span id="orbitAction">ready</span>
+            <span>relation</span><span id="orbitRelation">at seed</span>
+          </div>
+          <div class="orbit-controls">
+            <button id="orbitPlayBtn" type="button">Play</button>
+            <input id="orbitScrubber" type="range" min="0" max="${route.trace.length}" value="0" aria-label="Orbit step scrubber">
+            <select id="orbitSpeed" aria-label="Orbit playback speed">
+              <option value="700">slow</option>
+              <option value="330" selected>normal</option>
+              <option value="120">fast</option>
+            </select>
+          </div>
+        </div>
+      `;
+    }
+
+    let orbitTimer = null;
+    let lastOrbitPhase = null;
+    let flashResetTimer = null;
+
+    function orbitPoint(step, total) {
+      const safeTotal = Math.max(1, total);
+      const angle = -100 + 320 * (step / safeTotal);
+      const rad = angle * Math.PI / 180;
+      const radius = 86 + 30 * Math.sin((step + 2) * 0.73);
+      return {
+        x: Math.cos(rad) * radius,
+        y: Math.sin(rad) * radius * 0.62
+      };
+    }
+
+    function phaseForStep(route, step) {
+      if (route.reachedLimit && step >= route.steps) return ["OPEN / NEEDS REVIEW", "#ff7f9a"];
+      if (route.collectorStep !== null && step >= route.collectorStep) return ["COLLECTOR", "#72ffc5"];
+      if (route.anchorStep !== null && step >= route.anchorStep) return ["ANCHOR", "#72ffc5"];
+      if (route.belowSelfStep !== null && step >= route.belowSelfStep) return ["BELOW SELF", "#72ffc5"];
+      if (route.bridgeEntryStep !== null && step >= route.bridgeEntryStep) return ["BRIDGE", "#ffe18a"];
+      if (step === route.peakStep) return ["PEAK", "#c8b6ff"];
+      if (step < route.peakStep) return ["CLIMBING", "#88e8ff"];
+      return ["DESCENDING", "#72ffc5"];
+    }
+
+    function relationForValue(seed, value) {
+      if (value === 1n) return "collector";
+      if (isPowerOfTwo(value)) return "anchor basin";
+      if (value <= CERTIFICATE_PACKET.bridgeLimit && value % 2n === 1n && value >= 3n) return "inside direct bridge";
+      if (value < seed) return "below seed";
+      if (value === seed) return "at seed";
+      return "above seed";
+    }
+
+    function routeValueAt(route, seed, step) {
+      if (step <= 0) return seed;
+      const traceRow = route.trace[Math.min(step, route.trace.length) - 1];
+      return traceRow ? traceRow.after : route.finalValue;
+    }
+
+    function routeActionAt(route, step) {
+      if (step <= 0) return "ready";
+      const traceRow = route.trace[Math.min(step, route.trace.length) - 1];
+      if (!traceRow) return "beyond displayed trace";
+      return `${traceRow.parity}: ${traceRow.action}${traceRow.note ? ` (${traceRow.note})` : ""}`;
+    }
+
+    function flashPhase(color, phase) {
+      if (phase === lastOrbitPhase) return;
+      lastOrbitPhase = phase;
+      document.body.style.setProperty("--flash-color", color);
+      document.body.classList.remove("phase-flash");
+      void document.body.offsetWidth;
+      document.body.classList.add("phase-flash");
+      if (flashResetTimer) clearTimeout(flashResetTimer);
+      flashResetTimer = setTimeout(() => document.body.classList.remove("phase-flash"), 560);
+    }
+
+    function updateOrbitModel(route, seed, step) {
+      const particle = $("orbitParticle");
+      const scrubber = $("orbitScrubber");
+      if (!particle || !scrubber) return;
+      const maxStep = Number(scrubber.max);
+      const index = Math.max(0, Math.min(maxStep, Number(step)));
+      const point = orbitPoint(index, maxStep);
+      const value = routeValueAt(route, seed, index);
+      const [phase, color] = phaseForStep(route, index);
+      flashPhase(color, phase);
+      particle.style.setProperty("--px", `${fixed(point.x, 1)}px`);
+      particle.style.setProperty("--py", `${fixed(point.y, 1)}px`);
+      particle.style.setProperty("--particle", color);
+      $("orbitPhase").textContent = phase;
+      $("orbitPhase").style.color = color;
+      $("orbitStep").textContent = `${index} / ${maxStep}`;
+      $("orbitValue").textContent = abbreviateBig(value, 54);
+      $("orbitAction").textContent = routeActionAt(route, index);
+      $("orbitRelation").textContent = relationForValue(seed, value);
+      $("orbitCoreStep").textContent = `step ${index}`;
+      $("orbitCoreValue").textContent = abbreviateBig(value, 34);
+      scrubber.value = String(index);
+    }
+
+    function initOrbitModel(route, seed) {
+      if (orbitTimer) {
+        clearInterval(orbitTimer);
+        orbitTimer = null;
+      }
+      const play = $("orbitPlayBtn");
+      const scrubber = $("orbitScrubber");
+      const speed = $("orbitSpeed");
+      if (!play || !scrubber || !speed) return;
+      lastOrbitPhase = null;
+      updateOrbitModel(route, seed, 0);
+      scrubber.addEventListener("input", () => updateOrbitModel(route, seed, Number(scrubber.value)));
+      play.addEventListener("click", () => {
+        if (orbitTimer) {
+          clearInterval(orbitTimer);
+          orbitTimer = null;
+          play.textContent = "Play";
+          return;
+        }
+        play.textContent = "Pause";
+        orbitTimer = setInterval(() => {
+          const next = Number(scrubber.value) + 1;
+          const max = Number(scrubber.max);
+          updateOrbitModel(route, seed, next > max ? 0 : next);
+        }, Number(speed.value));
+      });
+      speed.addEventListener("change", () => {
+        if (!orbitTimer) return;
+        clearInterval(orbitTimer);
+        orbitTimer = null;
+        play.textContent = "Play";
+        play.click();
+      });
+    }
+
+    function traceTable(route) {
+      const rows = route.trace.map((r) => `
+        <tr>
+          <td>${r.step}</td>
+          <td>${abbreviateBig(r.before, 42)}</td>
+          <td>${r.parity}</td>
+          <td>${r.action}</td>
+          <td>${abbreviateBig(r.after, 42)}</td>
+          <td class="trace-note">${r.note || ""}</td>
+        </tr>
+      `).join("");
+      return `
+        <div class="trace-wrap">
+          <table>
+            <thead><tr><th>Step</th><th>Value</th><th>Parity</th><th>Action</th><th>Next value</th><th>Note</th></tr></thead>
+            <tbody>${rows || `<tr><td colspan="6">No route steps needed.</td></tr>`}</tbody>
+          </table>
+        </div>
+      `;
+    }
+
+    function parityPreview(words, max = 160) {
+      const text = words.join(" ");
+      return text.length <= max ? text : `${text.slice(0, max)} …`;
+    }
+
+    function parseSeedList(raw) {
+      const tokens = String(raw || "").split(/[\s;]+/).map((x) => x.trim()).filter(Boolean);
+      if (!tokens.length) throw new Error("Enter at least one positive integer.");
+      if (tokens.length > 25) throw new Error("Batch limit is 25 seeds to keep the browser responsive.");
+      return tokens.map(parsePositiveBigInt);
+    }
+
+    function renderBatchSummary(items) {
+      if (items.length <= 1) return "";
+      const laneCounts = new Map();
+      let minDigits = Infinity;
+      let maxDigits = 0;
+      let finiteDoors = 0;
+      for (const item of items) {
+        const lane = (item.seed % 65536n).toString();
+        laneCounts.set(lane, (laneCounts.get(lane) || 0) + 1);
+        minDigits = Math.min(minDigits, item.identity.digits);
+        maxDigits = Math.max(maxDigits, item.identity.digits);
+        if (!item.route.reachedLimit) finiteDoors++;
+      }
+      const sameLane = laneCounts.size === 1;
+      const laneText = sameLane ? `same lane mod 65536 = ${[...laneCounts.keys()][0]}` : `${laneCounts.size} lanes mod 65536`;
+      const rows = items.map((item, index) => {
+        const [label, labelClass] = item.labelPair;
+        return `
+          <tr>
+            <td>${index + 1}</td>
+            <td>${abbreviateBig(item.seed, 38)}</td>
+            <td>${item.identity.digits}</td>
+            <td>${item.seed % 65536n}</td>
+            <td>${item.route.steps}</td>
+            <td>${item.route.door}</td>
+            <td><span class="danger-label ${labelClass}">${label}</span></td>
+          </tr>
+        `;
+      }).join("");
+      return `
+        <div class="scan-card full">
+          <span class="danger-label ${sameLane ? "danger-highb" : "danger-debt"}">${sameLane ? "SAME-LANE PACKET" : "MULTI-LANE PACKET"}</span>
+          <h3>Batch lane packet</h3>
+          <div class="scan-kv">
+            ${kvRows([
+              ["Seeds scanned", items.length],
+              ["Lane grouping", laneText],
+              ["Digit range", `${minDigits} to ${maxDigits}`],
+              ["Finite runtime doors", `${finiteDoors} / ${items.length}`]
+            ])}
+          </div>
+          <div class="trace-wrap" style="margin-top:12px">
+            <table>
+              <thead><tr><th>#</th><th>Seed</th><th>Digits</th><th>mod 65536</th><th>Steps</th><th>Door</th><th>Label</th></tr></thead>
+              <tbody>${rows}</tbody>
+            </table>
+          </div>
+          <p class="muted-note">Detailed Orbit Lab panels below use the first seed in the packet. Batch rows are runtime route classifications, not independent certificate-lane lookup.</p>
+        </div>
+      `;
+    }
+
+    function renderSingleSeed(seed, maxSteps) {
+        const identity = seedIdentity(seed);
+        const route = runAnyRoute(seed, maxSteps);
+        const [label, labelClass] = classifyDanger(identity, route);
+        const laneRows = laneLookup(seed, identity, route);
+        const totalParity = route.oddCount + route.evenCount;
+        const brakeShare = totalParity === 0 ? 0 : (route.evenCount / totalParity) * 100;
+        const gasShare = totalParity === 0 ? 0 : (route.oddCount / totalParity) * 100;
+        const affine = route.affine;
+        let runtimeThreshold = "not available for this runtime prefix";
+        if (affine.c <= 8192) {
+          const gap = (1n << BigInt(affine.c)) - affine.a;
+          if (gap > 0n) {
+            runtimeThreshold = `runtime gap positive; B = ${abbreviateBig((affine.b + gap - 1n) / gap, 60)}`;
+          } else {
+            runtimeThreshold = `runtime gap not positive at this door; gap sign = ${gap === 0n ? "zero" : "negative"}`;
+          }
+        } else {
+          runtimeThreshold = "runtime prefix too large for live threshold display";
+        }
+        const bridgeLine = CERTIFICATE_PACKET.finalMaxB <= CERTIFICATE_PACKET.bridgeLimit
+          ? `Packet max final B is ${fmtBig(CERTIFICATE_PACKET.finalMaxB)}, inside bridge ${fmtBig(CERTIFICATE_PACKET.bridgeLimit)}.`
+          : `Packet max final B is outside bridge; review required.`;
+
+        return {
+          seed,
+          identity,
+          route,
+          labelPair: [label, labelClass],
+          html: `
+          <div class="scan-card full">
+            <span class="danger-label ${labelClass}">${label}</span>
+            <h3>Runtime route result</h3>
+            <p class="muted-note">This seed was captured by runtime route when a finite door is shown. This is separate from independent certificate-lane review.</p>
+          </div>
+          <div class="scan-card wide">
+            <h3>Orbit Lab visual</h3>
+            ${orbitVisual(route)}
+          </div>
+          <div class="scan-card">
+            <h3>Orbit fingerprint</h3>
+            <div class="scan-kv">
+              ${kvRows([
+                ["Parity word", `${route.parityOE.length} symbols recorded`],
+                ["Odd / even ratio", `${route.oddCount} / ${route.evenCount} (${percentFromCounts(route.oddCount, Math.max(1, totalParity))} odd)`],
+                ["Normalized delay", `${fixed(route.diagnostics.delayPerBit, 2)} steps/bit; ${fixed(route.diagnostics.delayPerDigit, 2)} steps/digit`],
+                ["Peak timing", `${route.peakTiming} (step ${route.peakStep})`],
+                ["Max odd/even run", `${route.maxOddRun} / ${route.maxEvenRun}`]
+              ])}
+            </div>
+            <div class="parity-word" title="O/E parity word">${parityPreview(route.parityOE)}</div>
+            <div class="parity-word" title="1/0 parity word">${parityPreview(route.parityBits)}</div>
+          </div>
+          <div class="scan-card">
+            <h3>Seed identity</h3>
+            <div class="scan-kv">
+              ${kvRows([
+                ["Seed", abbreviateBig(seed)],
+                ["Digits", identity.digits],
+                ["Bit length", identity.bitLength],
+                ["Parity", identity.parity],
+                ["mod 3", identity.mod3],
+                ["mod 6", identity.mod6],
+                ["mod 12", identity.mod12],
+                ["Binary trailing ones", identity.trailingOnes],
+                ["Binary density", identity.binaryDensity]
+              ])}
+            </div>
+          </div>
+          <div class="scan-card">
+            <h3>Residue fingerprint</h3>
+            <div class="scan-kv">${kvRows(residueRows(seed))}</div>
+          </div>
+          <div class="scan-card">
+            <h3>Route result</h3>
+            <div class="scan-kv">
+              ${kvRows([
+                ["Steps", route.steps],
+                ["Door", route.door],
+                ["Below-self value", route.belowSelf === null ? "not reached before stop" : abbreviateBig(route.belowSelf)],
+                ["Anchor", route.anchor === null ? "none hit" : abbreviateBig(route.anchor)],
+                ["Collector", route.collector === null ? "none hit" : abbreviateBig(route.collector)],
+                ["Peak", abbreviateBig(route.peak)],
+                ["Amp", route.amp],
+                ["Odd / even counts", `${route.oddCount} / ${route.evenCount}`],
+                ["Max odd run", route.maxOddRun],
+                ["Max even run", route.maxEvenRun]
+              ])}
+            </div>
+          </div>
+          <div class="scan-card">
+            <h3>Milestones</h3>
+            <div class="scan-kv">
+              ${kvRows([
+                ["Below-self", milestoneValue(route.belowSelf, route.belowSelfStep)],
+                ["Peak", milestoneValue(route.peak, route.peakStep)],
+                ["Bridge entry", milestoneValue(route.bridgeEntry, route.bridgeEntryStep)],
+                ["Anchor", milestoneValue(route.anchor, route.anchorStep)],
+                ["Collector", milestoneValue(route.collector, route.collectorStep)]
+              ])}
+            </div>
+          </div>
+          <div class="scan-card">
+            <h3>Lane lookup</h3>
+            <div class="scan-kv">${kvRows(laneRows)}</div>
+          </div>
+          <div class="scan-card wide">
+            <h3>Certificate highlights</h3>
+            <span class="badge-gold">BRAKES BEAT GAS</span>
+            <div class="scan-kv">
+              ${kvRows([
+                ["Formula", "T^m(n) = (3^o · n + b) / 2^c"],
+                ["Descent condition", "2^c > 3^o"],
+                ["Threshold", "B = ceil(b / (2^c - 3^o))"],
+                ["Bridge", "B <= 200001 means certified by the direct bridge"],
+                ["Packet bridge check", bridgeLine],
+                ["High-B control", `High-B states eventually certified: ${CERTIFICATE_PACKET.highBStates}; max later B: ${fmtBig(CERTIFICATE_PACKET.highBMaxLaterB)}.`]
+              ])}
+            </div>
+          </div>
+          <div class="scan-card">
+            <h3>Gas vs brakes meter</h3>
+            <span class="badge-gold">BRAKES BEAT GAS</span>
+            <div class="bar-shell"><div class="bar-fill" style="--w:${fixed(brakeShare, 1)}%"></div></div>
+            <div class="scan-kv">
+              ${kvRows([
+                ["Gas: odd-growth steps", `${route.oddCount} (${fixed(gasShare, 1)}%)`],
+                ["Brakes: halving steps", `${route.evenCount} (${fixed(brakeShare, 1)}%)`],
+                ["Diagnostic c - o log2(3)", `${fixed(route.diagnostics.gasBrakesDelta, 6)} (runtime display only)`],
+                ["Proof-critical packet check", "uses exact integer gap comparisons in reports"]
+              ])}
+            </div>
+          </div>
+          <div class="scan-card">
+            <h3>See why this matters</h3>
+            <div class="see-list">
+              <div class="see-item">It found a finite door: <strong>${route.reachedLimit ? "not within limit" : route.door}</strong>.</div>
+              <div class="see-item">It did not count forever; it stopped at a finite route condition or the review limit.</div>
+              <div class="see-item">It classified behavior as <strong>${label}</strong>.</div>
+              <div class="see-item">${bridgeLine}</div>
+              <div class="see-item">If high-B then certified, the packet tracks both the high starting B and the later bridge-safe B.</div>
+            </div>
+          </div>
+          <div class="scan-card full">
+            <h3>Orbit trace table</h3>
+            <p class="muted-note">First ${route.trace.length} route steps are shown. Values are abbreviated when long.</p>
+            ${traceTable(route)}
+          </div>
+          <details class="math-drawer">
+            <summary>Math drawer: runtime affine prefix and certificate formulas</summary>
+            <div class="scanner-output">
+              <div class="scan-card wide">
+                <h3>Runtime affine prefix</h3>
+                <p class="muted-note">This is the affine prefix for this runtime route, not a replacement for certificate-lane lookup.</p>
+                <div class="scan-kv">
+                  ${kvRows([
+                    ["Runtime formula", "T^m(n) = (3^o · n + b) / 2^c"],
+                    ["m", route.steps],
+                    ["o", affine.o],
+                    ["c", affine.c],
+                    ["3^o digits", affine.a.toString().length],
+                    ["b digits", affine.b.toString().length],
+                    ["Runtime threshold note", runtimeThreshold]
+                  ])}
+                </div>
+              </div>
+              <div class="scan-card">
+                <h3>Certificate formulas</h3>
+                <div class="scan-kv">
+                  ${kvRows([
+                    ["Descent condition", "2^c > 3^o"],
+                    ["Threshold", "B = ceil(b / (2^c - 3^o))"],
+                    ["Integer ceiling", "B = (b + gap - 1) // gap"],
+                    ["Bridge", "B <= 200001 lands inside direct bridge"],
+                    ["Reviewer boundary", "Runtime route is not independent certificate acceptance"]
+                  ])}
+                </div>
+              </div>
+            </div>
+          </details>
+        `};
+    }
+
+    function renderScanner() {
+      const out = $("scannerOutput");
+      try {
+        const seeds = parseSeedList($("seedInput").value);
+        const maxSteps = Math.max(1, Math.min(1000000, Number($("stepLimitInput").value || 100000)));
+        const items = seeds.map((seed) => renderSingleSeed(seed, maxSteps));
+        out.innerHTML = `${renderBatchSummary(items)}${items[0].html}`;
+        initOrbitModel(items[0].route, items[0].seed);
+      } catch (err) {
+        out.innerHTML = `
+          <div class="scan-card full">
+            <span class="danger-label danger-open">OPEN / NEEDS REVIEW</span>
+            <h3>Input problem</h3>
+            <p>${err.message}</p>
+          </div>
+        `;
+      }
+    }
+
+    function buildSameLanePacket() {
+      try {
+        const base = parseSeedList($("seedInput").value)[0];
+        const lane = base % 65536n;
+        const multipliers = [0n, 1n, 17n, 1000n, 1000000n, 1000000000000n, 1000000000000000000n];
+        const seeds = multipliers
+          .map((m) => lane + m * 65536n)
+          .map((n) => n <= 0n ? n + 65536n : n);
+        $("seedInput").value = seeds.map((n) => n.toString()).join("\n");
+        renderScanner();
+      } catch (err) {
+        $("scannerOutput").innerHTML = `
+          <div class="scan-card full">
+            <span class="danger-label danger-open">OPEN / NEEDS REVIEW</span>
+            <h3>Same-lane packet problem</h3>
+            <p>${err.message}</p>
+          </div>
+        `;
+      }
+    }
+
+    $("scanSeedBtn").addEventListener("click", renderScanner);
+    $("sameLaneBtn").addEventListener("click", buildSameLanePacket);
+    $("seedInput").addEventListener("keydown", (event) => {
+      if ((event.metaKey || event.ctrlKey) && event.key === "Enter") renderScanner();
+    });
+  </script>
+</body>
+</html>

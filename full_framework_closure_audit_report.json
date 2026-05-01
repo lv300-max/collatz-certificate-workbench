@@ -1,0 +1,133 @@
+{
+  "checks": {
+    "bridge_compatibility": {
+      "direct_bridge_checked": 100000,
+      "direct_bridge_failures": 0,
+      "direct_bridge_range": [
+        3,
+        200001
+      ],
+      "failures": [],
+      "max_final_B_all_layers": 199242,
+      "status": "PASS"
+    },
+    "cap_stopped_rows": {
+      "bad_count": 0,
+      "bad_examples": [],
+      "cap_stopped_rows_checked": 286,
+      "cap_stopped_rows_with_exact_coverage": 286,
+      "global_frontier_exact_coverage": true,
+      "status": "PASS"
+    },
+    "deep_parent_completeness": {
+      "compact_quotient_only_examples": [],
+      "missing_examples": [],
+      "not_closed_examples": [],
+      "parents_checked": 578,
+      "parents_closed": 578,
+      "parents_missing": 0,
+      "parents_relying_on_sampled_rows": 0,
+      "parents_relying_only_on_compact_quotient": 0,
+      "parents_with_uncovered_keys": 0,
+      "sampled_examples": [],
+      "status": "PASS",
+      "status_counts": {
+        "CLOSED_BY_QUOTIENT": 228,
+        "CLOSED_WITH_LOCAL_KEYS": 64,
+        "COVERED_BUT_CAP_REACHED": 286
+      },
+      "uncovered_examples": []
+    },
+    "exact_state_coverage": {
+      "certified_states": 862,
+      "conflicts": 0,
+      "exact_states_checked": 1235,
+      "final_B_over_200001": 0,
+      "high_B_then_certified": 373,
+      "max_final_B": 199242,
+      "missing_exact_state_fields": 0,
+      "missing_field_examples": [],
+      "rows_missing_required_fields": 0,
+      "status": "PASS",
+      "still_open": 0,
+      "transition_missing_examples": [],
+      "transition_rows_missing_exact_representative": 0
+    },
+    "frontier_universe": {
+      "bucket_counts": {
+        "deep_parent": 578,
+        "exact_depth_closed_parent": 198,
+        "pre_report_exact_depth_parent": 1338,
+        "shallow_valid_at_k16": 30654
+      },
+      "bucket_total": 32768,
+      "density_summary": {
+        "covered_slots": 32768,
+        "duplicate_overlap_slots": 0,
+        "missing_slots": 0,
+        "sampled_as_proof_count": 0
+      },
+      "duplicates": 0,
+      "failures": [],
+      "missing": 0,
+      "sampled_as_proof_count": 0,
+      "status": "PASS",
+      "total_odd_r0": 32768,
+      "universe": "odd base residues r0 modulo 2^16"
+    },
+    "local_keys": {
+      "bad_count": 0,
+      "bad_examples": [],
+      "local_keys_checked": 64,
+      "local_keys_exact_state_certified": 64,
+      "status": "PASS"
+    },
+    "no_quotient_proof_dependence": {
+      "compact_quotient_only_examples": [],
+      "compact_quotient_only_rows": 0,
+      "direct_bridge_rows": 100000,
+      "exact_depth_rows": 1536,
+      "full_exact_state_rows": 1235,
+      "status": "PASS"
+    }
+  },
+  "collatz_proven": false,
+  "compact_quotient_only_rows": 0,
+  "exact_states_checked": 1235,
+  "final_message": "PASS_FULL_FRAMEWORK_EXACT_STATE_CLOSURE: The declared r0 mod 2^16 frontier, exact-depth layer, 578 deep parents, cap-stopped rows, local keys, return-map states, high-B returns, and previously quotient-closed parents are now all covered by exact source reports or full exact-state certificates. No proof-critical row relies only on compact quotient abstraction. Independent mathematical review is still required before any public proof claim.",
+  "method": {
+    "B_limit": 200001,
+    "caps_raised": false,
+    "compact_quotient_keys_used_as_proof": false,
+    "inputs": [
+      "residue_partition_exhaustiveness_report.json",
+      "residue_density_partition_audit_report.json",
+      "exact_depth_closure_report.json",
+      "direct_bridge_report.json",
+      "quotient_parent_batch_report.json",
+      "frontier_coverage_audit_report.json",
+      "frontier_return_map_report.json",
+      "b_control_report.json",
+      "quotient_transition_table.json",
+      "quotient_transition_table_audit_report.json",
+      "exact_state_closure_report.json",
+      "final_certificate_audit_report.json"
+    ],
+    "random_seeds": false,
+    "sampled_evidence_used_as_proof": false
+  },
+  "parents_checked": 578,
+  "parents_closed": 578,
+  "pass_fail_table": {
+    "bridge_compatibility": "PASS",
+    "cap_stopped_rows": "PASS",
+    "deep_parent_completeness": "PASS",
+    "exact_state_coverage": "PASS",
+    "frontier_universe": "PASS",
+    "local_keys": "PASS",
+    "no_quotient_proof_dependence": "PASS"
+  },
+  "plain_truth": "This framework audit checks generated exact reports and compact-quotient dependence. It does not claim Collatz is proven.",
+  "qtable_audit_ok": true,
+  "status": "PASS_FULL_FRAMEWORK_EXACT_STATE_CLOSURE"
+}

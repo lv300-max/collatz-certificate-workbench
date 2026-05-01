@@ -1,0 +1,65 @@
+{
+  "source_reports": {
+    "quotient": "excursion_quotient_report.json",
+    "return_map": "frontier_return_map_report.json",
+    "b_control": "b_control_report.json"
+  },
+  "summary": {
+    "quotient_open_keys": 889,
+    "quotient_open_frontier_exported": 889,
+    "unique_quotient_open_keys": 889,
+    "return_map_records": 889,
+    "return_map_unique_keys": 889,
+    "return_map_classification_counts": {
+      "CERTIFIED_RETURN": 530,
+      "HIGH_B_RETURN": 359
+    },
+    "certified_returns": 530,
+    "high_B_returns": 359,
+    "still_debt_keys": 0,
+    "conflicts": 0,
+    "b_control_records": 359,
+    "b_control_unique_keys": 359,
+    "b_control_classification_counts": {
+      "B_EVENTUALLY_CERTIFIED": 359
+    },
+    "high_B_eventually_certified": 359,
+    "final_B_over_limit": 0,
+    "max_final_B": 199242,
+    "pass": true
+  },
+  "checks": {
+    "every_open_key_exported": true,
+    "every_open_key_return_mapped": true,
+    "every_high_B_key_B_controlled": true,
+    "every_high_B_eventually_certified": true,
+    "no_still_debt_keys": true,
+    "no_conflicts": true,
+    "no_final_B_over_200001": true
+  },
+  "missing_keys": {
+    "open_keys_not_exported_to_open_frontier": [],
+    "open_keys_missing_from_return_map": [],
+    "return_map_keys_not_in_open_quotient": [],
+    "high_B_keys_missing_from_b_control": [],
+    "b_control_keys_not_high_B_in_return_map": [],
+    "high_B_keys_not_eventually_certified": [],
+    "still_debt_keys": [],
+    "conflict_keys": [],
+    "final_B_over_limit": []
+  },
+  "pass_condition": [
+    "every open key exported",
+    "every open key return-mapped",
+    "every high-B key B-controlled",
+    "no still-debt keys",
+    "no conflicts",
+    "no final B > 200001"
+  ],
+  "plain_truth": "PASS: current exported quotient frontier is key-covered by return map and B-control.",
+  "what_this_does_not_prove": [
+    "This audit is over the current quotient analyzer report only.",
+    "It does not prove the quotient frontier method covers all depth >18 parents universally.",
+    "It does not claim a complete Collatz proof."
+  ]
+}

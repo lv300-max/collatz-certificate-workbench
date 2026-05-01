@@ -1,0 +1,530 @@
+{
+  "answers": {
+    "data_required_for_valid_exact_partition_audit": [
+      "An explicit universe definition: all odd integers, odd residues modulo 2^K, or r0 frontier modulo 2^16.",
+      "Every residue-density lane exported with r, modulus_power k, status/classification, and sampled=false.",
+      "Every closed exact-depth leaf exported individually if leaves, not parents, are the density lanes.",
+      "Every closed symbolic/pre-parent leaf exported with r and k.",
+      "Every deep parent exported with r0, k_prime/depth, modulus, status, and coverage source.",
+      "A separate finite-case section for direct_bridge_report.json, unless finite cases are converted into explicit residue lanes.",
+      "A disjointness rule stating whether finite direct bridge cases can overlap residue lanes or are only representative checks."
+    ],
+    "direct_bridge_report_is_residue_density_coverage": false,
+    "direct_bridge_report_role": "finite-case coverage",
+    "exact_depth_closure_report_contains": "198 depth 15-18 parent_rows with r0, k_prime/depth, closed flag, sibling counts, and aggregate exact checks; 1338 pre-report low-depth exact parent rows with r0, k_prime, depth, m, o, c, b, B, and sampled=false. It still does not export every sibling leaf as its own r,k lane; parent-cylinder rows are the frontier partition units.",
+    "frontier_partition_gap_found": {
+      "note": "pre_report_exact_depth_parent_exported counts low-depth parent residues read directly from exact_depth_closure_report.json. A nonzero recomputed count would mean this audit had to reconstruct missing low-depth rows.",
+      "pre_report_exact_depth_parent_exported": 1338,
+      "pre_report_exact_depth_parent_recomputed": 0
+    },
+    "quotient_parent_batch_report_contains": "578 parent rows; 578 rows have r0 plus k_prime/depth. Status counts: {'CLOSED_BY_QUOTIENT': 228, 'CLOSED_WITH_LOCAL_KEYS': 64, 'COVERED_BUT_CAP_REACHED': 286}",
+    "which_files_have_actual_residue_class_data": [
+      "exact_depth_closure_report.json",
+      "quotient_parent_batch_report.json",
+      "residue_partition_exhaustiveness_report.json",
+      "residue_density_partition_audit_report.json"
+    ],
+    "which_files_only_have_summary_counts": [
+      "direct_bridge_report.json",
+      "final_certificate_audit_report.json"
+    ],
+    "why_small_residues_were_missing": "The first density audit only treated the depth 15-18 exact rows and the 578 deep-parent rows as residue classes, so shallow r0 mod 2^16 residues such as 1,3,5,7 were not in its lane source. The corrected density audit now uses residue_partition_exhaustiveness_report.json as the complete frontier partition source, so those small residues are covered by shallow_valid_at_k16 lanes."
+  },
+  "density_audit_observed_failure": {
+    "common_modulus_power": 16,
+    "first_missing_residue_slots": [],
+    "missing_slots": 0,
+    "status": "PASS_DENSITY_PARTITION"
+  },
+  "files": {
+    "direct_bridge_report.json": {
+      "assignment_row_count": 0,
+      "assignment_rows_with_r0": 0,
+      "closed_leaf_list_paths": [],
+      "contains_B_threshold_or_B_values": false,
+      "contains_actual_residue_class_data": false,
+      "contains_direct_finite_range": true,
+      "contains_exact_or_sampled_flag": true,
+      "contains_lane_status": true,
+      "contains_list_of_closed_leaves": false,
+      "contains_list_of_open_or_deep_parents": false,
+      "contains_modulus_or_depth_k": false,
+      "contains_only_summary_counts": true,
+      "contains_parent_r0": false,
+      "contains_residue_r": false,
+      "direct_finite_range": {
+        "odd_max": 200001,
+        "odd_min": 3,
+        "range": null,
+        "verify_limit": 200001
+      },
+      "example_paths": {
+        "B": [],
+        "modulus_or_depth": [],
+        "residue": [],
+        "sampled_or_random": [
+          "$.method"
+        ],
+        "status": [
+          "$.summary"
+        ]
+      },
+      "lane_row_count": 0,
+      "lane_row_keys": {},
+      "parent_row_count": 0,
+      "parent_row_keys": {},
+      "present": true,
+      "rows_with_residue_and_modulus_or_depth": 0,
+      "top_level_keys": [
+        "method",
+        "packet_created_at_source_time",
+        "plain_truth",
+        "source",
+        "summary"
+      ]
+    },
+    "exact_depth_closure_report.json": {
+      "assignment_row_count": 0,
+      "assignment_rows_with_r0": 0,
+      "closed_leaf_list_paths": [],
+      "contains_B_threshold_or_B_values": true,
+      "contains_actual_residue_class_data": true,
+      "contains_direct_finite_range": false,
+      "contains_exact_or_sampled_flag": true,
+      "contains_lane_status": true,
+      "contains_list_of_closed_leaves": false,
+      "contains_list_of_open_or_deep_parents": true,
+      "contains_modulus_or_depth_k": true,
+      "contains_only_summary_counts": false,
+      "contains_parent_r0": true,
+      "contains_residue_r": true,
+      "direct_finite_range": null,
+      "example_paths": {
+        "B": [
+          "$.method",
+          "$.parent_rows[0]",
+          "$.parent_rows[1]",
+          "$.parent_rows[2]",
+          "$.parent_rows[3]"
+        ],
+        "modulus_or_depth": [
+          "$.parent_rows[0]",
+          "$.parent_rows[1]",
+          "$.parent_rows[2]",
+          "$.parent_rows[3]",
+          "$.parent_rows[4]"
+        ],
+        "residue": [
+          "$.parent_rows[0]",
+          "$.parent_rows[1]",
+          "$.parent_rows[2]",
+          "$.parent_rows[3]",
+          "$.parent_rows[4]"
+        ],
+        "sampled_or_random": [
+          "$.method",
+          "$.pre_report_exact_depth_summary",
+          "$.pre_report_exact_parent_rows[0]",
+          "$.pre_report_exact_parent_rows[1]",
+          "$.pre_report_exact_parent_rows[2]"
+        ],
+        "status": [
+          "$.parent_rows[0]",
+          "$.parent_rows[1]",
+          "$.parent_rows[2]",
+          "$.parent_rows[3]",
+          "$.parent_rows[4]"
+        ]
+      },
+      "lane_row_count": 0,
+      "lane_row_keys": {},
+      "parent_row_count": 198,
+      "parent_row_keys": {
+        "b_over_limit_examples": 198,
+        "closed": 198,
+        "depth": 198,
+        "elapsed_seconds": 198,
+        "exact_formula_checks": 198,
+        "failure_examples": 198,
+        "failures": 198,
+        "k_prime": 198,
+        "max_B": 198,
+        "max_k": 198,
+        "min_delta": 198,
+        "r0": 198,
+        "siblings": 198
+      },
+      "present": true,
+      "rows_with_residue_and_modulus_or_depth": 198,
+      "top_level_keys": [
+        "depth_counts",
+        "method",
+        "parent_rows",
+        "plain_truth",
+        "pre_report_exact_depth_summary",
+        "pre_report_exact_parent_rows",
+        "runtime_seconds",
+        "summary"
+      ]
+    },
+    "final_certificate_audit_report.json": {
+      "assignment_row_count": 0,
+      "assignment_rows_with_r0": 0,
+      "closed_leaf_list_paths": [],
+      "contains_B_threshold_or_B_values": true,
+      "contains_actual_residue_class_data": false,
+      "contains_direct_finite_range": false,
+      "contains_exact_or_sampled_flag": true,
+      "contains_lane_status": true,
+      "contains_list_of_closed_leaves": false,
+      "contains_list_of_open_or_deep_parents": true,
+      "contains_modulus_or_depth_k": false,
+      "contains_only_summary_counts": true,
+      "contains_parent_r0": false,
+      "contains_residue_r": false,
+      "direct_finite_range": null,
+      "example_paths": {
+        "B": [
+          "$.audits.b_control.summary",
+          "$.audits.b_control.summary.examples.B_EVENTUALLY_CERTIFIED",
+          "$.audits.b_control.summary.examples.B_EVENTUALLY_CERTIFIED.first_steps[0]",
+          "$.audits.b_control.summary.examples.B_EVENTUALLY_CERTIFIED.zero_tail_certification",
+          "$.audits.b_control.summary.longest_chain"
+        ],
+        "modulus_or_depth": [],
+        "residue": [],
+        "sampled_or_random": [
+          "$.audits.exact_depth.method",
+          "$.audits.exact_depth.summary"
+        ],
+        "status": [
+          "$",
+          "$.audits",
+          "$.audits.b_control.summary.examples.B_EVENTUALLY_CERTIFIED",
+          "$.audits.b_control.summary.longest_chain",
+          "$.audits.b_control.summary.worst_chain"
+        ]
+      },
+      "lane_row_count": 0,
+      "lane_row_keys": {},
+      "parent_row_count": 0,
+      "parent_row_keys": {},
+      "present": true,
+      "rows_with_residue_and_modulus_or_depth": 0,
+      "top_level_keys": [
+        "audits",
+        "current_final_parent_status",
+        "final_status",
+        "final_wording",
+        "incomplete_reasons",
+        "master_checks",
+        "master_details",
+        "plain_truth",
+        "source_reports"
+      ]
+    },
+    "quotient_parent_batch_report.json": {
+      "assignment_row_count": 0,
+      "assignment_rows_with_r0": 0,
+      "closed_leaf_list_paths": [],
+      "contains_B_threshold_or_B_values": true,
+      "contains_actual_residue_class_data": true,
+      "contains_direct_finite_range": false,
+      "contains_exact_or_sampled_flag": true,
+      "contains_lane_status": true,
+      "contains_list_of_closed_leaves": false,
+      "contains_list_of_open_or_deep_parents": true,
+      "contains_modulus_or_depth_k": true,
+      "contains_only_summary_counts": false,
+      "contains_parent_r0": true,
+      "contains_residue_r": true,
+      "direct_finite_range": null,
+      "example_paths": {
+        "B": [
+          "$.method.quotient_caps_used",
+          "$.parent_rows[6].local_key_examples[0]",
+          "$.parent_rows[24].local_key_examples[0]",
+          "$.parent_rows[31].local_key_examples[0]",
+          "$.parent_rows[31].local_key_examples[0].b_control_next"
+        ],
+        "modulus_or_depth": [
+          "$.parent_rows[0]",
+          "$.parent_rows[1]",
+          "$.parent_rows[2]",
+          "$.parent_rows[3]",
+          "$.parent_rows[4]"
+        ],
+        "residue": [
+          "$.parent_rows[0]",
+          "$.parent_rows[1]",
+          "$.parent_rows[2]",
+          "$.parent_rows[3]",
+          "$.parent_rows[4]"
+        ],
+        "sampled_or_random": [
+          "$.method",
+          "$.parent_rows[0]",
+          "$.parent_rows[1]",
+          "$.parent_rows[2]",
+          "$.parent_rows[3]"
+        ],
+        "status": [
+          "$",
+          "$.parent_rows[0]",
+          "$.parent_rows[1]",
+          "$.parent_rows[2]",
+          "$.parent_rows[3]"
+        ]
+      },
+      "lane_row_count": 0,
+      "lane_row_keys": {},
+      "parent_row_count": 578,
+      "parent_row_keys": {
+        "bad_B_positive_count": 578,
+        "cap_or_truncation_reasons": 578,
+        "conflict_count": 578,
+        "coverage_source": 578,
+        "covered_open_key_count": 578,
+        "depth": 578,
+        "entry_count": 578,
+        "entry_count_by_parent": 578,
+        "exact": 578,
+        "k_prime": 578,
+        "local_key_classification_counts": 578,
+        "local_key_examples": 578,
+        "local_keys_attempted": 578,
+        "local_keys_certified": 578,
+        "local_keys_high_b_certified": 578,
+        "local_keys_still_open": 578,
+        "modulus": 578,
+        "open_key_count": 578,
+        "open_keys_all_exported_in_parent_run": 578,
+        "open_reason_counts": 578,
+        "quotient_keys": 578,
+        "r0": 578,
+        "return_keys": 578,
+        "sample_open_keys": 578,
+        "sample_return_pairs": 578,
+        "sample_uncovered_open_keys": 578,
+        "sampled": 578,
+        "status": 578,
+        "timing_seconds": 578,
+        "transition_keys": 578,
+        "uncovered_open_key_count": 578
+      },
+      "present": true,
+      "rows_with_residue_and_modulus_or_depth": 578,
+      "top_level_keys": [
+        "blocked_or_partial_parent_ids",
+        "final_status",
+        "method",
+        "parent_rows",
+        "plain_truth",
+        "runtime_seconds",
+        "source_reports",
+        "summary",
+        "unprocessed_parent_ids"
+      ]
+    },
+    "residue_density_partition_audit_report.json": {
+      "assignment_row_count": 0,
+      "assignment_rows_with_r0": 0,
+      "closed_leaf_list_paths": [],
+      "contains_B_threshold_or_B_values": false,
+      "contains_actual_residue_class_data": true,
+      "contains_direct_finite_range": false,
+      "contains_exact_or_sampled_flag": true,
+      "contains_lane_status": true,
+      "contains_list_of_closed_leaves": false,
+      "contains_list_of_open_or_deep_parents": false,
+      "contains_modulus_or_depth_k": true,
+      "contains_only_summary_counts": false,
+      "contains_parent_r0": false,
+      "contains_residue_r": true,
+      "direct_finite_range": null,
+      "example_paths": {
+        "B": [],
+        "modulus_or_depth": [
+          "$.lanes[0]",
+          "$.lanes[1]",
+          "$.lanes[2]",
+          "$.lanes[3]",
+          "$.lanes[4]"
+        ],
+        "residue": [
+          "$.lanes[0]",
+          "$.lanes[1]",
+          "$.lanes[2]",
+          "$.lanes[3]",
+          "$.lanes[4]"
+        ],
+        "sampled_or_random": [
+          "$.lanes[0]",
+          "$.lanes[1]",
+          "$.lanes[2]",
+          "$.lanes[3]",
+          "$.lanes[4]"
+        ],
+        "status": [
+          "$"
+        ]
+      },
+      "lane_row_count": 32768,
+      "lane_row_keys": {
+        "coverage_modulus": 32768,
+        "coverage_modulus_power": 32768,
+        "density_all_integers": 32768,
+        "density_within_odd_universe": 32768,
+        "depth": 32768,
+        "expanded_leaf_count_at_proof_modulus": 32768,
+        "lane_id": 32768,
+        "lane_type": 32768,
+        "proof_modulus": 32768,
+        "proof_modulus_power": 32768,
+        "residue": 32768,
+        "row_index": 32768,
+        "sampled_as_proof": 32768,
+        "sampled_or_exact": 32768,
+        "source": 32768,
+        "status_or_classification": 32768
+      },
+      "parent_row_count": 0,
+      "parent_row_keys": {},
+      "present": true,
+      "rows_with_residue_and_modulus_or_depth": 32768,
+      "top_level_keys": [
+        "classification_counts",
+        "common_modulus",
+        "common_modulus_power",
+        "covered_density_decimal_display",
+        "covered_density_within_odd_universe_as_fraction",
+        "covered_slots",
+        "deep_parent_slots",
+        "density_sum_as_fraction",
+        "density_sum_basis",
+        "density_sum_decimal_display",
+        "density_sum_within_odd_universe_as_fraction",
+        "duplicate_overlap_slots",
+        "exact_depth_closed_slots",
+        "first_20_missing_residue_slots",
+        "first_20_overlap_residue_slots",
+        "input_presence",
+        "invalid_lanes",
+        "lane_counts",
+        "lane_source_mode",
+        "lanes",
+        "max_proof_modulus_power",
+        "missing_lane_data",
+        "missing_required_inputs",
+        "missing_slots",
+        "parent_ids_causing_overlap",
+        "plain_truth",
+        "pre_report_exact_depth_slots",
+        "sampled_as_proof_count",
+        "status",
+        "total_odd_residue_slots",
+        "universe_notes",
+        "universe_type"
+      ]
+    },
+    "residue_partition_exhaustiveness_report.json": {
+      "assignment_row_count": 32768,
+      "assignment_rows_with_r0": 32768,
+      "closed_leaf_list_paths": [],
+      "contains_B_threshold_or_B_values": true,
+      "contains_actual_residue_class_data": true,
+      "contains_direct_finite_range": false,
+      "contains_exact_or_sampled_flag": true,
+      "contains_lane_status": true,
+      "contains_list_of_closed_leaves": false,
+      "contains_list_of_open_or_deep_parents": false,
+      "contains_modulus_or_depth_k": true,
+      "contains_only_summary_counts": false,
+      "contains_parent_r0": true,
+      "contains_residue_r": true,
+      "direct_finite_range": null,
+      "example_paths": {
+        "B": [
+          "$.all_assignments[0].buckets[0]",
+          "$.all_assignments[1].buckets[0]",
+          "$.all_assignments[2].buckets[0]",
+          "$.all_assignments[3].buckets[0]",
+          "$.all_assignments[4].buckets[0]"
+        ],
+        "modulus_or_depth": [
+          "$",
+          "$.all_assignments[0].buckets[0]",
+          "$.all_assignments[1].buckets[0]",
+          "$.all_assignments[2].buckets[0]",
+          "$.all_assignments[3].buckets[0]"
+        ],
+        "residue": [
+          "$.all_assignments[0]",
+          "$.all_assignments[0].buckets[0]",
+          "$.all_assignments[1]",
+          "$.all_assignments[1].buckets[0]",
+          "$.all_assignments[2]"
+        ],
+        "sampled_or_random": [
+          "$.all_assignments[0].buckets[0]",
+          "$.all_assignments[1].buckets[0]",
+          "$.all_assignments[2].buckets[0]",
+          "$.all_assignments[3].buckets[0]",
+          "$.all_assignments[4].buckets[0]"
+        ],
+        "status": [
+          "$",
+          "$.all_assignments[0].buckets[0]",
+          "$.all_assignments[1].buckets[0]",
+          "$.all_assignments[2].buckets[0]",
+          "$.all_assignments[3].buckets[0]"
+        ]
+      },
+      "lane_row_count": 0,
+      "lane_row_keys": {},
+      "parent_row_count": 0,
+      "parent_row_keys": {},
+      "present": true,
+      "rows_with_residue_and_modulus_or_depth": 0,
+      "top_level_keys": [
+        "all_assignments",
+        "assigned_once",
+        "bucket_counts",
+        "direct_bridge_finite_representative_count",
+        "direct_bridge_note",
+        "duplicates",
+        "first_20_duplicates",
+        "first_20_missing",
+        "input_presence",
+        "missing",
+        "modulus_power",
+        "plain_truth",
+        "sampled_as_proof_count",
+        "source_data_gaps",
+        "source_row_counts",
+        "status",
+        "total_odd_base_residues",
+        "universe_type"
+      ]
+    }
+  },
+  "fix_plan": {
+    "if_deep_parents_need_full_residue_data": [
+      "Modify quotient_parent_batch_audit.py so every parent row includes r0, k_prime, depth, modulus='2^k_prime', status, coverage_source, and sampled=false.",
+      "Keep quotient/local key closure details separate from residue identity fields."
+    ],
+    "if_exact_depth_leaves_are_missing": [
+      "Modify exact_depth_closure.py to emit a closed_leaves array if leaf-level lanes are required.",
+      "Each closed leaf should include r, k, status, m, o, c, b or b summary, B, and sampled=false.",
+      "Keep parent_rows as summary data, but do not use them as leaf-level density lanes unless that is the intended partition."
+    ],
+    "then_rebuild_density_audit": [
+      "Load only complete residue-density lane rows.",
+      "Use the smallest common K justified by those rows and the declared universe.",
+      "Fail as INCOMPLETE_DENSITY_PARTITION if any closure source only has summaries or finite ranges.",
+      "Report missing=0, overlap=0, sampled_as_proof=0 only for the declared universe."
+    ]
+  },
+  "plain_truth": "This diagnoses exported coverage data only. It does not claim proof failure or proof completion.",
+  "status": "DIAGNOSIS_COMPLETE"
+}

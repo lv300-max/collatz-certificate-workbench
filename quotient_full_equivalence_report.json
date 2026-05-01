@@ -1,0 +1,969 @@
+{
+  "decision": {
+    "hard_fail_conditions": {
+      "missing_successor_keys": 0,
+      "mixed_outcome_keys": 0,
+      "nondeterministic_successor_keys": 0,
+      "sampled_as_proof_count": 0
+    },
+    "incomplete_conditions": {
+      "collapsed_different_state_keys_without_lemma": 0,
+      "insufficient_data_keys": 948,
+      "omitted_proof_critical_key_fields": [
+        "residue r",
+        "exact b",
+        "return/B-control classification"
+      ],
+      "source_artifacts_mark_full_equivalence_proven": false
+    },
+    "status_rule_applied": "PASS only if no hard failures, no insufficient/collapsed representative classes, no omitted proof-critical fields, and source artifacts mark full equivalence proven."
+  },
+  "final_status": "FULL_EQUIVALENCE_NOT_PROVEN",
+  "full_equivalence_proven": false,
+  "method": {
+    "caps_raised": false,
+    "inputs": [
+      "excursion_quotient_analyzer.py",
+      "quotient_transition_table.json",
+      "quotient_transition_table_audit_report.json",
+      "quotient_key_schema_review_report.json",
+      "quotient_abstraction_validity_report.json",
+      "quotient_exact_state_fallback_audit_report.json"
+    ],
+    "integer_artifact_review_only": true,
+    "random_seeds": false,
+    "sampled_evidence_used_as_proof": false
+  },
+  "plain_truth": "The tracked quotient transition table passes, but the compact key does not prove full quotient-class equivalence. The remaining gap is the external lemma that omitted fields cannot change certification or final bridge outcome.",
+  "representative_collision_test": {
+    "certification_or_future_witness_representatives": 953,
+    "classification_counts": {
+      "INSUFFICIENT_DATA": 948
+    },
+    "examples": {
+      "collapsed_different_states": [],
+      "equivalent_representatives": [],
+      "insufficient_data": [
+        {
+          "key": [
+            0,
+            0,
+            1272,
+            2015
+          ],
+          "missing_fields": [
+            "a",
+            "residue",
+            "steps"
+          ],
+          "reason": "same-key representatives are not fully exported",
+          "same_key_representatives": 1
+        },
+        {
+          "key": [
+            0,
+            0,
+            1273,
+            2015
+          ],
+          "missing_fields": [
+            "a",
+            "residue",
+            "steps"
+          ],
+          "reason": "same-key representatives are not fully exported",
+          "same_key_representatives": 1
+        },
+        {
+          "key": [
+            0,
+            0,
+            1274,
+            2015
+          ],
+          "missing_fields": [
+            "a",
+            "residue",
+            "steps"
+          ],
+          "reason": "same-key representatives are not fully exported",
+          "same_key_representatives": 1
+        },
+        {
+          "key": [
+            0,
+            0,
+            1275,
+            2015
+          ],
+          "missing_fields": [
+            "a",
+            "residue",
+            "steps"
+          ],
+          "reason": "same-key representatives are not fully exported",
+          "same_key_representatives": 1
+        },
+        {
+          "key": [
+            0,
+            0,
+            1276,
+            2015
+          ],
+          "missing_fields": [
+            "a",
+            "residue",
+            "steps"
+          ],
+          "reason": "same-key representatives are not fully exported",
+          "same_key_representatives": 1
+        },
+        {
+          "key": [
+            0,
+            0,
+            1277,
+            2015
+          ],
+          "missing_fields": [
+            "a",
+            "residue",
+            "steps"
+          ],
+          "reason": "same-key representatives are not fully exported",
+          "same_key_representatives": 1
+        },
+        {
+          "key": [
+            0,
+            0,
+            1278,
+            2015
+          ],
+          "missing_fields": [
+            "a",
+            "residue",
+            "steps"
+          ],
+          "reason": "same-key representatives are not fully exported",
+          "same_key_representatives": 1
+        },
+        {
+          "key": [
+            0,
+            0,
+            1279,
+            2015
+          ],
+          "missing_fields": [
+            "a",
+            "residue",
+            "steps"
+          ],
+          "reason": "same-key representatives are not fully exported",
+          "same_key_representatives": 1
+        },
+        {
+          "key": [
+            0,
+            0,
+            1280,
+            2015
+          ],
+          "missing_fields": [
+            "a",
+            "residue",
+            "steps"
+          ],
+          "reason": "same-key representatives are not fully exported",
+          "same_key_representatives": 1
+        },
+        {
+          "key": [
+            0,
+            0,
+            1281,
+            2015
+          ],
+          "missing_fields": [
+            "a",
+            "residue",
+            "steps"
+          ],
+          "reason": "same-key representatives are not fully exported",
+          "same_key_representatives": 1
+        },
+        {
+          "key": [
+            0,
+            0,
+            1282,
+            2015
+          ],
+          "missing_fields": [
+            "a",
+            "residue",
+            "steps"
+          ],
+          "reason": "same-key representatives are not fully exported",
+          "same_key_representatives": 1
+        },
+        {
+          "key": [
+            0,
+            0,
+            1283,
+            2015
+          ],
+          "missing_fields": [
+            "a",
+            "residue",
+            "steps"
+          ],
+          "reason": "same-key representatives are not fully exported",
+          "same_key_representatives": 1
+        },
+        {
+          "key": [
+            0,
+            0,
+            1284,
+            2015
+          ],
+          "missing_fields": [
+            "a",
+            "residue",
+            "steps"
+          ],
+          "reason": "same-key representatives are not fully exported",
+          "same_key_representatives": 1
+        },
+        {
+          "key": [
+            0,
+            0,
+            1285,
+            2015
+          ],
+          "missing_fields": [
+            "a",
+            "residue",
+            "steps"
+          ],
+          "reason": "same-key representatives are not fully exported",
+          "same_key_representatives": 1
+        },
+        {
+          "key": [
+            0,
+            0,
+            1286,
+            2015
+          ],
+          "missing_fields": [
+            "a",
+            "residue",
+            "steps"
+          ],
+          "reason": "same-key representatives are not fully exported",
+          "same_key_representatives": 1
+        },
+        {
+          "key": [
+            0,
+            0,
+            1287,
+            2015
+          ],
+          "missing_fields": [
+            "a",
+            "residue",
+            "steps"
+          ],
+          "reason": "same-key representatives are not fully exported",
+          "same_key_representatives": 1
+        },
+        {
+          "key": [
+            0,
+            0,
+            1288,
+            2015
+          ],
+          "missing_fields": [
+            "a",
+            "residue",
+            "steps"
+          ],
+          "reason": "same-key representatives are not fully exported",
+          "same_key_representatives": 1
+        },
+        {
+          "key": [
+            0,
+            0,
+            1289,
+            2015
+          ],
+          "missing_fields": [
+            "a",
+            "residue",
+            "steps"
+          ],
+          "reason": "same-key representatives are not fully exported",
+          "same_key_representatives": 1
+        },
+        {
+          "key": [
+            0,
+            0,
+            1290,
+            2015
+          ],
+          "missing_fields": [
+            "a",
+            "residue",
+            "steps"
+          ],
+          "reason": "same-key representatives are not fully exported",
+          "same_key_representatives": 1
+        },
+        {
+          "key": [
+            0,
+            0,
+            1291,
+            2015
+          ],
+          "missing_fields": [
+            "a",
+            "residue",
+            "steps"
+          ],
+          "reason": "same-key representatives are not fully exported",
+          "same_key_representatives": 1
+        }
+      ],
+      "mixed_outcome": []
+    },
+    "exported_same_key_representatives": 953,
+    "missing_same_key_representative_fields": {
+      "a": 948,
+      "residue": 948,
+      "steps": 889
+    },
+    "same_key_representative_count_distribution": {
+      "1": 943,
+      "2": 5
+    }
+  },
+  "requires_external_lemma": true,
+  "source_full_equivalence_flags": {
+    "quotient_abstraction_validity": false,
+    "quotient_exact_state_fallback": false,
+    "quotient_key_schema_review": false,
+    "quotient_transition_table": false
+  },
+  "successor_determinism_test": {
+    "all_exported_rows_are_terminal_or_closed": true,
+    "b_controlled_keys": 373,
+    "compact_key_one_step_successor_rule": {
+      "branch_case": "(0,0,u,v) -> {(1,0,u,v), (1,1,u,v)}",
+      "determined_by_key": true,
+      "even_case": "(s,q,u,v) with s>0 and q even -> (s-1, q/2, u, v+1)",
+      "odd_case": "(s,q,u,v) with s>0 and q odd -> (s, (3q+1) mod 2^s, u+1, v)",
+      "scope": "local quotient stepping only; not terminal certification or B-control outcome"
+    },
+    "exported_successor_edges": 0,
+    "keys_checked": 948,
+    "local_continued_keys": 59,
+    "missing_successor_keys": [],
+    "nondeterministic_successor_keys": [],
+    "terminal_certified_keys": 575,
+    "theoretical_successor_examples": [
+      {
+        "key": [
+          0,
+          0,
+          1272,
+          2015
+        ],
+        "one_step_successor_formula": [
+          [
+            1,
+            0,
+            1272,
+            2015
+          ],
+          [
+            1,
+            1,
+            1272,
+            2015
+          ]
+        ]
+      },
+      {
+        "key": [
+          0,
+          0,
+          1273,
+          2015
+        ],
+        "one_step_successor_formula": [
+          [
+            1,
+            0,
+            1273,
+            2015
+          ],
+          [
+            1,
+            1,
+            1273,
+            2015
+          ]
+        ]
+      },
+      {
+        "key": [
+          0,
+          0,
+          1274,
+          2015
+        ],
+        "one_step_successor_formula": [
+          [
+            1,
+            0,
+            1274,
+            2015
+          ],
+          [
+            1,
+            1,
+            1274,
+            2015
+          ]
+        ]
+      },
+      {
+        "key": [
+          0,
+          0,
+          1275,
+          2015
+        ],
+        "one_step_successor_formula": [
+          [
+            1,
+            0,
+            1275,
+            2015
+          ],
+          [
+            1,
+            1,
+            1275,
+            2015
+          ]
+        ]
+      },
+      {
+        "key": [
+          0,
+          0,
+          1276,
+          2015
+        ],
+        "one_step_successor_formula": [
+          [
+            1,
+            0,
+            1276,
+            2015
+          ],
+          [
+            1,
+            1,
+            1276,
+            2015
+          ]
+        ]
+      },
+      {
+        "key": [
+          0,
+          0,
+          1277,
+          2015
+        ],
+        "one_step_successor_formula": [
+          [
+            1,
+            0,
+            1277,
+            2015
+          ],
+          [
+            1,
+            1,
+            1277,
+            2015
+          ]
+        ]
+      },
+      {
+        "key": [
+          0,
+          0,
+          1278,
+          2015
+        ],
+        "one_step_successor_formula": [
+          [
+            1,
+            0,
+            1278,
+            2015
+          ],
+          [
+            1,
+            1,
+            1278,
+            2015
+          ]
+        ]
+      },
+      {
+        "key": [
+          0,
+          0,
+          1279,
+          2015
+        ],
+        "one_step_successor_formula": [
+          [
+            1,
+            0,
+            1279,
+            2015
+          ],
+          [
+            1,
+            1,
+            1279,
+            2015
+          ]
+        ]
+      },
+      {
+        "key": [
+          0,
+          0,
+          1280,
+          2015
+        ],
+        "one_step_successor_formula": [
+          [
+            1,
+            0,
+            1280,
+            2015
+          ],
+          [
+            1,
+            1,
+            1280,
+            2015
+          ]
+        ]
+      },
+      {
+        "key": [
+          0,
+          0,
+          1281,
+          2015
+        ],
+        "one_step_successor_formula": [
+          [
+            1,
+            0,
+            1281,
+            2015
+          ],
+          [
+            1,
+            1,
+            1281,
+            2015
+          ]
+        ]
+      },
+      {
+        "key": [
+          0,
+          0,
+          1282,
+          2015
+        ],
+        "one_step_successor_formula": [
+          [
+            1,
+            0,
+            1282,
+            2015
+          ],
+          [
+            1,
+            1,
+            1282,
+            2015
+          ]
+        ]
+      },
+      {
+        "key": [
+          0,
+          0,
+          1283,
+          2015
+        ],
+        "one_step_successor_formula": [
+          [
+            1,
+            0,
+            1283,
+            2015
+          ],
+          [
+            1,
+            1,
+            1283,
+            2015
+          ]
+        ]
+      },
+      {
+        "key": [
+          0,
+          0,
+          1284,
+          2015
+        ],
+        "one_step_successor_formula": [
+          [
+            1,
+            0,
+            1284,
+            2015
+          ],
+          [
+            1,
+            1,
+            1284,
+            2015
+          ]
+        ]
+      },
+      {
+        "key": [
+          0,
+          0,
+          1285,
+          2015
+        ],
+        "one_step_successor_formula": [
+          [
+            1,
+            0,
+            1285,
+            2015
+          ],
+          [
+            1,
+            1,
+            1285,
+            2015
+          ]
+        ]
+      },
+      {
+        "key": [
+          0,
+          0,
+          1286,
+          2015
+        ],
+        "one_step_successor_formula": [
+          [
+            1,
+            0,
+            1286,
+            2015
+          ],
+          [
+            1,
+            1,
+            1286,
+            2015
+          ]
+        ]
+      },
+      {
+        "key": [
+          0,
+          0,
+          1287,
+          2015
+        ],
+        "one_step_successor_formula": [
+          [
+            1,
+            0,
+            1287,
+            2015
+          ],
+          [
+            1,
+            1,
+            1287,
+            2015
+          ]
+        ]
+      },
+      {
+        "key": [
+          0,
+          0,
+          1288,
+          2015
+        ],
+        "one_step_successor_formula": [
+          [
+            1,
+            0,
+            1288,
+            2015
+          ],
+          [
+            1,
+            1,
+            1288,
+            2015
+          ]
+        ]
+      },
+      {
+        "key": [
+          0,
+          0,
+          1289,
+          2015
+        ],
+        "one_step_successor_formula": [
+          [
+            1,
+            0,
+            1289,
+            2015
+          ],
+          [
+            1,
+            1,
+            1289,
+            2015
+          ]
+        ]
+      },
+      {
+        "key": [
+          0,
+          0,
+          1290,
+          2015
+        ],
+        "one_step_successor_formula": [
+          [
+            1,
+            0,
+            1290,
+            2015
+          ],
+          [
+            1,
+            1,
+            1290,
+            2015
+          ]
+        ]
+      },
+      {
+        "key": [
+          0,
+          0,
+          1291,
+          2015
+        ],
+        "one_step_successor_formula": [
+          [
+            1,
+            0,
+            1291,
+            2015
+          ],
+          [
+            1,
+            1,
+            1291,
+            2015
+          ]
+        ]
+      }
+    ]
+  },
+  "task_1_quotient_key_definition": {
+    "b_storage": {
+      "in_exported_representatives": "exact b is exported for tracked representative/witness rows, but that is not part of the quotient key",
+      "in_quotient_key": "not stored exactly and not stored modulo a declared proof-critical modulus"
+    },
+    "frontier_word_or_parity_state_storage": "not stored in the quotient key",
+    "o_c_storage": "stored as offsets u=o-306 and v=c-485",
+    "proof_critical_variables_included": [
+      "known current-iterate low bits q",
+      "known low-bit window length s",
+      "odd count o via u + BASE_O",
+      "halving count c via v + BASE_C",
+      "gap sign/magnitude is recomputable from o,c as 2^c - 3^o",
+      "one-step local quotient successor rule"
+    ],
+    "proof_critical_variables_omitted": [
+      "exact seed residue r",
+      "residue modulus/depth k or level as an independent field",
+      "exact affine carry b",
+      "b modulo a proof-critical modulus beyond what is compressed into q",
+      "coefficient a as an exported exact field in the compact key",
+      "frontier word/parity history",
+      "return/certification class",
+      "final_B / B-control outcome"
+    ],
+    "quotient_key_fields": [
+      {
+        "definition": "s = level - c",
+        "field": "s",
+        "included": true,
+        "meaning": "number of known low bits of the current iterate after division by 2^c"
+      },
+      {
+        "definition": "q = ((a * residue + b) >> c) mod 2^s",
+        "field": "q",
+        "included": true,
+        "meaning": "low-s-bit residue of the current symbolic iterate"
+      },
+      {
+        "definition": "u = o - BASE_O",
+        "field": "u",
+        "included": true,
+        "meaning": "odd-count offset; exact o is recoverable with BASE_O=306"
+      },
+      {
+        "definition": "v = c - BASE_C",
+        "field": "v",
+        "included": true,
+        "meaning": "halving-count offset; exact c is recoverable with BASE_C=485"
+      },
+      {
+        "definition": "('needs-branch', level-c, u, v, residue mod 2^KMAX) when c > level",
+        "field": "needs-branch diagnostic residue",
+        "included": "diagnostic_only",
+        "meaning": "diagnostic only; normal tracked keys do not use this shape"
+      }
+    ],
+    "residue_modulus_storage": {
+      "diagnostic_key": "residue mod 2^KMAX only when c > level",
+      "normal_key": "not stored; q is current-iterate residue modulo 2^s, not seed residue/modulus"
+    },
+    "source": "def quotient_key(state):\n    residue, level, a, b, c, o, _steps = state\n    if c > level:\n        return (\"needs-branch\", level - c, o - BASE_O, c - BASE_C, residue & ((1 << KMAX) - 1))\n    s = level - c\n    q = ((a * residue + b) >> c) & ((1 << s) - 1) if s else 0\n    return (s, q, o - BASE_O, c - BASE_C)",
+    "source_file": "excursion_quotient_analyzer.py",
+    "successor_rule_determined_by_key": {
+      "certification_or_final_bridge_outcome": false,
+      "local_one_step_quotient_rule": true
+    }
+  },
+  "task_2_required_state": {
+    "required_state": [
+      {
+        "field": "residue r",
+        "in_quotient_key": false,
+        "reason": "identifies the symbolic residue class and representative branch"
+      },
+      {
+        "field": "modulus/depth 2^k or exact level",
+        "in_quotient_key": "partially: s=level-c is present, exact level is omitted",
+        "reason": "bounds known parity information and branch frontier"
+      },
+      {
+        "field": "affine form T^m(n) = (3^o n + b) / 2^c",
+        "in_quotient_key": "partially: o,c are present; exact b and full n/residue are omitted",
+        "reason": "determines exact continuation and certification thresholds"
+      },
+      {
+        "field": "o",
+        "in_quotient_key": true,
+        "reason": "determines 3^o and gap"
+      },
+      {
+        "field": "c",
+        "in_quotient_key": true,
+        "reason": "determines 2^c and gap"
+      },
+      {
+        "field": "b modulo enough power of 2",
+        "in_quotient_key": "only compressed through q for the current low s bits",
+        "reason": "needed for future parity beyond the stored q window and for affine carry"
+      },
+      {
+        "field": "exact b",
+        "in_quotient_key": false,
+        "reason": "needed for B = ceil(b / (2^c - 3^o)) and final bridge outcome"
+      },
+      {
+        "field": "gap sign 2^c - 3^o",
+        "in_quotient_key": "recomputable from o,c",
+        "reason": "decides debt/positive-margin certification cases"
+      },
+      {
+        "field": "current symbolic/parity position",
+        "in_quotient_key": "partially: q,s give the current low-bit window; full history omitted",
+        "reason": "distinguishes branch frontier/history when certification depends on more than low bits"
+      },
+      {
+        "field": "successor transition rule",
+        "in_quotient_key": "local one-step quotient rule is determined",
+        "reason": "needed for closure"
+      },
+      {
+        "field": "return/B-control classification",
+        "in_quotient_key": false,
+        "reason": "terminal proof outcome must be identical across representatives"
+      }
+    ],
+    "required_state_vs_quotient_key": {
+      "comparison_status": "FULL_EQUIVALENCE_NOT_PROVEN",
+      "omitted_proof_critical_fields": [
+        "residue r",
+        "exact b",
+        "return/B-control classification"
+      ],
+      "partially_represented_fields": [
+        "modulus/depth 2^k or exact level",
+        "affine form T^m(n) = (3^o n + b) / 2^c",
+        "current symbolic/parity position"
+      ]
+    }
+  },
+  "tracked_quotient_table_status": "PASS_TRACKED_QUOTIENT_TRANSITION_TABLE",
+  "tracked_transition_table_status": "PASS_QUOTIENT_TRANSITION_TABLE"
+}

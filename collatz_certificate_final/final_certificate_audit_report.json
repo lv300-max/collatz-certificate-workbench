@@ -1,0 +1,3892 @@
+{
+  "audits": {
+    "b_control": {
+      "bad_classification_counts": {},
+      "missing_high_B_key_record_indices": [],
+      "pass": true,
+      "summary": {
+        "B_DROPS": 0,
+        "B_EVENTUALLY_CERTIFIED": 359,
+        "B_GROWS": 0,
+        "B_STABLE": 0,
+        "STILL_OPEN": 0,
+        "classification_counts": {
+          "B_EVENTUALLY_CERTIFIED": 359
+        },
+        "examples": {
+          "B_DROPS": null,
+          "B_EVENTUALLY_CERTIFIED": {
+            "b": {
+              "digits": 759,
+              "prefix": "153720919358105978978572832219694508251065206726272638056018",
+              "suffix": "176873694673489065027740629875409742030057160283282419026051"
+            },
+            "chain_length": 1,
+            "classification": "B_EVENTUALLY_CERTIFIED",
+            "first_later_B": 93711,
+            "first_steps": [
+              {
+                "B": 93711,
+                "gap_bit_length": 2504,
+                "move": "10",
+                "move_truncated": false,
+                "one_then_zero_count": 1,
+                "pair": [
+                  1580,
+                  2505
+                ],
+                "relation_to_previous_B": "drop",
+                "same_decimal_order_as_previous": false,
+                "step": 1
+              }
+            ],
+            "key": [
+              0,
+              0,
+              1273,
+              2015
+            ],
+            "max_later_B": 93711,
+            "return_gap": {
+              "digits": 753,
+              "prefix": "638190649072784631483677669611068089208575183785896415656472",
+              "suffix": "824414824656547801731127077488063442648373237231479574699141"
+            },
+            "return_pair": [
+              1579,
+              2503
+            ],
+            "starting_B": 240870,
+            "zero_tail_certification": {
+              "B": 42176,
+              "extra_zeros": 1,
+              "gap_bit_length": 2504,
+              "pair": [
+                1579,
+                2504
+              ]
+            }
+          },
+          "B_GROWS": null,
+          "B_STABLE": null,
+          "STILL_OPEN": null
+        },
+        "high_B_states_analyzed": 359,
+        "immediate_zero_B_drops": 359,
+        "longest_chain": {
+          "b": {
+            "digits": 759,
+            "prefix": "153720919358105978978572832219694508251065206726272638056018",
+            "suffix": "176873694673489065027740629875409742030057160283282419026051"
+          },
+          "chain_length": 1,
+          "classification": "B_EVENTUALLY_CERTIFIED",
+          "first_later_B": 93711,
+          "first_steps": [
+            {
+              "B": 93711,
+              "gap_bit_length": 2504,
+              "move": "10",
+              "move_truncated": false,
+              "one_then_zero_count": 1,
+              "pair": [
+                1580,
+                2505
+              ],
+              "relation_to_previous_B": "drop",
+              "same_decimal_order_as_previous": false,
+              "step": 1
+            }
+          ],
+          "key": [
+            0,
+            0,
+            1273,
+            2015
+          ],
+          "max_later_B": 93711,
+          "return_gap": {
+            "digits": 753,
+            "prefix": "638190649072784631483677669611068089208575183785896415656472",
+            "suffix": "824414824656547801731127077488063442648373237231479574699141"
+          },
+          "return_pair": [
+            1579,
+            2503
+          ],
+          "starting_B": 240870,
+          "zero_tail_certification": {
+            "B": 42176,
+            "extra_zeros": 1,
+            "gap_bit_length": 2504,
+            "pair": [
+              1579,
+              2504
+            ]
+          }
+        },
+        "maps_to_lower_B_family": 359,
+        "max_later_B": 193928,
+        "max_starting_B": 72525508,
+        "worst_chain": {
+          "b": {
+            "digits": 786,
+            "prefix": "241273547132981901596331058695405353699582545782537110289514",
+            "suffix": "364302399921841188387244568109395929440391134037552548416489"
+          },
+          "chain_length": 1,
+          "classification": "B_EVENTUALLY_CERTIFIED",
+          "first_later_B": 193928,
+          "first_steps": [
+            {
+              "B": 193928,
+              "gap_bit_length": 2594,
+              "move": "10",
+              "move_truncated": false,
+              "one_then_zero_count": 1,
+              "pair": [
+                1637,
+                2595
+              ],
+              "relation_to_previous_B": "drop",
+              "same_decimal_order_as_previous": false,
+              "step": 1
+            }
+          ],
+          "key": [
+            0,
+            0,
+            1330,
+            2015
+          ],
+          "max_later_B": 193928,
+          "return_gap": {
+            "digits": 778,
+            "prefix": "347820578866035629742713139524981101374107958298516300180416",
+            "suffix": "894394772078183705264515334884031859321203188007575906202671"
+          },
+          "return_pair": [
+            1636,
+            2593
+          ],
+          "starting_B": 69367244,
+          "zero_tail_certification": {
+            "B": 64763,
+            "extra_zeros": 1,
+            "gap_bit_length": 2594,
+            "pair": [
+              1636,
+              2594
+            ]
+          }
+        }
+      }
+    },
+    "classification": {
+      "all_status_counts": {
+        "CLOSED_BY_QUOTIENT": 228,
+        "CLOSED_WITH_LOCAL_KEYS": 64,
+        "COVERED_BUT_CAP_REACHED": 286
+      },
+      "conflict_parent_ids": [],
+      "counts": {
+        "BLOCKED": 0,
+        "CLOSED_BY_QUOTIENT": 228,
+        "CLOSED_WITH_LOCAL_KEYS": 64,
+        "CONFLICT": 0,
+        "COVERED_BUT_CAP_REACHED": 286,
+        "NEEDS_HIGHER_LOCAL_CAP": 0,
+        "PARTIAL": 0,
+        "STILL_OPEN": 0,
+        "UNCLASSIFIED": 0
+      },
+      "local_keys_still_open_parent_ids": [],
+      "pass": true,
+      "stale_summary_note": "summary.partial_or_blocked_parents is conservative/stale for this audit; row statuses contain only closed or covered classifications.",
+      "summary_partial_or_blocked_parents": 286
+    },
+    "covered_but_cap_reached": {
+      "bad_count": 0,
+      "bad_parent_records": [],
+      "covered_but_cap_reached_count": 286,
+      "parent_records": [
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 752,
+          "parent_r0": 871,
+          "pass": true,
+          "return_mapped_keys_count": 752,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 879,
+          "parent_r0": 1743,
+          "pass": true,
+          "return_mapped_keys_count": 879,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 5147,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 6655,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 749,
+          "parent_r0": 7167,
+          "pass": true,
+          "return_mapped_keys_count": 749,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 8415,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 753,
+          "parent_r0": 13983,
+          "pass": true,
+          "return_mapped_keys_count": 753,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 15387,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 16219,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 816,
+          "parent_r0": 17855,
+          "pass": true,
+          "return_mapped_keys_count": 816,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 21199,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 879,
+          "parent_r0": 23327,
+          "pass": true,
+          "return_mapped_keys_count": 879,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 23807,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 752,
+          "parent_r0": 26735,
+          "pass": true,
+          "return_mapped_keys_count": 752,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 27967,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 888,
+          "parent_r0": 29439,
+          "pass": true,
+          "return_mapped_keys_count": 888,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 874,
+          "parent_r0": 30399,
+          "pass": true,
+          "return_mapped_keys_count": 874,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 867,
+          "parent_r0": 30439,
+          "pass": true,
+          "return_mapped_keys_count": 867,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 33791,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 34075,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 753,
+          "parent_r0": 36699,
+          "pass": true,
+          "return_mapped_keys_count": 753,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 879,
+          "parent_r0": 37191,
+          "pass": true,
+          "return_mapped_keys_count": 879,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 882,
+          "parent_r0": 38907,
+          "pass": true,
+          "return_mapped_keys_count": 882,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 868,
+          "parent_r0": 39391,
+          "pass": true,
+          "return_mapped_keys_count": 868,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 40807,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 888,
+          "parent_r0": 41471,
+          "pass": true,
+          "return_mapped_keys_count": 888,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 756,
+          "parent_r0": 41799,
+          "pass": true,
+          "return_mapped_keys_count": 756,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 874,
+          "parent_r0": 42111,
+          "pass": true,
+          "return_mapped_keys_count": 874,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 756,
+          "parent_r0": 43367,
+          "pass": true,
+          "return_mapped_keys_count": 756,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 756,
+          "parent_r0": 45723,
+          "pass": true,
+          "return_mapped_keys_count": 756,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 756,
+          "parent_r0": 46783,
+          "pass": true,
+          "return_mapped_keys_count": 756,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 884,
+          "parent_r0": 50331,
+          "pass": true,
+          "return_mapped_keys_count": 884,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 883,
+          "parent_r0": 51527,
+          "pass": true,
+          "return_mapped_keys_count": 883,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 757,
+          "parent_r0": 52159,
+          "pass": true,
+          "return_mapped_keys_count": 757,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 55775,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 57823,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 758,
+          "parent_r0": 60775,
+          "pass": true,
+          "return_mapped_keys_count": 758,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 753,
+          "parent_r0": 3711,
+          "pass": true,
+          "return_mapped_keys_count": 753,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 753,
+          "parent_r0": 6823,
+          "pass": true,
+          "return_mapped_keys_count": 753,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 6863,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 885,
+          "parent_r0": 7423,
+          "pass": true,
+          "return_mapped_keys_count": 885,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 751,
+          "parent_r0": 18203,
+          "pass": true,
+          "return_mapped_keys_count": 751,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 25839,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 878,
+          "parent_r0": 27807,
+          "pass": true,
+          "return_mapped_keys_count": 878,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 881,
+          "parent_r0": 28315,
+          "pass": true,
+          "return_mapped_keys_count": 881,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 888,
+          "parent_r0": 29351,
+          "pass": true,
+          "return_mapped_keys_count": 888,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 31003,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 887,
+          "parent_r0": 33371,
+          "pass": true,
+          "return_mapped_keys_count": 887,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 873,
+          "parent_r0": 34351,
+          "pass": true,
+          "return_mapped_keys_count": 873,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 756,
+          "parent_r0": 35439,
+          "pass": true,
+          "return_mapped_keys_count": 756,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 35647,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 879,
+          "parent_r0": 37183,
+          "pass": true,
+          "return_mapped_keys_count": 879,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 42011,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 43167,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 47431,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 756,
+          "parent_r0": 52079,
+          "pass": true,
+          "return_mapped_keys_count": 756,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 888,
+          "parent_r0": 58111,
+          "pass": true,
+          "return_mapped_keys_count": 888,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 886,
+          "parent_r0": 671,
+          "pass": true,
+          "return_mapped_keys_count": 886,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 752,
+          "parent_r0": 3739,
+          "pass": true,
+          "return_mapped_keys_count": 752,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 881,
+          "parent_r0": 12135,
+          "pass": true,
+          "return_mapped_keys_count": 881,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 24271,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 858,
+          "parent_r0": 24859,
+          "pass": true,
+          "return_mapped_keys_count": 858,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 885,
+          "parent_r0": 27647,
+          "pass": true,
+          "return_mapped_keys_count": 885,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 28007,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 876,
+          "parent_r0": 34511,
+          "pass": true,
+          "return_mapped_keys_count": 876,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 886,
+          "parent_r0": 36007,
+          "pass": true,
+          "return_mapped_keys_count": 886,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 39407,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 757,
+          "parent_r0": 56015,
+          "pass": true,
+          "return_mapped_keys_count": 757,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 757,
+          "parent_r0": 61183,
+          "pass": true,
+          "return_mapped_keys_count": 757,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 753,
+          "parent_r0": 3227,
+          "pass": true,
+          "return_mapped_keys_count": 753,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 753,
+          "parent_r0": 3943,
+          "pass": true,
+          "return_mapped_keys_count": 753,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 861,
+          "parent_r0": 7935,
+          "pass": true,
+          "return_mapped_keys_count": 861,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 888,
+          "parent_r0": 11039,
+          "pass": true,
+          "return_mapped_keys_count": 888,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 14719,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 753,
+          "parent_r0": 18431,
+          "pass": true,
+          "return_mapped_keys_count": 753,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 750,
+          "parent_r0": 18671,
+          "pass": true,
+          "return_mapped_keys_count": 750,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 879,
+          "parent_r0": 23007,
+          "pass": true,
+          "return_mapped_keys_count": 879,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 882,
+          "parent_r0": 24607,
+          "pass": true,
+          "return_mapped_keys_count": 882,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 882,
+          "parent_r0": 25343,
+          "pass": true,
+          "return_mapped_keys_count": 882,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 878,
+          "parent_r0": 26271,
+          "pass": true,
+          "return_mapped_keys_count": 878,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 753,
+          "parent_r0": 28975,
+          "pass": true,
+          "return_mapped_keys_count": 753,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 881,
+          "parent_r0": 29663,
+          "pass": true,
+          "return_mapped_keys_count": 881,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 756,
+          "parent_r0": 32411,
+          "pass": true,
+          "return_mapped_keys_count": 756,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 748,
+          "parent_r0": 33051,
+          "pass": true,
+          "return_mapped_keys_count": 748,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 886,
+          "parent_r0": 36863,
+          "pass": true,
+          "return_mapped_keys_count": 886,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 37343,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 878,
+          "parent_r0": 39359,
+          "pass": true,
+          "return_mapped_keys_count": 878,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 879,
+          "parent_r0": 46639,
+          "pass": true,
+          "return_mapped_keys_count": 879,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 46751,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 756,
+          "parent_r0": 49647,
+          "pass": true,
+          "return_mapped_keys_count": 756,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 52719,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 53727,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 756,
+          "parent_r0": 54943,
+          "pass": true,
+          "return_mapped_keys_count": 756,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 887,
+          "parent_r0": 59119,
+          "pass": true,
+          "return_mapped_keys_count": 887,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 756,
+          "parent_r0": 60287,
+          "pass": true,
+          "return_mapped_keys_count": 756,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 887,
+          "parent_r0": 63647,
+          "pass": true,
+          "return_mapped_keys_count": 887,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 744,
+          "parent_r0": 65055,
+          "pass": true,
+          "return_mapped_keys_count": 744,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 747,
+          "parent_r0": 65383,
+          "pass": true,
+          "return_mapped_keys_count": 747,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 858,
+          "parent_r0": 4303,
+          "pass": true,
+          "return_mapped_keys_count": 858,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 753,
+          "parent_r0": 9831,
+          "pass": true,
+          "return_mapped_keys_count": 753,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 751,
+          "parent_r0": 12287,
+          "pass": true,
+          "return_mapped_keys_count": 751,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 884,
+          "parent_r0": 14831,
+          "pass": true,
+          "return_mapped_keys_count": 884,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 887,
+          "parent_r0": 17255,
+          "pass": true,
+          "return_mapped_keys_count": 887,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 753,
+          "parent_r0": 24575,
+          "pass": true,
+          "return_mapped_keys_count": 753,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 750,
+          "parent_r0": 26239,
+          "pass": true,
+          "return_mapped_keys_count": 750,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 753,
+          "parent_r0": 31167,
+          "pass": true,
+          "return_mapped_keys_count": 753,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 878,
+          "parent_r0": 40431,
+          "pass": true,
+          "return_mapped_keys_count": 878,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 55039,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 756,
+          "parent_r0": 60655,
+          "pass": true,
+          "return_mapped_keys_count": 756,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 887,
+          "parent_r0": 61287,
+          "pass": true,
+          "return_mapped_keys_count": 887,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 879,
+          "parent_r0": 2151,
+          "pass": true,
+          "return_mapped_keys_count": 879,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 879,
+          "parent_r0": 2215,
+          "pass": true,
+          "return_mapped_keys_count": 879,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 5503,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 753,
+          "parent_r0": 6811,
+          "pass": true,
+          "return_mapped_keys_count": 753,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 753,
+          "parent_r0": 12447,
+          "pass": true,
+          "return_mapped_keys_count": 753,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 13083,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 753,
+          "parent_r0": 16155,
+          "pass": true,
+          "return_mapped_keys_count": 753,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 859,
+          "parent_r0": 19615,
+          "pass": true,
+          "return_mapped_keys_count": 859,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 859,
+          "parent_r0": 19775,
+          "pass": true,
+          "return_mapped_keys_count": 859,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 883,
+          "parent_r0": 20135,
+          "pass": true,
+          "return_mapped_keys_count": 883,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 883,
+          "parent_r0": 20159,
+          "pass": true,
+          "return_mapped_keys_count": 883,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 886,
+          "parent_r0": 22527,
+          "pass": true,
+          "return_mapped_keys_count": 886,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 885,
+          "parent_r0": 25755,
+          "pass": true,
+          "return_mapped_keys_count": 885,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 25927,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 753,
+          "parent_r0": 36767,
+          "pass": true,
+          "return_mapped_keys_count": 753,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 752,
+          "parent_r0": 46823,
+          "pass": true,
+          "return_mapped_keys_count": 752,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 885,
+          "parent_r0": 47871,
+          "pass": true,
+          "return_mapped_keys_count": 885,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 757,
+          "parent_r0": 53023,
+          "pass": true,
+          "return_mapped_keys_count": 757,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 872,
+          "parent_r0": 53151,
+          "pass": true,
+          "return_mapped_keys_count": 872,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 756,
+          "parent_r0": 54599,
+          "pass": true,
+          "return_mapped_keys_count": 756,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 757,
+          "parent_r0": 55623,
+          "pass": true,
+          "return_mapped_keys_count": 757,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 887,
+          "parent_r0": 55975,
+          "pass": true,
+          "return_mapped_keys_count": 887,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 756,
+          "parent_r0": 58695,
+          "pass": true,
+          "return_mapped_keys_count": 756,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 758,
+          "parent_r0": 58927,
+          "pass": true,
+          "return_mapped_keys_count": 758,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 59839,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 887,
+          "parent_r0": 62703,
+          "pass": true,
+          "return_mapped_keys_count": 887,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 744,
+          "parent_r0": 64815,
+          "pass": true,
+          "return_mapped_keys_count": 744,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 888,
+          "parent_r0": 11391,
+          "pass": true,
+          "return_mapped_keys_count": 888,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 877,
+          "parent_r0": 13183,
+          "pass": true,
+          "return_mapped_keys_count": 877,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 20735,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 879,
+          "parent_r0": 23323,
+          "pass": true,
+          "return_mapped_keys_count": 879,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 753,
+          "parent_r0": 24511,
+          "pass": true,
+          "return_mapped_keys_count": 753,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 36399,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 756,
+          "parent_r0": 38959,
+          "pass": true,
+          "return_mapped_keys_count": 756,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 871,
+          "parent_r0": 49023,
+          "pass": true,
+          "return_mapped_keys_count": 871,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 49263,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 868,
+          "parent_r0": 53915,
+          "pass": true,
+          "return_mapped_keys_count": 868,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 750,
+          "parent_r0": 6591,
+          "pass": true,
+          "return_mapped_keys_count": 750,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 17919,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 20639,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 32615,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 887,
+          "parent_r0": 33519,
+          "pass": true,
+          "return_mapped_keys_count": 887,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 880,
+          "parent_r0": 33639,
+          "pass": true,
+          "return_mapped_keys_count": 880,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 888,
+          "parent_r0": 41279,
+          "pass": true,
+          "return_mapped_keys_count": 888,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 42623,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 881,
+          "parent_r0": 49755,
+          "pass": true,
+          "return_mapped_keys_count": 881,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 876,
+          "parent_r0": 52379,
+          "pass": true,
+          "return_mapped_keys_count": 876,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 746,
+          "parent_r0": 65231,
+          "pass": true,
+          "return_mapped_keys_count": 746,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 752,
+          "parent_r0": 3399,
+          "pass": true,
+          "return_mapped_keys_count": 752,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 885,
+          "parent_r0": 8359,
+          "pass": true,
+          "return_mapped_keys_count": 885,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 749,
+          "parent_r0": 9215,
+          "pass": true,
+          "return_mapped_keys_count": 749,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 888,
+          "parent_r0": 11263,
+          "pass": true,
+          "return_mapped_keys_count": 888,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 20731,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 23247,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 28415,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 28831,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 860,
+          "parent_r0": 31215,
+          "pass": true,
+          "return_mapped_keys_count": 860,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 859,
+          "parent_r0": 34919,
+          "pass": true,
+          "return_mapped_keys_count": 859,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 756,
+          "parent_r0": 56831,
+          "pass": true,
+          "return_mapped_keys_count": 756,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 2287,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 6143,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 752,
+          "parent_r0": 18943,
+          "pass": true,
+          "return_mapped_keys_count": 752,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 879,
+          "parent_r0": 23279,
+          "pass": true,
+          "return_mapped_keys_count": 879,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 30143,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 34719,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 43119,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 760,
+          "parent_r0": 63739,
+          "pass": true,
+          "return_mapped_keys_count": 760,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 753,
+          "parent_r0": 4095,
+          "pass": true,
+          "return_mapped_keys_count": 753,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 753,
+          "parent_r0": 10011,
+          "pass": true,
+          "return_mapped_keys_count": 753,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 13759,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 887,
+          "parent_r0": 15519,
+          "pass": true,
+          "return_mapped_keys_count": 887,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 752,
+          "parent_r0": 20095,
+          "pass": true,
+          "return_mapped_keys_count": 752,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 886,
+          "parent_r0": 21743,
+          "pass": true,
+          "return_mapped_keys_count": 886,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 25627,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 884,
+          "parent_r0": 42599,
+          "pass": true,
+          "return_mapped_keys_count": 884,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 56991,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 757,
+          "parent_r0": 60583,
+          "pass": true,
+          "return_mapped_keys_count": 757,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 745,
+          "parent_r0": 65151,
+          "pass": true,
+          "return_mapped_keys_count": 745,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 753,
+          "parent_r0": 27327,
+          "pass": true,
+          "return_mapped_keys_count": 753,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 748,
+          "parent_r0": 28991,
+          "pass": true,
+          "return_mapped_keys_count": 748,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 887,
+          "parent_r0": 51199,
+          "pass": true,
+          "return_mapped_keys_count": 887,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 753,
+          "parent_r0": 3071,
+          "pass": true,
+          "return_mapped_keys_count": 753,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 753,
+          "parent_r0": 6943,
+          "pass": true,
+          "return_mapped_keys_count": 753,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 9183,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 27815,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 753,
+          "parent_r0": 28399,
+          "pass": true,
+          "return_mapped_keys_count": 753,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 44903,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 56863,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 757,
+          "parent_r0": 61599,
+          "pass": true,
+          "return_mapped_keys_count": 757,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 749,
+          "parent_r0": 31,
+          "pass": true,
+          "return_mapped_keys_count": 749,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 748,
+          "parent_r0": 10919,
+          "pass": true,
+          "return_mapped_keys_count": 748,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 18543,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 881,
+          "parent_r0": 29935,
+          "pass": true,
+          "return_mapped_keys_count": 881,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 886,
+          "parent_r0": 59871,
+          "pass": true,
+          "return_mapped_keys_count": 886,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 2047,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 6171,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 29855,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 882,
+          "parent_r0": 38591,
+          "pass": true,
+          "return_mapped_keys_count": 882,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 39071,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 875,
+          "parent_r0": 47867,
+          "pass": true,
+          "return_mapped_keys_count": 875,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 53951,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 758,
+          "parent_r0": 59995,
+          "pass": true,
+          "return_mapped_keys_count": 758,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 886,
+          "parent_r0": 61759,
+          "pass": true,
+          "return_mapped_keys_count": 886,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 882,
+          "parent_r0": 25243,
+          "pass": true,
+          "return_mapped_keys_count": 882,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 885,
+          "parent_r0": 25727,
+          "pass": true,
+          "return_mapped_keys_count": 885,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 28583,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 31911,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 752,
+          "parent_r0": 33471,
+          "pass": true,
+          "return_mapped_keys_count": 752,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 44671,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 886,
+          "parent_r0": 46183,
+          "pass": true,
+          "return_mapped_keys_count": 886,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 744,
+          "parent_r0": 65307,
+          "pass": true,
+          "return_mapped_keys_count": 744,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 887,
+          "parent_r0": 16551,
+          "pass": true,
+          "return_mapped_keys_count": 887,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 887,
+          "parent_r0": 17151,
+          "pass": true,
+          "return_mapped_keys_count": 887,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 873,
+          "parent_r0": 34303,
+          "pass": true,
+          "return_mapped_keys_count": 873,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 756,
+          "parent_r0": 61679,
+          "pass": true,
+          "return_mapped_keys_count": 756,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 744,
+          "parent_r0": 64231,
+          "pass": true,
+          "return_mapped_keys_count": 744,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 880,
+          "parent_r0": 17691,
+          "pass": true,
+          "return_mapped_keys_count": 880,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 18591,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 25407,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 36031,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 885,
+          "parent_r0": 39707,
+          "pass": true,
+          "return_mapped_keys_count": 885,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 864,
+          "parent_r0": 41051,
+          "pass": true,
+          "return_mapped_keys_count": 864,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 756,
+          "parent_r0": 56731,
+          "pass": true,
+          "return_mapped_keys_count": 756,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 753,
+          "parent_r0": 6887,
+          "pass": true,
+          "return_mapped_keys_count": 753,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 32539,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 861,
+          "parent_r0": 39935,
+          "pass": true,
+          "return_mapped_keys_count": 861,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 885,
+          "parent_r0": 53743,
+          "pass": true,
+          "return_mapped_keys_count": 885,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 883,
+          "parent_r0": 20327,
+          "pass": true,
+          "return_mapped_keys_count": 883,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 749,
+          "parent_r0": 26623,
+          "pass": true,
+          "return_mapped_keys_count": 749,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 756,
+          "parent_r0": 32027,
+          "pass": true,
+          "return_mapped_keys_count": 756,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 756,
+          "parent_r0": 34119,
+          "pass": true,
+          "return_mapped_keys_count": 756,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 40655,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 885,
+          "parent_r0": 47855,
+          "pass": true,
+          "return_mapped_keys_count": 885,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 884,
+          "parent_r0": 50427,
+          "pass": true,
+          "return_mapped_keys_count": 884,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 866,
+          "parent_r0": 19055,
+          "pass": true,
+          "return_mapped_keys_count": 866,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 21351,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 753,
+          "parent_r0": 28923,
+          "pass": true,
+          "return_mapped_keys_count": 753,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 31903,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 51071,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 744,
+          "parent_r0": 64763,
+          "pass": true,
+          "return_mapped_keys_count": 744,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 6383,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 878,
+          "parent_r0": 8959,
+          "pass": true,
+          "return_mapped_keys_count": 878,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 12703,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 752,
+          "parent_r0": 31847,
+          "pass": true,
+          "return_mapped_keys_count": 752,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 34047,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 877,
+          "parent_r0": 43175,
+          "pass": true,
+          "return_mapped_keys_count": 877,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 47015,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 24091,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 884,
+          "parent_r0": 31343,
+          "pass": true,
+          "return_mapped_keys_count": 884,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 42463,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 756,
+          "parent_r0": 62687,
+          "pass": true,
+          "return_mapped_keys_count": 756,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 757,
+          "parent_r0": 59007,
+          "pass": true,
+          "return_mapped_keys_count": 757,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 752,
+          "parent_r0": 17023,
+          "pass": true,
+          "return_mapped_keys_count": 752,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 752,
+          "parent_r0": 17647,
+          "pass": true,
+          "return_mapped_keys_count": 752,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 18599,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 861,
+          "parent_r0": 27135,
+          "pass": true,
+          "return_mapped_keys_count": 861,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 753,
+          "parent_r0": 12399,
+          "pass": true,
+          "return_mapped_keys_count": 753,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 753,
+          "parent_r0": 7279,
+          "pass": true,
+          "return_mapped_keys_count": 753,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 751,
+          "parent_r0": 1583,
+          "pass": true,
+          "return_mapped_keys_count": 751,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 748,
+          "parent_r0": 13503,
+          "pass": true,
+          "return_mapped_keys_count": 748,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 15131,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 859,
+          "parent_r0": 45307,
+          "pass": true,
+          "return_mapped_keys_count": 859,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 880,
+          "parent_r0": 51359,
+          "pass": true,
+          "return_mapped_keys_count": 880,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 879,
+          "parent_r0": 1055,
+          "pass": true,
+          "return_mapped_keys_count": 879,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 2111,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 755,
+          "parent_r0": 14695,
+          "pass": true,
+          "return_mapped_keys_count": 755,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 751,
+          "parent_r0": 1407,
+          "pass": true,
+          "return_mapped_keys_count": 751,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 886,
+          "parent_r0": 22559,
+          "pass": true,
+          "return_mapped_keys_count": 886,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 887,
+          "parent_r0": 15039,
+          "pass": true,
+          "return_mapped_keys_count": 887,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 757,
+          "parent_r0": 50815,
+          "pass": true,
+          "return_mapped_keys_count": 757,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 34239,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 753,
+          "parent_r0": 10087,
+          "pass": true,
+          "return_mapped_keys_count": 753,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 754,
+          "parent_r0": 45055,
+          "pass": true,
+          "return_mapped_keys_count": 754,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 756,
+          "parent_r0": 56255,
+          "pass": true,
+          "return_mapped_keys_count": 756,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 756,
+          "parent_r0": 60975,
+          "pass": true,
+          "return_mapped_keys_count": 756,
+          "uncovered_keys_count": 0
+        },
+        {
+          "coverage_source": "ALL_OPEN_KEYS_RETURN_MAPPED_OR_FRONTIER_COVERED",
+          "high_B_certified_count": 0,
+          "high_B_keys_count": 0,
+          "max_final_B": 0,
+          "open_keys_count": 883,
+          "parent_r0": 45127,
+          "pass": true,
+          "return_mapped_keys_count": 883,
+          "uncovered_keys_count": 0
+        }
+      ],
+      "pass": true
+    },
+    "direct_bridge": {
+      "checked": 100000,
+      "failure_count": 0,
+      "final_status": "PASS_DIRECT_BRIDGE",
+      "odd_max": 200001,
+      "odd_min": 3,
+      "pass": true,
+      "source": "direct_bridge_report.json",
+      "status": "PASS"
+    },
+    "exact_arithmetic": {
+      "integer_report_flags_ok": true,
+      "method_flags_ok": true,
+      "note": "Float/log occurrences are reported for review; pass requires exact integer formulas in proof-critical pipeline scripts.",
+      "pass": true,
+      "source_checks": [
+        {
+          "exists": true,
+          "float_or_log_lines": [],
+          "has_exact_gap_formula": true,
+          "has_integer_ceiling_formula": true,
+          "has_integer_method_marker": true,
+          "pass": true,
+          "path": "frontier_return_map.py"
+        },
+        {
+          "exists": true,
+          "float_or_log_lines": [],
+          "has_exact_gap_formula": true,
+          "has_integer_ceiling_formula": true,
+          "has_integer_method_marker": true,
+          "pass": true,
+          "path": "b_control_test.py"
+        },
+        {
+          "exists": true,
+          "float_or_log_lines": [],
+          "has_exact_gap_formula": true,
+          "has_integer_ceiling_formula": true,
+          "has_integer_method_marker": false,
+          "pass": true,
+          "path": "quotient_parent_batch_audit.py"
+        },
+        {
+          "exists": true,
+          "float_or_log_lines": [],
+          "has_exact_gap_formula": false,
+          "has_integer_ceiling_formula": false,
+          "has_integer_method_marker": false,
+          "pass": false,
+          "path": "frontier_coverage_audit.py"
+        },
+        {
+          "exists": false,
+          "pass": false,
+          "path": "certificate_verify.py"
+        }
+      ],
+      "source_formula_checks_ok": true
+    },
+    "exact_depth": {
+      "method": {
+        "B_LIMIT": 200001,
+        "B_formula": "B = (b + gap - 1) // gap",
+        "KMAX": 16,
+        "MAX_K_VALID": 500,
+        "MAX_STEPS": 10000,
+        "delta_is_diagnostic_only": true,
+        "derived_from": "exact enumeration layer of deep_sibling_closure_law.py",
+        "exact_depth_cap": 18,
+        "gap_formula": "gap = 2^c - 3^o",
+        "global_caps_increased": false,
+        "integer_checks_only_for_proof": true,
+        "random_seeds": false,
+        "sampled_rows_used": false,
+        "source": "exact_depth_closure.py"
+      },
+      "pass": true,
+      "source": "exact_depth_closure_report.json",
+      "status": "PASS",
+      "summary": {
+        "b_over_limit_example_count": 0,
+        "exact_failures": 0,
+        "exact_formula_checks": 22020096,
+        "exact_parents_closed": 198,
+        "exact_parents_total": 198,
+        "exact_siblings_verified": 22020096,
+        "final_status": "PASS_EXACT_DEPTH",
+        "max_B": 1311,
+        "max_exact_depth_closed": 18,
+        "max_k_needed": 433,
+        "min_delta": 0.00749985576879908,
+        "sampled_rows_used": 0
+      }
+    },
+    "frontier_coverage": {
+      "checks": {
+        "every_high_B_eventually_certified": true,
+        "every_high_B_key_B_controlled": true,
+        "every_open_key_exported": true,
+        "every_open_key_return_mapped": true,
+        "no_conflicts": true,
+        "no_final_B_over_200001": true,
+        "no_still_debt_keys": true
+      },
+      "pass": true,
+      "summary": {
+        "b_control_classification_counts": {
+          "B_EVENTUALLY_CERTIFIED": 359
+        },
+        "b_control_records": 359,
+        "b_control_unique_keys": 359,
+        "certified_returns": 530,
+        "conflicts": 0,
+        "final_B_over_limit": 0,
+        "high_B_eventually_certified": 359,
+        "high_B_returns": 359,
+        "max_final_B": 199242,
+        "pass": true,
+        "quotient_open_frontier_exported": 889,
+        "quotient_open_keys": 889,
+        "return_map_classification_counts": {
+          "CERTIFIED_RETURN": 530,
+          "HIGH_B_RETURN": 359
+        },
+        "return_map_records": 889,
+        "return_map_unique_keys": 889,
+        "still_debt_keys": 0,
+        "unique_quotient_open_keys": 889
+      }
+    },
+    "local_keys": {
+      "bad_local_key_count": 0,
+      "bad_local_key_records": [],
+      "local_keys_attempted": 64,
+      "local_keys_certified": 50,
+      "local_keys_high_b_certified": 14,
+      "local_keys_still_open": 0,
+      "max_final_B": 152343,
+      "max_local_return_B": 941325,
+      "pass": true
+    },
+    "parent_coverage": {
+      "duplicate_parent_ids": [],
+      "expected_total": 578,
+      "missing_r0_rows": 0,
+      "pass": true,
+      "processed_parents": 578,
+      "reported_total": 578,
+      "unclassified_parent_ids": [],
+      "unprocessed_parent_ids": []
+    },
+    "return_map": {
+      "bad_record_indices": [],
+      "pass": true,
+      "summary": {
+        "all_one_branch_count": 86,
+        "all_one_classification_counts": {
+          "CERTIFIED_RETURN": 55,
+          "HIGH_B_RETURN": 31
+        },
+        "certified_returns": 530,
+        "classification_counts": {
+          "CERTIFIED_RETURN": 530,
+          "HIGH_B_RETURN": 359
+        },
+        "conflicts": 0,
+        "examples_with_exact_formulas": [
+          {
+            "B": 71783,
+            "classification": "CERTIFIED_RETURN",
+            "formula": {
+              "a": {
+                "digits": 753,
+                "prefix": "78947784618854166599440722738934131657777241009605766693190606157366480076097165",
+                "suffix": "56562014970396519618759734731018560978882921010431658298254110843409825447125289"
+              },
+              "b": {
+                "digits": 758,
+                "prefix": "51240478707212743110075965614340198427503133288010435678899736790694245062397007",
+                "suffix": "18262364570099302135262811071114259574395594747440831485424174071355211405700481"
+              },
+              "c": 2500,
+              "first_return_gap": {
+                "digits": 753,
+                "prefix": "71383424763066314873904244850020470289317379694097704129418929755526192523237917",
+                "suffix": "74988894029886601782292074777837554390307024043959860870451242040320652510912215"
+              },
+              "initial_gap": {
+                "digits": 754,
+                "prefix": "-4136498227337404623110448084169548117100358583367989898753822217914331192626339",
+                "suffix": "48674287720325739268496782353804532136585434746833778506077772622477205957615913"
+              },
+              "o": 1578
+            },
+            "key": [
+              0,
+              0,
+              1272,
+              2015
+            ],
+            "pair": [
+              1578,
+              2500
+            ],
+            "return_pair": [
+              1578,
+              2502
+            ],
+            "return_time": 2,
+            "zero_certification_B": 71783,
+            "zero_certification_time": 2
+          },
+          {
+            "B": 240870,
+            "classification": "HIGH_B_RETURN",
+            "formula": {
+              "a": {
+                "digits": 754,
+                "prefix": "23684335385656249979832216821680239497333172302881730007957181847209944022829149",
+                "suffix": "69686044911189558856279204193055682936648763031294974894762332530229476341375867"
+              },
+              "b": {
+                "digits": 759,
+                "prefix": "15372091935810597897857283221969450825106520672627263805601825765180303461862896",
+                "suffix": "93941468741450583424176873694673489065027740629875409742030057160283282419026051"
+              },
+              "c": 2500,
+              "first_return_gap": {
+                "digits": 753,
+                "prefix": "63819064907278463148367766961106808920857518378589641565647253353685904970378669",
+                "suffix": "93415773089376683945824414824656547801731127077488063442648373237231479574699141"
+              },
+              "initial_gap": {
+                "digits": 755,
+                "prefix": "-1992605515110823794299859263195637444865580678528914323739194344938762720784577",
+                "suffix": "61798317661118778506016251815841654094351276767697095102585994309296856851866491"
+              },
+              "o": 1579
+            },
+            "key": [
+              0,
+              0,
+              1273,
+              2015
+            ],
+            "pair": [
+              1579,
+              2500
+            ],
+            "return_pair": [
+              1579,
+              2503
+            ],
+            "return_time": 3,
+            "zero_certification_B": 42176,
+            "zero_certification_time": 4
+          },
+          {
+            "B": 150520,
+            "classification": "CERTIFIED_RETURN",
+            "formula": {
+              "a": {
+                "digits": 1177,
+                "prefix": "38107822939602966301578510357390869291754729896678118694776204800019138787815883",
+                "suffix": "43726069645794758532799717390650399870136980741827406776255439791572035661115529"
+              },
+              "b": {
+                "digits": 1182,
+                "prefix": "22779713318606465166094586136337539936532224890337279012176371943307440593192700",
+                "suffix": "05377489423210034818443508531739008336000317953296984429248082580643095013467657"
+              },
+              "c": 2500,
+              "first_return_gap": {
+                "digits": 1177,
+                "prefix": "15134016390187855870159793880495375190569040305330600555667432609766387668358042",
+                "suffix": "99058634461118555899588679189717315224777675784511523269695123627332832615812983"
+              },
+              "initial_gap": {
+                "digits": 1178,
+                "prefix": "-3810782293960296630157851035739086929175472989667811869477620480001913878781588",
+                "suffix": "35838342395723978182536765013436371027839494478229526984079101570639416171606153"
+              },
+              "o": 2466
+            },
+            "key": [
+              0,
+              0,
+              2160,
+              2015
+            ],
+            "pair": [
+              2466,
+              2500
+            ],
+            "return_pair": [
+              2466,
+              3909
+            ],
+            "return_time": 1409,
+            "zero_certification_B": 150520,
+            "zero_certification_time": 1409
+          },
+          {
+            "B": 72525508,
+            "classification": "HIGH_B_RETURN",
+            "formula": {
+              "a": {
+                "digits": 1098,
+                "prefix": "71780604255690004418532295669979596415126660119142789798703135055647581100633602",
+                "suffix": "13461002331942690920509885343348660499207712594072063482538021685475456775018003"
+              },
+              "b": {
+                "digits": 1103,
+                "prefix": "46419883221083442297440514071405687304310640929609302274703739372717305597419781",
+                "suffix": "41935619476549316211607888360382305898078708811963970040497111663464411902813531"
+              },
+              "c": 2500,
+              "first_return_gap": {
+                "digits": 1095,
+                "prefix": "64004906080336009209201530128559145611375298195527386893050488320541962816904442",
+                "suffix": "07563304130814272332857774422892056489328049236422254978770866367312839094905325"
+              },
+              "initial_gap": {
+                "digits": 1099,
+                "prefix": "-7178060425569000441853229566997959641512666011914278979870313505564758110063360",
+                "suffix": "05573275081871910570246932966134631656910226330474183690361683464542837285508627"
+              },
+              "o": 2301
+            },
+            "key": [
+              0,
+              0,
+              1995,
+              2015
+            ],
+            "pair": [
+              2301,
+              2500
+            ],
+            "return_pair": [
+              2301,
+              3647
+            ],
+            "return_time": 1147,
+            "zero_certification_B": 64554,
+            "zero_certification_time": 1148
+          }
+        ],
+        "high_B_returns": 359,
+        "lower_family_merges": 0,
+        "max_B": 72525508,
+        "max_B_record": {
+          "B": 72525508,
+          "classification": "HIGH_B_RETURN",
+          "formula": {
+            "a": {
+              "digits": 1098,
+              "prefix": "71780604255690004418532295669979596415126660119142789798703135055647581100633602",
+              "suffix": "13461002331942690920509885343348660499207712594072063482538021685475456775018003"
+            },
+            "b": {
+              "digits": 1103,
+              "prefix": "46419883221083442297440514071405687304310640929609302274703739372717305597419781",
+              "suffix": "41935619476549316211607888360382305898078708811963970040497111663464411902813531"
+            },
+            "c": 2500,
+            "first_return_gap": {
+              "digits": 1095,
+              "prefix": "64004906080336009209201530128559145611375298195527386893050488320541962816904442",
+              "suffix": "07563304130814272332857774422892056489328049236422254978770866367312839094905325"
+            },
+            "initial_gap": {
+              "digits": 1099,
+              "prefix": "-7178060425569000441853229566997959641512666011914278979870313505564758110063360",
+              "suffix": "05573275081871910570246932966134631656910226330474183690361683464542837285508627"
+            },
+            "o": 2301
+          },
+          "key": [
+            0,
+            0,
+            1995,
+            2015
+          ],
+          "pair": [
+            2301,
+            2500
+          ],
+          "return_pair": [
+            2301,
+            3647
+          ],
+          "return_time": 1147,
+          "zero_certification_B": 64554,
+          "zero_certification_time": 1148
+        },
+        "max_return_record": {
+          "B": 150520,
+          "classification": "CERTIFIED_RETURN",
+          "formula": {
+            "a": {
+              "digits": 1177,
+              "prefix": "38107822939602966301578510357390869291754729896678118694776204800019138787815883",
+              "suffix": "43726069645794758532799717390650399870136980741827406776255439791572035661115529"
+            },
+            "b": {
+              "digits": 1182,
+              "prefix": "22779713318606465166094586136337539936532224890337279012176371943307440593192700",
+              "suffix": "05377489423210034818443508531739008336000317953296984429248082580643095013467657"
+            },
+            "c": 2500,
+            "first_return_gap": {
+              "digits": 1177,
+              "prefix": "15134016390187855870159793880495375190569040305330600555667432609766387668358042",
+              "suffix": "99058634461118555899588679189717315224777675784511523269695123627332832615812983"
+            },
+            "initial_gap": {
+              "digits": 1178,
+              "prefix": "-3810782293960296630157851035739086929175472989667811869477620480001913878781588",
+              "suffix": "35838342395723978182536765013436371027839494478229526984079101570639416171606153"
+            },
+            "o": 2466
+          },
+          "key": [
+            0,
+            0,
+            2160,
+            2015
+          ],
+          "pair": [
+            2466,
+            2500
+          ],
+          "return_pair": [
+            2466,
+            3909
+          ],
+          "return_time": 1409,
+          "zero_certification_B": 150520,
+          "zero_certification_time": 1409
+        },
+        "max_return_time": 1409,
+        "open_states_analyzed": 889,
+        "still_debt_at_cap": 0,
+        "worst_debt_start": {
+          "B": 150520,
+          "classification": "CERTIFIED_RETURN",
+          "formula": {
+            "a": {
+              "digits": 1177,
+              "prefix": "38107822939602966301578510357390869291754729896678118694776204800019138787815883",
+              "suffix": "43726069645794758532799717390650399870136980741827406776255439791572035661115529"
+            },
+            "b": {
+              "digits": 1182,
+              "prefix": "22779713318606465166094586136337539936532224890337279012176371943307440593192700",
+              "suffix": "05377489423210034818443508531739008336000317953296984429248082580643095013467657"
+            },
+            "c": 2500,
+            "first_return_gap": {
+              "digits": 1177,
+              "prefix": "15134016390187855870159793880495375190569040305330600555667432609766387668358042",
+              "suffix": "99058634461118555899588679189717315224777675784511523269695123627332832615812983"
+            },
+            "initial_gap": {
+              "digits": 1178,
+              "prefix": "-3810782293960296630157851035739086929175472989667811869477620480001913878781588",
+              "suffix": "35838342395723978182536765013436371027839494478229526984079101570639416171606153"
+            },
+            "o": 2466
+          },
+          "key": [
+            0,
+            0,
+            2160,
+            2015
+          ],
+          "pair": [
+            2466,
+            2500
+          ],
+          "return_pair": [
+            2466,
+            3909
+          ],
+          "return_time": 1409,
+          "zero_certification_B": 150520,
+          "zero_certification_time": 1409
+        }
+      }
+    }
+  },
+  "current_final_parent_status": {
+    "closed_parents": 228,
+    "closed_with_local_keys": 64,
+    "covered_by_existing_frontier": 0,
+    "local_keys_attempted": 64,
+    "local_keys_certified": 50,
+    "local_keys_high_b_certified": 14,
+    "local_keys_still_open": 0,
+    "max_entries": 95,
+    "max_keys": 3161826,
+    "max_open_keys": 888,
+    "max_transitions": 3159632,
+    "missing_or_unprocessed_parents": 0,
+    "partial_or_blocked_parents": 286,
+    "processed_parents": 578,
+    "status_counts": {
+      "CLOSED_BY_QUOTIENT": 228,
+      "CLOSED_WITH_LOCAL_KEYS": 64,
+      "COVERED_BUT_CAP_REACHED": 286
+    },
+    "total_depth_gt_18_parents": 578
+  },
+  "final_status": "PASS_CERTIFICATE_PIPELINE",
+  "final_wording": "All tracked parent obstructions were covered by the certificate pipeline under exact integer arithmetic. Independent mathematical review is still required to verify that the certificate framework is logically exhaustive.",
+  "incomplete_reasons": [],
+  "plain_truth": "This audit verifies the generated certificate pipeline reports. It does not claim the Collatz theorem is proven.",
+  "source_reports": {
+    "b_control_report.json": true,
+    "collatz_certificate.json": false,
+    "direct_bridge_report.json": true,
+    "excursion_quotient_report.json": true,
+    "frontier_coverage_audit_report.json": true,
+    "frontier_return_map_report.json": true,
+    "quotient_parent_batch_report.json": true,
+    "quotient_parent_batch_report_smoke.json": false,
+    "quotient_parent_coverage_audit_report.json": true
+  }
+}

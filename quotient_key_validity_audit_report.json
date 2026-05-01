@@ -1,0 +1,627 @@
+{
+  "b_control_audit": {
+    "bad_records": [],
+    "chain_count": 359,
+    "extra_b_control_keys": [],
+    "missing_high_B_keys": [],
+    "pass": true,
+    "summary": {
+      "B_DROPS": 0,
+      "B_EVENTUALLY_CERTIFIED": 359,
+      "B_GROWS": 0,
+      "B_STABLE": 0,
+      "STILL_OPEN": 0,
+      "classification_counts": {
+        "B_EVENTUALLY_CERTIFIED": 359
+      },
+      "examples": {
+        "B_DROPS": null,
+        "B_EVENTUALLY_CERTIFIED": {
+          "b": {
+            "digits": 759,
+            "prefix": "153720919358105978978572832219694508251065206726272638056018",
+            "suffix": "176873694673489065027740629875409742030057160283282419026051"
+          },
+          "chain_length": 1,
+          "classification": "B_EVENTUALLY_CERTIFIED",
+          "first_later_B": 93711,
+          "first_steps": [
+            {
+              "B": 93711,
+              "gap_bit_length": 2504,
+              "move": "10",
+              "move_truncated": false,
+              "one_then_zero_count": 1,
+              "pair": [
+                1580,
+                2505
+              ],
+              "relation_to_previous_B": "drop",
+              "same_decimal_order_as_previous": false,
+              "step": 1
+            }
+          ],
+          "key": [
+            0,
+            0,
+            1273,
+            2015
+          ],
+          "max_later_B": 93711,
+          "return_gap": {
+            "digits": 753,
+            "prefix": "638190649072784631483677669611068089208575183785896415656472",
+            "suffix": "824414824656547801731127077488063442648373237231479574699141"
+          },
+          "return_pair": [
+            1579,
+            2503
+          ],
+          "starting_B": 240870,
+          "zero_tail_certification": {
+            "B": 42176,
+            "extra_zeros": 1,
+            "gap_bit_length": 2504,
+            "pair": [
+              1579,
+              2504
+            ]
+          }
+        },
+        "B_GROWS": null,
+        "B_STABLE": null,
+        "STILL_OPEN": null
+      },
+      "high_B_states_analyzed": 359,
+      "immediate_zero_B_drops": 359,
+      "longest_chain": {
+        "b": {
+          "digits": 759,
+          "prefix": "153720919358105978978572832219694508251065206726272638056018",
+          "suffix": "176873694673489065027740629875409742030057160283282419026051"
+        },
+        "chain_length": 1,
+        "classification": "B_EVENTUALLY_CERTIFIED",
+        "first_later_B": 93711,
+        "first_steps": [
+          {
+            "B": 93711,
+            "gap_bit_length": 2504,
+            "move": "10",
+            "move_truncated": false,
+            "one_then_zero_count": 1,
+            "pair": [
+              1580,
+              2505
+            ],
+            "relation_to_previous_B": "drop",
+            "same_decimal_order_as_previous": false,
+            "step": 1
+          }
+        ],
+        "key": [
+          0,
+          0,
+          1273,
+          2015
+        ],
+        "max_later_B": 93711,
+        "return_gap": {
+          "digits": 753,
+          "prefix": "638190649072784631483677669611068089208575183785896415656472",
+          "suffix": "824414824656547801731127077488063442648373237231479574699141"
+        },
+        "return_pair": [
+          1579,
+          2503
+        ],
+        "starting_B": 240870,
+        "zero_tail_certification": {
+          "B": 42176,
+          "extra_zeros": 1,
+          "gap_bit_length": 2504,
+          "pair": [
+            1579,
+            2504
+          ]
+        }
+      },
+      "maps_to_lower_B_family": 359,
+      "max_later_B": 193928,
+      "max_starting_B": 72525508,
+      "worst_chain": {
+        "b": {
+          "digits": 786,
+          "prefix": "241273547132981901596331058695405353699582545782537110289514",
+          "suffix": "364302399921841188387244568109395929440391134037552548416489"
+        },
+        "chain_length": 1,
+        "classification": "B_EVENTUALLY_CERTIFIED",
+        "first_later_B": 193928,
+        "first_steps": [
+          {
+            "B": 193928,
+            "gap_bit_length": 2594,
+            "move": "10",
+            "move_truncated": false,
+            "one_then_zero_count": 1,
+            "pair": [
+              1637,
+              2595
+            ],
+            "relation_to_previous_B": "drop",
+            "same_decimal_order_as_previous": false,
+            "step": 1
+          }
+        ],
+        "key": [
+          0,
+          0,
+          1330,
+          2015
+        ],
+        "max_later_B": 193928,
+        "return_gap": {
+          "digits": 778,
+          "prefix": "347820578866035629742713139524981101374107958298516300180416",
+          "suffix": "894394772078183705264515334884031859321203188007575906202671"
+        },
+        "return_pair": [
+          1636,
+          2593
+        ],
+        "starting_B": 69367244,
+        "zero_tail_certification": {
+          "B": 64763,
+          "extra_zeros": 1,
+          "gap_bit_length": 2594,
+          "pair": [
+            1636,
+            2594
+          ]
+        }
+      }
+    }
+  },
+  "frontier_coverage_audit": {
+    "bad_checks": [],
+    "checks": {
+      "every_high_B_eventually_certified": true,
+      "every_high_B_key_B_controlled": true,
+      "every_open_key_exported": true,
+      "every_open_key_return_mapped": true,
+      "no_conflicts": true,
+      "no_final_B_over_200001": true,
+      "no_still_debt_keys": true
+    },
+    "nonempty_missing_key_sets": {},
+    "pass": true,
+    "summary": {
+      "b_control_classification_counts": {
+        "B_EVENTUALLY_CERTIFIED": 359
+      },
+      "b_control_records": 359,
+      "b_control_unique_keys": 359,
+      "certified_returns": 530,
+      "conflicts": 0,
+      "final_B_over_limit": 0,
+      "high_B_eventually_certified": 359,
+      "high_B_returns": 359,
+      "max_final_B": 199242,
+      "pass": true,
+      "quotient_open_frontier_exported": 889,
+      "quotient_open_keys": 889,
+      "return_map_classification_counts": {
+        "CERTIFIED_RETURN": 530,
+        "HIGH_B_RETURN": 359
+      },
+      "return_map_records": 889,
+      "return_map_unique_keys": 889,
+      "still_debt_keys": 0,
+      "unique_quotient_open_keys": 889
+    }
+  },
+  "method": {
+    "B_limit": 200001,
+    "determinism_basis": "Exported conflict counters are zero in parent rows, frontier coverage, and return-map reports. The tracked quotient transition table and exact-state fallback are exported for proof-critical keys. Full quotient equivalence classes still require an external lemma or exhaustive representative coverage.",
+    "exact_state_fallback_exported": true,
+    "expected_depth_gt_18_parents": 578,
+    "integer_checks_only_for_proof_decisions": true,
+    "random_seeds": false,
+    "transition_table_exported": true
+  },
+  "parent_batch_audit": {
+    "bad_status_rows": [],
+    "cap_semantic_failures": [],
+    "conflict_rows": [],
+    "duplicate_parent_ids": [],
+    "high_B_positive_diagnostic_count": 16993,
+    "high_B_positive_note": "bad_B_positive_count is diagnostic in quotient exploration; high-B positive states are not accepted as closed returns unless later covered by return-map/B-control evidence.",
+    "local_examples_expected": 64,
+    "local_examples_seen": 64,
+    "local_failures": [],
+    "missing_identity_rows": [],
+    "open_export_failures": [],
+    "pass": true,
+    "row_count": 578,
+    "sampled_rows": [],
+    "status_counts": {
+      "CLOSED_BY_QUOTIENT": 228,
+      "CLOSED_WITH_LOCAL_KEYS": 64,
+      "COVERED_BUT_CAP_REACHED": 286
+    },
+    "summary": {
+      "closed_parents": 228,
+      "closed_with_local_keys": 64,
+      "covered_by_existing_frontier": 0,
+      "local_keys_attempted": 64,
+      "local_keys_certified": 50,
+      "local_keys_high_b_certified": 14,
+      "local_keys_still_open": 0,
+      "max_entries": 95,
+      "max_keys": 3161826,
+      "max_open_keys": 888,
+      "max_transitions": 3159632,
+      "missing_or_unprocessed_parents": 0,
+      "partial_or_blocked_parents": 286,
+      "processed_parents": 578,
+      "status_counts": {
+        "CLOSED_BY_QUOTIENT": 228,
+        "CLOSED_WITH_LOCAL_KEYS": 64,
+        "COVERED_BUT_CAP_REACHED": 286
+      },
+      "total_depth_gt_18_parents": 578
+    }
+  },
+  "plain_truth": "This audits the exported quotient-key closure evidence. It does not claim the full proof is complete.",
+  "remaining_hardening_for_independent_replay": [
+    "Prove compact quotient-key full equivalence classes, or export exhaustive representative coverage for them.",
+    "Keep the tracked quotient transition table and exact-state fallback passing.",
+    "Export full open-key lists per parent, not only samples, if independent parent-level replay is required."
+  ],
+  "return_map_audit": {
+    "bad_records": [],
+    "certified_key_count": 530,
+    "high_B_key_count": 359,
+    "pass": true,
+    "record_count": 889,
+    "summary": {
+      "all_one_branch_count": 86,
+      "all_one_classification_counts": {
+        "CERTIFIED_RETURN": 55,
+        "HIGH_B_RETURN": 31
+      },
+      "certified_returns": 530,
+      "classification_counts": {
+        "CERTIFIED_RETURN": 530,
+        "HIGH_B_RETURN": 359
+      },
+      "conflicts": 0,
+      "examples_with_exact_formulas": [
+        {
+          "B": 71783,
+          "classification": "CERTIFIED_RETURN",
+          "formula": {
+            "a": {
+              "digits": 753,
+              "prefix": "78947784618854166599440722738934131657777241009605766693190606157366480076097165",
+              "suffix": "56562014970396519618759734731018560978882921010431658298254110843409825447125289"
+            },
+            "b": {
+              "digits": 758,
+              "prefix": "51240478707212743110075965614340198427503133288010435678899736790694245062397007",
+              "suffix": "18262364570099302135262811071114259574395594747440831485424174071355211405700481"
+            },
+            "c": 2500,
+            "first_return_gap": {
+              "digits": 753,
+              "prefix": "71383424763066314873904244850020470289317379694097704129418929755526192523237917",
+              "suffix": "74988894029886601782292074777837554390307024043959860870451242040320652510912215"
+            },
+            "initial_gap": {
+              "digits": 754,
+              "prefix": "-4136498227337404623110448084169548117100358583367989898753822217914331192626339",
+              "suffix": "48674287720325739268496782353804532136585434746833778506077772622477205957615913"
+            },
+            "o": 1578
+          },
+          "key": [
+            0,
+            0,
+            1272,
+            2015
+          ],
+          "pair": [
+            1578,
+            2500
+          ],
+          "return_pair": [
+            1578,
+            2502
+          ],
+          "return_time": 2,
+          "zero_certification_B": 71783,
+          "zero_certification_time": 2
+        },
+        {
+          "B": 240870,
+          "classification": "HIGH_B_RETURN",
+          "formula": {
+            "a": {
+              "digits": 754,
+              "prefix": "23684335385656249979832216821680239497333172302881730007957181847209944022829149",
+              "suffix": "69686044911189558856279204193055682936648763031294974894762332530229476341375867"
+            },
+            "b": {
+              "digits": 759,
+              "prefix": "15372091935810597897857283221969450825106520672627263805601825765180303461862896",
+              "suffix": "93941468741450583424176873694673489065027740629875409742030057160283282419026051"
+            },
+            "c": 2500,
+            "first_return_gap": {
+              "digits": 753,
+              "prefix": "63819064907278463148367766961106808920857518378589641565647253353685904970378669",
+              "suffix": "93415773089376683945824414824656547801731127077488063442648373237231479574699141"
+            },
+            "initial_gap": {
+              "digits": 755,
+              "prefix": "-1992605515110823794299859263195637444865580678528914323739194344938762720784577",
+              "suffix": "61798317661118778506016251815841654094351276767697095102585994309296856851866491"
+            },
+            "o": 1579
+          },
+          "key": [
+            0,
+            0,
+            1273,
+            2015
+          ],
+          "pair": [
+            1579,
+            2500
+          ],
+          "return_pair": [
+            1579,
+            2503
+          ],
+          "return_time": 3,
+          "zero_certification_B": 42176,
+          "zero_certification_time": 4
+        },
+        {
+          "B": 150520,
+          "classification": "CERTIFIED_RETURN",
+          "formula": {
+            "a": {
+              "digits": 1177,
+              "prefix": "38107822939602966301578510357390869291754729896678118694776204800019138787815883",
+              "suffix": "43726069645794758532799717390650399870136980741827406776255439791572035661115529"
+            },
+            "b": {
+              "digits": 1182,
+              "prefix": "22779713318606465166094586136337539936532224890337279012176371943307440593192700",
+              "suffix": "05377489423210034818443508531739008336000317953296984429248082580643095013467657"
+            },
+            "c": 2500,
+            "first_return_gap": {
+              "digits": 1177,
+              "prefix": "15134016390187855870159793880495375190569040305330600555667432609766387668358042",
+              "suffix": "99058634461118555899588679189717315224777675784511523269695123627332832615812983"
+            },
+            "initial_gap": {
+              "digits": 1178,
+              "prefix": "-3810782293960296630157851035739086929175472989667811869477620480001913878781588",
+              "suffix": "35838342395723978182536765013436371027839494478229526984079101570639416171606153"
+            },
+            "o": 2466
+          },
+          "key": [
+            0,
+            0,
+            2160,
+            2015
+          ],
+          "pair": [
+            2466,
+            2500
+          ],
+          "return_pair": [
+            2466,
+            3909
+          ],
+          "return_time": 1409,
+          "zero_certification_B": 150520,
+          "zero_certification_time": 1409
+        },
+        {
+          "B": 72525508,
+          "classification": "HIGH_B_RETURN",
+          "formula": {
+            "a": {
+              "digits": 1098,
+              "prefix": "71780604255690004418532295669979596415126660119142789798703135055647581100633602",
+              "suffix": "13461002331942690920509885343348660499207712594072063482538021685475456775018003"
+            },
+            "b": {
+              "digits": 1103,
+              "prefix": "46419883221083442297440514071405687304310640929609302274703739372717305597419781",
+              "suffix": "41935619476549316211607888360382305898078708811963970040497111663464411902813531"
+            },
+            "c": 2500,
+            "first_return_gap": {
+              "digits": 1095,
+              "prefix": "64004906080336009209201530128559145611375298195527386893050488320541962816904442",
+              "suffix": "07563304130814272332857774422892056489328049236422254978770866367312839094905325"
+            },
+            "initial_gap": {
+              "digits": 1099,
+              "prefix": "-7178060425569000441853229566997959641512666011914278979870313505564758110063360",
+              "suffix": "05573275081871910570246932966134631656910226330474183690361683464542837285508627"
+            },
+            "o": 2301
+          },
+          "key": [
+            0,
+            0,
+            1995,
+            2015
+          ],
+          "pair": [
+            2301,
+            2500
+          ],
+          "return_pair": [
+            2301,
+            3647
+          ],
+          "return_time": 1147,
+          "zero_certification_B": 64554,
+          "zero_certification_time": 1148
+        }
+      ],
+      "high_B_returns": 359,
+      "lower_family_merges": 0,
+      "max_B": 72525508,
+      "max_B_record": {
+        "B": 72525508,
+        "classification": "HIGH_B_RETURN",
+        "formula": {
+          "a": {
+            "digits": 1098,
+            "prefix": "71780604255690004418532295669979596415126660119142789798703135055647581100633602",
+            "suffix": "13461002331942690920509885343348660499207712594072063482538021685475456775018003"
+          },
+          "b": {
+            "digits": 1103,
+            "prefix": "46419883221083442297440514071405687304310640929609302274703739372717305597419781",
+            "suffix": "41935619476549316211607888360382305898078708811963970040497111663464411902813531"
+          },
+          "c": 2500,
+          "first_return_gap": {
+            "digits": 1095,
+            "prefix": "64004906080336009209201530128559145611375298195527386893050488320541962816904442",
+            "suffix": "07563304130814272332857774422892056489328049236422254978770866367312839094905325"
+          },
+          "initial_gap": {
+            "digits": 1099,
+            "prefix": "-7178060425569000441853229566997959641512666011914278979870313505564758110063360",
+            "suffix": "05573275081871910570246932966134631656910226330474183690361683464542837285508627"
+          },
+          "o": 2301
+        },
+        "key": [
+          0,
+          0,
+          1995,
+          2015
+        ],
+        "pair": [
+          2301,
+          2500
+        ],
+        "return_pair": [
+          2301,
+          3647
+        ],
+        "return_time": 1147,
+        "zero_certification_B": 64554,
+        "zero_certification_time": 1148
+      },
+      "max_return_record": {
+        "B": 150520,
+        "classification": "CERTIFIED_RETURN",
+        "formula": {
+          "a": {
+            "digits": 1177,
+            "prefix": "38107822939602966301578510357390869291754729896678118694776204800019138787815883",
+            "suffix": "43726069645794758532799717390650399870136980741827406776255439791572035661115529"
+          },
+          "b": {
+            "digits": 1182,
+            "prefix": "22779713318606465166094586136337539936532224890337279012176371943307440593192700",
+            "suffix": "05377489423210034818443508531739008336000317953296984429248082580643095013467657"
+          },
+          "c": 2500,
+          "first_return_gap": {
+            "digits": 1177,
+            "prefix": "15134016390187855870159793880495375190569040305330600555667432609766387668358042",
+            "suffix": "99058634461118555899588679189717315224777675784511523269695123627332832615812983"
+          },
+          "initial_gap": {
+            "digits": 1178,
+            "prefix": "-3810782293960296630157851035739086929175472989667811869477620480001913878781588",
+            "suffix": "35838342395723978182536765013436371027839494478229526984079101570639416171606153"
+          },
+          "o": 2466
+        },
+        "key": [
+          0,
+          0,
+          2160,
+          2015
+        ],
+        "pair": [
+          2466,
+          2500
+        ],
+        "return_pair": [
+          2466,
+          3909
+        ],
+        "return_time": 1409,
+        "zero_certification_B": 150520,
+        "zero_certification_time": 1409
+      },
+      "max_return_time": 1409,
+      "open_states_analyzed": 889,
+      "still_debt_at_cap": 0,
+      "worst_debt_start": {
+        "B": 150520,
+        "classification": "CERTIFIED_RETURN",
+        "formula": {
+          "a": {
+            "digits": 1177,
+            "prefix": "38107822939602966301578510357390869291754729896678118694776204800019138787815883",
+            "suffix": "43726069645794758532799717390650399870136980741827406776255439791572035661115529"
+          },
+          "b": {
+            "digits": 1182,
+            "prefix": "22779713318606465166094586136337539936532224890337279012176371943307440593192700",
+            "suffix": "05377489423210034818443508531739008336000317953296984429248082580643095013467657"
+          },
+          "c": 2500,
+          "first_return_gap": {
+            "digits": 1177,
+            "prefix": "15134016390187855870159793880495375190569040305330600555667432609766387668358042",
+            "suffix": "99058634461118555899588679189717315224777675784511523269695123627332832615812983"
+          },
+          "initial_gap": {
+            "digits": 1178,
+            "prefix": "-3810782293960296630157851035739086929175472989667811869477620480001913878781588",
+            "suffix": "35838342395723978182536765013436371027839494478229526984079101570639416171606153"
+          },
+          "o": 2466
+        },
+        "key": [
+          0,
+          0,
+          2160,
+          2015
+        ],
+        "pair": [
+          2466,
+          2500
+        ],
+        "return_pair": [
+          2466,
+          3909
+        ],
+        "return_time": 1409,
+        "zero_certification_B": 150520,
+        "zero_certification_time": 1409
+      }
+    }
+  },
+  "sampled_as_proof_count": 0,
+  "status": "PASS_QUOTIENT_KEY_VALIDITY"
+}

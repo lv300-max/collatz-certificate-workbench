@@ -1,0 +1,19 @@
+{
+  "arithmetic_failure_count": 0,
+  "arithmetic_failures": [],
+  "compact_keys_with_multiple_exact_state_signatures": 948,
+  "final_B_over_200001": [],
+  "final_B_over_200001_count": 0,
+  "full_equivalence_proven": false,
+  "input": "quotient_transition_table.json",
+  "missing_exact_representative_count": 0,
+  "missing_exact_representatives": [],
+  "plain_truth": "This exact-state fallback audit covers exported proof-critical tracked keys only. It does not prove that compact quotient keys represent full equivalence classes.",
+  "relies_on_compact_quotient_equivalence": false,
+  "sampled_as_proof_count": 0,
+  "sampled_as_proof_keys": [],
+  "status": "PASS_EXACT_STATE_FALLBACK_FOR_TRACKED_KEYS",
+  "tracked_keys_checked": 948,
+  "uncertified_terminal_failure_count": 0,
+  "uncertified_terminal_failures": []
+}

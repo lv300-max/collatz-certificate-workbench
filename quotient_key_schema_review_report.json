@@ -1,0 +1,112 @@
+{
+  "current_key_fields": [
+    {
+      "field": "s = level - c",
+      "present": true,
+      "proof_role": "known low-bit window length"
+    },
+    {
+      "field": "q = ((a * residue + b) >> c) mod 2^s",
+      "present": true,
+      "proof_role": "known low bits of current iterate"
+    },
+    {
+      "field": "o - BASE_O",
+      "present": true,
+      "proof_role": "odd-count offset"
+    },
+    {
+      "field": "c - BASE_C",
+      "present": true,
+      "proof_role": "halving-count offset"
+    },
+    {
+      "field": "r0 / lane residue in normal c<=level key",
+      "present": false,
+      "proof_role": "lane identity; only appears in needs-branch diagnostic key"
+    },
+    {
+      "field": "full b or b modulo proof-critical modulus",
+      "present": false,
+      "proof_role": "B threshold and affine carry/certification"
+    },
+    {
+      "field": "explicit carry / overflow",
+      "present": false,
+      "proof_role": "distinguishes affine states with same low iterate bits"
+    },
+    {
+      "field": "frontier/parity word",
+      "present": false,
+      "proof_role": "history needed for a direct state-agreement lemma"
+    },
+    {
+      "field": "gap sign/magnitude",
+      "present": false,
+      "proof_role": "descent threshold condition"
+    }
+  ],
+  "current_quotient_key_source": "def quotient_key(state):\n    residue, level, a, b, c, o, _steps = state\n    if c > level:\n        return (\"needs-branch\", level - c, o - BASE_O, c - BASE_C, residue & ((1 << KMAX) - 1))\n    s = level - c\n    q = ((a * residue + b) >> c) & ((1 << s) - 1) if s else 0\n    return (s, q, o - BASE_O, c - BASE_C)\n\n\ndef",
+  "exact_state_fallback_keys_checked": 948,
+  "exact_state_fallback_status": "PASS_EXACT_STATE_FALLBACK_FOR_TRACKED_KEYS",
+  "full_equivalence_proven": false,
+  "missing_for_direct_state_agreement": [
+    {
+      "field": "r0 / lane residue in normal c<=level key",
+      "present": false,
+      "proof_role": "lane identity; only appears in needs-branch diagnostic key"
+    },
+    {
+      "field": "full b or b modulo proof-critical modulus",
+      "present": false,
+      "proof_role": "B threshold and affine carry/certification"
+    },
+    {
+      "field": "explicit carry / overflow",
+      "present": false,
+      "proof_role": "distinguishes affine states with same low iterate bits"
+    },
+    {
+      "field": "frontier/parity word",
+      "present": false,
+      "proof_role": "history needed for a direct state-agreement lemma"
+    },
+    {
+      "field": "gap sign/magnitude",
+      "present": false,
+      "proof_role": "descent threshold condition"
+    }
+  ],
+  "plain_truth": "The current key has a passing tracked transition table, but its schema does not by itself encode all proof-critical state listed in the state-agreement lemma.",
+  "proof_critical_state_required_for_direct_schema_pass": [
+    "lane residue r0 and modulus/depth",
+    "odd count o",
+    "halving count c",
+    "offset b or a proven sufficient residue/carry projection",
+    "affine carry/overflow information",
+    "gap sign/magnitude or exact recomputable gap",
+    "parity/frontier word or a theorem proving q,s,o,c determine future parity",
+    "successor key set closure"
+  ],
+  "requires_external_lemma": true,
+  "state_agreement_status": "INCOMPLETE_STATE_AGREEMENT_SCHEMA",
+  "status": "INCOMPLETE_QUOTIENT_KEY_SCHEMA",
+  "tracked_transition_keys_checked": 948,
+  "tracked_transition_table_status": "PASS_QUOTIENT_TRANSITION_TABLE",
+  "transition_closure_status": "PASS_TRACKED_TRANSITION_CLOSURE",
+  "valid_fix_paths": [
+    {
+      "path": "formal_lemma",
+      "requirement": "Prove algebraically that (s,q,o-BASE_O,c-BASE_C) determines every proof-critical successor and certification quantity needed by the framework."
+    },
+    {
+      "path": "augmented_key_schema",
+      "requirement": "Change quotient_key to include a lossless proof-critical projection such as r0/depth, o, c, b or sufficient b/carry projection, gap sign, and parity/frontier invariant; then rerun parent batch and transition-table audits."
+    },
+    {
+      "current_status": "PASS_FOR_TRACKED_KEYS",
+      "path": "exact_state_fallback",
+      "requirement": "Bypass quotient equivalence for hard keys and export exact continuation for every proof-critical state used by closure."
+    }
+  ]
+}

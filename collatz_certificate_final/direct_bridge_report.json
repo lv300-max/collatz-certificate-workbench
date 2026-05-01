@@ -1,0 +1,21 @@
+{
+  "method": {
+    "direct_iteration": true,
+    "random_seeds": false,
+    "range": "odd n in [3, 200001]",
+    "sampled_rows_used": false
+  },
+  "packet_created_at_source_time": "2026-04-29T15:55:13-0400",
+  "plain_truth": "This report records the direct bridge used by the final audit; it does not claim the full theorem is proven.",
+  "source": "collatz_certificate.json:direct_verification",
+  "summary": {
+    "checked": 100000,
+    "failure_count": 0,
+    "failures": [],
+    "final_status": "PASS_DIRECT_BRIDGE",
+    "meta_direct_failures": 0,
+    "odd_max": 200001,
+    "odd_min": 3,
+    "verify_limit": 200001
+  }
+}

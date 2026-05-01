@@ -1,0 +1,390 @@
+{
+  "failures": [],
+  "plain_truth": "This is a static exact-arithmetic and sampled-leak audit. It does not claim proof completion.",
+  "report_sampled_checks": [
+    {
+      "contains_sample_marker": true,
+      "exists": true,
+      "pass": true,
+      "path": "exact_depth_closure_report.json",
+      "sampled_or_random_true": []
+    },
+    {
+      "contains_sample_marker": true,
+      "exists": true,
+      "pass": true,
+      "path": "quotient_parent_batch_report.json",
+      "sampled_or_random_true": []
+    },
+    {
+      "contains_sample_marker": true,
+      "exists": true,
+      "pass": true,
+      "path": "frontier_return_map_report.json",
+      "sampled_or_random_true": []
+    },
+    {
+      "contains_sample_marker": false,
+      "exists": true,
+      "pass": true,
+      "path": "b_control_report.json",
+      "sampled_or_random_true": []
+    },
+    {
+      "contains_sample_marker": false,
+      "exists": true,
+      "pass": true,
+      "path": "frontier_coverage_audit_report.json",
+      "sampled_or_random_true": []
+    },
+    {
+      "contains_sample_marker": true,
+      "exists": true,
+      "pass": true,
+      "path": "residue_partition_exhaustiveness_report.json",
+      "sampled_or_random_true": []
+    },
+    {
+      "contains_sample_marker": true,
+      "exists": true,
+      "pass": true,
+      "path": "residue_density_partition_audit_report.json",
+      "sampled_or_random_true": []
+    },
+    {
+      "contains_sample_marker": true,
+      "exists": true,
+      "pass": true,
+      "path": "quotient_key_validity_audit_report.json",
+      "sampled_or_random_true": []
+    },
+    {
+      "contains_sample_marker": true,
+      "exists": true,
+      "pass": true,
+      "path": "quotient_abstraction_validity_report.json",
+      "sampled_or_random_true": []
+    },
+    {
+      "contains_sample_marker": true,
+      "exists": true,
+      "pass": true,
+      "path": "quotient_transition_table_report.json",
+      "sampled_or_random_true": []
+    },
+    {
+      "contains_sample_marker": true,
+      "exists": true,
+      "pass": true,
+      "path": "quotient_transition_table.json",
+      "sampled_or_random_true": []
+    },
+    {
+      "contains_sample_marker": true,
+      "exists": true,
+      "pass": true,
+      "path": "quotient_transition_table_audit_report.json",
+      "sampled_or_random_true": []
+    },
+    {
+      "contains_sample_marker": true,
+      "exists": true,
+      "pass": true,
+      "path": "quotient_exact_state_fallback_audit_report.json",
+      "sampled_or_random_true": []
+    },
+    {
+      "contains_sample_marker": false,
+      "exists": true,
+      "pass": true,
+      "path": "quotient_key_schema_review_report.json",
+      "sampled_or_random_true": []
+    }
+  ],
+  "source_checks": [
+    {
+      "exists": true,
+      "float_or_log_lines": [
+        {
+          "line": 32,
+          "text": "LOG2_3 = math.log2(3)  # display/debug only"
+        }
+      ],
+      "has_exact_ceiling_formula": true,
+      "has_exact_gap_formula": true,
+      "has_integer_marker": true,
+      "pass": true,
+      "path": "exact_depth_closure.py",
+      "random_or_seed_lines": [
+        {
+          "line": 6,
+          "text": "so it does not launch any sampled or symbolic depth >18 work. It uses no random"
+        },
+        {
+          "line": 7,
+          "text": "seeds. Proof decisions use Python integer arithmetic only:"
+        },
+        {
+          "line": 215,
+          "text": "print(f\"  Random seeds       : none\")"
+        },
+        {
+          "line": 314,
+          "text": "\"random_seeds\": False,"
+        }
+      ],
+      "suspicious_float_decision_lines": []
+    },
+    {
+      "exists": true,
+      "float_or_log_lines": [],
+      "has_exact_ceiling_formula": true,
+      "has_exact_gap_formula": true,
+      "has_integer_marker": false,
+      "pass": true,
+      "path": "quotient_parent_batch_audit.py",
+      "random_or_seed_lines": [
+        {
+          "line": 11,
+          "text": "No random seeds are used.  No quotient caps are raised here."
+        },
+        {
+          "line": 559,
+          "text": "\"random_seeds\": False,"
+        }
+      ],
+      "suspicious_float_decision_lines": []
+    },
+    {
+      "exists": true,
+      "float_or_log_lines": [],
+      "has_exact_ceiling_formula": true,
+      "has_exact_gap_formula": false,
+      "has_integer_marker": true,
+      "pass": true,
+      "path": "frontier_return_map.py",
+      "random_or_seed_lines": [
+        {
+          "line": 14,
+          "text": "comparison, with no random seeds and no raised quotient caps."
+        },
+        {
+          "line": 354,
+          "text": "\"random_seeds\": False,"
+        }
+      ],
+      "suspicious_float_decision_lines": []
+    },
+    {
+      "exists": true,
+      "float_or_log_lines": [],
+      "has_exact_ceiling_formula": true,
+      "has_exact_gap_formula": true,
+      "has_integer_marker": true,
+      "pass": true,
+      "path": "b_control_test.py",
+      "random_or_seed_lines": [
+        {
+          "line": 288,
+          "text": "\"random_seeds\": False,"
+        }
+      ],
+      "suspicious_float_decision_lines": []
+    },
+    {
+      "exists": true,
+      "float_or_log_lines": [],
+      "has_exact_ceiling_formula": false,
+      "has_exact_gap_formula": false,
+      "has_integer_marker": false,
+      "pass": true,
+      "path": "frontier_coverage_audit.py",
+      "random_or_seed_lines": [
+        {
+          "line": 13,
+          "text": "key is present and certified in the B-control report.  It does not run random"
+        },
+        {
+          "line": 14,
+          "text": "seeds, raise caps, or claim a complete Collatz proof."
+        }
+      ],
+      "suspicious_float_decision_lines": []
+    },
+    {
+      "exists": true,
+      "float_or_log_lines": [],
+      "has_exact_ceiling_formula": false,
+      "has_exact_gap_formula": false,
+      "has_integer_marker": true,
+      "pass": true,
+      "path": "residue_partition_exhaustiveness.py",
+      "random_or_seed_lines": [
+        {
+          "line": 7,
+          "text": "This does not run random seeds and does not claim the proof is complete.  It"
+        }
+      ],
+      "suspicious_float_decision_lines": []
+    },
+    {
+      "exists": true,
+      "float_or_log_lines": [],
+      "has_exact_ceiling_formula": false,
+      "has_exact_gap_formula": false,
+      "has_integer_marker": true,
+      "pass": true,
+      "path": "residue_density_partition_audit.py",
+      "random_or_seed_lines": [
+        {
+          "line": 8,
+          "text": "This script does not run random seeds and does not use floating point values"
+        },
+        {
+          "line": 82,
+          "text": "row.get(\"random_seed\"),"
+        },
+        {
+          "line": 83,
+          "text": "row.get(\"random_seeds\"),"
+        },
+        {
+          "line": 91,
+          "text": "method.get(\"random_seeds\"),"
+        }
+      ],
+      "suspicious_float_decision_lines": []
+    },
+    {
+      "exists": true,
+      "float_or_log_lines": [],
+      "has_exact_ceiling_formula": false,
+      "has_exact_gap_formula": false,
+      "has_integer_marker": true,
+      "pass": true,
+      "path": "quotient_key_validity_audit.py",
+      "random_or_seed_lines": [
+        {
+          "line": 6,
+          "text": "lanes.  This script uses no random seeds and does not use floats for proof"
+        },
+        {
+          "line": 337,
+          "text": "+ (1 if batch.get(\"method\", {}).get(\"random_seeds\") else 0)"
+        },
+        {
+          "line": 338,
+          "text": "+ (1 if frontier.get(\"method\", {}).get(\"random_seeds\") else 0)"
+        },
+        {
+          "line": 339,
+          "text": "+ (1 if return_map.get(\"method\", {}).get(\"random_seeds\") else 0)"
+        },
+        {
+          "line": 340,
+          "text": "+ (1 if b_control.get(\"method\", {}).get(\"random_seeds\") else 0)"
+        },
+        {
+          "line": 375,
+          "text": "\"random_seeds\": False,"
+        }
+      ],
+      "suspicious_float_decision_lines": []
+    },
+    {
+      "exists": true,
+      "float_or_log_lines": [],
+      "has_exact_ceiling_formula": false,
+      "has_exact_gap_formula": false,
+      "has_integer_marker": false,
+      "pass": true,
+      "path": "quotient_abstraction_validity.py",
+      "random_or_seed_lines": [],
+      "suspicious_float_decision_lines": []
+    },
+    {
+      "exists": true,
+      "float_or_log_lines": [],
+      "has_exact_ceiling_formula": true,
+      "has_exact_gap_formula": true,
+      "has_integer_marker": true,
+      "pass": true,
+      "path": "quotient_transition_table_export.py",
+      "random_or_seed_lines": [
+        {
+          "line": 8,
+          "text": "No random seeds are used. Caps are not raised. This table closes tracked keys;"
+        },
+        {
+          "line": 352,
+          "text": "\"random_seeds\": False,"
+        }
+      ],
+      "suspicious_float_decision_lines": []
+    },
+    {
+      "exists": true,
+      "float_or_log_lines": [],
+      "has_exact_ceiling_formula": false,
+      "has_exact_gap_formula": false,
+      "has_integer_marker": false,
+      "pass": true,
+      "path": "quotient_transition_table_audit.py",
+      "random_or_seed_lines": [],
+      "suspicious_float_decision_lines": []
+    },
+    {
+      "exists": true,
+      "float_or_log_lines": [],
+      "has_exact_ceiling_formula": true,
+      "has_exact_gap_formula": true,
+      "has_integer_marker": false,
+      "pass": true,
+      "path": "quotient_exact_state_fallback_audit.py",
+      "random_or_seed_lines": [],
+      "suspicious_float_decision_lines": []
+    },
+    {
+      "exists": true,
+      "float_or_log_lines": [],
+      "has_exact_ceiling_formula": false,
+      "has_exact_gap_formula": false,
+      "has_integer_marker": false,
+      "pass": true,
+      "path": "quotient_key_schema_review.py",
+      "random_or_seed_lines": [
+        {
+          "line": 8,
+          "text": "This is a source/report audit. It does not run random seeds, raise caps, or"
+        }
+      ],
+      "suspicious_float_decision_lines": []
+    },
+    {
+      "exists": true,
+      "float_or_log_lines": [
+        {
+          "line": 464,
+          "text": "if re.search(r\"\\b(float|math\\.log|log2)\\b\", line):"
+        }
+      ],
+      "has_exact_ceiling_formula": true,
+      "has_exact_gap_formula": true,
+      "has_integer_marker": true,
+      "pass": true,
+      "path": "final_certificate_audit.py",
+      "random_or_seed_lines": [
+        {
+          "line": 5,
+          "text": "This script audits the generated JSON reports. It does not run random seeds,"
+        },
+        {
+          "line": 492,
+          "text": "m.get(\"random_seeds\") is not True and m.get(\"global_caps_increased\") is not True"
+        }
+      ],
+      "suspicious_float_decision_lines": []
+    }
+  ],
+  "status": "PASS_EXACT_ARITHMETIC"
+}

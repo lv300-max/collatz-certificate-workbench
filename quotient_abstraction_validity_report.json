@@ -1,0 +1,71 @@
+{
+  "audit_answers": {
+    "are_cap_stopped_keys_continued_from_exact_state": true,
+    "are_collapsed_affine_states_fully_audited": "tracked proof-critical rows have exact-state fallback; full quotient equivalence classes are not proven",
+    "are_conflicts_impossible_by_definition_or_unobserved": "no conflicts in tracked transition table; impossibility for full equivalence requires external lemma",
+    "does_each_key_store_enough_state_to_determine_future_behavior": "tracked keys have passing exported transition rows and exact-state fallback; full equivalence is not proven",
+    "what_fields_define_a_quotient_key": "if c <= level: (s, q, o-BASE_O, c-BASE_C), where s=level-c and q=((a*residue+b)>>c) mod 2^s; otherwise needs-branch diagnostic key"
+  },
+  "conflicts": 0,
+  "exact_state_continuations": {
+    "b_control_records": 359,
+    "local_keys_attempted": 64,
+    "local_keys_certified": 50,
+    "local_keys_high_b_certified": 14,
+    "return_map_records": 889
+  },
+  "exact_state_fallback_pass": true,
+  "exact_state_fallback_report": {
+    "arithmetic_failure_count": 0,
+    "final_B_over_200001_count": 0,
+    "path": "quotient_exact_state_fallback_audit_report.json",
+    "relies_on_compact_quotient_equivalence": false,
+    "sampled_as_proof_count": 0,
+    "status": "PASS_EXACT_STATE_FALLBACK_FOR_TRACKED_KEYS",
+    "tracked_keys_checked": 948
+  },
+  "full_equivalence_proven": false,
+  "missing_state_keys": [
+    {
+      "kind": "full_equivalence_not_proven",
+      "reason": "The tracked quotient transition table passes with exact-state fallback, but it does not prove that tracked keys represent full quotient equivalence classes."
+    }
+  ],
+  "mixed_outcome_keys": [],
+  "plain_truth": "This is the quotient abstraction validity gate. It does not claim the full proof is complete.",
+  "proof_critical_keys_checked": 889,
+  "quotient_key_definition": {
+    "key_formula": "if c <= level: (s, q, o-BASE_O, c-BASE_C), where s=level-c and q=((a*residue+b)>>c) mod 2^s; otherwise needs-branch diagnostic key",
+    "proof_critical_state_needed": [
+      "low known iterate bits q",
+      "remaining level distance s",
+      "offset odd/even counts o-BASE_O and c-BASE_C",
+      "exact affine coefficients or representative state for B certification",
+      "successor key set for deterministic quotient merging"
+    ],
+    "source": "excursion_quotient_analyzer.py"
+  },
+  "quotient_keys_checked": 3161826,
+  "representative_only_keys": 3161826,
+  "required_for_pass": [
+    "Export per-key representative_count, successor_key_set, and conflict_count for every quotient key.",
+    "Keep quotient_exact_state_fallback_audit_report.json passing for every tracked proof-critical key.",
+    "Or provide a formal lemma proving the quotient key determines all proof-critical successors.",
+    "Keep sampled_as_proof_keys empty and conflicts zero."
+  ],
+  "requires_external_lemma": true,
+  "sampled_as_proof_keys": [],
+  "status": "PASS_TRACKED_QUOTIENT_TABLE_WITH_EXACT_STATE_FALLBACK",
+  "transition_table_exported": true,
+  "transition_table_report": {
+    "audit_path": "quotient_transition_table_audit_report.json",
+    "audit_status": "PASS_QUOTIENT_TRANSITION_TABLE",
+    "conflicts": 0,
+    "final_B_over_200001": 0,
+    "full_equivalence_proven": false,
+    "proof_critical_keys_checked": 948,
+    "sampled_as_proof_count": 0,
+    "still_open": 0,
+    "table_path": "quotient_transition_table.json"
+  }
+}

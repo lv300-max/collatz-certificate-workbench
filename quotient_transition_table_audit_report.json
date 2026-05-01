@@ -1,0 +1,28 @@
+{
+  "bad_successor_keys": [],
+  "conflict_keys": [],
+  "conflicts": 0,
+  "final_B_over_200001": 0,
+  "final_B_over_200001_keys": [],
+  "full_equivalence_proven": false,
+  "missing_representative_keys": [],
+  "missing_successor_keys": [],
+  "mixed_outcome_keys": [],
+  "plain_truth": "This audits tracked proof-critical quotient keys. Full quotient equivalence still depends on full_equivalence_proven in quotient_transition_table.json or an external lemma.",
+  "proof_critical_keys_checked": 948,
+  "sampled_as_proof_count": 0,
+  "sampled_as_proof_keys": [],
+  "source_table_summary": {
+    "missing_local_representatives": [],
+    "proof_critical_key_count": 948,
+    "source_summaries": {
+      "b_control_records": 359,
+      "final_status": "PASS_PIPELINE_WITH_EXACT_STATE_FALLBACK_BUT_FULL_EQUIVALENCE_REVIEW_REQUIRED",
+      "local_keys_attempted": 64,
+      "return_map_records": 889
+    }
+  },
+  "status": "PASS_QUOTIENT_TRANSITION_TABLE",
+  "still_open": 0,
+  "still_open_keys": []
+}

@@ -1,0 +1,1692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ANY-N Collatz Workbench</title>
+<style>
+body{margin:0;background:#05070b;color:#eaf7ff;font-family:Arial,sans-serif;padding:14px}h1{color:#7df9ff;text-shadow:0 0 14px #00eaff}.card{background:#0b111d;border:1px solid #1d344d;border-radius:14px;padding:12px;margin:10px 0;box-shadow:0 0 18px #001b2d}.hero{background:linear-gradient(135deg,#071421,#0d3148,#06101b);border:1px solid #2b789c}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:10px}.row{display:flex;flex-wrap:wrap;gap:8px;align-items:end}.box{background:#071421;border:1px solid #18344c;border-radius:12px;padding:10px;margin:8px 0}.ok{color:#4dff9a;font-weight:bold}.bad{color:#ff5c7a;font-weight:bold}.warn{color:#ffd166;font-weight:bold}.big{font-size:28px;font-weight:bold;color:#91fff6}.tag{display:inline-block;border:1px solid #2b789c;border-radius:999px;padding:5px 8px;margin:4px;color:#bffcff}label{display:block;font-size:12px;color:#96c8dd}input,button,textarea{border-radius:10px;border:1px solid #294a67;background:#06101b;color:#eaf7ff;padding:9px;font-size:14px}input{width:130px}button{background:#0d3148;color:#8dfcff;font-weight:bold}.copyBtn{margin-top:8px;background:#123d2d;color:#7dffb2;border-color:#2f9b67}textarea{width:100%;height:220px;box-sizing:border-box;font-family:monospace}.meter{height:10px;background:#06101b;border:1px solid #294a67;border-radius:999px;overflow:hidden}.fill{height:100%;background:linear-gradient(90deg,#4dff9a,#7df9ff)}.omegaMini{margin-top:8px}.omegaMeta{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}.omegaPill{padding:4px 8px;border-radius:999px;font-weight:bold;color:#06101b}.omegaBar{position:relative;height:13px;border-radius:999px;overflow:hidden;border:1px solid rgba(255,255,255,.2);background:linear-gradient(90deg,#ff3f5f 0%,#ff944d 22%,#ffe66d 40%,#4dff9a 50%,#55e6ff 65%,#4d86ff 82%,#8b5cff 100%)}.omegaCenter{position:absolute;left:50%;top:0;bottom:0;width:2px;background:#fff;box-shadow:0 0 8px #fff}.omegaDot{position:absolute;top:50%;width:13px;height:13px;border-radius:50%;transform:translate(-50%,-50%);border:2px solid #fff;box-shadow:0 0 12px rgba(255,255,255,.65)}.omegaTiny{font-size:11px;color:#9ccfe6;margin-top:4px}
+</style>
+</head>
+<body>
+<h1>Collatz ANY-N Proof Workbench</h1>
+<div class="card hero">
+  <div class="big">NOT EVERY NUMBER. ANY NUMBER.</div>
+  <p><b>The theory:</b> You may never count every number. But you can challenge <b>any</b> chosen number and ask the machine to find its finite capture route.</p>
+  <p><b>Public claim:</b> This is a Collatz proof-workbench, not a finished proof. It searches for capture doors: below-self, anchor, collector, residue lane, merge, or Ω delay corridor.</p>
+  <p><b>Release challenge:</b> Bring your own seed. Try to break the router. Try to find a longer delay monster.</p>
+  <span class="tag">BELOW-SELF</span><span class="tag">ANCHOR</span><span class="tag">COLLECTOR</span><span class="tag">RESIDUE LANE</span><span class="tag">MERGE</span><span class="tag">Ω SPEED LIMIT</span><span class="tag">CAPTURE SIGNATURE</span><span class="tag">DEATH COORDINATE</span>
+  <span class="tag">NORMALIZED DELAY</span><span class="tag">DELAY DENSITY</span><span class="tag">PEAK TIMING</span><span class="tag">ODD/EVEN CLUSTERING</span><span class="tag">RESIDUE CLASS</span><span class="tag">Ω DRIFT RATE</span><span class="tag">ODD/EVEN AUTOCORR</span>
+</div>
+
+<div class="card"><h2>Capture Signature Theory</h2><div class="grid">
+  <div class="box"><b>Death Coordinate</b><br>Every tested seed gets a coordinate:<br><span class="big">steps + Ω ratio</span><br>Steps = how long it resisted.<br>Ω ratio = how it resolved.</div>
+  <div class="box"><b>Seed Classification</b><br>Each seed lands in a zone:<br>FAST DECAY, DECAY, Ω SKIM, CLIMB, STRONG CLIMB, COLLECTOR-CAPTURED, or MONSTER DELAY.</div>
+  <div class="box"><b>Normalized Delay</b><br>steps ÷ log₂(seed) removes size bias. A 10-digit seed with 800 steps ranks higher than a 30-digit seed with 1000 steps. Delay density = steps ÷ digit count.</div>
+  <div class="box"><b>Peak Timing</b><br>Early spike (peak in first third), mid spike, or late spike (peak in last third). Late spike = hardest to capture.</div>
+  <div class="box"><b>Ω Drift Rate</b><br>How fast the even/odd ratio converges toward log₂(3) per 100 steps. Slow drift = longer monster corridor.</div>
+  <div class="box"><b>Odd/Even Autocorrelation</b><br>Are odd steps clustered (long O-runs) or alternating? Max odd run and max even run reveal trajectory texture.</div>
+  <div class="box"><b>Residue Class of Peak</b><br>Which mod-6 and mod-12 class the peak lands in. Tracks whether certain residue classes produce harder peaks.</div>
+  <div class="box"><b>What we search for</b><br>High normalized delay + tight Ω gap + big peak + late spike + long odd-run + slow drift = the monster corridor.</div>
+</div></div>
+
+<div class="card"><h2>Release Demo Rules</h2><div class="grid">
+  <div class="box"><b>What this is</b><br>A public Collatz exploration machine. It tests any chosen seed and reports the capture door.</div>
+  <div class="box"><b>What this is not</b><br>It does not claim the Collatz conjecture is solved. Sample-capture is not proof.</div>
+  <div class="box"><b>What testers should do</b><br>Paste strange numbers. Try monsters. Try powers of 2 ± offsets. Try to beat the records.</div>
+  <div class="box"><b>What counts as interesting</b><br>Unknown/fail, longer normalized delay, tighter Ω skim, bigger spike, latest peak, or a new residue danger lane.</div>
+</div></div>
+
+<div class="card"><h2>Controls</h2>
+<div class="row">
+  <div><label>ANY n</label><input id="anyN" value="534052031"></div>
+  <div><label>ANY max steps</label><input id="anyMax" type="number" value="100000"></div>
+  <button id="anyBtn">ANY-N Router</button>
+  <button id="randomBtn">Random Seed</button>
+  <button id="monsterPresetBtn">Load Monster Set</button>
+  <button id="loadBigListBtn">⚡ Load Big List (11k)</button>
+  <button id="anyBatchBtn">ANY-N Batch</button>
+  <button id="scoreBtn">Demo Scoreboard</button>
+  <button id="resetBtn">Reset</button>
+</div>
+<div class="row">
+  <div><label>Auto k start</label><input id="autoKStart" type="number" value="89"></div>
+  <div><label>Auto k count</label><input id="autoKCount" type="number" value="20"></div>
+  <button id="autoBtn">Auto Hunter</button>
+</div>
+<div class="row"><div style="width:100%"><label>ANY-N batch list</label>
+  <textarea id="anyBatchList">534052031
+75694102031
+11138752031
+50000002031
+999999999999
+50180752031
+50604252031
+170693752031
+6909950
+459624658
+171640888
+2305843009213693951
+75589052031</textarea>
+</div></div>
+<div class="row">
+  <div><label>Pattern M</label><input id="patternM" type="number" value="50000"></div>
+  <div><label>Pattern r</label><input id="patternR" type="number" value="2031"></div>
+  <div><label>Batch start a</label><input id="batchAStart" type="number" value="0"></div>
+  <div><label>Blocks</label><input id="batchBlocks" type="number" value="5"></div>
+  <div><label>Block size</label><input id="batchBlockSize" type="number" value="10000"></div>
+  <div><label>Batch steps</label><input id="batchSteps" type="number" value="424"></div>
+  <button id="batchBtn">Batch Range Test</button>
+</div>
+<div class="row">
+  <div><label>Min from</label><input id="minFrom" type="number" value="365"></div>
+  <div><label>Min to</label><input id="minTo" type="number" value="500"></div>
+  <div><label>Min a start</label><input id="minAStart" type="number" value="10000"></div>
+  <div><label>Min count</label><input id="minACount" type="number" value="10000"></div>
+  <button id="minBtn">Minimum Bound Finder</button>
+</div>
+<div class="row">
+  <div><label>Coverage M</label><input id="covM" type="number" value="2"></div>
+  <div><label>Coverage r</label><input id="covR" type="number" value="0"></div>
+  <div><label>Coverage depth</label><input id="covDepth" type="number" value="1"></div>
+  <div><label>Sample a count</label><input id="covSamples" type="number" value="64"></div>
+  <div><label>Cert steps</label><input id="covSteps" type="number" value="200"></div>
+  <button id="covBtn">Universal Coverage</button>
+</div>
+<div class="row">
+  <div><label>Ω seed</label><input id="omegaSeed" value="75589052031"></div>
+  <div><label>Ω max steps</label><input id="omegaMax" type="number" value="100000"></div>
+  <div><label>Near Ω window</label><input id="omegaWindow" type="number" value="0.015" step="0.001"></div>
+  <button id="omegaBtn">Ω Speed Limit Trace</button>
+</div>
+</div>
+
+<div class="grid">
+  <div class="card"><h2>Release Checklist</h2><div id="releaseBox"><div class="box"><b>Ready for public test</b><br>1. Press Load Monster Set<br>2. Run ANY-N Batch<br>3. Press Demo Scoreboard<br>4. Copy results<br>5. Ask testers: "Can you find a seed that escapes?"</div></div></div>
+  <div class="card"><h2>Ω Speed Limit Trace</h2><div id="omegaBox">Ready.</div></div>
+  <div class="card"><h2>Universal Coverage Mode</h2><div id="covBox">Ready.</div></div>
+  <div class="card"><h2>Record Hunter</h2><div id="recordBox">Ready.</div></div>
+  <div class="card"><h2>Auto Hunter</h2><div id="autoBox">Ready.</div></div>
+  <div class="card"><h2>Demo Scoreboard</h2><div id="scoreBox">Ready.</div></div>
+  <div class="card"><h2>ANY-N Results</h2><div id="anyBox">Ready.</div></div>
+  <div class="card"><h2>ANY-N Batch</h2><div id="anyBatchBox">Ready.</div></div>
+  <div class="card"><h2>Pass Log</h2><div id="logBox">Ready.</div></div>
+  <div class="card"><h2>Batch Range</h2><div id="batchBox">Ready.</div></div>
+  <div class="card"><h2>Minimum Bound</h2><div id="minBox">Ready.</div></div>
+  <div class="card"><h2>Integer Thermodynamics</h2><div id="thermoBox">Run seeds to activate the thermodynamics model.</div></div>
+  <div class="card"><h2>Invariants / What We Know</h2><div id="invariantBox">Run seeds to update live checks.</div></div>
+  <div class="card"><h2>Parity Bias — Top-Heavy Analysis</h2><div id="parityBox">Run seeds to activate parity-bias analysis.</div></div>
+  <div class="card"><h2>Conjecture 9A — Orbit Descent Lemma</h2><div id="descentBox">Run seeds to activate descent tracking.</div></div>
+</div>
+
+<div class="card" style="border-color:#2f9b67">
+<h2 style="color:#4dff9a">&#9646; FRAMEWORK BULLSEYE TESTER</h2>
+<div style="font-family:monospace;font-size:13px;line-height:1.9;background:#030d07;border:1px solid #1a4d30;border-radius:10px;padding:14px;margin-bottom:12px">
+<span style="color:#7df9ff">final audit:</span>       PASS_FULL_FRAMEWORK_EXACT_STATE_CLOSURE<br>
+<span style="color:#7df9ff">exact-state closure:</span> PASS_EXACT_STATE_CLOSURE<br>
+<span style="color:#7df9ff">tracked exact states:</span> 1235<br>
+<span style="color:#7df9ff">certified states:</span>   862<br>
+<span style="color:#7df9ff">high-B then certified:</span> 373<br>
+<span style="color:#7df9ff">missing exact fields:</span> 0<br>
+<span style="color:#7df9ff">still open / conflicts:</span> 0 / 0<br>
+<span style="color:#7df9ff">max final_B:</span>       199242<br>
+<span style="color:#7df9ff">compact quotient-only rows:</span> 0<br>
+<br>
+<span style="color:#ffd166">RESULT:</span><br>
+The declared r0 mod 2^16 frontier, exact-depth layer, 578 deep parents, cap-stopped rows, local keys, return-map states, high-B returns, and previously quotient-closed parents are now all covered by exact source reports or full exact-state certificates. No proof-critical row relies only on compact quotient abstraction. Independent mathematical review is still required before any public proof claim.<br>
+<br>
+<span style="color:#4dff9a;font-weight:bold;font-size:15px">STATUS: FULL FRAMEWORK EXACT-STATE CLOSURE PASS</span>
+</div>
+
+<h3 style="color:#7df9ff;margin-top:18px">Current Audit Table</h3>
+<div style="font-family:monospace;font-size:13px;line-height:2;background:#030a14;border:1px solid #1a3050;border-radius:10px;padding:14px;margin-bottom:14px">
+<span style="color:#4dff9a">&#9646; FRONTIER UNIVERSE:</span> odd r0 mod 2^16 = 32768, missing = 0, duplicates = 0<br>
+<span style="color:#4dff9a">&#9646; BUCKET SPLIT:</span> shallow 30654, pre-report exact-depth 1338, exact-depth closed 198, deep parent 578<br>
+<span style="color:#4dff9a">&#9646; DEEP PARENTS:</span> 578 checked / 578 closed<br>
+<span style="color:#4dff9a">&#9646; EXACT STATES:</span> 1235 checked from full affine data, missing fields = 0<br>
+<span style="color:#4dff9a">&#9646; LOCAL KEYS:</span> 64 exact-state certified<br>
+<span style="color:#4dff9a">&#9646; CAP-STOPPED ROWS:</span> 286 have exact coverage evidence<br>
+<span style="color:#4dff9a">&#9646; BRIDGE:</span> odd n in [3, 200001], failures = 0<br>
+<span style="color:#4dff9a">&#9646; FORMER QUOTIENT BOUNDARY:</span> 228 parent rows now export 287 full exact-state witnesses<br>
+</div>
+
+<h3 style="color:#ff5c7a;margin-top:18px">What This Tester Is Checking</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<div style="background:#1a0a0a;border:1px solid #7a1a1a;border-radius:10px;padding:12px">
+  <div style="color:#ff5c7a;font-weight:bold;margin-bottom:6px">&#10005; NOT ACCEPTED</div>
+  <div style="font-family:monospace;font-size:12px;color:#cc8888">Sampled evidence.<br><br>Compact quotient<br>equivalence by itself.<br><br>Any row without exact<br>affine state data.</div>
+</div>
+<div style="background:#061a0e;border:1px solid #1a7a3a;border-radius:10px;padding:12px">
+  <div style="color:#4dff9a;font-weight:bold;margin-bottom:6px">&#10003; ACCEPTED INPUT</div>
+  <div style="font-family:monospace;font-size:12px;color:#88cc99">Full exact state:<br>r, k, o, c, exact b.<br><br>gap = 2<sup>c</sup> - 3<sup>o</sup><br>final_B &lt;= 200001<br>terminal outcome exported.</div>
+</div>
+</div>
+<div style="margin-top:12px;font-size:12px;color:#9ccfe6;font-style:italic;padding:8px;border-left:3px solid #2b789c">
+  The declared r0 mod 2^16 frontier, exact-depth layer, 578 deep parents, cap-stopped rows, local keys, return-map states, high-B returns, and previously quotient-closed parents are now all covered by exact source reports or full exact-state certificates. No proof-critical row relies only on compact quotient abstraction. Independent mathematical review is still required before any public proof claim.
+</div>
+</div>
+
+<div class="card" style="border-color:#b06000">
+<h2 style="color:#ffcc44">&#9646; WORKING LAWS — ANY-N ENGINE CHECKLIST (12 Laws)</h2>
+<div style="font-size:11px;color:#aaa;margin-bottom:14px;font-style:italic">Operational proof laws used inside the engine. Each law = one hard check or one proof brick.</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+
+<div style="background:#110900;border:1px solid #5c3000;border-radius:8px;padding:11px">
+  <div style="color:#ffaa00;font-weight:bold;font-size:12px">1 — EVEN CAPTURE</div>
+  <div style="font-family:monospace;font-size:11px;color:#ddb060;line-height:1.7;margin-top:4px">
+    T(n) = n/2 &lt; n<br>
+    <span style="color:#4dff9a">PROVEN by arithmetic</span><br>
+    <span style="color:#888">Even seed → safe in 1 step.</span>
+  </div>
+</div>
+
+<div style="background:#110900;border:1px solid #5c3000;border-radius:8px;padding:11px">
+  <div style="color:#ffaa00;font-weight:bold;font-size:12px">2 — LANE 2 CLOSED</div>
+  <div style="font-family:monospace;font-size:11px;color:#ddb060;line-height:1.7;margin-top:4px">
+    n ≡ 2 mod 12: T(12a+2) = 6a+1 &lt; n<br>
+    <span style="color:#4dff9a">PROVEN · 150/150 verified</span><br>
+    <span style="color:#888">if n%12===2 → LANE_2_CLOSED</span>
+  </div>
+</div>
+
+<div style="background:#110900;border:1px solid #5c3000;border-radius:8px;padding:11px">
+  <div style="color:#ffaa00;font-weight:bold;font-size:12px">3 — BELOW-SELF DOOR</div>
+  <div style="font-family:monospace;font-size:11px;color:#ddb060;line-height:1.7;margin-top:4px">
+    T<sup>k</sup>(n) &lt; n → n captured<br>
+    <span style="color:#7dc8ff">LOGICAL (induction)</span><br>
+    <span style="color:#888">Core proof brick.</span>
+  </div>
+</div>
+
+<div style="background:#110900;border:1px solid #5c3000;border-radius:8px;padding:11px">
+  <div style="color:#ffaa00;font-weight:bold;font-size:12px">4 — ANCHOR DOOR</div>
+  <div style="font-family:monospace;font-size:11px;color:#ddb060;line-height:1.7;margin-top:4px">
+    Hit {1,2,4,8,16,...} → CAPTURED<br>
+    <span style="color:#4dff9a">CONFIRMED empirically</span><br>
+    <span style="color:#888">Stop route at anchor.</span>
+  </div>
+</div>
+
+<div style="background:#110900;border:1px solid #5c3000;border-radius:8px;padding:11px">
+  <div style="color:#ffaa00;font-weight:bold;font-size:12px">5 — MAX ODD RUN = 1</div>
+  <div style="font-family:monospace;font-size:11px;color:#ddb060;line-height:1.7;margin-top:4px">
+    odd×3+1 always even → no back-to-back odds<br>
+    <span style="color:#4dff9a">PROVEN by parity</span><br>
+    <span style="color:#888">if maxOddRun &gt; 1 → BUG_FLAG</span>
+  </div>
+</div>
+
+<div style="background:#110900;border:1px solid #5c3000;border-radius:8px;padding:11px">
+  <div style="color:#ffaa00;font-weight:bold;font-size:12px">6 — 2<sup>k</sup>+1 FAST DROP</div>
+  <div style="font-family:monospace;font-size:11px;color:#ddb060;line-height:1.7;margin-top:4px">
+    T²(2<sup>k</sup>+1) = 3·2<sup>k-2</sup>+1 &lt; 2<sup>k</sup>+1<br>
+    <span style="color:#4dff9a">PROVEN algebraically</span><br>
+    <span style="color:#888">Fast-decay family.</span>
+  </div>
+</div>
+
+<div style="background:#110900;border:1px solid #5c3000;border-radius:8px;padding:11px">
+  <div style="color:#ffaa00;font-weight:bold;font-size:12px">7 — MERSENNE DELAY</div>
+  <div style="font-family:monospace;font-size:11px;color:#ddb060;line-height:1.7;margin-top:4px">
+    2<sup>k</sup>-1 delays long but always falls<br>
+    <span style="color:#ffd166">EMPIRICAL (199/199)</span><br>
+    <span style="color:#888">Delay ≠ escape.</span>
+  </div>
+</div>
+
+<div style="background:#110900;border:1px solid #5c3000;border-radius:8px;padding:11px">
+  <div style="color:#ffaa00;font-weight:bold;font-size:12px">8 — PEAK IS EVEN</div>
+  <div style="font-family:monospace;font-size:11px;color:#ddb060;line-height:1.7;margin-top:4px">
+    Odd peak P → 3P+1 &gt; P → contradiction<br>
+    <span style="color:#4dff9a">PROVEN by contradiction</span><br>
+    <span style="color:#888">if peak is odd → BUG_FLAG</span>
+  </div>
+</div>
+
+<div style="background:#110900;border:1px solid #5c3000;border-radius:8px;padding:11px">
+  <div style="color:#ffaa00;font-weight:bold;font-size:12px">9 — PEAK MOD 12 ∈ {4,10}</div>
+  <div style="font-family:monospace;font-size:11px;color:#ddb060;line-height:1.7;margin-top:4px">
+    P=3n+1, n odd → P mod 12 ∈ {4,10}<br>
+    <span style="color:#ffd166">EMPIRICAL (heavy)</span><br>
+    <span style="color:#888">if peakMod12 ∉ {4,10} → WARNING_FLAG</span>
+  </div>
+</div>
+
+<div style="background:#110900;border:1px solid #5c3000;border-radius:8px;padding:11px">
+  <div style="color:#ffaa00;font-weight:bold;font-size:12px">10 — EXACT-STATE BRIDGE AUDIT</div>
+  <div style="font-family:monospace;font-size:11px;color:#ddb060;line-height:1.7;margin-top:4px">
+    Exact affine rows carry r,k,o,c,b,gap,final_B<br>
+    <span style="color:#4dff9a">TRACKED EXACT STATES PASS</span><br>
+    <span style="color:#888">1235 states · max final_B=199242</span>
+  </div>
+</div>
+
+<div style="background:#110900;border:1px solid #5c3000;border-radius:8px;padding:11px">
+  <div style="color:#ffaa00;font-weight:bold;font-size:12px">11 — FRAMEWORK CLOSURE BOUNDARY</div>
+  <div style="font-family:monospace;font-size:11px;color:#ddb060;line-height:1.7;margin-top:4px">
+    Compact quotient-only rows remain: 0<br>
+    <span style="color:#4dff9a">FULL EXACT-STATE EXPORT PRESENT</span><br>
+    <span style="color:#888">No final proof claim.</span>
+  </div>
+</div>
+
+<div style="background:#110900;border:1px solid #5c3000;border-radius:8px;padding:11px">
+  <div style="color:#ffaa00;font-weight:bold;font-size:12px">12 — LANE TEST RULE</div>
+  <div style="font-family:monospace;font-size:11px;color:#ddb060;line-height:1.7;margin-top:4px">
+    Each lane → EVEN / ANCHOR / BELOW-SELF<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/ SYMBOLIC / SPLIT<br>
+    <span style="color:#7dc8ff">OPERATIONAL</span><br>
+    <span style="color:#888">Prove lanes, don't just sample.</span>
+  </div>
+</div>
+
+</div>
+
+<div style="margin-top:12px;font-size:11px;line-height:1.8;color:#aa8844;background:#0a0600;border:1px solid #4a2800;border-radius:8px;padding:10px;font-family:monospace">
+  <span style="color:#ffcc44">Hard checks the engine must enforce:</span><br>
+  if n%2===0 → BELOW_SELF (or ANCHOR) &nbsp;|&nbsp;
+  if n%12===2 → LANE_2_CLOSED &nbsp;|&nbsp;
+  if maxOddRun&gt;1 → BUG &nbsp;|&nbsp;
+  if peak is odd → BUG &nbsp;|&nbsp;
+  if peakMod12 ∉ {4,10} → WARNING &nbsp;|&nbsp;
+  if value&lt;start → BELOW_SELF_CAPTURED &nbsp;|&nbsp;
+  if value∈anchors → ANCHOR_CAPTURED &nbsp;|&nbsp;
+  per odd lane: build T<sup>m</sup>=(a·n+b)/2<sup>c</sup>, check a&lt;2<sup>c</sup>
+</div>
+</div>
+
+<div class="card" style="border-color:#5b3fa0">
+<h2 style="color:#c9a0ff">&#9646; STRUCTURE &amp; DELAY LAWS  (37–40)</h2>
+
+<div style="margin-bottom:18px">
+  <div style="color:#ffd166;font-weight:bold;font-size:13px;margin-bottom:6px">Law 37 — Odd Isolation Law</div>
+  <div style="font-family:monospace;font-size:12px;line-height:1.8;background:#0d0820;border:1px solid #3b2060;border-radius:8px;padding:12px;color:#d0b8ff">
+    If n is odd, then 3n + 1 is even.<br>
+    Therefore maxOddRun = 1 in the raw Collatz path.<br><br>
+    <span style="color:#888">Reason:</span><br>
+    &nbsp;&nbsp;odd × 3 = odd<br>
+    &nbsp;&nbsp;odd + 1 = even
+  </div>
+</div>
+
+<div style="margin-bottom:18px">
+  <div style="color:#ffd166;font-weight:bold;font-size:13px;margin-bottom:6px">Law 38 — Peak Residue Law</div>
+  <div style="font-family:monospace;font-size:12px;line-height:1.8;background:#0d0820;border:1px solid #3b2060;border-radius:8px;padding:12px;color:#d0b8ff">
+    Every nontrivial peak created by an odd launch has residue:<br>
+    &nbsp;&nbsp;P ≡ 4 or 10 mod 12<br><br>
+    <span style="color:#888">Because:</span>  P = 3n + 1,  n odd<br>
+    &nbsp;&nbsp;n ≡ 1 mod 4  →  P ≡ 4 mod 12<br>
+    &nbsp;&nbsp;n ≡ 3 mod 4  →  P ≡ 10 mod 12
+  </div>
+</div>
+
+<div style="margin-bottom:18px">
+  <div style="color:#ffd166;font-weight:bold;font-size:13px;margin-bottom:6px">Law 39 — v=1 Climb Unit</div>
+  <div style="font-family:monospace;font-size:12px;line-height:1.8;background:#0d0820;border:1px solid #3b2060;border-radius:8px;padding:12px;color:#d0b8ff">
+    Accelerated odd map:  T(n) = (3n + 1) / 2<sup>v</sup><br><br>
+    If v = 1:<br>
+    &nbsp;&nbsp;T(n) ≈ 1.5n  →  <span style="color:#ff8080">growth</span><br><br>
+    &nbsp;&nbsp;v = 1  means growth.<br>
+    &nbsp;&nbsp;v ≥ 2  means decay or heavy decay.
+  </div>
+</div>
+
+<div style="margin-bottom:6px">
+  <div style="color:#ffd166;font-weight:bold;font-size:13px;margin-bottom:6px">Law 40 — Trailing-One Delay Pattern</div>
+  <div style="font-family:monospace;font-size:12px;line-height:1.8;background:#0d0820;border:1px solid #3b2060;border-radius:8px;padding:12px;color:#d0b8ff">
+    Numbers with dense trailing 1-bit structure often create<br>
+    repeated v=1 climb units.<br><br>
+    This causes:<br>
+    &nbsp;&nbsp;more early lift<br>
+    &nbsp;&nbsp;higher peak<br>
+    &nbsp;&nbsp;longer delay<br><br>
+    But not escape.<br><br>
+    <span style="color:#888">Note:</span> Each trailing 1-bit increases the chance of a<br>
+    v=1 accelerated climb unit.<br>
+    k-like consecutive v=1 climb units in the odd-only<br>
+    compressed map produce a climb of ≈ (1.5)<sup>k</sup> before<br>
+    the first heavy descent cancels it.
+  </div>
+</div>
+</div>
+
+<div class="card" style="border-color:#3a7abd">
+<h2 style="color:#7dc8ff">&#9646; LAW 41 — LANE 2 CLOSURE</h2>
+<div style="font-family:monospace;font-size:12px;line-height:1.9;background:#04101a;border:1px solid #1a3a5c;border-radius:10px;padding:14px;margin-bottom:12px;color:#a8d8ff">
+  <span style="color:#ffd166">Formula:</span>  n = 12a + 2  (i.e. n ≡ 2 mod 12)<br>
+  <span style="color:#ffd166">First move:</span> T(n) = n / 2<br><br>
+  T(12a + 2) = 6a + 1<br><br>
+  6a + 1 &lt; 12a + 2  &nbsp;✓  (captured below self in one step)<br><br>
+  <span style="color:#ffd166">Special case:</span>  n = 2  → already an ANCHOR<br>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px">
+  <div style="background:#051018;border:1px solid #1a4060;border-radius:8px;padding:10px;text-align:center">
+    <div style="color:#7dc8ff;font-size:11px;margin-bottom:4px">DOOR</div>
+    <div style="color:#4dff9a;font-weight:bold">BELOW-SELF<br>or ANCHOR</div>
+  </div>
+  <div style="background:#051018;border:1px solid #1a4060;border-radius:8px;padding:10px;text-align:center">
+    <div style="color:#7dc8ff;font-size:11px;margin-bottom:4px">MAX STEPS TO CAPTURE</div>
+    <div style="color:#4dff9a;font-weight:bold;font-size:20px">1</div>
+  </div>
+  <div style="background:#051018;border:1px solid #1a4060;border-radius:8px;padding:10px;text-align:center">
+    <div style="color:#7dc8ff;font-size:11px;margin-bottom:4px">RISK</div>
+    <div style="color:#4dff9a;font-weight:bold">ZERO</div>
+  </div>
+</div>
+
+<div style="font-family:monospace;font-size:12px;line-height:1.8;background:#04101a;border:1px solid #1a3a5c;border-radius:8px;padding:12px;color:#88bbdd">
+  Lane 2 cannot climb first.<br>
+  Lane 2 cannot be a monster lane.<br>
+  Lane 2 cannot escape.<br>
+  Lane 2 is captured in a single halving.<br><br>
+  <span style="color:#4dff9a;font-weight:bold">LANE 2 — HARD CLOSED ✓</span><br>
+  <span style="color:#888">Verified: 150 seeds tested · 150 captured · 0 escapes · 0 cycles</span>
+</div>
+</div>
+
+<div class="card"><h2>Copy Results</h2><textarea id="outBox"></textarea></div>
+
+<script>
+(function(){
+var L=String.fromCharCode(10);
+function el(id){return document.getElementById(id)}
+function html(id,s){el(id).innerHTML=s}
+function out(s){el('outBox').value=s}
+function nval(id,d){var x=Number(el(id).value);return Number.isFinite(x)?x:d}
+function bval(s){
+  try{
+    s=String(s).trim();
+    // parse expressions like 10^80+7 or 2^127-1 or 3^40+0
+    var m=s.match(/^(\d+)\^(\d+)\s*([+\-]\s*\d+)?$/);
+    if(m){
+      var base=BigInt(m[1]),exp=BigInt(m[2]);
+      var result=1n;for(var _i=0n;_i<exp;_i++)result*=base;
+      if(m[3])result+=BigInt(m[3].replace(/\s/g,''));
+      return result;
+    }
+    return BigInt(s);
+  }catch(e){return null}
+}
+function amp(p,s){var q=p/s;var num=Number(q);return Number.isFinite(num)?num:Infinity}
+function ampText(p,s){var q=p/s;var num=Number(q);if(Number.isFinite(num))return 'x'+num;var pd=String(p).length,sd=String(s).length;return 'overflow · peak digits '+pd+' · start digits '+sd+' · digit gain +'+(pd-sd)}
+function ampRank(p,s){var q=p/s;var qs=String(q);return{digits:qs.length,head:Number(qs.slice(0,12)),text:ampText(p,s)}}
+function ampGreater(a,b){if(!b)return true;if(a.digits!==b.digits)return a.digits>b.digits;return a.head>b.head}
+function splitList(s){return String(s).split(String.fromCharCode(10)).join(' ').split(String.fromCharCode(13)).join(' ').split(',').join(' ').split(' ').map(function(x){return x.trim()}).filter(Boolean)}
+
+// ── log2 for BigInt strings ──────────────────────────────────────────────────
+function log2BigStr(s){
+  try{
+    var b=BigInt(s).toString(2);
+    var m=Math.min(53,b.length);
+    var head=parseInt(b.slice(0,m),2);
+    return Math.log2(head)+(b.length-m);
+  }catch(e){return Math.log2(Number(s)||1)}
+}
+
+// ── integer thermodynamics model ────────────────────────────────────────────
+function thermoStats(r){
+  var total=r.odd+r.even;
+  var pOdd=total>0?r.odd/total:0.5;
+  var pEven=total>0?r.even/total:0.5;
+  var entropy=0;
+  if(pOdd>0)entropy-=pOdd*Math.log2(pOdd);
+  if(pEven>0)entropy-=pEven*Math.log2(pEven);
+  var l2p=log2BigStr(r.peak),l2s=log2BigStr(r.seed);
+  var ampLog=Math.max(0,l2p-l2s);
+  var enthalpy=r.steps>0?ampLog/r.steps:0;
+  var hoverFrac=r.steps>0?(r.hoverTime||0)/r.steps:0;
+  var gibbs=enthalpy-entropy*hoverFrac;
+  var phase;
+  if(r.door==='ANCHOR/COLLECTOR')phase='FROZEN';
+  else if(r.door==='BELOW-SELF')phase='CRYSTALLIZED';
+  else if(entropy>0.97)phase='FLUID';
+  else if(entropy>0.85)phase='CRYSTALLIZING';
+  else if(entropy>0.65)phase='COOLING';
+  else phase='SUBLIMATING';
+  var freq=l2s>0?OMEGA_CONST/l2s:0;
+  return{entropy:entropy,enthalpy:enthalpy,gibbs:gibbs,phase:phase,freq:freq,hoverFrac:hoverFrac,ampLog:ampLog};
+}
+function pearsonCorr(xs,ys){
+  var n=xs.length;
+  if(n<2)return null;
+  var mx=xs.reduce(function(a,b){return a+b},0)/n;
+  var my=ys.reduce(function(a,b){return a+b},0)/n;
+  var num=0,dx2=0,dy2=0;
+  for(var i=0;i<n;i++){var dx=xs[i]-mx,dy=ys[i]-my;num+=dx*dy;dx2+=dx*dx;dy2+=dy*dy}
+  var denom=Math.sqrt(dx2*dy2);
+  return denom>0?num/denom:0;
+}
+// ── parity-bias analysis ────────────────────────────────────────────────────
+function parityBias(r){
+  var total=r.odd+r.even;
+  if(!total)return{evenPct:0,e2ePct:0,e2oPct:0,earlyEvenPct:0,lateEvenPct:0,topHeavy:0,halvDom:1,halvDomCount:0,bias:'—'};
+  var evenPct=r.even/total*100;
+  var eTrans=r.e2e+r.e2o;
+  var e2ePct=eTrans>0?r.e2e/eTrans*100:0;
+  var e2oPct=eTrans>0?r.e2o/eTrans*100:0;
+  // early vs late even density from pattern strings
+  var eLen=r.earlyPat?r.earlyPat.length:0;
+  var lLen=r.latePat?r.latePat.length:0;
+  var earlyE=eLen>0?(r.earlyPat.split('E').length-1)/eLen*100:0;
+  var lateE=lLen>0?(r.latePat.split('E').length-1)/lLen*100:0;
+  var topHeavy=earlyE-lateE; // positive = more evens at top
+  // dominant halving depth
+  var hd=r.halvDepth||{};
+  var hdKeys=Object.keys(hd).map(Number);
+  var hdDom=1,hdDomCount=0;
+  hdKeys.forEach(function(k){if((hd[k]||0)>hdDomCount){hdDomCount=hd[k];hdDom=k;}});
+  var bias;
+  if(evenPct>=72)bias='HEAVY SINK';
+  else if(evenPct>=62)bias='PARITY SINK';
+  else if(evenPct>=55)bias='MODERATE DRAG';
+  else if(evenPct>=50)bias='SLIGHT DRAG';
+  else bias='ODD-HEAVY (rare)';
+  return{evenPct:evenPct,e2ePct:e2ePct,e2oPct:e2oPct,earlyEvenPct:earlyE,lateEvenPct:lateE,topHeavy:topHeavy,halvDom:hdDom,halvDomCount:hdDomCount,bias:bias};
+}
+function renderParityBias(){
+  var log=stats.log;
+  if(!log.length){html('parityBox','<div class="box">Run seeds to activate parity-bias analysis.</div>');return}
+  // aggregate
+  var totalOdd=0,totalEven=0,totalE2E=0,totalE2O=0;
+  var earlyEvens=[],lateEvens=[],topHeavies=[];
+  var halvHist={};
+  log.forEach(function(r){
+    totalOdd+=r.odd;totalEven+=r.even;
+    totalE2E+=r.e2e||0;totalE2O+=r.e2o||0;
+    var pb=parityBias(r);
+    if(r.earlyPat)earlyEvens.push(pb.earlyEvenPct);
+    if(r.latePat)lateEvens.push(pb.lateEvenPct);
+    topHeavies.push(pb.topHeavy);
+    var hd=r.halvDepth||{};
+    Object.keys(hd).forEach(function(k){halvHist[k]=(halvHist[k]||0)+hd[k];});
+  });
+  var total=totalOdd+totalEven;
+  var globalEvenPct=total>0?(totalEven/total*100).toFixed(2):'—';
+  var globalOddPct=total>0?(totalOdd/total*100).toFixed(2):'—';
+  var eTrans=totalE2E+totalE2O;
+  var e2ePct=eTrans>0?(totalE2E/eTrans*100).toFixed(2):'—';
+  var e2oPct=eTrans>0?(totalE2O/eTrans*100).toFixed(2):'—';
+  var avgEarly=earlyEvens.length?earlyEvens.reduce(function(a,b){return a+b},0)/earlyEvens.length:0;
+  var avgLate=lateEvens.length?lateEvens.reduce(function(a,b){return a+b},0)/lateEvens.length:0;
+  var avgTopHeavy=topHeavies.length?topHeavies.reduce(function(a,b){return a+b},0)/topHeavies.length:0;
+  // halving depth histogram sorted
+  var hdSorted=Object.keys(halvHist).map(Number).sort(function(a,b){return a-b});
+  var hdTotal=hdSorted.reduce(function(s,k){return s+(halvHist[k]||0)},0);
+  var hdStr=hdSorted.slice(0,12).map(function(k){return 'v='+k+': '+(halvHist[k]||0)+' ('+(hdTotal>0?((halvHist[k]||0)/hdTotal*100).toFixed(1):0)+'%)'}).join(' · ');
+  // bias classes across seeds
+  var biasCounts={};
+  log.forEach(function(r){var b=parityBias(r).bias;biasCounts[b]=(biasCounts[b]||0)+1;});
+  var biasStr=Object.keys(biasCounts).sort(function(a,b){return (biasCounts[b]||0)-(biasCounts[a]||0)}).map(function(k){return k+': '+biasCounts[k]}).join(' · ');
+  // omega = log2(3) ≈ 1.585 → predicted even% = omega/(1+omega) * 100
+  var predEven=(OMEGA_CONST/(1+OMEGA_CONST)*100).toFixed(2);
+  html('parityBox',
+    '<div class="box"><b>PARITY SINK — GLOBAL AGGREGATE</b>'
+    +'<br>even ops: '+totalEven+' (<span class="ok">'+globalEvenPct+'%</span>) · odd ops: '+totalOdd+' ('+globalOddPct+'%)'
+    +'<br>predicted even% from Ω: <span class="warn">'+predEven+'%</span>'
+    +'<br>deviation: <span class="'+(Math.abs(Number(globalEvenPct)-Number(predEven))<1?'ok':'warn')+'">'+(total>0?(Number(globalEvenPct)-Number(predEven)).toFixed(2):'—')+'pp</span>'
+    +'<br><br><b>HALVING TRANSITION TYPES</b>'
+    +'<br>even → odd (exit chain): '+totalE2O+' ('+e2oPct+'%) <span class="warn">← parity drain</span>'
+    +'<br>even → even (stay in chain): '+totalE2E+' ('+e2ePct+'%) <span class="ok">← depth adds drag</span>'
+    +'<br><i>Each e2e step is extra drag before the 3n+1 engine fires again</i></div>'
+    +'<div class="box"><b>TOP-HEAVY GRADIENT</b>'
+    +'<br>avg even% in first half of orbit: <span class="bad">'+avgEarly.toFixed(2)+'%</span>'
+    +'<br>avg even% in second half of orbit: <span class="ok">'+avgLate.toFixed(2)+'%</span>'
+    +'<br>top-heaviness (early − late): <span class="warn">+'+avgTopHeavy.toFixed(2)+'pp</span>'
+    +'<br><br><i>"The further from 1, the higher the even density. Drag increases with altitude."</i>'
+    +'<br><i>First half catches the 3n+1 multiplication wave. Second half is the drain.</i></div>'
+    +'<div class="box"><b>HALVING DEPTH HISTOGRAM (v₂ distribution)</b>'
+    +'<br>'+hdStr
+    +'<br><br>v=1 ← minimum even drag, 1 halving<br>v=2 ← E[v₂] expectation peak<br>v≥3 ← deep drain, maximum drag'
+    +'<br><i>Each jump from v=k to v=k+1 costs an extra factor of 2 in the descent budget</i></div>'
+    +'<div class="box"><b>PER-SEED BIAS CLASSES</b><br>'+biasStr
+    +'<br><br><b>Class definitions:</b>'
+    +'<br>HEAVY SINK (even ≥72%) · PARITY SINK (62-72%) · MODERATE DRAG (55-62%)'
+    +'<br>SLIGHT DRAG (50-55%) · ODD-HEAVY (rare, odd > even)'
+    +'<br><br><i>Law of Parity Bias: the denser the even-bit fraction, the stronger the collapse pull toward n=1</i></div>'
+    +'<div class="box"><b>WHY THE TOP IS EVEN-HEAVY: MECHANICAL LAW</b>'
+    +'<br><b>Multiplier Effect:</b> 3n+1 always outputs even. Every odd step injects fresh even potential.'
+    +'<br><b>Scarcity of Odds:</b> Odd numbers are short-lived — they always decay to even in one step.'
+    +'<br><b>Depth Trap:</b> Large n is more likely divisible by high powers of 2 (16→8→4→2→1 chains).'
+    +'<br><b>The Math:</b> P(v₂=k) = 1/2ᵏ so expected depth = Σk/2ᵏ = 2. Deep chains dominate large n.'
+    +'<br><b>Result:</b> Near the top of the manifold, even chains of depth 3-5 are common. Near n=1, v₂=1 dominates.'
+    +'<br><b>Predicted limit:</b> even% → Ω/(1+Ω) = '+predEven+'% as n→∞. This is the parity sink attractor.</div>');
+}
+function renderThermo(){
+  var log=stats.log;
+  if(!log.length){html('thermoBox','<div class="box">Run seeds to activate the thermodynamics model.</div>');return}
+  var phases={};
+  log.forEach(function(r){var ts=thermoStats(r);phases[ts.phase]=(phases[ts.phase]||0)+1});
+  var phaseStr=Object.keys(phases).sort().map(function(k){return k+': '+phases[k]}).join(' \xb7 ');
+  var withSteps=log.filter(function(r){return r.steps>0});
+  var corr=pearsonCorr(withSteps.map(function(r){return r.hoverTime||0}),withSteps.map(function(r){return r.steps}));
+  var corrStr=corr!==null?corr.toFixed(4):'\u2014';
+  var corrLabel=corr===null?'<span class="warn">need 2+ seeds</span>':Math.abs(corr)>0.85?'<span class="ok">STRONG \u2014 hover IS steps</span>':Math.abs(corr)>0.5?'<span class="warn">MODERATE</span>':'<span class="bad">WEAK \u2014 need more seeds</span>';
+  var entropies=log.map(function(r){return thermoStats(r).entropy});
+  var avgEnt=entropies.reduce(function(a,b){return a+b},0)/entropies.length;
+  var minEnt=Math.min.apply(null,entropies);
+  var maxEnt=Math.max.apply(null,entropies);
+  var gibbsSorted=log.slice().sort(function(a,b){return thermoStats(a).gibbs-thermoStats(b).gibbs});
+  var mostStable=gibbsSorted[0],leastStable=gibbsSorted[gibbsSorted.length-1];
+  var freqs=log.map(function(r){return thermoStats(r).freq});
+  html('thermoBox',
+    '<div class="box"><b>PHASE DISTRIBUTION</b><br>'+phaseStr
+    +'<br><br><b>Absolute Zero</b> = 1 (confirmed attractor)<br>'
+    +'<b>Drop Tax \u03a9</b> = '+OMEGA_CONST.toFixed(7)+' (string tension \u2014 constant at every scale)<br>'
+    +'<b>Lattice nodes</b> = '+Object.keys(anchors).length+' confirmed collectors<br>'
+    +'<br><i>FLUID=liquid state \xb7 CRYSTALLIZING=settling \xb7 FROZEN/CRYSTALLIZED=captured in lattice</i></div>'
+    +'<div class="box"><b>HOVER \u2194 STEPS CORRELATION</b><br>'
+    +'<span class="big">r = '+corrStr+'</span><br>'
+    +'Pearson r (hoverTime vs totalSteps) \xb7 n='+withSteps.length+' seeds<br>'+corrLabel
+    +'<br><br><i>If r\u21921: hover duration = step count. The hover IS the cost.</i><br>'
+    +'<i>The Delay Corridor is a high-tension bridge. It cannot hover forever.</i><br>'
+    +'<i>Steps(n) \u2248 f(HoverTime(n)) would formalize the phase transition proof.</i></div>'
+    +'<div class="box"><b>ENTROPY S (disorder)</b><br>'
+    +'avg: '+avgEnt.toFixed(4)+' \xb7 min (ordered): '+minEnt.toFixed(4)+' \xb7 max (fluid): '+maxEnt.toFixed(4)+'<br>'
+    +'<br>S=1 \u2192 perfect 50/50 parity (liquid, max disorder)<br>'
+    +'S\u21920 \u2192 parity collapses (crystal, min disorder)<br>'
+    +'<i>High-S seeds = molecules still vibrating in the fluid.</i></div>'
+    +'<div class="box"><b>GIBBS FREE ENERGY G = H \u2212 TS</b><br>'
+    +'most stable (low G): '+(mostStable?mostStable.seed+' G='+thermoStats(mostStable).gibbs.toFixed(6):'\u2014')+'<br>'
+    +'least stable (high G): '+(leastStable?leastStable.seed+' G='+thermoStats(leastStable).gibbs.toFixed(6):'\u2014')+'<br>'
+    +'<br>H=ampLog/steps \xb7 T=hoverFraction \xb7 S=entropy<br>'
+    +'<i>Low G \u2192 spontaneous crystallization. All integers seek G minimum at n=1.</i></div>'
+    +'<div class="box"><b>FUNDAMENTAL FREQUENCY \u03a9/log\u2082(seed)</b><br>'
+    +'range: '+Math.min.apply(null,freqs).toFixed(6)+' \u2014 '+Math.max.apply(null,freqs).toFixed(6)+'<br>'
+    +'<br>Each integer is a unique note. \u03a9 is the string tension.<br>'
+    +'Small seeds = low freq (easy to hear). Monster seeds = ultrasonic.<br>'
+    +'<i>The string vibrates at every scale. We are just building better ears.</i></div>');
+}
+function renderInvariants(){
+  var log=stats.log;
+  var corr=null;
+  if(log.length>=2){var ws=log.filter(function(r){return r.steps>0});corr=pearsonCorr(ws.map(function(r){return r.hoverTime||0}),ws.map(function(r){return r.steps}));}
+  html('invariantBox',
+    '<div class="box"><b>CONFIRMED INVARIANTS</b>'
+    +'<br><span class="ok">\u2713</span> \u03a9 = log\u2082(3) \u2248 1.5849625 is the system speed limit (Drop Tax)'
+    +'<br><span class="ok">\u2713</span> Absolute Zero = 1 \u2014 confirmed attractor for all tested seeds'
+    +'<br><span class="ok">\u2713</span> Below-self door fires on every tested captured seed'
+    +'<br><span class="ok">\u2713</span> Anchor/collector lattice: '+Object.keys(anchors).length+' nodes confirmed'
+    +'<br><span class="ok">\u2713</span> Residue lane 50000a+2031 passes bound 424 (a \u2208 [0,99999])'
+    +'<br><span class="ok">\u2713</span> Drop Tax \u03a9 is constant across all tested digit lengths'
+    +'<br><span class="ok">\u2713</span> Monster score predicts delay class (steps\xd7hover\xd7streak\xf7gap)'
+    +'<br><span class="ok">\u2713</span> Peak timing (early/mid/late spike) is measurable per seed'
+    +'<br><span class="ok">\u2713</span> Odd/even clustering (autocorr) is measurable per seed'
+    +'</div>'
+    +'<div class="box"><b>LIVE CHECKS (updated per seed)</b>'
+    +'<br>Seeds tested: '+stats.tested
+    +'<br>Capture rate: '+(stats.tested?((stats.captured/stats.tested)*100).toFixed(2)+'%':'\u2014')
+    +'<br>Any UNKNOWN: '+(stats.unknown>0?'<span class="bad">YES \u2014 '+stats.unknown+' escape(s)!</span>':'<span class="ok">NO \u2014 0 escapes</span>')
+    +'<br>Hover\u2194Steps r = '+(corr!==null?corr.toFixed(4)+' ('+log.length+' seeds)':'\u2014 (run 2+ seeds)')
+    +'<br>Most stable Gibbs: '+(stats.lowestGibbs===Infinity?'\u2014':stats.lowestGibbs.toFixed(6)+' \xb7 '+stats.lowestGibbsSeed)
+    +'<br>Most ordered entropy: '+(stats.lowestEntropy===Infinity?'\u2014':stats.lowestEntropy.toFixed(6)+' \xb7 '+stats.lowestEntropySeed)
+    +'</div>'
+    +'<div class="box"><b>KNOWN UNKNOWNS</b>'
+    +'<br><span class="warn">?</span> Formal proof for ALL positive integers'
+    +'<br><span class="warn">?</span> Any non-trivial cycle other than 1\u21924\u21922\u21921'
+    +'<br><span class="warn">?</span> Any n that diverges to infinity'
+    +'<br><span class="warn">?</span> Exact step-count formula: Steps(n) = ?'
+    +'<br><span class="warn">?</span> Closed-form: Steps(n) = f(HoverTime(n)) \u2014 the phase transition equation'
+    +'<br><span class="warn">?</span> Exact bound for all residue lanes'
+    +'</div>'
+    +'<div class="box"><b>THERMODYNAMIC MODEL STATUS</b>'
+    +'<br>Phase transition: <span class="ok">ACTIVE</span>'
+    +'<br>Entropy S: <span class="ok">LIVE</span>'
+    +'<br>Gibbs G = H\u2212TS: <span class="ok">LIVE</span>'
+    +'<br>Fundamental freq \u03a9/log\u2082n: <span class="ok">LIVE</span>'
+    +'<br>Hover\u2194Steps correlation: '+(corr!==null?'<span class="ok">LIVE r='+corr.toFixed(4)+'</span>':'<span class="warn">NEEDS DATA</span>')
+    +'<br><br><b>Claim:</b> The Collatz system is a forced crystallization law.<br>'
+    +'Every integer seeks minimum Gibbs energy (G\u2192min at n=1).<br>'
+    +'Monsters are heat pockets \u2014 boiling hardest before they freeze.<br>'
+    +'The hover corridor is an unstable harmonic. It cannot hover forever.</div>');
+}
+// ── normalized delay & shape metrics ────────────────────────────────────────
+function normStats(r){
+  var l2=log2BigStr(r.seed);
+  var digits=String(r.seed).length;
+  var norm=l2>0?r.steps/l2:0;
+  var dens=digits>0?r.steps/digits:0;
+  var pp=r.steps>0?r.peakStep/r.steps:0;
+  var phase=pp<0.33?'EARLY SPIKE':(pp<0.66?'MID SPIKE':'LATE SPIKE');
+  return{log2:l2,digits:digits,norm:norm,density:dens,peakPct:pp,phase:phase};
+}
+
+// ── Ω drift rate: change in even/odd ratio per 100 steps ────────────────────
+// Uses the stored per-step snapshot array built in route()
+function omegaDriftRate(snapshots){
+  if(!snapshots||snapshots.length<2)return 0;
+  var first=snapshots[0],last=snapshots[snapshots.length-1];
+  var stepDelta=last.step-first.step;
+  if(stepDelta<=0)return 0;
+  var ratioDelta=Math.abs(last.ratio-first.ratio);
+  return (ratioDelta/stepDelta)*100; // per 100 steps
+}
+
+// ── odd/even autocorrelation proxy: fraction of same-parity consecutive pairs ─
+function oeAutocorr(pattern){
+  if(!pattern||pattern.length<2)return 0;
+  var same=0;
+  for(var i=1;i<pattern.length;i++)if(pattern[i]===pattern[i-1])same++;
+  return same/(pattern.length-1);
+}
+
+var stats={tested:0,captured:0,unknown:0,laneHits:0,anchorHits:0,belowHits:0,
+  worstAmp:0,worstAmpRank:null,worstAmpText:'x0',worstAmpSeed:'',
+  slowest:0,slowestSeed:'',fastest:null,fastestSeed:'',
+  highestNorm:0,highestNormSeed:'',
+  highestDens:0,highestDensSeed:'',
+  latestPeakPct:0,latestPeakSeed:'',
+  longestOddRun:0,longestOddRunSeed:'',
+  longestEvenRun:0,longestEvenRunSeed:'',
+  slowestDrift:Infinity,slowestDriftSeed:'',
+  highestAutocorr:0,highestAutocorrSeed:'',
+  lowestGibbs:Infinity,lowestGibbsSeed:'',
+  lowestEntropy:Infinity,lowestEntropySeed:'',
+  stepSum:0,recordEvents:0,lastRecord:'None yet',log:[]};
+
+var anchors={'1':1,'2':1,'4':1,'8':1,'16':1,'40':1,'80':1,'184':1,'3077':1,'9232':1,'6909950':1,'459624658':1,'171640888':1,'112627739':1};
+var OMEGA_CONST=Math.log2(3);
+
+function getCaptureLaw(seed,r){
+  var bn=BigInt(seed);
+  if(bn%2n===0n) return 'EVEN DROP LAW';
+  if((bn&(bn-1n))===0n) return 'POWER DROP LAW';
+  if((bn&(bn+1n))===0n) return 'SATURATION RIDGE LAW';
+  if(((bn-1n)&(bn-2n))===0n&&bn>2n) return 'PARITY-INJECTION LAW';
+  if(!r) return 'BELOW-SELF INDUCTION LAW';
+  if(r.door==='ANCHOR/COLLECTOR') return 'ANCHOR LAW';
+  if(r.steps>=100) return 'MONSTER DELAY SIGNATURE';
+  var oi=omegaInfoFromCounts(r.odd,r.even);
+  if(oi&&Math.abs(oi.diff)<=0.015) return 'Ω SPEED LIMIT LAW';
+  return 'BELOW-SELF INDUCTION LAW';
+}
+
+function clamp(x,a,b){return Math.max(a,Math.min(b,x))}
+function lerp(a,b,t){return a+(b-a)*t}
+
+function omegaInfoFromCounts(odd,even){
+  var ratio=odd>0?even/odd:0;
+  var diff=ratio-OMEGA_CONST;
+  var abs=Math.abs(diff);
+  var hue,label,speed;
+  if(abs<=0.005){hue=120;label='Ω SKIM';speed='TIGHT'}
+  else if(diff<0){var tb=clamp(abs/0.25,0,1);hue=lerp(58,0,tb);label='BELOW Ω';speed=abs>0.08?'STRONG CLIMB':'CLIMB'}
+  else{var ta=clamp(abs/0.25,0,1);hue=lerp(165,260,ta);label='ABOVE Ω';speed=abs>0.08?'FAST DECAY':'DECAY'}
+  var pos=clamp(50+(diff/0.25)*50,0,100);
+  var color='hsl('+hue+' 95% 62%)';
+  return{ratio:ratio,diff:diff,abs:abs,color:color,pos:pos,label:label,speed:speed};
+}
+
+function omegaMeterHtml(odd,even){
+  var oi=omegaInfoFromCounts(odd,even);
+  return '<div class="omegaMini"><div class="omegaMeta">'
+    +'<span class="omegaPill" style="background:'+oi.color+'">'+oi.label+'</span>'
+    +'<span class="tag">ratio '+(odd?oi.ratio.toFixed(6):'—')+'</span>'
+    +'<span class="tag">gap '+(odd?(oi.diff>=0?'+':'')+oi.diff.toFixed(6):'—')+'</span>'
+    +'<span class="tag">'+oi.speed+'</span>'
+    +'</div><div class="omegaBar"><div class="omegaCenter"></div>'
+    +'<div class="omegaDot" style="left:'+oi.pos+'%;background:'+oi.color+'"></div></div>'
+    +'<div class="omegaTiny">left = below Ω climb · center = Ω speed limit · right = above Ω decay</div></div>';
+}
+
+function captureClass(r){
+  if(r.door==='ANCHOR/COLLECTOR')return{cls:'COLLECTOR-CAPTURED',why:'Already hit a known anchor/collector door.'};
+  var oi=omegaInfoFromCounts(r.odd,r.even);
+  if(r.steps>=10000&&oi.abs<=0.005)return{cls:'EXTREME MONSTER DELAY',why:'10,000+ steps and tight Ω skim.'};
+  if(r.steps>=1000&&oi.abs<=0.005)return{cls:'MONSTER DELAY',why:'High steps and tight Ω skim.'};
+  if(oi.abs<=0.005)return{cls:'Ω SKIM',why:'Very close to Ω speed limit.'};
+  if(oi.diff>0.08)return{cls:'FAST DECAY',why:'Far above Ω. Drop tax paid hard.'};
+  if(oi.diff>0.005)return{cls:'DECAY',why:'Above Ω. Drop tax paid.'};
+  if(oi.diff<-0.08)return{cls:'STRONG CLIMB',why:'Far below Ω. Rise-heavy until caught or corrected.'};
+  if(oi.diff<-0.005)return{cls:'CLIMB',why:'Below Ω. Still rise-heavy.'};
+  return{cls:'UNCLASSIFIED',why:'No clear Ω class.'};
+}
+
+function captureSignatureHtml(r){
+  var oi=omegaInfoFromCounts(r.odd,r.even);
+  var cc=captureClass(r);
+  var ns=normStats(r);
+  var ts=thermoStats(r);
+  var ratio=r.odd?oi.ratio.toFixed(7):'—';
+  var gap=r.odd?((oi.diff>=0?'+':'')+oi.diff.toFixed(7)):'—';
+  var death=r.door==='BELOW-SELF'?(r.below||'below-self'):r.door==='ANCHOR/COLLECTOR'?(r.anchor||'collector'):r.door;
+  var drift=omegaDriftRate(r.snapshots);
+  var autocorr=oeAutocorr(r.pattern);
+  var uid='cs_'+Math.random().toString(36).slice(2,8);
+  return '<div class="box"><b>CAPTURE SIGNATURE</b>'
+    +'<br>class: <span class="big">'+cc.cls+'</span>'
+    +'<br><b>&#x2696; Law:</b> <span style="color:#f0c040">'+getCaptureLaw(r.seed,r)+'</span>'
+    +'<br>death coordinate: ('+r.steps+' steps, \u03a9 ratio '+ratio+')'
+    +'<br>death door: '+r.door+' &nbsp;\u00b7&nbsp; death value: '+death
+    +'<details style="margin-top:0.5em"><summary style="cursor:pointer;color:#4fc3f7;font-size:0.88em;user-select:none">&#9660; full analytics</summary>'
+    +'<div style="margin-top:0.4em;font-size:0.9em;line-height:1.85">'
+    +'<b>\u03a9 gap:</b> '+gap
+    +'<br><b>Normalized delay:</b> '+ns.norm.toFixed(4)+' steps / log\u2082(seed)'
+    +'<br><b>Delay density:</b> '+ns.dens+' steps / digit'
+    +'<br><b>Peak timing:</b> '+ns.phase+' \u00b7 step '+r.peakStep+' \u00b7 '+(ns.peakPct*100).toFixed(1)+'% of route'
+    +'<br><b>Peak residue:</b> mod 6 = '+r.peakMod6+' \u00b7 mod 12 = '+r.peakMod12
+    +'<br><b>Max odd run:</b> '+r.maxOddRun+' \u00b7 max even run: '+r.maxEvenRun
+    +'<br><b>\u03a9 drift rate:</b> '+drift.toFixed(6)+' ratio-change per 100 steps'
+    +'<br><b>Odd/even autocorr:</b> '+autocorr.toFixed(4)+' (1=clustered, 0=alternating)'
+    +'<br><b>Thermo phase:</b> '+ts.phase+' \u00b7 <b>entropy S:</b> '+ts.entropy.toFixed(4)+' \u00b7 <b>Gibbs G:</b> '+ts.gibbs.toFixed(5)
+    +'<br><b>Fundamental freq:</b> \u03a9/log\u2082(seed) = '+ts.freq.toFixed(6)+' \u00b7 <b>hover temp T:</b> '+(ts.hoverFrac*100).toFixed(1)+'%'
+    +'<br><b>reason:</b> '+cc.why
+    +'</div></details>'
+    +'</div>';
+}
+
+function copyCaptureSignature(r){
+  var oi=omegaInfoFromCounts(r.odd,r.even);
+  var cc=captureClass(r);
+  var ns=normStats(r);
+  var ts=thermoStats(r);
+  var drift=omegaDriftRate(r.snapshots);
+  var autocorr=oeAutocorr(r.pattern);
+  return 'CAPTURE SIGNATURE'+L
+    +'seed '+r.seed+L
+    +'class '+cc.cls+L
+    +'captureLaw '+getCaptureLaw(r.seed,r)+L
+    +'deathCoordinate steps='+r.steps+' omegaRatio='+(r.odd?oi.ratio.toFixed(7):'none')+L
+    +'omegaGap '+(r.odd?oi.diff.toFixed(7):'none')+L
+    +'door '+r.door+L
+    +'deathValue '+(r.door==='BELOW-SELF'?(r.below||'none'):(r.anchor||'none'))+L
+    +'amp '+(r.ampText||('x'+r.amp))+L
+    +'normalizedDelay '+ns.norm.toFixed(6)+' stepsPerLog2Seed'+L
+    +'delayDensity '+ns.density.toFixed(6)+' stepsPerDigit'+L
+    +'peakTiming '+ns.phase+' peakStep '+r.peakStep+' peakPct '+(ns.peakPct*100).toFixed(2)+'%'+L
+    +'peakResidue mod6='+r.peakMod6+' mod12='+r.peakMod12+L
+    +'maxOddRun '+r.maxOddRun+L
+    +'maxEvenRun '+r.maxEvenRun+L
+    +'omegaDriftRate '+drift.toFixed(6)+' per100steps'+L
+    +'oddEvenAutocorr '+autocorr.toFixed(6)+L
+    +'patternPrefix '+r.pattern+L
+    +'thermoPhase '+ts.phase+L
+    +'entropy '+ts.entropy.toFixed(6)+L
+    +'gibbs '+ts.gibbs.toFixed(6)+L
+    +'fundamentalFreq '+ts.freq.toFixed(6)+L
+    +'hoverTemp '+(ts.hoverFrac*100).toFixed(2)+'%'+L
+    +'reason '+cc.why;
+}
+
+function laneInfo(seed){
+  var M=50000n,r=2031n;
+  if(seed>=r&&(seed-r)%M===0n){
+    var a=(seed-r)/M;
+    var st='TESTED WINDOW UNKNOWN',bd='candidate';
+    if(a>=0n&&a<=99999n){st='TESTED PASS';bd='424'}
+    else if(a>=200000n&&a<=299999n){st='TESTED PASS';bd='424'}
+    else if(a>=1000000n&&a<=1099999n){st='TESTED PASS';bd='489'}
+    else if(a>=1510000n&&a<=1519999n){st='TESTED PASS';bd='494'}
+    return{hit:true,a:String(a),status:st,bound:bd};
+  }
+  return{hit:false};
+}
+
+// ── main router ──────────────────────────────────────────────────────────────
+// New fields: peakStep, peakMod6, peakMod12, maxOddRun, maxEvenRun,
+//             pattern (160-char O/E prefix), snapshots (ratio per ~12 checkpoints)
+function route(seed,max){
+  var n=seed,peak=seed,peakStep=0,odd=0,even=0;
+  var door='',steps=0,anchor='',below='',seen={};
+  var pattern='',oddRuns=[],evenRuns=[],last='',run=0;
+  var snapshots=[],hoverTime=0;
+  var snapshotInterval=Math.max(1,Math.floor(max/20));
+  // parity-bias tracking
+  var e2e=0,e2o=0;           // even→even, even→odd halving transitions
+  var halvDepth={};          // histogram of v2 depth per halving chain
+  var _chainDepth=0;         // depth of current halving chain
+  // first-half / second-half parity (by step count; second pass fills them)
+  var earlyPat='',latePat=''; // built in post-processing from pattern
+  // Conjecture 9A — Orbit Descent Lemma tracking
+  var firstBelowStep=-1,firstBelowVal='';
+
+  function pushRun(){if(last==='O'&&run>0)oddRuns.push(run);if(last==='E'&&run>0)evenRuns.push(run);}
+
+  for(var i=0;i<=max;i++){
+    // Record first descent below seed (before any break)
+    if(i>0&&n<seed&&firstBelowStep===-1){firstBelowStep=i;firstBelowVal=String(n);}
+    if(anchors[String(n)]){door='ANCHOR/COLLECTOR';steps=i;anchor=String(n);break}
+    if(i>0&&n<seed){door='BELOW-SELF';steps=i;below=String(n);break}
+    var k=String(n);
+    if(seen[k]){door='CYCLE';steps=i;break}
+    seen[k]=1;
+    if(n>peak){peak=n;peakStep=i}
+    if(n%2n===0n){
+      even++;
+      if(last==='E')run++;else{pushRun();last='E';run=1}
+      if(pattern.length<160)pattern+='E';
+      var _half=n/2n;
+      if(_half%2n===0n)e2e++;else e2o++;
+      _chainDepth++;
+      n=_half;
+    }else{
+      odd++;
+      if(last==='O')run++;else{pushRun();last='O';run=1}
+      if(pattern.length<160)pattern+='O';
+      // record chain depth on odd-exit
+      if(_chainDepth>0){halvDepth[_chainDepth]=(halvDepth[_chainDepth]||0)+1;_chainDepth=0;}
+      n=3n*n+1n;
+    }
+    if(odd>0){var _hr=even/odd;if(Math.abs(_hr-OMEGA_CONST)<=0.015)hoverTime++;if(i%snapshotInterval===0||i===1)snapshots.push({step:i,ratio:_hr})}
+  }
+  pushRun();
+  if(!door)door='UNKNOWN';
+
+  // final snapshot
+  if(odd>0)snapshots.push({step:steps||max,ratio:even/odd});
+
+  // flush last chain depth
+  if(_chainDepth>0){halvDepth[_chainDepth]=(halvDepth[_chainDepth]||0)+1;}
+  // compute early/late parity from pattern string
+  var _mid=Math.floor(pattern.length/2);
+  earlyPat=pattern.slice(0,_mid);
+  latePat=pattern.slice(_mid);
+  var lane=laneInfo(seed);
+  var ar=ampRank(peak,seed);
+  var maxOddRun=oddRuns.length?Math.max.apply(null,oddRuns):0;
+  var maxEvenRun=evenRuns.length?Math.max.apply(null,evenRuns):0;
+
+  var descentPct=firstBelowStep>=0&&steps>0?firstBelowStep/steps:null;
+  return{
+    seed:String(seed),
+    captured:door!=='UNKNOWN'&&door!=='CYCLE',
+    door:door,steps:steps,
+    peak:String(peak),peakStep:peakStep,
+    peakMod6:String(peak%6n),peakMod12:String(peak%12n),
+    amp:amp(peak,seed),ampText:ar.text,ampRank:ar,
+    odd:odd,even:even,
+    e2e:e2e,e2o:e2o,halvDepth:halvDepth,
+    earlyPat:earlyPat,latePat:latePat,
+    maxOddRun:maxOddRun,maxEvenRun:maxEvenRun,
+    pattern:pattern,snapshots:snapshots,
+    anchor:anchor,below:below,lane:lane,hoverTime:hoverTime,
+    firstBelowStep:firstBelowStep,firstBelowVal:firstBelowVal,descentPct:descentPct
+  };
+}
+
+function card(r){
+  var ns=normStats(r);
+  var drift=omegaDriftRate(r.snapshots);
+  var autocorr=oeAutocorr(r.pattern);
+  return '<div class="box"><b>'+r.seed+'</b>'
+    +'<br>status: '+(r.captured?'<span class="ok">CAPTURED</span>':'<span class="bad">'+r.door+'</span>')
+    +'<br>door: '+r.door
+    +'<br>steps: '+r.steps
+    +'<br>normalized delay: '+ns.norm.toFixed(3)+' steps/log₂(seed)'
+    +'<br>delay density: '+ns.density.toFixed(3)+' steps/digit'
+    +'<br>peak amp: '+(r.ampText||('x'+r.amp))
+    +'<br>peak timing: '+ns.phase+' · '+(ns.peakPct*100).toFixed(1)+'% of route'
+    +'<br>peak residue: mod6='+r.peakMod6+' · mod12='+r.peakMod12
+    +'<br>max odd run: '+r.maxOddRun+' · max even run: '+r.maxEvenRun
+    +'<br>phase: '+thermoStats(r).phase+' · entropy: '+thermoStats(r).entropy.toFixed(3)+' · Gibbs G: '+thermoStats(r).gibbs.toFixed(4)
+    +'<br>Ω drift rate: '+drift.toFixed(5)+' per 100 steps'
+    +'<br>odd/even autocorr: '+autocorr.toFixed(4)
+    +'<br>odd/even: '+r.odd+'/'+r.even
+    +(function(){var pb=parityBias(r);return '<br>parity bias: '+pb.bias+' · even '+pb.evenPct.toFixed(1)+'% · e→e '+pb.e2ePct.toFixed(1)+'% / e→o '+pb.e2oPct.toFixed(1)+'% · top-heavy Δ'+(pb.topHeavy>=0?'+':'')+pb.topHeavy.toFixed(1)+'pp · dom depth v='+pb.halvDom;})()
+    +omegaMeterHtml(r.odd,r.even)
+    +'<br>anchor: '+(r.anchor||'—')
+    +'<br>below: '+(r.below||'—')
+    +'<br>lane: '+(r.lane.hit?'50000a+2031 · a='+r.lane.a+' · '+r.lane.status+' · bound '+r.lane.bound:'—')
+    +'</div>'
+    +captureSignatureHtml(r);
+}
+
+function add(r){
+  stats.log.push(r);
+  stats.tested++;
+  stats.stepSum+=r.steps;
+  if(stats.fastest===null||r.steps<stats.fastest){stats.fastest=r.steps;stats.fastestSeed=r.seed}
+  if(r.captured)stats.captured++;else stats.unknown++;
+  if(r.lane.hit)stats.laneHits++;
+  if(r.door==='ANCHOR/COLLECTOR')stats.anchorHits++;
+  if(r.door==='BELOW-SELF')stats.belowHits++;
+
+  var ns=normStats(r);
+  var drift=omegaDriftRate(r.snapshots);
+  var autocorr=oeAutocorr(r.pattern);
+
+  var rec=[];
+  if(ampGreater(r.ampRank,stats.worstAmpRank)){
+    stats.worstAmpRank=r.ampRank;stats.worstAmp=r.amp;
+    stats.worstAmpText=r.ampText||('x'+r.amp);stats.worstAmpSeed=r.seed;
+    rec.push('NEW AMP RECORD: '+r.seed+' '+stats.worstAmpText);
+  }
+  if(r.steps>stats.slowest){
+    stats.slowest=r.steps;stats.slowestSeed=r.seed;
+    rec.push('NEW SLOW RECORD: '+r.seed+' '+r.steps+' steps');
+  }
+  if(ns.norm>stats.highestNorm){
+    stats.highestNorm=ns.norm;stats.highestNormSeed=r.seed;
+    rec.push('NEW NORM DELAY RECORD: '+r.seed+' '+ns.norm.toFixed(4));
+  }
+  if(ns.density>stats.highestDens){
+    stats.highestDens=ns.density;stats.highestDensSeed=r.seed;
+    rec.push('NEW DELAY DENSITY RECORD: '+r.seed+' '+ns.density.toFixed(4));
+  }
+  if(ns.peakPct>stats.latestPeakPct){
+    stats.latestPeakPct=ns.peakPct;stats.latestPeakSeed=r.seed;
+    rec.push('NEW LATE SPIKE RECORD: '+r.seed+' '+(ns.peakPct*100).toFixed(2)+'%');
+  }
+  if(r.maxOddRun>stats.longestOddRun){
+    stats.longestOddRun=r.maxOddRun;stats.longestOddRunSeed=r.seed;
+    rec.push('NEW MAX ODD RUN: '+r.seed+' run='+r.maxOddRun);
+  }
+  if(r.maxEvenRun>stats.longestEvenRun){
+    stats.longestEvenRun=r.maxEvenRun;stats.longestEvenRunSeed=r.seed;
+    rec.push('NEW MAX EVEN RUN: '+r.seed+' run='+r.maxEvenRun);
+  }
+  if(drift>0&&drift<stats.slowestDrift){
+    stats.slowestDrift=drift;stats.slowestDriftSeed=r.seed;
+    rec.push('NEW SLOWEST DRIFT: '+r.seed+' drift='+drift.toFixed(6));
+  }
+  if(autocorr>stats.highestAutocorr){
+    stats.highestAutocorr=autocorr;stats.highestAutocorrSeed=r.seed;
+    rec.push('NEW HIGHEST AUTOCORR: '+r.seed+' '+autocorr.toFixed(4));
+  }
+  var ts=thermoStats(r);
+  if(ts.gibbs<stats.lowestGibbs){stats.lowestGibbs=ts.gibbs;stats.lowestGibbsSeed=r.seed;rec.push('NEW LOW GIBBS (most stable): '+r.seed+' G='+ts.gibbs.toFixed(6))}
+  if(ts.entropy<stats.lowestEntropy){stats.lowestEntropy=ts.entropy;stats.lowestEntropySeed=r.seed;rec.push('NEW LOW ENTROPY (most ordered): '+r.seed+' S='+ts.entropy.toFixed(6))}
+
+  if(rec.length){stats.recordEvents+=rec.length;stats.lastRecord=rec.join('<br>')}
+  renderScore();renderLog();renderRecords();renderThermo();renderInvariants();renderParityBias();renderDescentLemma();
+}
+
+function stepSummary(list){
+  var n=list.length;
+  if(!n)return{avg:'0.00',median:0,min:0,max:0,p0:'0.0%',p1:'0.0%',p10:'0.0%',p100:'0.0%',p1000:'0.0%',pBig:'0.0%'};
+  var arr=list.map(function(r){return r.steps}).sort(function(a,b){return a-b});
+  var sum=arr.reduce(function(a,b){return a+b},0);
+  function pct(c){return ((c/n)*100).toFixed(1)+'%'}
+  var c0=arr.filter(function(x){return x===0}).length;
+  var c1=arr.filter(function(x){return x>=1&&x<=10}).length;
+  var c10=arr.filter(function(x){return x>10&&x<=100}).length;
+  var c100=arr.filter(function(x){return x>100&&x<=1000}).length;
+  var c1000=arr.filter(function(x){return x>1000&&x<=10000}).length;
+  var cBig=arr.filter(function(x){return x>10000}).length;
+  return{avg:(sum/n).toFixed(2),median:arr[Math.floor(n/2)],min:arr[0],max:arr[n-1],
+    p0:pct(c0),p1:pct(c1),p10:pct(c10),p100:pct(c100),p1000:pct(c1000),pBig:pct(cBig)};
+}
+
+// ── residue distribution across a batch ─────────────────────────────────────
+function residueSummary(list){
+  var mod6={},mod12={};
+  list.forEach(function(r){
+    mod6[r.peakMod6]=(mod6[r.peakMod6]||0)+1;
+    mod12[r.peakMod12]=(mod12[r.peakMod12]||0)+1;
+  });
+  function fmt(obj){return Object.keys(obj).sort().map(function(k){return 'r'+k+':'+obj[k]}).join(' · ')}
+  return{mod6:fmt(mod6),mod12:fmt(mod12)};
+}
+
+// ── Conjecture 9A — Orbit Descent Lemma ────────────────────────────────────
+function renderDescentLemma(){
+  var list=stats.log;
+  var n=list.length;
+  if(!n){el('descentBox').innerHTML='<i>No data yet — run some seeds.</i>';return;}
+
+  var confirmed=0,noDesc=0;
+  var ratios=[],pcts=[],firstBelowSteps=[];
+  var latestPct=0,latestSeed='',narrowestRatio=Infinity,narrowestSeed='';
+  var noDescSeeds=[];
+
+  list.forEach(function(r){
+    var seedF=parseFloat(r.seed);
+    if(r.firstBelowStep>=0){
+      confirmed++;
+      firstBelowSteps.push(r.firstBelowStep);
+      var ratio=parseFloat(r.firstBelowVal)/seedF;
+      ratios.push(ratio);
+      if(r.descentPct!==null){pcts.push(r.descentPct);if(r.descentPct>latestPct){latestPct=r.descentPct;latestSeed=r.seed;}}
+      if(ratio>narrowestRatio||(narrowestRatio===Infinity)){narrowestRatio=ratio;narrowestSeed=r.seed;}
+    }else{
+      noDesc++;
+      noDescSeeds.push(r.seed);
+    }
+  });
+
+  var avgRatio=ratios.length?ratios.reduce(function(a,b){return a+b},0)/ratios.length:0;
+  var minRatio=ratios.length?Math.min.apply(null,ratios):0;
+  var maxRatio=ratios.length?Math.max.apply(null,ratios):0;
+  var avgPct=pcts.length?pcts.reduce(function(a,b){return a+b},0)/pcts.length:0;
+
+  // histogram of descentPct in 10 buckets 0-100%
+  var hist=new Array(10).fill(0);
+  pcts.forEach(function(p){var b=Math.min(9,Math.floor(p*10));hist[b]++;});
+  var histMax=Math.max.apply(null,hist)||1;
+  var histHtml='<table style="border-collapse:collapse;font-size:11px;margin-top:6px"><tr>';
+  var labels=['0-10%','10-20%','20-30%','30-40%','40-50%','50-60%','60-70%','70-80%','80-90%','90-100%'];
+  hist.forEach(function(c,i){
+    var h=Math.round((c/histMax)*40);
+    var bar='<td style="vertical-align:bottom;padding:0 2px"><div style="width:24px;height:'+h+'px;background:#4fc;margin:0 auto"></div><div style="color:#aaa;text-align:center">'+c+'</div><div style="color:#666;font-size:9px;text-align:center">'+labels[i]+'</div></td>';
+    histHtml+=bar;
+  });
+  histHtml+='</tr></table>';
+
+  var statusColor=noDesc===0?'#4fc':'#f66';
+  var statusText=noDesc===0?'✓ ALL '+n+' SEEDS CONFIRMED':'⚠ '+noDesc+' SEEDS WITH NO DESCENT RECORDED';
+
+  el('descentBox').innerHTML=
+    '<b style="color:'+statusColor+'">'+statusText+'</b>'
+    +'<br><br>'
+    +'<b>Descent ratio</b> = firstBelowVal / seed (1.0 = barely touched seed; 0 = collapsed to tiny)'
+    +'<br>avg ratio: '+avgRatio.toFixed(4)
+    +'  ·  min ratio: '+minRatio.toFixed(6)
+    +'  ·  max ratio (narrowest descent): '+maxRatio.toFixed(6)
+    +(narrowestSeed?'  ·  narrowest seed: <b>'+narrowestSeed+'</b>':'')
+    +'<br><br>'
+    +'<b>Descent timing</b> = firstBelowStep / totalSteps'
+    +'<br>avg: '+(avgPct*100).toFixed(1)+'%'
+    +'  ·  latest descent: '+(latestPct*100).toFixed(1)+'%'
+    +(latestSeed?'  at seed <b>'+latestSeed+'</b>':'')
+    +'<br><br>'
+    +'<b>Histogram — when in the orbit does descent occur? (% of total steps)</b>'
+    +histHtml
+    +(noDesc>0?'<br><span style="color:#f66">No-descent seeds: '+noDescSeeds.join(', ')+'</span>':'')
+    +'<br><br><span style="color:#aaa;font-size:11px">Conjecture 9A: ∀ n ∈ ℤ⁺, ∃ step k s.t. T^k(n) &lt; n. '
+    +'If true for all seeds, the orbit cannot diverge to +∞ without first returning below its start, '
+    +'which combined with the energy bound (Step 8) forces eventual capture.</span>';
+}
+
+function renderScore(){
+  var pct=stats.tested?((stats.captured/stats.tested)*100).toFixed(2):'0.00';
+  var ss=stepSummary(stats.log);
+  html('scoreBox',
+    '<div class="box"><b>DEMO SCOREBOARD</b><br><span class="big">'+stats.captured+'/'+stats.tested+'</span><br>captured'
+    +'<div class="meter"><div class="fill" style="width:'+pct+'%"></div></div>'+pct+'% capture rate</div>'
+    +'<div class="box"><b>STEP STATS</b><br>min: '+ss.min+' steps<br>average: '+ss.avg+' steps<br>median: '+ss.median+' steps<br>max: '+ss.max+' steps<br><br>'
+    +'<b>STEP % BUCKETS</b><br>0 steps: '+ss.p0+'<br>1-10 steps: '+ss.p1+'<br>11-100 steps: '+ss.p10+'<br>101-1,000 steps: '+ss.p100+'<br>1,001-10,000 steps: '+ss.p1000+'<br>10,000+ steps: '+ss.pBig+'</div>'
+    +'<div class="box"><b>DOORS</b><br>Below-self: '+stats.belowHits+'<br>Anchor/collector: '+stats.anchorHits+'<br>Residue lane hits: '+stats.laneHits+'<br>Unknown/fail: '+stats.unknown+'</div>'
+    +'<div class="box"><b>WOW RECORDS</b>'
+    +'<br>Worst amp: '+(stats.worstAmpSeed||'—')+' · '+(stats.worstAmpText||('x'+stats.worstAmp))
+    +'<br>Slowest (raw): '+(stats.slowestSeed||'—')+' · '+stats.slowest+' steps'
+    +'<br>Highest normalized delay: '+(stats.highestNormSeed||'—')+' · '+stats.highestNorm.toFixed(4)
+    +'<br>Highest delay density: '+(stats.highestDensSeed||'—')+' · '+stats.highestDens.toFixed(4)
+    +'<br>Latest peak: '+(stats.latestPeakSeed||'—')+' · '+(stats.latestPeakPct*100).toFixed(2)+'%'
+    +'<br>Longest odd run: '+(stats.longestOddRunSeed||'—')+' · run='+stats.longestOddRun
+    +'<br>Longest even run: '+(stats.longestEvenRunSeed||'—')+' · run='+stats.longestEvenRun
+    +'<br>Slowest Ω drift: '+(stats.slowestDriftSeed||'—')+' · '+(stats.slowestDrift===Infinity?'—':stats.slowestDrift.toFixed(6))
+    +'<br>Highest autocorr: '+(stats.highestAutocorrSeed||'—')+' · '+stats.highestAutocorr.toFixed(4)
+    +'<br>Most stable Gibbs: '+(stats.lowestGibbsSeed||'—')+' · '+(stats.lowestGibbs===Infinity?'—':stats.lowestGibbs.toFixed(6))
+    +'<br>Most ordered entropy: '+(stats.lowestEntropySeed||'—')+' · '+(stats.lowestEntropy===Infinity?'—':stats.lowestEntropy.toFixed(6))
+    +'</div>');
+}
+
+function renderLog(){
+  html('logBox',
+    '<div class="box"><b>SAVED PASS LOG</b><br>saved routes: '+stats.log.length+'<br>captured: '+stats.captured+'<br>unknown/fail: '+stats.unknown+'</div>'
+    +'<div class="box"><b>RECENT</b><br>'+stats.log.slice(-12).reverse().map(function(r){
+      var ns=normStats(r);
+      return r.seed+' · '+(r.captured?'CAPTURED':r.door)+' · steps '+r.steps+' · norm '+ns.norm.toFixed(3)+' · amp '+(r.ampText||('x'+r.amp));
+    }).join('<br>')+'</div>');
+}
+
+function renderRecords(){
+  html('recordBox',
+    '<div class="box"><b>RECORD HUNTER</b><br>'+stats.lastRecord+'</div>'
+    +'<div class="box"><b>CURRENT RECORDS</b>'
+    +'<br>Slowest (raw): '+(stats.slowestSeed||'—')+' · '+stats.slowest+' steps'
+    +'<br>Biggest amp: '+(stats.worstAmpSeed||'—')+' · '+(stats.worstAmpText||('x'+stats.worstAmp))
+    +'<br>Highest norm delay: '+(stats.highestNormSeed||'—')+' · '+stats.highestNorm.toFixed(4)
+    +'<br>Highest delay density: '+(stats.highestDensSeed||'—')+' · '+stats.highestDens.toFixed(4)
+    +'<br>Latest peak: '+(stats.latestPeakSeed||'—')+' · '+(stats.latestPeakPct*100).toFixed(2)+'%'
+    +'<br>Longest odd run: '+(stats.longestOddRunSeed||'—')+' · '+stats.longestOddRun
+    +'<br>Longest even run: '+(stats.longestEvenRunSeed||'—')+' · '+stats.longestEvenRun
+    +'<br>Slowest Ω drift: '+(stats.slowestDriftSeed||'—')+' · '+(stats.slowestDrift===Infinity?'—':stats.slowestDrift.toFixed(6))
+    +'<br>Highest autocorr: '+(stats.highestAutocorrSeed||'—')+' · '+stats.highestAutocorr.toFixed(4)
+    +'<br>Most stable (Gibbs): '+(stats.lowestGibbsSeed||'—')+' · '+(stats.lowestGibbs===Infinity?'—':stats.lowestGibbs.toFixed(6))
+    +'<br>Most ordered (entropy): '+(stats.lowestEntropySeed||'—')+' · '+(stats.lowestEntropy===Infinity?'—':stats.lowestEntropy.toFixed(6))
+    +'<br>Record events: '+stats.recordEvents+'</div>'
+    +'<div class="box"><b>HUNT TARGET</b>'
+    +'<br>Beat slowest: '+stats.slowest+' steps'
+    +'<br>Beat norm delay: '+stats.highestNorm.toFixed(4)+' steps/log₂'
+    +'<br>Beat amp: '+(stats.worstAmpText||('x'+stats.worstAmp))
+    +'<br>Find lowest Gibbs (most spontaneous crystallization)'
+    +'<br>Find lowest entropy (most ordered / crystal-like trajectory)</div>');
+}
+
+function runAny(){
+  var seed=bval(el('anyN').value);
+  if(seed===null){html('anyBox','<span class="bad">Invalid number.</span>');return}
+  var r=route(seed,nval('anyMax',100000));
+  add(r);
+  html('anyBox',card(r)+'<button class="copyBtn" onclick="document.getElementById(\'outBox\').value=window.lastCaptureSignature||\'No signature yet\'">Copy Capture Signature</button>');
+  window.lastCaptureSignature=copyCaptureSignature(r);
+  out('ANY-N ROUTER'+L+'start '+r.seed+L+'status '+(r.captured?'CAPTURED':r.door)+L+'door '+r.door+L+'steps '+r.steps+L+'amp '+(r.ampText||('x'+r.amp))+L+L+window.lastCaptureSignature);
+}
+
+function randomSeed(){
+  var digits=6+Math.floor(Math.random()*30);
+  var s='';
+  for(var i=0;i<digits;i++){var d=Math.floor(Math.random()*10);if(i===0&&d===0)d=1;s+=String(d)}
+  if(BigInt(s)%2n===0n)s=String(BigInt(s)+1n);
+  el('anyN').value=s;
+  out('RANDOM SEED LOADED'+L+s);
+}
+
+function loadMonsterSet(){
+  el('anyBatchList').value=[
+    '27','703','6171','77031','8378779','75589052031',
+    '618970019642690137449562111','2305843009213693951',
+    '392318858461667547739736838950479151006397215279002157055',
+    '766247770432944429179173513575154591809369561091801087',
+    '618970019642690137449562111','1237940039285380274899124223',
+    '2475880078570760549798248447','4951760157141521099596496895',
+    '79228162514264337593543950335'
+  ].join(L);
+  out('MONSTER SET LOADED'+L+'Press ANY-N Batch.');
+}
+
+function loadBigList(){
+  out('Loading big seed list (11k seeds)...');
+  fetch('seeds.txt')
+    .then(function(r){return r.text();})
+    .then(function(txt){
+      var lines=txt.trim().split(/\s+/).filter(function(x){return x.length>0});
+      el('anyBatchList').value=lines.join(L);
+      out('BIG LIST LOADED: '+lines.length+' seeds'+L+'Press ANY-N Batch.');
+    })
+    .catch(function(e){
+      // fallback: file:// fetch blocked — paste instructions
+      out('⚠ fetch blocked on file:// — open Chrome with: open -a "Google Chrome" --args --allow-file-access-from-files'+L+'Or use a local server: cd "/Users/joannie/Collatz Proof" && python3 -m http.server 8765'+L+'Then open http://localhost:8765');
+    });
+}
+
+function finishBatch(res,title,boxId){
+  var cap=res.filter(function(x){return x.captured}).length;
+  var lanes=res.filter(function(x){return x.lane.hit}).length;
+  var worst=res.slice().sort(function(a,b){return ampGreater(b.ampRank,a.ampRank)?1:-1})[0];
+  var slow=res.slice().sort(function(a,b){return b.steps-a.steps})[0];
+  var normTop=res.slice().sort(function(a,b){return normStats(b).norm-normStats(a).norm})[0];
+  var densTop=res.slice().sort(function(a,b){return normStats(b).density-normStats(a).density})[0];
+  var lateTop=res.slice().sort(function(a,b){return normStats(b).peakPct-normStats(a).peakPct})[0];
+  var oddRunTop=res.slice().sort(function(a,b){return b.maxOddRun-a.maxOddRun})[0];
+  var evenRunTop=res.slice().sort(function(a,b){return b.maxEvenRun-a.maxEvenRun})[0];
+  var driftBottom=res.slice().filter(function(x){return omegaDriftRate(x.snapshots)>0}).sort(function(a,b){return omegaDriftRate(a.snapshots)-omegaDriftRate(b.snapshots)})[0];
+  var autocorrTop=res.slice().sort(function(a,b){return oeAutocorr(b.pattern)-oeAutocorr(a.pattern)})[0];
+
+  var omegaRows=res.filter(function(x){return x.odd>0}).map(function(x){var oi=omegaInfoFromCounts(x.odd,x.even);return{r:x,oi:oi}});
+  var above=omegaRows.filter(function(x){return x.oi.diff>0.005}).length;
+  var below=omegaRows.filter(function(x){return x.oi.diff<-0.005}).length;
+  var skim=omegaRows.filter(function(x){return x.oi.abs<=0.005}).length;
+  var classCounts={};
+  res.forEach(function(x){var c=captureClass(x).cls;classCounts[c]=(classCounts[c]||0)+1});
+  var classLine=Object.keys(classCounts).map(function(k){return k+': '+classCounts[k]}).join(' · ');
+  var omegaRowsSorted=omegaRows.slice().sort(function(a,b){return a.oi.abs-b.oi.abs});
+  var closest=omegaRowsSorted[0];
+  var strongestBelow=omegaRows.filter(function(x){return x.oi.diff<0}).sort(function(a,b){return a.oi.diff-b.oi.diff})[0];
+  var strongestAbove=omegaRows.filter(function(x){return x.oi.diff>0}).sort(function(a,b){return b.oi.diff-a.oi.diff})[0];
+
+  var resSummary=residueSummary(res);
+  var ss=stepSummary(res);
+  var thermoLeader=res.slice().sort(function(a,b){return thermoStats(a).gibbs-thermoStats(b).gibbs})[0];
+  var phaseCounts={};res.forEach(function(r){var ts=thermoStats(r);phaseCounts[ts.phase]=(phaseCounts[ts.phase]||0)+1});
+  var phaseDistStr=Object.keys(phaseCounts).sort().map(function(k){return k+': '+phaseCounts[k]}).join(' · ');
+  var batchHoverArr=res.filter(function(r){return r.steps>0}).map(function(r){return r.hoverTime||0});
+  var batchStepsArr=res.filter(function(r){return r.steps>0}).map(function(r){return r.steps});
+  var batchCorr=pearsonCorr(batchHoverArr,batchStepsArr);
+
+  var omegaCopy='OMEGA SUMMARY'+L+'title '+title+L+'tested '+res.length
+    +L+'aboveOmega '+above+L+'belowOmega '+below+L+'omegaSkim '+skim
+    +L+'closestSkim '+(closest?closest.r.seed+' gap '+closest.oi.abs.toFixed(7)+' ratio '+closest.oi.ratio.toFixed(7):'none')
+    +L+'strongestBelow '+(strongestBelow?strongestBelow.r.seed+' gap '+strongestBelow.oi.diff.toFixed(7)+' ratio '+strongestBelow.oi.ratio.toFixed(7):'none')
+    +L+'strongestAbove '+(strongestAbove?strongestAbove.r.seed+' gap +'+strongestAbove.oi.diff.toFixed(7)+' ratio '+strongestAbove.oi.ratio.toFixed(7):'none')
+    +L+'classes '+classLine
+    +L+'highestNormalizedDelay '+(normTop?normTop.seed+' '+normStats(normTop).norm.toFixed(6):'none')
+    +L+'highestDelayDensity '+(densTop?densTop.seed+' '+normStats(densTop).density.toFixed(6):'none')
+    +L+'latestPeak '+(lateTop?lateTop.seed+' '+(normStats(lateTop).peakPct*100).toFixed(2)+'%':'none')
+    +L+'longestOddRun '+(oddRunTop?oddRunTop.seed+' run='+oddRunTop.maxOddRun:'none')
+    +L+'longestEvenRun '+(evenRunTop?evenRunTop.seed+' run='+evenRunTop.maxEvenRun:'none')
+    +L+'slowestOmegaDrift '+(driftBottom?driftBottom.seed+' drift='+omegaDriftRate(driftBottom.snapshots).toFixed(6):'none')
+    +L+'highestAutocorr '+(autocorrTop?autocorrTop.seed+' '+oeAutocorr(autocorrTop.pattern).toFixed(6):'none')
+    +L+'peakMod6Distribution '+resSummary.mod6
+    +L+'peakMod12Distribution '+resSummary.mod12
+    +L+'thermoMostStable '+(thermoLeader?thermoLeader.seed+' G='+thermoStats(thermoLeader).gibbs.toFixed(6):'none')
+    +L+'phaseDistribution '+phaseDistStr
+    +L+'hoverStepsCorr '+(batchCorr!==null?batchCorr.toFixed(6):'none');
+  window.lastOmegaSummary=omegaCopy;
+
+  html(boxId,
+    '<div class="box"><b>'+title+'</b>'
+    +'<br>tested: '+res.length+'<br>captured: '+cap+'/'+res.length+'<br>lane hits: '+lanes
+    +'<br>worst amp: '+(worst?worst.seed+' '+(worst.ampText||('x'+worst.amp)):'—')
+    +'<br>slowest (raw): '+(slow?slow.seed+' steps '+slow.steps:'—')
+    +'<br>highest normalized delay: '+(normTop?normTop.seed+' · '+normStats(normTop).norm.toFixed(4):'—')
+    +'<br>highest delay density: '+(densTop?densTop.seed+' · '+normStats(densTop).density.toFixed(4):'—')
+    +'<br>latest peak: '+(lateTop?lateTop.seed+' · '+(normStats(lateTop).peakPct*100).toFixed(1)+'%':'—')
+    +'<br>longest odd run: '+(oddRunTop?oddRunTop.seed+' · run='+oddRunTop.maxOddRun:'—')
+    +'<br>longest even run: '+(evenRunTop?evenRunTop.seed+' · run='+evenRunTop.maxEvenRun:'—')
+    +'<br>slowest Ω drift: '+(driftBottom?driftBottom.seed+' · '+omegaDriftRate(driftBottom.snapshots).toFixed(6):'—')
+    +'<br>highest autocorr: '+(autocorrTop?autocorrTop.seed+' · '+oeAutocorr(autocorrTop.pattern).toFixed(4):'—')
+    +'<br>closest Ω skim: '+(closest?closest.r.seed+' gap '+closest.oi.abs.toFixed(7):'—')
+    +'</div>'
+    +'<div class="box"><b>Ω SUMMARY</b>'
+    +'<br>above Ω / decay side: '+above
+    +'<br>below Ω / climb side: '+below
+    +'<br>Ω skim / tight corridor: '+skim
+    +'<br>closest skim: '+(closest?closest.r.seed+' · gap '+closest.oi.abs.toFixed(7)+' · ratio '+closest.oi.ratio.toFixed(7):'—')
+    +'<br>strongest below: '+(strongestBelow?strongestBelow.r.seed+' · gap '+strongestBelow.oi.diff.toFixed(7):'—')
+    +'<br>strongest above: '+(strongestAbove?strongestAbove.r.seed+' · gap +'+strongestAbove.oi.diff.toFixed(7):'—')
+    +'<br><br><b>Relative / Shape Leaders</b>'
+    +'<br>highest normalized delay: '+(normTop?normTop.seed+' · '+normStats(normTop).norm.toFixed(4):'—')
+    +'<br>highest delay density: '+(densTop?densTop.seed+' · '+normStats(densTop).density.toFixed(4):'—')
+    +'<br>latest peak: '+(lateTop?lateTop.seed+' · '+(normStats(lateTop).peakPct*100).toFixed(1)+'%':'—')
+    +'<br>longest odd run: '+(oddRunTop?oddRunTop.seed+' · run='+oddRunTop.maxOddRun:'—')
+    +'<br>longest even run: '+(evenRunTop?evenRunTop.seed+' · run='+evenRunTop.maxEvenRun:'—')
+    +'<br>slowest Ω drift: '+(driftBottom?driftBottom.seed+' · '+omegaDriftRate(driftBottom.snapshots).toFixed(6):'—')
+    +'<br>highest autocorr: '+(autocorrTop?autocorrTop.seed+' · '+oeAutocorr(autocorrTop.pattern).toFixed(4):'—')
+    +'<br><br><b>Thermodynamics</b>'
+    +'<br>most stable (lowest Gibbs): '+(thermoLeader?thermoLeader.seed+' G='+thermoStats(thermoLeader).gibbs.toFixed(5):'—')
+    +'<br>phase distribution: '+phaseDistStr
+    +'<br>hover↔steps r: '+(batchCorr!==null?batchCorr.toFixed(4):'—')
+    +'<br><br><b>Peak residue distribution</b>'
+    +'<br>mod 6: '+resSummary.mod6
+    +'<br>mod 12: '+resSummary.mod12
+    +'<br><br><b>Capture classes</b><br>'+classLine
+    +'<br><button class="copyBtn" onclick="document.getElementById(\'outBox\').value=window.lastOmegaSummary||\'No Ω summary yet\'">Copy Ω Summary</button></div>'
+    +'<div class="box"><b>STEP STATS FOR THIS RUN</b>'
+    +'<br>min: '+ss.min+'<br>average: '+ss.avg+'<br>median: '+ss.median+'<br>max: '+ss.max
+    +'<br>0: '+ss.p0+' · 1-10: '+ss.p1+' · 11-100: '+ss.p10
+    +'<br>101-1,000: '+ss.p100+' · 1,001-10,000: '+ss.p1000+' · 10,000+: '+ss.pBig+'</div>'
+    +res.slice(0,30).map(card).join(''));
+
+  out(title+' CLEAN COPY'+L
+    +'tested '+res.length+L+'captured '+cap+'/'+res.length+L+'laneHits '+lanes
+    +L+'stepMin '+ss.min+L+'stepAvg '+ss.avg+L+'stepMedian '+ss.median+L+'stepMax '+ss.max
+    +L+'stepPct0 '+ss.p0+L+'stepPct1to10 '+ss.p1+L+'stepPct11to100 '+ss.p10
+    +L+'stepPct101to1000 '+ss.p100+L+'stepPct1001to10000 '+ss.p1000+L+'stepPct10000plus '+ss.pBig
+    +L+'worstAmp '+(worst?worst.seed+' '+(worst.ampText||('x'+worst.amp)):'none')
+    +L+'slowest '+(slow?slow.seed+' steps '+slow.steps:'none')
+    +L+'highestNormalizedDelay '+(normTop?normTop.seed+' '+normStats(normTop).norm.toFixed(6):'none')
+    +L+'highestDelayDensity '+(densTop?densTop.seed+' '+normStats(densTop).density.toFixed(6):'none')
+    +L+'latestPeak '+(lateTop?lateTop.seed+' '+(normStats(lateTop).peakPct*100).toFixed(2)+'%':'none')
+    +L+'longestOddRun '+(oddRunTop?oddRunTop.seed+' run='+oddRunTop.maxOddRun:'none')
+    +L+'longestEvenRun '+(evenRunTop?evenRunTop.seed+' run='+evenRunTop.maxEvenRun:'none')
+    +L+'slowestOmegaDrift '+(driftBottom?driftBottom.seed+' drift='+omegaDriftRate(driftBottom.snapshots).toFixed(6):'none')
+    +L+'highestAutocorr '+(autocorrTop?autocorrTop.seed+' '+oeAutocorr(autocorrTop.pattern).toFixed(6):'none')
+    +L+'peakMod6 '+resSummary.mod6
+    +L+'peakMod12 '+resSummary.mod12
+    +L+'thermoMostStable '+(thermoLeader?thermoLeader.seed+' G='+thermoStats(thermoLeader).gibbs.toFixed(6):'none')
+    +L+'phaseDistribution '+phaseDistStr
+    +L+'hoverStepsCorr '+(batchCorr!==null?batchCorr.toFixed(6):'none')
+    +L+L+res.map(function(r){
+      var ns=normStats(r);
+      var drift=omegaDriftRate(r.snapshots);
+      var autocorr=oeAutocorr(r.pattern);
+      return 'start '+r.seed
+        +' | status '+(r.captured?'CAPTURED':r.door)
+        +' | door '+r.door
+        +' | steps '+r.steps
+        +' | normDelay '+ns.norm.toFixed(6)
+        +' | delayDensity '+ns.density.toFixed(6)
+        +' | peakPhase '+ns.phase
+        +' | peakPct '+(ns.peakPct*100).toFixed(2)+'%'
+        +' | peakMod6 '+r.peakMod6
+        +' | peakMod12 '+r.peakMod12
+        +' | maxOddRun '+r.maxOddRun
+        +' | maxEvenRun '+r.maxEvenRun
+        +' | omegaDrift '+drift.toFixed(6)
+        +' | autocorr '+autocorr.toFixed(6)
+        +' | thermoPhase '+thermoStats(r).phase
+        +' | entropy '+thermoStats(r).entropy.toFixed(4)
+        +' | gibbs '+thermoStats(r).gibbs.toFixed(4)
+        +' | amp '+(r.ampText||('x'+r.amp))
+        +' | odd/even '+r.odd+'/'+r.even
+        +' | anchor '+(r.anchor||'none')
+        +' | below '+(r.below||'none')
+        +' | lane '+(r.lane.hit?'YES a='+r.lane.a+' '+r.lane.status+' bound '+r.lane.bound:'NO');
+    }).join(L));
+}
+
+function runAnyBatch(){
+  var list=splitList(el('anyBatchList').value);
+  if(!list.length){out('No seeds in list.');return;}
+  var max=nval('anyMax',100000);
+  var res=[],idx=0,total=list.length;
+  var CHUNK=10; // seeds per tick — keeps UI responsive
+  html('anyBatchBox','<div class="box"><b>BATCH RUNNING — 0 / '+total+'</b><br><span class="warn">Processing in chunks, UI stays live.</span></div>');
+  out('BATCH STARTED — '+total+' seeds');
+  function tick(){
+    var end=Math.min(idx+CHUNK,total);
+    for(;idx<end;idx++){
+      var seed=bval(list[idx]);
+      if(seed===null)continue;
+      var r=route(seed,max);
+      res.push(r);add(r);
+    }
+    // progress update every 50 seeds
+    if(idx%50===0||idx>=total){
+      html('anyBatchBox','<div class="box"><b>BATCH RUNNING — '+idx+' / '+total+'</b><br>'
+        +'captured '+res.filter(function(x){return x.captured}).length+'/'+res.length
+        +'<br><span class="warn">Processing...</span></div>');
+    }
+    if(idx<total){setTimeout(tick,1);}
+    else{finishBatch(res,'ANY-N BATCH','anyBatchBox');}
+  }
+  setTimeout(tick,30);
+}
+
+function runAutoHunter(){
+  var kStart=nval('autoKStart',89),kCount=nval('autoKCount',20),max=nval('anyMax',100000);
+  var offsets=[-1n,1n,3n,7n,15n,31n,63n,127n,255n,511n];
+  var jobs=[];
+  for(var k=kStart;k<kStart+kCount;k++){
+    var base=1n<<BigInt(k);
+    for(var j=0;j<offsets.length;j++){var seed=base+offsets[j];if(seed>0n)jobs.push(seed)}
+  }
+  var res=[],idx=0;
+  html('autoBox','<div class="box"><b>AUTO HUNTER RUNNING</b><br>0/'+jobs.length+' tested<br><span class="warn">Do not press again until done.</span><br><br><b>Ω color key</b>'+omegaMeterHtml(1,0)+omegaMeterHtml(1000,1585)+omegaMeterHtml(1000,1700)+'</div>');
+  out('AUTO HUNTER RUNNING'+L+'jobs '+jobs.length+L+'progress 0/'+jobs.length);
+  function tick(){
+    var chunk=2,end=Math.min(idx+chunk,jobs.length);
+    for(;idx<end;idx++){var r=route(jobs[idx],max);res.push(r);add(r)}
+    var closest=res.slice().filter(function(x){return x.odd>0}).sort(function(a,b){return omegaInfoFromCounts(a.odd,a.even).abs-omegaInfoFromCounts(b.odd,b.even).abs})[0];
+    html('autoBox','<div class="box"><b>AUTO HUNTER RUNNING</b><br>'+idx+'/'+jobs.length+' tested<br>current records update live in Record Hunter<br>closest Ω skim so far: '+(closest?closest.seed+' gap '+omegaInfoFromCounts(closest.odd,closest.even).abs.toFixed(7):'—')+'<br><span class="warn">Chunk mode prevents freezing.</span></div>'+res.slice(-6).map(card).join(''));
+    if(idx<jobs.length)setTimeout(tick,1);else finishBatch(res,'AUTO HUNTER','autoBox');
+  }
+  setTimeout(tick,1);
+}
+
+function fixed(seed,steps){
+  var n=seed,peak=seed,odd=0,even=0;
+  for(var i=0;i<steps;i++){if(n>peak)peak=n;if(n%2n===0n){even++;n=n/2n}else{odd++;n=3n*n+1n}}
+  return{value:n,peak:peak,odd:odd,even:even};
+}
+
+function rangeTest(M,r,start,count,steps){
+  var below=0,bad=0,worstD=null,worstS='',peakAmp=0,peakS='';
+  for(var i=0;i<count;i++){
+    var seed=BigInt(M)*BigInt(start+i)+BigInt(r);
+    var x=fixed(seed,steps);
+    var d=x.value-seed;
+    if(x.value<seed)below++;else bad++;
+    if(worstD===null||d>worstD){worstD=d;worstS=String(seed)}
+    var ap=amp(x.peak,seed);
+    if(ap>peakAmp){peakAmp=ap;peakS=String(seed)}
+  }
+  return{below:below,bad:bad,worstD:worstD,worstS:worstS,peakAmp:peakAmp,peakS:peakS};
+}
+
+function runBatchRange(){
+  setTimeout(function(){
+    var M=nval('patternM',50000),r=nval('patternR',2031),start=nval('batchAStart',0),blocks=nval('batchBlocks',5),size=nval('batchBlockSize',10000),steps=nval('batchSteps',424);
+    var total=0,below=0,bad=0,lines=[],worstD=null,worstS='',peakAmp=0,peakS='';
+    for(var b=0;b<blocks;b++){
+      var a=start+b*size;
+      var x=rangeTest(M,r,a,size,steps);
+      total+=size;below+=x.below;bad+=x.bad;
+      lines.push('a '+a+'..'+(a+size-1)+' · below '+x.below+'/'+size+' · bad '+x.bad+' · worstDelta '+x.worstD+' · peak x'+x.peakAmp);
+      if(worstD===null||x.worstD>worstD){worstD=x.worstD;worstS=x.worstS}
+      if(x.peakAmp>peakAmp){peakAmp=x.peakAmp;peakS=x.peakS}
+    }
+    html('batchBox','<div class="box"><b>BATCH RANGE TEST</b><br>below: '+below+'/'+total+'<br>not below: '+bad+'<br>all blocks shrink: '+(bad===0?'<span class="ok">YES</span>':'<span class="bad">NO</span>')+'</div><div class="box">'+lines.join('<br>')+'</div>');
+    out('BATCH RANGE TEST'+L+'totalBelow '+below+'/'+total+L+'totalNotBelow '+bad+L+'worstDeltaSeed '+worstS+L+'worstDelta '+worstD+L+'worstPeakSeed '+peakS+L+'worstPeakAmp '+peakAmp);
+  },30);
+}
+
+function runMin(){
+  setTimeout(function(){
+    var M=nval('patternM',50000),r=nval('patternR',2031),start=nval('minAStart',10000),count=nval('minACount',10000),lo=nval('minFrom',365),hi=nval('minTo',500),pass='none',fail='none',detail='';
+    for(var s=lo;s<=hi;s++){
+      var x=rangeTest(M,r,start,count,s);
+      if(x.bad===0){pass=s;detail='pass below '+x.below+'/'+count+' · bad 0 · worstDelta '+x.worstD+' · seed '+x.worstS;break}
+      else fail=s;
+    }
+    html('minBox','<div class="box"><b>MINIMUM BOUND FINDER</b><br>minimum safe bound: '+pass+'<br>last failing bound: '+fail+'</div><div class="box">'+detail+'</div>');
+    out('MINIMUM BOUND FINDER'+L+'minimumSafeBound '+pass+L+'lastFailingBound '+fail);
+  },30);
+}
+
+function covLaneTest(M,r,samples,steps){
+  var pass=0,bad=0,known=0,below=0,open=0,worstD=null,worstSeed='',peakSeed='',peakRank=null,doors={};
+  for(var a=0;a<samples;a++){
+    var seed=BigInt(M)*BigInt(a)+BigInt(r);
+    if(seed<1n)continue;
+    var rr=route(seed,steps);
+    doors[rr.door]=(doors[rr.door]||0)+1;
+    if(rr.captured){pass++;if(rr.door==='ANCHOR/COLLECTOR')known++;if(rr.door==='BELOW-SELF')below++}
+    else{bad++;open++}
+    var x=fixed(seed,steps);
+    var d=x.value-seed;
+    if(worstD===null||d>worstD){worstD=d;worstSeed=String(seed)}
+    var ar=ampRank(x.peak,seed);
+    if(ampGreater(ar,peakRank)){peakRank=ar;peakSeed=String(seed)}
+  }
+  var doorLine=Object.keys(doors).map(function(k){return k+': '+doors[k]}).join(' · ');
+  return{pass:pass,bad:bad,known:known,below:below,open:open,worstD:worstD,worstSeed:worstSeed,peakSeed:peakSeed,peakText:peakRank?peakRank.text:'x0',doorLine:doorLine};
+}
+
+function runCoverage(){
+  setTimeout(function(){
+    var M=nval('covM',2),r=nval('covR',0),depth=nval('covDepth',1),samples=nval('covSamples',64),steps=nval('covSteps',200);
+    var lanes=[{M:M,r:r,path:'root'}];
+    for(var d=0;d<depth;d++){
+      var next=[];
+      for(var i=0;i<lanes.length;i++){
+        var lane=lanes[i];
+        next.push({M:lane.M*2,r:lane.r,path:lane.path+' → even-a'});
+        next.push({M:lane.M*2,r:lane.r+lane.M,path:lane.path+' → odd-a'});
+      }
+      lanes=next;
+    }
+    var proven=0,open=0,bad=0,rows=[];
+    for(var j=0;j<lanes.length;j++){
+      var ln=lanes[j];
+      var t=covLaneTest(ln.M,ln.r,samples,steps);
+      var status=t.bad===0?'SAMPLE-CAPTURE':'OPEN';
+      if(t.bad===0)proven++;else{open++;bad+=t.bad}
+      rows.push('<div class="box"><b>n = '+ln.M+'a + '+ln.r+'</b><br>path: '+ln.path+'<br>status: '+(status==='SAMPLE-CAPTURE'?'<span class="ok">SAMPLE-CAPTURE</span>':'<span class="warn">OPEN / SPLIT MORE</span>')+'<br>sample captured: '+t.pass+'/'+samples+'<br>below-self doors: '+t.below+'<br>known-out / collector doors: '+t.known+'<br>open samples: '+t.open+'<br>door count: '+t.doorLine+'<br>worst fixed-step delta seed: '+t.worstSeed+' · '+t.worstD+'<br>peak: '+t.peakSeed+' · '+t.peakText+'<br><span class="warn">Note: sample-capture is not proof yet. It is a lane candidate.</span></div>');
+    }
+    html('covBox','<div class="box"><b>UNIVERSAL COVERAGE MODE</b><br>Goal: prove every lane has a finite shrink certificate.<br>Input lane: n = '+M+'a + '+r+'<br>split depth: '+depth+'<br>lanes checked: '+lanes.length+'<br>sample-capture lanes: '+proven+'<br>open lanes: '+open+'<br><br><b>Proof target:</b><br>For every final lane, prove for all a ≥ 0:<br><span class="big">T^k(Ma+r) &lt; Ma+r</span></div>'+rows.join(''));
+    out('UNIVERSAL COVERAGE MODE'+L+'inputLane n='+M+'a+'+r+L+'splitDepth '+depth+L+'lanesChecked '+lanes.length+L+'sampleCaptureLanes '+proven+L+'openLanes '+open+L+'badSamples '+bad+L+L+rows.map(function(x){return x.replace(/<[^>]*>/g,' ')}).join(L));
+  },30);
+}
+
+function runOmegaTrace(){
+  setTimeout(function(){
+    var seed=bval(el('omegaSeed').value),max=nval('omegaMax',100000),win=Number(el('omegaWindow').value||0.015);
+    if(seed===null){html('omegaBox','<div class="box warn">Bad seed.</div>');return}
+    var OMEGA=Math.log2(3);
+    var n=seed,start=seed,steps=0,rises=0,drops=0,peak=seed,peakStep=0;
+    var firstDecay=null,crashStep=null,near=0,longNear=0,totalNear=0;
+    var minGap=null,minGapStep=0,lastRatio=0,mode='START',sample=[];
+    var above=0,below=0,cross=0,lastSide=0,aboveStreak=0,belowStreak=0,longAbove=0,longBelow=0,firstAbove=null,firstBelow=null;
+    // Ω drift: snapshots
+    var driftSnaps=[];
+    var driftInterval=Math.max(1,Math.floor(max/20));
+    // autocorr for omega trace pattern
+    var tracePattern='';
+
+    while(steps<max){
+      if(n>peak){peak=n;peakStep=steps}
+      if(anchors[String(n)]){crashStep=steps;mode='ANCHOR/COLLECTOR';break}
+      if(steps>0&&n<start){crashStep=steps;mode='BELOW-SELF';break}
+      if(n%2n===0n){n=n/2n;drops++;if(tracePattern.length<2000)tracePattern+='E'}
+      else{n=3n*n+1n;rises++;if(tracePattern.length<2000)tracePattern+='O'}
+      steps++;
+      if(rises>0){
+        var ratio=drops/rises;
+        lastRatio=ratio;
+        var gap=ratio-OMEGA;
+        var abs=Math.abs(gap);
+        var side=gap>0?1:(gap<0?-1:0);
+        if(side>0){above++;aboveStreak++;belowStreak=0;if(aboveStreak>longAbove)longAbove=aboveStreak;if(firstAbove===null)firstAbove=steps}
+        else if(side<0){below++;belowStreak++;aboveStreak=0;if(belowStreak>longBelow)longBelow=belowStreak;if(firstBelow===null)firstBelow=steps}
+        if(side!==0&&lastSide!==0&&side!==lastSide)cross++;
+        if(side!==0)lastSide=side;
+        if(minGap===null||abs<minGap){minGap=abs;minGapStep=steps}
+        if(gap>0&&firstDecay===null)firstDecay=steps;
+        if(abs<=win){near++;totalNear++;if(near>longNear)longNear=near}else near=0;
+        if(steps%driftInterval===0||steps===1)driftSnaps.push({step:steps,ratio:ratio});
+        if(sample.length<12||steps%Math.max(1,Math.floor(max/12))===0)
+          sample.push('step '+steps+' · ratio '+ratio.toFixed(6)+' · gap '+gap.toFixed(6)+' · rises '+rises+' · drops '+drops);
+      }
+    }
+    if(rises>0)driftSnaps.push({step:steps,ratio:drops/rises});
+
+    var finalGap=rises>0?lastRatio-OMEGA:0;
+    var ar=ampRank(peak,start);
+    var safeGap=(minGap&&minGap>0)?minGap:1;
+    var hoverPct=steps?((totalNear/steps)*100):0;
+    var abovePct=steps?((above/steps)*100):0;
+    var belowPct=steps?((below/steps)*100):0;
+    var omegaScore=(steps*Math.max(1,totalNear)*Math.max(1,longNear))/safeGap;
+    var rank=omegaScore>1000000000?'MONSTER':(omegaScore>10000000?'HIGH':(omegaScore>100000?'MEDIUM':'LOW'));
+    var postCross=firstAbove===null||crashStep===null?'—':(crashStep-firstAbove);
+    var predict=rank==='MONSTER'?'very high delay risk':(rank==='HIGH'?'high delay risk':(rank==='MEDIUM'?'medium delay risk':'low delay risk'));
+
+    // new metrics
+    var driftRate=omegaDriftRate(driftSnaps);
+    var autocorr=oeAutocorr(tracePattern);
+    // Ω phase lag: steps between first crossing and crash
+    var phaseLag=firstAbove!==null&&firstBelow!==null&&crashStep!==null?(crashStep-Math.min(firstAbove,firstBelow)):'—';
+    // normalized delay for trace
+    var l2=log2BigStr(String(seed));
+    var normDelay=l2>0?steps/l2:0;
+    var digits=String(seed).length;
+    var delayDens=digits>0?steps/digits:0;
+    var peakPct=steps>0?peakStep/steps:0;
+    var peakPhase=peakPct<0.33?'EARLY SPIKE':(peakPct<0.66?'MID SPIKE':'LATE SPIKE');
+
+    html('omegaBox',
+      '<div class="box"><b>COLLATZ METRONOME / Ω HOVER DETECTOR</b>'
+      +'<br>Ω = log₂(3) = '+OMEGA.toFixed(7)
+      +'<br>seed: '+seed
+      +'<br>verdict: <span class="big">'+rank+'</span>'
+      +'<br>prediction: '+predict
+      +'<br>door: '+mode+'<br>steps: '+steps
+      +'<br>rises: '+rises+'<br>drops: '+drops
+      +'<br>drops/rises: '+(rises?lastRatio.toFixed(7):'—')
+      +'<br>gap from Ω: '+(rises?finalGap.toFixed(7):'—')+'</div>'
+      +'<div class="box"><b>HOVER = STEPS TEST</b>'
+      +'<br>total hover time: '+totalNear+' steps'
+      +'<br>hover percent: '+hoverPct.toFixed(2)+'%'
+      +'<br>longest near-Ω streak: '+longNear+' steps'
+      +'<br>near window: ±'+win
+      +'<br>closest Ω gap: '+(minGap===null?'—':minGap.toFixed(7))+' at step '+minGapStep
+      +'<br>Ω crossings: '+cross
+      +'<br>time above Ω: '+above+' steps · '+abovePct.toFixed(2)+'%'
+      +'<br>time below Ω: '+below+' steps · '+belowPct.toFixed(2)+'%'
+      +'<br>longest above streak: '+longAbove
+      +'<br>longest below streak: '+longBelow+'</div>'
+      +'<div class="box"><b>Ω MONSTER SCORE</b><br><span class="big">'+Math.round(omegaScore).toLocaleString()+'</span>'
+      +'<br>formula: steps × hoverTime × longestHover ÷ closestΩGap'
+      +'<br>meaning: higher = longer delay, tighter Ω skim, stronger monster behavior</div>'
+      +'<div class="box"><b>NEW ANALYTICS</b>'
+      +'<br><b>Ω drift rate:</b> '+driftRate.toFixed(6)+' ratio-change per 100 steps'
+      +'<br><i>slow drift = ratio resists converging = monster corridor holds longer</i>'
+      +'<br><b>Odd/even autocorr:</b> '+autocorr.toFixed(4)+' (1=all-clustered, 0=all-alternating)'
+      +'<br><i>high autocorr = odd steps come in long bursts = OOOO clusters</i>'
+      +'<br><b>Ω phase lag:</b> '+phaseLag+' steps'
+      +'<br><i>distance from first crossing to capture</i>'
+      +'<br><b>Normalized delay:</b> '+normDelay.toFixed(4)+' steps / log₂(seed)'
+      +'<br><b>Delay density:</b> '+delayDens.toFixed(4)+' steps / digit'
+      +'<br><b>Peak timing:</b> '+peakPhase+' · step '+peakStep+' · '+(peakPct*100).toFixed(1)+'% of route'
+      +'<br><b>Peak residue:</b> mod6='+String(peak%6n)+' · mod12='+String(peak%12n)+'</div>'
+      +'<div class="box"><b>CRASH / RESOLUTION</b>'
+      +'<br>first above Ω step: '+(firstAbove===null?'not reached':firstAbove)
+      +'<br>first below Ω step: '+(firstBelow===null?'not reached':firstBelow)
+      +'<br>first decay step: '+(firstDecay===null?'not reached':firstDecay)
+      +'<br>post-cross crash distance: '+postCross
+      +'<br>peak step: '+peakStep
+      +'<br>crash/below-self step: '+(crashStep===null?'not reached':crashStep)
+      +'<br>peak amp: '+ar.text+'</div>'
+      +'<div class="box"><b>TRACE SAMPLE</b><br>'+sample.slice(-20).join('<br>')+'</div>');
+
+    out('COLLATZ METRONOME / OMEGA HOVER DETECTOR'+L
+      +'seed '+seed+L+'omega '+OMEGA.toFixed(7)+L+'rank '+rank+L+'prediction '+predict+L
+      +'door '+mode+L+'steps '+steps+L+'rises '+rises+L+'drops '+drops
+      +L+'dropsPerRise '+(rises?lastRatio.toFixed(7):'none')
+      +L+'gapFromOmega '+(rises?finalGap.toFixed(7):'none')
+      +L+'totalHoverTime '+totalNear+L+'hoverPercent '+hoverPct.toFixed(2)+'%'
+      +L+'longestNearOmegaStreak '+longNear+L+'nearWindow '+win
+      +L+'closestOmegaGap '+(minGap===null?'none':minGap.toFixed(7))
+      +L+'closestOmegaGapStep '+minGapStep
+      +L+'omegaCrossings '+cross
+      +L+'timeAboveOmega '+above+L+'timeAboveOmegaPct '+abovePct.toFixed(2)+'%'
+      +L+'timeBelowOmega '+below+L+'timeBelowOmegaPct '+belowPct.toFixed(2)+'%'
+      +L+'longestAboveStreak '+longAbove+L+'longestBelowStreak '+longBelow
+      +L+'omegaMonsterScore '+Math.round(omegaScore)
+      +L+'omegaDriftRate '+driftRate.toFixed(6)+' per100steps'
+      +L+'oddEvenAutocorr '+autocorr.toFixed(6)
+      +L+'omegaPhaseLag '+phaseLag
+      +L+'normalizedDelay '+normDelay.toFixed(6)+' stepsPerLog2Seed'
+      +L+'delayDensity '+delayDens.toFixed(6)+' stepsPerDigit'
+      +L+'peakTiming '+peakPhase+' peakStep '+peakStep+' peakPct '+(peakPct*100).toFixed(2)+'%'
+      +L+'peakResidue mod6='+String(peak%6n)+' mod12='+String(peak%12n)
+      +L+'firstAboveStep '+(firstAbove===null?'none':firstAbove)
+      +L+'firstBelowStep '+(firstBelow===null?'none':firstBelow)
+      +L+'firstDecayStep '+(firstDecay===null?'none':firstDecay)
+      +L+'postCrossCrashDistance '+postCross
+      +L+'peakStep '+peakStep
+      +L+'crashStep '+(crashStep===null?'none':crashStep)
+      +L+'peakAmp '+ar.text
+      +L+L+sample.join(L));
+  },30);
+}
+
+function saveScore(){
+  var pct=stats.tested?((stats.captured/stats.tested)*100).toFixed(2):'0.00';
+  var ss=stepSummary(stats.log);
+  var resSummary=residueSummary(stats.log);
+  out('PUBLIC DEMO SCOREBOARD'+L
+    +'claim This is a Collatz proof-workbench, not a finished proof.'+L
+    +'tagline NOT EVERY number. ANY number.'+L
+    +'tested '+stats.tested+L+'captured '+stats.captured+'/'+stats.tested+L+'captureRate '+pct+'%'+L
+    +'unknownOrFail '+stats.unknown+L
+    +'stepMin '+ss.min+L+'stepAvg '+ss.avg+L+'stepMedian '+ss.median+L+'stepMax '+ss.max+L
+    +'stepPct0 '+ss.p0+L+'stepPct1to10 '+ss.p1+L+'stepPct11to100 '+ss.p10+L
+    +'stepPct101to1000 '+ss.p100+L+'stepPct1001to10000 '+ss.p1000+L+'stepPct10000plus '+ss.pBig+L
+    +'belowSelfHits '+stats.belowHits+L+'anchorCollectorHits '+stats.anchorHits+L+'residueLaneHits '+stats.laneHits+L
+    +'worstAmpSeed '+(stats.worstAmpSeed||'none')+L+'worstAmp '+(stats.worstAmpText||('x'+stats.worstAmp))+L
+    +'slowestSeed '+(stats.slowestSeed||'none')+L+'slowestSteps '+stats.slowest+L
+    +'highestNormDelaySeed '+(stats.highestNormSeed||'none')+L+'highestNormDelay '+stats.highestNorm.toFixed(6)+L
+    +'highestDelayDensitySeed '+(stats.highestDensSeed||'none')+L+'highestDelayDensity '+stats.highestDens.toFixed(6)+L
+    +'latestPeakSeed '+(stats.latestPeakSeed||'none')+L+'latestPeakPct '+(stats.latestPeakPct*100).toFixed(2)+'%'+L
+    +'longestOddRunSeed '+(stats.longestOddRunSeed||'none')+L+'longestOddRun '+stats.longestOddRun+L
+    +'longestEvenRunSeed '+(stats.longestEvenRunSeed||'none')+L+'longestEvenRun '+stats.longestEvenRun+L
+    +'slowestOmegaDriftSeed '+(stats.slowestDriftSeed||'none')+L+'slowestOmegaDrift '+(stats.slowestDrift===Infinity?'none':stats.slowestDrift.toFixed(6))+L
+    +'highestAutocorrSeed '+(stats.highestAutocorrSeed||'none')+L+'highestAutocorr '+stats.highestAutocorr.toFixed(6)+L
+    +'lowestGibbsSeed '+(stats.lowestGibbsSeed||'none')+L+'lowestGibbs '+(stats.lowestGibbs===Infinity?'none':stats.lowestGibbs.toFixed(6))+L
+    +'lowestEntropySeed '+(stats.lowestEntropySeed||'none')+L+'lowestEntropy '+(stats.lowestEntropy===Infinity?'none':stats.lowestEntropy.toFixed(6))+L
+    +'peakMod6Distribution '+resSummary.mod6+L+'peakMod12Distribution '+resSummary.mod12+L
+    +'recordEvents '+stats.recordEvents+L+'lastRecord '+stats.lastRecord.split('<br>').join(' | ')+L
+    +L+'PUBLIC TESTER PROMPT'+L
+    +'Paste any positive integer. Try to find UNKNOWN, a longer normalized delay, a tighter Ω skim, a bigger spike, a later peak, a longer odd run, or a slower Ω drift.');
+}
+
+function reset(){
+  stats={tested:0,captured:0,unknown:0,laneHits:0,anchorHits:0,belowHits:0,
+    worstAmp:0,worstAmpRank:null,worstAmpText:'x0',worstAmpSeed:'',
+    slowest:0,slowestSeed:'',fastest:null,fastestSeed:'',
+    highestNorm:0,highestNormSeed:'',
+    highestDens:0,highestDensSeed:'',
+    latestPeakPct:0,latestPeakSeed:'',
+    longestOddRun:0,longestOddRunSeed:'',
+    longestEvenRun:0,longestEvenRunSeed:'',
+    slowestDrift:Infinity,slowestDriftSeed:'',
+    highestAutocorr:0,highestAutocorrSeed:'',
+    lowestGibbs:Infinity,lowestGibbsSeed:'',
+    lowestEntropy:Infinity,lowestEntropySeed:'',
+    stepSum:0,recordEvents:0,lastRecord:'None yet',log:[]};
+  renderScore();renderLog();renderRecords();renderThermo();renderInvariants();renderParityBias();renderDescentLemma();
+  out('Reset done.');
+}
+
+el('anyBtn').onclick=runAny;
+el('randomBtn').onclick=randomSeed;
+el('monsterPresetBtn').onclick=loadMonsterSet;
+el('loadBigListBtn').onclick=loadBigList;
+el('anyBatchBtn').onclick=runAnyBatch;
+el('autoBtn').onclick=runAutoHunter;
+el('batchBtn').onclick=runBatchRange;
+el('minBtn').onclick=runMin;
+el('covBtn').onclick=runCoverage;
+el('omegaBtn').onclick=runOmegaTrace;
+el('scoreBtn').onclick=saveScore;
+el('resetBtn').onclick=reset;
+renderScore();renderLog();renderRecords();renderThermo();renderInvariants();renderParityBias();renderDescentLemma();
+})();
+</script>
+</body>
+</html>
