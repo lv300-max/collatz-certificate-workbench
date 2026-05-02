@@ -19,6 +19,72 @@ body{margin:0;background:#05070b;color:#eaf7ff;font-family:Arial,sans-serif;padd
   <span class="tag">NORMALIZED DELAY</span><span class="tag">DELAY DENSITY</span><span class="tag">PEAK TIMING</span><span class="tag">ODD/EVEN CLUSTERING</span><span class="tag">RESIDUE CLASS</span><span class="tag">Ω DRIFT RATE</span><span class="tag">ODD/EVEN AUTOCORR</span>
 </div>
 
+<div class="card" style="border-color:#7df9ff">
+<div class="row" style="align-items:center;justify-content:space-between">
+  <div>
+    <h2 style="color:#7df9ff;margin-bottom:6px">Mission</h2>
+    <div style="font-family:monospace;font-size:12px;line-height:1.7;color:#bffcff">
+      theorem: for every positive integer n, some T<sup>k</sup>(n) reaches 1<br>
+      mission: <span style="color:#ffd166;font-weight:bold">Every odd n &gt; 1 eventually reaches a smaller odd integer.</span>
+    </div>
+  </div>
+  <div id="proofStatusBadge" style="border:1px solid #ffd166;border-radius:10px;padding:12px;color:#ffd166;font-weight:bold;background:#141000">EMPIRICAL ONLY</div>
+</div>
+<div class="row" style="margin-top:10px">
+  <span class="tag">Mission</span><span class="tag">Claims</span><span class="tag">Lemmas</span><span class="tag">Counterexample</span><span class="tag">Vault</span>
+</div>
+</div>
+
+<div class="grid">
+  <div class="card" style="border-color:#2b789c">
+    <h2 style="color:#7dc8ff">Claims</h2>
+    <div class="box">
+      <b>Active claim</b><br>
+      Every odd n with 1 &lt; n &le; N reaches a smaller odd under the Syracuse map S.<br>
+      <div class="row" style="margin-top:8px">
+        <div><label>Odd claim N</label><input id="claimN" type="number" value="10001"></div>
+        <div><label>Odd-step cap</label><input id="claimSteps" type="number" value="500"></div>
+        <button id="claimBtn">Test Claim</button>
+        <button id="inspectBtn">Inspect Smallest Unresolved</button>
+        <button id="snapshotBtn">Save Snapshot</button>
+      </div>
+    </div>
+    <div id="proofHudBox"><div class="box">Current proof status: <span class="warn">empirical only</span><br>Run Test Claim to produce the next finite obstruction report.</div></div>
+  </div>
+
+  <div class="card" style="border-color:#0f8f86">
+    <h2 style="color:#7df9ff">RESIDUE-LANE ODD DESCENT AUDITOR</h2>
+    <div class="box">
+      <b>Symbolic lane claim</b><br>
+      For odd lane n = r + 2<sup>k</sup>q, certify S<sup>m</sup>(n) &lt; n using exact affine state only.<br>
+      <div class="row" style="margin-top:8px">
+        <div><label>Lane modulus k</label><input id="laneAuditK" type="number" value="16"></div>
+        <div><label>Max odd steps m</label><input id="laneAuditM" type="number" value="64"></div>
+        <div><label>Residue start</label><input id="laneAuditStart" placeholder="all"></div>
+        <div><label>Residue end</label><input id="laneAuditEnd" placeholder="all"></div>
+        <button id="laneAuditBtn">Run Lane Auditor</button>
+      </div>
+    </div>
+    <div id="laneAuditBox"><div class="box">No lane audit yet. This module closes lanes only by symbolic smaller-odd certificates, never by samples.</div></div>
+  </div>
+
+  <div class="card" style="border-color:#b06000">
+    <h2 style="color:#ffcc44">Counterexample</h2>
+    <div class="box">
+      <b>Smallest unresolved odd</b><br>
+      <div class="row" style="margin-top:8px">
+        <div><label>Inspect odd n</label><input id="inspectOdd" value="27"></div>
+      </div>
+    </div>
+    <div id="unresolvedBox"><div class="box">No unresolved object recorded yet.</div></div>
+  </div>
+
+  <div class="card" style="border-color:#5b3fa0">
+    <h2 style="color:#c9a0ff">Vault</h2>
+    <div id="vaultBox"><div class="box">No snapshot saved yet.</div></div>
+  </div>
+</div>
+
 <div class="card"><h2>Capture Signature Theory</h2><div class="grid">
   <div class="box"><b>Death Coordinate</b><br>Every tested seed gets a coordinate:<br><span class="big">steps + Ω ratio</span><br>Steps = how long it resisted.<br>Ω ratio = how it resolved.</div>
   <div class="box"><b>Seed Classification</b><br>Each seed lands in a zone:<br>FAST DECAY, DECAY, Ω SKIM, CLIMB, STRONG CLIMB, COLLECTOR-CAPTURED, or MONSTER DELAY.</div>
@@ -105,6 +171,7 @@ body{margin:0;background:#05070b;color:#eaf7ff;font-family:Arial,sans-serif;padd
   <div class="card"><h2>Release Checklist</h2><div id="releaseBox"><div class="box"><b>Ready for public test</b><br>1. Press Load Monster Set<br>2. Run ANY-N Batch<br>3. Press Demo Scoreboard<br>4. Copy results<br>5. Ask testers: "Can you find a seed that escapes?"</div></div></div>
   <div class="card"><h2>Ω Speed Limit Trace</h2><div id="omegaBox">Ready.</div></div>
   <div class="card"><h2>Universal Coverage Mode</h2><div id="covBox">Ready.</div></div>
+  <div class="card"><h2>PROOF TREE AUDITOR</h2><div id="proofTreeBox"><div class="box">Proof-pressure only. Treat each residue lane as a proof node, not a seed sample.<br><button id="proofTreeBtn" class="copyBtn">Run Proof Tree Auditor</button></div></div></div>
   <div class="card"><h2>Record Hunter</h2><div id="recordBox">Ready.</div></div>
   <div class="card"><h2>Auto Hunter</h2><div id="autoBox">Ready.</div></div>
   <div class="card"><h2>Demo Scoreboard</h2><div id="scoreBox">Ready.</div></div>
@@ -160,9 +227,6 @@ The declared r0 mod 2^16 frontier, exact-depth layer, 578 deep parents, cap-stop
   <div style="color:#4dff9a;font-weight:bold;margin-bottom:6px">&#10003; ACCEPTED INPUT</div>
   <div style="font-family:monospace;font-size:12px;color:#88cc99">Full exact state:<br>r, k, o, c, exact b.<br><br>gap = 2<sup>c</sup> - 3<sup>o</sup><br>final_B &lt;= 200001<br>terminal outcome exported.</div>
 </div>
-</div>
-<div style="margin-top:12px;font-size:12px;color:#9ccfe6;font-style:italic;padding:8px;border-left:3px solid #2b789c">
-  The declared r0 mod 2^16 frontier, exact-depth layer, 578 deep parents, cap-stopped rows, local keys, return-map states, high-B returns, and previously quotient-closed parents are now all covered by exact source reports or full exact-state certificates. No proof-critical row relies only on compact quotient abstraction. Independent mathematical review is still required before any public proof claim.
 </div>
 </div>
 
@@ -296,93 +360,224 @@ The declared r0 mod 2^16 frontier, exact-depth layer, 578 deep parents, cap-stop
 </div>
 </div>
 
-<div class="card" style="border-color:#5b3fa0">
-<h2 style="color:#c9a0ff">&#9646; STRUCTURE &amp; DELAY LAWS  (37–40)</h2>
+<div class="card" style="border-color:#0f8f86">
+<h2 style="color:#7df9ff">&#9646; WOBBLE / OCTAVE FRAMEWORK — PUSH HARDER</h2>
+<div style="font-size:12px;color:#9ccfe6;margin-bottom:12px;line-height:1.7">
+  Collatz is not a pure rise-and-fall story. It is a clean scaling system broken by accumulated +1 wobble: 3<sup>o</sup>n is the octave-copy, b is the wobble ledger, 2<sup>c</sup> is the braking, B is the wobble cap, and log₂(3) is the speed limit where braking beats kicking.
+</div>
 
-<div style="margin-bottom:18px">
-  <div style="color:#ffd166;font-weight:bold;font-size:13px;margin-bottom:6px">Law 37 — Odd Isolation Law</div>
-  <div style="font-family:monospace;font-size:12px;line-height:1.8;background:#0d0820;border:1px solid #3b2060;border-radius:8px;padding:12px;color:#d0b8ff">
-    If n is odd, then 3n + 1 is even.<br>
-    Therefore maxOddRun = 1 in the raw Collatz path.<br><br>
-    <span style="color:#888">Reason:</span><br>
-    &nbsp;&nbsp;odd × 3 = odd<br>
-    &nbsp;&nbsp;odd + 1 = even
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px">
+  <div style="background:#031516;border:1px solid #0d665f;border-radius:8px;padding:11px">
+    <div style="color:#7df9ff;font-weight:bold;font-size:12px">1 — FALLING ROCKET LAW</div>
+    <div style="font-family:monospace;font-size:11px;color:#a8f7ef;line-height:1.75;margin-top:5px">
+      Odd step = (3n + 1) / 2<sup>k</sup><br>
+      3n + 1 = kick / pump<br>
+      /2<sup>k</sup> = brake / fall<br>
+      <span style="color:#ffd166">Every odd seed is already inside a falling system.</span>
+    </div>
+  </div>
+
+  <div style="background:#031516;border:1px solid #0d665f;border-radius:8px;padding:11px">
+    <div style="color:#7df9ff;font-weight:bold;font-size:12px">2 — NO DOUBLE-RISE LAW</div>
+    <div style="font-family:monospace;font-size:11px;color:#a8f7ef;line-height:1.75;margin-top:5px">
+      Drops can stack: 16 → 8 → 4 → 2 → 1<br>
+      Raw rises cannot stack twice in a row.<br>
+      odd × 3 + 1 = even<br>
+      <span style="color:#4dff9a">Every rise immediately pays at least one /2 brake.</span>
+    </div>
+  </div>
+
+  <div style="background:#031516;border:1px solid #0d665f;border-radius:8px;padding:11px">
+    <div style="color:#7df9ff;font-weight:bold;font-size:12px">3 — PIANO / OCTAVE LANES</div>
+    <div style="font-family:monospace;font-size:11px;color:#a8f7ef;line-height:1.75;margin-top:5px">
+      n = r + 2<sup>16</sup>q<br>
+      r = note identity / residue lane<br>
+      q = octave height<br>
+      <span style="color:#ffd166">Same residue = same note family at a higher octave.</span>
+    </div>
+  </div>
+
+  <div style="background:#031516;border:1px solid #0d665f;border-radius:8px;padding:11px">
+    <div style="color:#7df9ff;font-weight:bold;font-size:12px">4 — ONE-LESS DOUBLE LAW</div>
+    <div style="font-family:monospace;font-size:11px;color:#a8f7ef;line-height:1.75;margin-top:5px">
+      3(2x) + 1 = 2(3x + 1) - 1<br>
+      double the seed<br>
+      the 3x part doubles perfectly<br>
+      but the +1 does not double<br>
+      <span style="color:#4dff9a">Higher octave copy = perfect double minus 1.</span>
+    </div>
+  </div>
+
+  <div style="background:#031516;border:1px solid #0d665f;border-radius:8px;padding:11px">
+    <div style="color:#7df9ff;font-weight:bold;font-size:12px">5 — CLEAN-COPY VS WOBBLE</div>
+    <div style="font-family:monospace;font-size:11px;color:#a8f7ef;line-height:1.75;margin-top:5px">
+      Without +1: n → 3n scales cleanly.<br>
+      With +1: n → 3n + 1 bends the copy.<br>
+      T<sup>m</sup>(n) = (3<sup>o</sup>n + b) / 2<sup>c</sup><br>
+      3<sup>o</sup>n = scale-copy · b = wobble · 2<sup>c</sup> = brake
+    </div>
+  </div>
+
+  <div style="background:#031516;border:1px solid #0d665f;border-radius:8px;padding:11px">
+    <div style="color:#7df9ff;font-weight:bold;font-size:12px">6 — OFFSET LEDGER LAW</div>
+    <div style="font-family:monospace;font-size:11px;color:#a8f7ef;line-height:1.75;margin-top:5px">
+      +1 kicks accumulate into b.<br>
+      b values: 1, 4, 13, 40, 121<br>
+      b<sub>next</sub> = 3b + 1<br>
+      <span style="color:#ffd166">The +1s are not random. They are the wobble ledger.</span>
+    </div>
+  </div>
+
+  <div style="background:#031516;border:1px solid #0d665f;border-radius:8px;padding:11px">
+    <div style="color:#7df9ff;font-weight:bold;font-size:12px">7 — OFFSET CAP LAW</div>
+    <div style="font-family:monospace;font-size:11px;color:#a8f7ef;line-height:1.75;margin-top:5px">
+      B = ceil(b / (2<sup>c</sup> - 3<sup>o</sup>))<br>
+      b = wobble amount<br>
+      B = how high wobble can hold the lane up<br>
+      <span style="color:#4dff9a">Above B, if brakes beat kicks, the lane falls.</span>
+    </div>
+  </div>
+
+  <div style="background:#031516;border:1px solid #0d665f;border-radius:8px;padding:11px">
+    <div style="color:#7df9ff;font-weight:bold;font-size:12px">8 — WOBBLE SPEED LIMIT</div>
+    <div style="font-family:monospace;font-size:11px;color:#a8f7ef;line-height:1.75;margin-top:5px">
+      log₂(3) ≈ 1.5849625<br>
+      if c / o &gt; log₂(3), then /2 braking beats ×3 kicking.<br>
+      <span style="color:#ffd166">1.585 is the wobble speed limit.</span>
+    </div>
+  </div>
+
+  <div style="background:#031516;border:1px solid #0d665f;border-radius:8px;padding:11px">
+    <div style="color:#7df9ff;font-weight:bold;font-size:12px">9 — BEND-ORBIT RULE</div>
+    <div style="font-family:monospace;font-size:11px;color:#a8f7ef;line-height:1.75;margin-top:5px">
+      path = bend → brake → bend → brake → peak → descent<br>
+      Temporary orbit is allowed.<br>
+      Stable orbit is rejected when:<br>
+      c/o &gt; 1.585 and n &gt; B
+    </div>
+  </div>
+
+  <div style="background:#031516;border:1px solid #0d665f;border-radius:8px;padding:11px">
+    <div style="color:#7df9ff;font-weight:bold;font-size:12px">10 — COLLECTOR LANES</div>
+    <div style="font-family:monospace;font-size:11px;color:#a8f7ef;line-height:1.75;margin-top:5px">
+      40 = collector lane<br>
+      16 = deeper gravity well<br>
+      From 1 to 100:<br>
+      79 hit 40 first · 17 skip to 16 · 4 already below 16: 1,2,4,8
+    </div>
+  </div>
+
+  <div style="background:#031516;border:1px solid #0d665f;border-radius:8px;padding:11px">
+    <div style="color:#7df9ff;font-weight:bold;font-size:12px">11 — INTEGER AS SYSTEM-STATE</div>
+    <div style="font-family:monospace;font-size:11px;color:#a8f7ef;line-height:1.75;margin-top:5px">
+      n = value + parity + residue lane + octave<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;+ offset + brakes + collector route<br>
+      A number is not lonely. It belongs to a box.<br>
+      <span style="color:#ffd166">Proof question: do all boxes force capture?</span>
+    </div>
+  </div>
+
+  <div style="background:#031516;border:1px solid #0d665f;border-radius:8px;padding:11px">
+    <div style="color:#7df9ff;font-weight:bold;font-size:12px">12 — RESIDUE-FIELD MAP</div>
+    <div style="font-family:monospace;font-size:11px;color:#a8f7ef;line-height:1.75;margin-top:5px">
+      columns = residue lanes<br>
+      rows = octave height<br>
+      movement = Collatz rule<br>
+      +1 = fringe bend · collectors = wells<br>
+      100 numbers can become 12 columns; all numbers can become 2<sup>16</sup> lanes.
+    </div>
   </div>
 </div>
 
-<div style="margin-bottom:18px">
-  <div style="color:#ffd166;font-weight:bold;font-size:13px;margin-bottom:6px">Law 38 — Peak Residue Law</div>
-  <div style="font-family:monospace;font-size:12px;line-height:1.8;background:#0d0820;border:1px solid #3b2060;border-radius:8px;padding:12px;color:#d0b8ff">
-    Every nontrivial peak created by an odd launch has residue:<br>
-    &nbsp;&nbsp;P ≡ 4 or 10 mod 12<br><br>
-    <span style="color:#888">Because:</span>  P = 3n + 1,  n odd<br>
-    &nbsp;&nbsp;n ≡ 1 mod 4  →  P ≡ 4 mod 12<br>
-    &nbsp;&nbsp;n ≡ 3 mod 4  →  P ≡ 10 mod 12
-  </div>
-</div>
-
-<div style="margin-bottom:18px">
-  <div style="color:#ffd166;font-weight:bold;font-size:13px;margin-bottom:6px">Law 39 — v=1 Climb Unit</div>
-  <div style="font-family:monospace;font-size:12px;line-height:1.8;background:#0d0820;border:1px solid #3b2060;border-radius:8px;padding:12px;color:#d0b8ff">
-    Accelerated odd map:  T(n) = (3n + 1) / 2<sup>v</sup><br><br>
-    If v = 1:<br>
-    &nbsp;&nbsp;T(n) ≈ 1.5n  →  <span style="color:#ff8080">growth</span><br><br>
-    &nbsp;&nbsp;v = 1  means growth.<br>
-    &nbsp;&nbsp;v ≥ 2  means decay or heavy decay.
-  </div>
-</div>
-
-<div style="margin-bottom:6px">
-  <div style="color:#ffd166;font-weight:bold;font-size:13px;margin-bottom:6px">Law 40 — Trailing-One Delay Pattern</div>
-  <div style="font-family:monospace;font-size:12px;line-height:1.8;background:#0d0820;border:1px solid #3b2060;border-radius:8px;padding:12px;color:#d0b8ff">
-    Numbers with dense trailing 1-bit structure often create<br>
-    repeated v=1 climb units.<br><br>
-    This causes:<br>
-    &nbsp;&nbsp;more early lift<br>
-    &nbsp;&nbsp;higher peak<br>
-    &nbsp;&nbsp;longer delay<br><br>
-    But not escape.<br><br>
-    <span style="color:#888">Note:</span> Each trailing 1-bit increases the chance of a<br>
-    v=1 accelerated climb unit.<br>
-    k-like consecutive v=1 climb units in the odd-only<br>
-    compressed map produce a climb of ≈ (1.5)<sup>k</sup> before<br>
-    the first heavy descent cancels it.
-  </div>
+<div style="margin-top:12px;background:#020b0c;border:1px solid #19b8aa;border-radius:10px;padding:13px;font-family:monospace;font-size:12px;line-height:1.8;color:#aefcf6">
+  <span style="color:#7df9ff;font-weight:bold">PRESSURE TEST:</span><br>
+  For every residue lane r mod 2<sup>16</sup>, export an exact affine state
+  T<sup>m</sup>(n) = (3<sup>o</sup>n + b) / 2<sup>c</sup> with c/o &gt; log₂(3), gap = 2<sup>c</sup> - 3<sup>o</sup> &gt; 0, and cap B = ceil(b/gap).<br><br>
+  Then force one of four doors:<br>
+  1. n &gt; B, so the lane falls below its octave line.<br>
+  2. the lane hits below-self directly.<br>
+  3. the lane enters collector 40 or 16.<br>
+  4. the lane splits into smaller exact lanes until one of the first three doors fires.<br><br>
+  <span style="color:#4dff9a;font-weight:bold">Hard target:</span>
+  no lane survives as a permanent bend-orbit once its brake ratio clears 1.585 and its value is above the wobble cap.
 </div>
 </div>
 
-<div class="card" style="border-color:#3a7abd">
-<h2 style="color:#7dc8ff">&#9646; LAW 41 — LANE 2 CLOSURE</h2>
-<div style="font-family:monospace;font-size:12px;line-height:1.9;background:#04101a;border:1px solid #1a3a5c;border-radius:10px;padding:14px;margin-bottom:12px;color:#a8d8ff">
-  <span style="color:#ffd166">Formula:</span>  n = 12a + 2  (i.e. n ≡ 2 mod 12)<br>
-  <span style="color:#ffd166">First move:</span> T(n) = n / 2<br><br>
-  T(12a + 2) = 6a + 1<br><br>
-  6a + 1 &lt; 12a + 2  &nbsp;✓  (captured below self in one step)<br><br>
-  <span style="color:#ffd166">Special case:</span>  n = 2  → already an ANCHOR<br>
+<div class="card" style="border-color:#6f4fd8">
+<h2 style="color:#c9a0ff">&#9646; SEED COLLAPSE / LANE PRESERVATION FRAMEWORK</h2>
+<div class="big" style="color:#ffd166;margin-bottom:10px">Seeds collapse the question. Lanes preserve the every.</div>
+<div style="font-size:12px;color:#cbbcff;margin-bottom:12px;line-height:1.7">
+  Picking one seed collapses the universal question into one route. Once the route enters a collector such as 40 or 16, the test is finished. It cannot wrap back around and prove every number that feeds that collector.
 </div>
 
-<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px">
-  <div style="background:#051018;border:1px solid #1a4060;border-radius:8px;padding:10px;text-align:center">
-    <div style="color:#7dc8ff;font-size:11px;margin-bottom:4px">DOOR</div>
-    <div style="color:#4dff9a;font-weight:bold">BELOW-SELF<br>or ANCHOR</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px">
+  <div style="background:#100a22;border:1px solid #5b3fa0;border-radius:8px;padding:11px">
+    <div style="color:#ffd166;font-weight:bold;font-size:12px">SEED COLLAPSE LAW</div>
+    <div style="font-family:monospace;font-size:11px;color:#dccbff;line-height:1.75;margin-top:5px">
+      A chosen seed collapses the "every number" problem into one trajectory.<br>
+      Once that trajectory enters a collector, the test ends.<br>
+      <span style="color:#8b5cff">It proves entry, not coverage.</span>
+    </div>
   </div>
-  <div style="background:#051018;border:1px solid #1a4060;border-radius:8px;padding:10px;text-align:center">
-    <div style="color:#7dc8ff;font-size:11px;margin-bottom:4px">MAX STEPS TO CAPTURE</div>
-    <div style="color:#4dff9a;font-weight:bold;font-size:20px">1</div>
+
+  <div style="background:#061427;border:1px solid #2468a8;border-radius:8px;padding:11px">
+    <div style="color:#7dc8ff;font-weight:bold;font-size:12px">SEED TEST VS LANE TEST</div>
+    <div style="font-family:monospace;font-size:11px;color:#bfe3ff;line-height:1.75;margin-top:5px">
+      <span style="color:#ffd166">Seed test:</span><br>
+      n → path → collector → 1<br><br>
+      <span style="color:#7df9ff">Lane test:</span><br>
+      r mod 2<sup>k</sup> → exact affine state → descent / collector / merge / split
+    </div>
   </div>
-  <div style="background:#051018;border:1px solid #1a4060;border-radius:8px;padding:10px;text-align:center">
-    <div style="color:#7dc8ff;font-size:11px;margin-bottom:4px">RISK</div>
-    <div style="color:#4dff9a;font-weight:bold">ZERO</div>
+
+  <div style="background:#031516;border:1px solid #0d665f;border-radius:8px;padding:11px">
+    <div style="color:#7df9ff;font-weight:bold;font-size:12px">ONE ROUTE</div>
+    <div style="font-family:monospace;font-size:11px;color:#a8f7ef;line-height:1.75;margin-top:5px">
+      n = one selected seed<br>
+      n → T(n) → T<sup>2</sup>(n) → ... → collector<br>
+      40 → 20 → 10 → 5 → 16 → 8 → 4 → 2 → 1<br>
+      <span style="color:#ffd166">Seeds demonstrate.</span>
+    </div>
+  </div>
+
+  <div style="background:#061427;border:1px solid #2468a8;border-radius:8px;padding:11px">
+    <div style="color:#7dc8ff;font-weight:bold;font-size:12px">LANE CERTIFICATE</div>
+    <div style="font-family:monospace;font-size:11px;color:#bfe3ff;line-height:1.75;margin-top:5px">
+      n = r + 2<sup>k</sup>q<br>
+      T<sup>m</sup>(n) = (3<sup>o</sup> n + b) / 2<sup>c</sup><br>
+      gap = 2<sup>c</sup> - 3<sup>o</sup><br>
+      B = ceil(b / gap)<br>
+      if gap &gt; 0 and n &gt; B, then T<sup>m</sup>(n) &lt; n<br>
+      <span style="color:#7df9ff">Lanes preserve the "every."</span>
+    </div>
+  </div>
+
+  <div style="background:#1a0a0a;border:1px solid #7a1a1a;border-radius:8px;padding:11px">
+    <div style="color:#ff8080;font-weight:bold;font-size:12px">PROOF PRESSURE TEST</div>
+    <div style="font-family:monospace;font-size:11px;color:#ffb0b0;line-height:1.75;margin-top:5px">
+      - Does the lane have exact affine state?<br>
+      - Does the lane preserve all proof-critical information?<br>
+      - Does the lane have gap &gt; 0?<br>
+      - Is B finite and exact?<br>
+      - Does every member of the lane either fall below itself, hit a collector, merge into a proved lane, or split into proved smaller lanes?
+    </div>
+  </div>
+
+  <div style="background:#0d0820;border:1px solid #5b3fa0;border-radius:8px;padding:11px">
+    <div style="color:#c9a0ff;font-weight:bold;font-size:12px">CLAIM BOUNDARY</div>
+    <div style="font-family:monospace;font-size:11px;color:#d0b8ff;line-height:1.75;margin-top:5px">
+      This framework does not claim proof. It explains why seed testing alone cannot prove Collatz, and why the proof object must be the lane certificate, not the individual seed.
+    </div>
   </div>
 </div>
 
-<div style="font-family:monospace;font-size:12px;line-height:1.8;background:#04101a;border:1px solid #1a3a5c;border-radius:8px;padding:12px;color:#88bbdd">
-  Lane 2 cannot climb first.<br>
-  Lane 2 cannot be a monster lane.<br>
-  Lane 2 cannot escape.<br>
-  Lane 2 is captured in a single halving.<br><br>
-  <span style="color:#4dff9a;font-weight:bold">LANE 2 — HARD CLOSED ✓</span><br>
-  <span style="color:#888">Verified: 150 seeds tested · 150 captured · 0 escapes · 0 cycles</span>
+<div style="margin-top:12px;background:#080b12;border:1px solid #4f5b66;border-radius:10px;padding:13px;font-family:monospace;font-size:12px;line-height:1.8;color:#d8e8ff">
+  <span style="color:#7dc8ff">Blue = lane / residue</span> &nbsp;|&nbsp;
+  <span style="color:#ff944d">Orange = odd kick</span> &nbsp;|&nbsp;
+  <span style="color:#ff5c7a">Red = wobble / +1 / b</span> &nbsp;|&nbsp;
+  <span style="color:#4dff9a">Green = brake / /2 / descent</span> &nbsp;|&nbsp;
+  <span style="color:#ffd166">Yellow = cap / B</span> &nbsp;|&nbsp;
+  <span style="color:#c9a0ff">Purple = capture / proof result</span>
 </div>
 </div>
 
@@ -414,6 +609,280 @@ function ampText(p,s){var q=p/s;var num=Number(q);if(Number.isFinite(num))return
 function ampRank(p,s){var q=p/s;var qs=String(q);return{digits:qs.length,head:Number(qs.slice(0,12)),text:ampText(p,s)}}
 function ampGreater(a,b){if(!b)return true;if(a.digits!==b.digits)return a.digits>b.digits;return a.head>b.head}
 function splitList(s){return String(s).split(String.fromCharCode(10)).join(' ').split(String.fromCharCode(13)).join(' ').split(',').join(' ').split(' ').map(function(x){return x.trim()}).filter(Boolean)}
+
+var proofState={
+  activeClaim:'Every odd n with 1 < n <= N reaches a smaller odd under S.',
+  smallestUnresolved:null,
+  lastClaim:null,
+  snapshots:[]
+};
+
+function v2Big(x){
+  var a=0;
+  while(x>0n&&x%2n===0n){x/=2n;a++}
+  return a;
+}
+function syracuseOddStep(n){
+  var y=3n*n+1n;
+  var a=v2Big(y);
+  return{next:y>>BigInt(a),a:a,raw:y};
+}
+function oddDescentWitness(start,maxOddSteps){
+  if(start<=1n||start%2n===0n)return{ok:false,error:'Input must be odd and greater than 1.'};
+  var n=start,states=[String(start)],vals=[],seen={},A=0,P=1n,B=0n,C=0;
+  for(var i=1;i<=maxOddSteps;i++){
+    if(seen[String(n)])return{ok:false,start:start,unresolved:true,reason:'odd cycle before smaller odd',states:states,vals:vals,A:A,P:P,B:B,C:C,steps:i-1,current:n};
+    seen[String(n)]=1;
+    var st=syracuseOddStep(n);
+    vals.push(st.a);
+    B=3n*B+(1n<<BigInt(C));
+    P*=3n;
+    C+=st.a;
+    A+=st.a;
+    n=st.next;
+    states.push(String(n));
+    if(n<start)return{ok:true,start:start,smaller:n,steps:i,states:states,vals:vals,A:A,P:P,B:B,C:C};
+  }
+  return{ok:false,start:start,unresolved:true,reason:'odd-step cap reached before smaller odd',states:states,vals:vals,A:A,P:P,B:B,C:C,steps:maxOddSteps,current:n};
+}
+function proofStatus(status){
+  var badge=el('proofStatusBadge');
+  if(status==='proved'){
+    badge.style.borderColor='#4dff9a';badge.style.color='#4dff9a';badge.style.background='#061a0e';badge.innerHTML='PROVED';
+  }else if(status==='conditional'){
+    badge.style.borderColor='#ffd166';badge.style.color='#ffd166';badge.style.background='#141000';badge.innerHTML='CONDITIONAL';
+  }else{
+    badge.style.borderColor='#ff5c7a';badge.style.color='#ff9bad';badge.style.background='#1a0a0a';badge.innerHTML='EMPIRICAL ONLY';
+  }
+}
+function witnessHtml(w){
+  if(!w||w.error)return'<div class="box bad">'+(w?w.error:'No witness.')+'</div>';
+  var tuple=w.vals.slice(0,80).join(', ');
+  if(w.vals.length>80)tuple+=' ...';
+  return '<div class="box"><b>Odd-to-Odd witness</b>'
+    +'<br>start odd: '+w.start
+    +'<br>status: '+(w.ok?'<span class="ok">OUT: smaller odd reached</span>':'<span class="warn">STILL WORKING</span>')
+    +'<br>odd steps: '+(w.steps||w.vals.length)
+    +(w.ok?'<br>first smaller odd: '+w.smaller:'<br>reason: '+w.reason+'<br>current odd: '+w.current)
+    +'<br>valuation tuple a_i: ['+tuple+']'
+    +'<br>A = sum a_i: '+w.A
+    +'<br>affine form for this valuation path: S<sup>'+w.vals.length+'</sup>(x) = (3<sup>'+w.vals.length+'</sup>x + '+shortBig(w.B)+') / 2<sup>'+w.C+'</sup>'
+    +'<br>odd path: '+w.states.slice(0,22).join(' → ')+(w.states.length>22?' → ...':'')
+    +'</div>';
+}
+function renderProofHome(){
+  var last=proofState.lastClaim;
+  proofStatus('empirical');
+  if(!last){
+    html('proofHudBox','<div class="box">Current proof status: <span class="warn">empirical only</span><br>Active mission: every odd n &gt; 1 eventually reaches a smaller odd.</div>');
+    html('unresolvedBox','<div class="box">No unresolved object recorded yet.</div>');
+    return;
+  }
+  html('proofHudBox',
+    '<div class="box"><b>Claim Tester</b><br>'
+    +'claim: '+proofState.activeClaim
+    +'<br>N: '+last.N
+    +'<br>odd-step cap: '+last.maxSteps
+    +'<br>tested odd starts: '+last.tested
+    +'<br>status: '+(last.pass?'<span class="ok">finite pass</span>':'<span class="bad">finite fail / unresolved</span>')
+    +'<br>smallest unresolved odd/class: '+(last.smallest||'none <= N')
+    +'<br>max odd steps to smaller odd: '+last.maxWitnessSteps+' at '+(last.maxWitnessSeed||'none')
+    +'<br><span class="warn">This is a finite claim result, not a proof of all integers.</span></div>');
+  html('unresolvedBox',last.witness?witnessHtml(last.witness):'<div class="box"><b>No unresolved odd <= '+last.N+'</b><br>Smallest obstruction not found in this finite range.</div>');
+}
+function testOddClaim(){
+  setTimeout(function(){
+    var N=Math.max(3,Math.floor(nval('claimN',10001)));
+    var maxSteps=Math.max(1,Math.floor(nval('claimSteps',500)));
+    var tested=0,smallest=null,witness=null,maxWitnessSteps=0,maxWitnessSeed='';
+    for(var n=3n;n<=BigInt(N);n+=2n){
+      tested++;
+      var w=oddDescentWitness(n,maxSteps);
+      if(w.ok){
+        if(w.steps>maxWitnessSteps){maxWitnessSteps=w.steps;maxWitnessSeed=String(n)}
+      }else{
+        smallest=String(n);witness=w;break;
+      }
+    }
+    proofState.smallestUnresolved=smallest;
+    proofState.lastClaim={N:N,maxSteps:maxSteps,tested:tested,pass:smallest===null,smallest:smallest,witness:witness,maxWitnessSteps:maxWitnessSteps,maxWitnessSeed:maxWitnessSeed};
+    renderProofHome();
+    out('CLAIM TESTER'+L
+      +'claim '+proofState.activeClaim+L
+      +'finiteDomain odd n <= '+N+L
+      +'oddStepCap '+maxSteps+L
+      +'testedOddStarts '+tested+L
+      +'status '+(smallest===null?'FINITE_PASS':'FINITE_FAIL_OR_UNRESOLVED')+L
+      +'smallestUnresolved '+(smallest||'none')+L
+      +'maxOddStepsToSmaller '+maxWitnessSteps+L
+      +'maxWitnessSeed '+(maxWitnessSeed||'none')+L
+      +'proofStatus empirical_only');
+  },30);
+}
+function inspectSmallestUnresolved(){
+  var raw=proofState.smallestUnresolved||el('inspectOdd').value;
+  var n=bval(raw);
+  if(n===null){html('unresolvedBox','<div class="box bad">Bad odd input.</div>');return}
+  if(n%2n===0n)n+=1n;
+  if(n<=1n)n=3n;
+  el('inspectOdd').value=String(n);
+  var maxSteps=Math.max(1,Math.floor(nval('claimSteps',500)));
+  var w=oddDescentWitness(n,maxSteps);
+  html('unresolvedBox',witnessHtml(w));
+  out('SMALLEST UNRESOLVED INSPECTION'+L
+    +'odd '+n+L
+    +'status '+(w.ok?'OUT_SMALLER_ODD':'STILL_WORKING')+L
+    +'oddSteps '+(w.steps||w.vals.length)+L
+    +'valuationTuple '+w.vals.join(',')+L
+    +'A '+w.A+L
+    +'affineOffset '+w.B+L
+    +'path '+w.states.join(' -> '));
+}
+function saveProofSnapshot(){
+  var snap={
+    created:new Date().toISOString(),
+    mission:'Every odd n > 1 eventually reaches a smaller odd integer.',
+    proof_status:'empirical_only',
+    active_claim:proofState.activeClaim,
+    last_claim:proofState.lastClaim,
+    smallest_unresolved:proofState.smallestUnresolved,
+    code_size:document.documentElement.innerHTML.length
+  };
+  proofState.snapshots.push(snap);
+  html('vaultBox','<div class="box"><b>Snapshot saved</b><br>time: '+snap.created+'<br>proof status: empirical only<br>smallest unresolved: '+(snap.smallest_unresolved||'none recorded')+'<br>snapshots in memory: '+proofState.snapshots.length+'</div>');
+  out('VAULT SNAPSHOT'+L+JSON.stringify(snap,null,2));
+}
+
+function modBig(a,m){
+  var r=a%m;
+  return r<0n?r+m:r;
+}
+function laneValuationStable(P,B,A,M,r,a){
+  var need=1n<<BigInt(A+a);
+  var nextNeed=need*2n;
+  var base=3n*(P*r+B)+(1n<<BigInt(A));
+  var coeff=3n*P*M;
+  return modBig(base,need)===0n&&modBig(base,nextNeed)!==0n&&modBig(coeff,nextNeed)===0n;
+}
+function auditOddResidueLane(k,r,maxM){
+  var M=1n<<BigInt(k);
+  var P=1n,B=0n,A=0,vals=[],status='NEEDS_SPLIT',reason='odd-step cap reached without certificate';
+  var stable=true,mUsed=0;
+  for(var m=1;m<=maxM;m++){
+    var rep=(P*r+B)>>BigInt(A);
+    if(((P*r+B)% (1n<<BigInt(A)))!==0n||rep%2n===0n){
+      stable=false;
+      reason='current affine state is not an odd integer for representative';
+      break;
+    }
+    var raw=3n*rep+1n;
+    var a=v2Big(raw);
+    if(!laneValuationStable(P,B,A,M,r,a)){
+      stable=false;
+      reason='valuation tuple not stable across every q in lane; split required';
+      break;
+    }
+    vals.push(a);
+    B=3n*B+(1n<<BigInt(A));
+    P*=3n;
+    A+=a;
+    mUsed=m;
+    var gap=(1n<<BigInt(A))-P;
+    if(gap>0n){
+      var cap=ceilDivBig(B,gap);
+      var laneMin=r>1n?r:r+M;
+      if(laneMin>cap){
+        status='CLOSED_SMALLER_ODD_CERT';
+        reason='gap > 0 and lane_min > B; symbolic odd descent holds for every allowed q';
+        return{k:k,r:r,tuple:vals,m:mUsed,A:A,gap:gap,B:B,cap:cap,laneMin:laneMin,status:status,reason:reason,stable:stable};
+      }
+    }
+  }
+  var finalGap=(1n<<BigInt(A))-P;
+  var finalCap=finalGap>0n?ceilDivBig(B,finalGap):null;
+  return{k:k,r:r,tuple:vals,m:mUsed,A:A,gap:finalGap,B:B,cap:finalCap,laneMin:r>1n?r:r+M,status:status,reason:reason,stable:stable};
+}
+function laneAuditRowHtml(row){
+  var tuple=row.tuple.slice(0,48).join(', ');
+  if(row.tuple.length>48)tuple+=' ...';
+  return '<div class="box"><b>r = '+row.r+' mod 2<sup>'+row.k+'</sup></b>'
+    +'<br>status: '+(row.status==='CLOSED_SMALLER_ODD_CERT'?'<span class="ok">'+row.status+'</span>':'<span class="warn">'+row.status+'</span>')
+    +'<br>valuation tuple: ['+tuple+']'
+    +'<br>m odd steps: '+row.m
+    +'<br>A: '+row.A
+    +'<br>gap = 2<sup>A</sup> - 3<sup>m</sup>: '+shortBig(row.gap)
+    +'<br>affine offset b: '+shortBig(row.B)
+    +'<br>B cap: '+(row.cap===null?'none':shortBig(row.cap))
+    +'<br>lane_min: '+shortBig(row.laneMin)
+    +'<br>reason: '+row.reason
+    +'</div>';
+}
+function runLaneAuditor(){
+  html('laneAuditBox','<div class="box"><b>RESIDUE-LANE ODD DESCENT AUDITOR RUNNING</b><br>Checking exact symbolic lane certificates. No sampled closure is allowed.</div>');
+  setTimeout(function(){
+    var k=Math.max(1,Math.min(24,Math.floor(nval('laneAuditK',16))));
+    var maxM=Math.max(1,Math.min(256,Math.floor(nval('laneAuditM',64))));
+    var M=1n<<BigInt(k);
+    var startRaw=String(el('laneAuditStart').value||'').trim();
+    var endRaw=String(el('laneAuditEnd').value||'').trim();
+    var start=startRaw?bval(startRaw):1n;
+    var end=endRaw?bval(endRaw):M-1n;
+    if(start===null||end===null){html('laneAuditBox','<div class="box bad">Bad residue range.</div>');return}
+    if(start<1n)start=1n;
+    if(end>M-1n)end=M-1n;
+    if(start%2n===0n)start+=1n;
+    if(end%2n===0n)end-=1n;
+    if(end<start){html('laneAuditBox','<div class="box bad">Residue range has no odd lanes.</div>');return}
+
+    var tested=0,closed=0,needsSplit=0,sampleErrors=0,largestCap=null,maxMUsed=0,firstUnresolved=null,rows=[];
+    for(var r=start;r<=end;r+=2n){
+      var row=auditOddResidueLane(k,r,maxM);
+      tested++;
+      if(row.m>maxMUsed)maxMUsed=row.m;
+      if(row.cap!==null&&(largestCap===null||row.cap>largestCap))largestCap=row.cap;
+      if(row.status==='CLOSED_SMALLER_ODD_CERT')closed++;
+      else{
+        needsSplit++;
+        if(!firstUnresolved)firstUnresolved=row;
+        if(rows.length<16)rows.push(row);
+      }
+      if(row.status==='ERROR_SAMPLE_CLOSURE')sampleErrors++;
+    }
+    if(!rows.length&&tested>0){
+      for(var sr=start;sr<=end&&rows.length<8;sr+=2n)rows.push(auditOddResidueLane(k,sr,maxM));
+    }
+    var allClosed=needsSplit===0&&sampleErrors===0;
+    proofStatus('empirical');
+    html('laneAuditBox',
+      '<div class="box"><b>RESIDUE-LANE ODD DESCENT AUDITOR</b>'
+      +'<br><span class="warn">Proof-pressure only. Badge remains EMPIRICAL ONLY unless every lane is symbolically closed without sampling.</span>'
+      +'<br>modulus k: '+k
+      +'<br>residue range: '+start+' to '+end+' odd residues'
+      +'<br>lanes tested: '+tested
+      +'<br>closed by certificate: '+closed
+      +'<br>needs split: '+needsSplit
+      +'<br>sample-closure errors: '+sampleErrors
+      +'<br>largest B: '+(largestCap===null?'none':shortBig(largestCap))
+      +'<br>max m used: '+maxMUsed
+      +'<br>first unresolved lane: '+(firstUnresolved?('r='+firstUnresolved.r+' mod 2^'+k):'none')
+      +'<br>status: '+(allClosed?'<span class="ok">FINITE LANE-RANGE PASS</span>':'<span class="warn">NEEDS SPLIT</span>')+'</div>'
+      +rows.map(laneAuditRowHtml).join(''));
+    out('RESIDUE-LANE ODD DESCENT AUDITOR'+L
+      +'claim proof-pressure only; no Collatz proof claim'+L
+      +'modulusK '+k+L
+      +'maxOddStepsM '+maxM+L
+      +'residueStart '+start+L
+      +'residueEnd '+end+L
+      +'lanesTested '+tested+L
+      +'closedByCertificate '+closed+L
+      +'needsSplit '+needsSplit+L
+      +'sampleClosureErrors '+sampleErrors+L
+      +'largestB '+(largestCap===null?'none':String(largestCap))+L
+      +'maxMUsed '+maxMUsed+L
+      +'firstUnresolvedLane '+(firstUnresolved?('r='+firstUnresolved.r+' mod 2^'+k):'none')+L
+      +'finalStatus '+(allClosed?'FINITE_LANE_RANGE_PASS':'NEEDS_SPLIT'));
+  },30);
+}
 
 // ── log2 for BigInt strings ──────────────────────────────────────────────────
 function log2BigStr(s){
@@ -1482,6 +1951,173 @@ function runCoverage(){
   },30);
 }
 
+function shortBig(x){
+  var s=String(x);
+  return s.length>34?s.slice(0,18)+'...'+s.slice(-10)+' ('+s.length+' digits)':s;
+}
+function ceilDivBig(a,b){return (a+b-1n)/b}
+function pow2(k){return 1n<<BigInt(k)}
+
+function affineForLane(r,k){
+  var n=r,A=1n,b=0n,c=0,o=0,m=0;
+  for(var i=0;i<k;i++){
+    if(n%2n===0n){
+      c++;
+      n=n/2n;
+    }else{
+      o++;
+      b=3n*b+pow2(c);
+      A*=3n;
+      n=3n*n+1n;
+    }
+    m++;
+  }
+  return{m:m,o:o,c:c,b:b,gap:pow2(c)-A,tail:n};
+}
+
+function finiteBridgeCloses(r,k,B,limit,maxSteps){
+  var mod=pow2(k),n=r,count=0,bad=[];
+  while(n<=B){
+    count++;
+    if(count>limit)return{ok:false,count:count,overflow:true,bad:bad};
+    var rr=route(n,maxSteps);
+    if(!rr.captured)bad.push(String(n)+' '+rr.door);
+    n+=mod;
+  }
+  return{ok:bad.length===0,count:count,overflow:false,bad:bad};
+}
+
+function auditLaneNode(node,bridgeLimit,bridgeSteps){
+  var st=affineForLane(node.r,node.k);
+  var outNode={
+    node_id:node.id,parent_id:node.parent,
+    k:node.k,r:node.r,depth:node.depth,
+    o:st.o,c:st.c,b:st.b,gap:st.gap,B:null,
+    status:'OPEN',terminal:'OPEN',children:[],bridgeCount:0,bridgeOverflow:false
+  };
+  if(st.gap>0n){
+    var B=ceilDivBig(st.b,st.gap);
+    outNode.B=B;
+    if(node.r>B){
+      outNode.status='CLOSED_CAP';
+      outNode.terminal='positive-gap cap certificate; all n in lane are above B';
+      return outNode;
+    }
+    var bridge=finiteBridgeCloses(node.r,node.k,B,bridgeLimit,bridgeSteps);
+    outNode.bridgeCount=bridge.count;
+    outNode.bridgeOverflow=bridge.overflow;
+    if(bridge.ok){
+      outNode.status='CLOSED_CAP';
+      outNode.terminal='positive-gap cap certificate plus complete finite bridge below cap';
+      return outNode;
+    }
+  }
+  return outNode;
+}
+
+function runProofTreeAuditor(){
+  html('proofTreeBox','<div class="box"><b>PROOF TREE AUDITOR RUNNING</b><br>Building exact odd residue nodes for r mod 2^16. No sampled row can close a node.</div>');
+  setTimeout(function(){
+    var ROOT_K=16,MAX_K=18,BRIDGE_LIMIT=64,BRIDGE_STEPS=10000,MAX_NODES=260000;
+    var rootMod=pow2(ROOT_K),expected=Number(rootMod/2n),seen={},missing=0,dupes=0;
+    var queue=[],nodes=[],id=0;
+    for(var r=1n;r<rootMod;r+=2n){
+      var key=String(r);
+      if(seen[key])dupes++;else seen[key]=1;
+      queue.push({id:'N'+(++id),parent:'ROOT',k:ROOT_K,r:r,depth:0});
+    }
+    for(var rr=1n;rr<rootMod;rr+=2n){if(!seen[String(rr)])missing++}
+
+    var stats={total:0,closed:0,open:0,split:0,maxDepth:0,largestB:null,quotientOnly:0,sampled:0,childrenMissing:0,budgetHit:false,unprocessed:0};
+    var openRows=[],splitRows=[],closedRows=[];
+    for(var qi=0;qi<queue.length;qi++){
+      if(nodes.length>=MAX_NODES){stats.budgetHit=true;break}
+      var node=queue[qi];
+      var row=auditLaneNode(node,BRIDGE_LIMIT,BRIDGE_STEPS);
+      stats.total++;
+      if(row.depth>stats.maxDepth)stats.maxDepth=row.depth;
+      if(row.B!==null&&(stats.largestB===null||row.B>stats.largestB))stats.largestB=row.B;
+
+      if(row.status==='CLOSED_CAP'){
+        stats.closed++;
+        if(closedRows.length<6)closedRows.push(row);
+      }else if(node.k<MAX_K){
+        row.status='SPLIT_TO_CHILDREN';
+        row.terminal='not closed at this modulus; split into exact child lanes';
+        var step=pow2(node.k);
+        var childA={id:'N'+(++id),parent:node.id,k:node.k+1,r:node.r,depth:node.depth+1};
+        var childB={id:'N'+(++id),parent:node.id,k:node.k+1,r:node.r+step,depth:node.depth+1};
+        row.children=[childA.id,childB.id];
+        queue.push(childA);queue.push(childB);
+        stats.split++;
+        if(splitRows.length<12)splitRows.push(row);
+      }else{
+        stats.open++;
+        row.terminal='OPEN at max split depth; no closure claim';
+        if(openRows.length<18)openRows.push(row);
+      }
+      nodes.push(row);
+    }
+    stats.unprocessed=stats.budgetHit?Math.max(0,queue.length-nodes.length):0;
+    stats.open+=stats.unprocessed;
+    stats.childrenMissing=stats.budgetHit?stats.unprocessed:0;
+
+    var pass=missing===0&&dupes===0&&stats.open===0&&stats.sampled===0&&stats.quotientOnly===0&&stats.childrenMissing===0&&!stats.budgetHit;
+    var status=pass?'<span class="ok">PASS</span>':'<span class="warn">PRESSURE FAIL / STILL OPEN</span>';
+    function nodeHtml(n){
+      return '<div class="box"><b>'+n.node_id+'</b> · parent '+n.parent_id
+        +'<br>lane: n = '+shortBig(n.r)+' + 2<sup>'+n.k+'</sup>q'
+        +'<br>status: '+n.status
+        +'<br>exact state: T<sup>'+n.k+'</sup>(n) = (3<sup>'+n.o+'</sup>n + '+shortBig(n.b)+') / 2<sup>'+n.c+'</sup>'
+        +'<br>gap: '+shortBig(n.gap)
+        +'<br>B: '+(n.B===null?'none':shortBig(n.B))
+        +'<br>finite bridge rows under B: '+n.bridgeCount+(n.bridgeOverflow?' (overflow; not closed)':'')
+        +'<br>terminal door: '+n.terminal
+        +(n.children.length?'<br>children: '+n.children.join(', '):'')
+        +'</div>';
+    }
+    var htmlRows='<div class="box"><b>PROOF TREE AUDITOR</b><br>'+status
+      +'<br><span class="warn">Proof-pressure only. This does not claim Collatz proof.</span>'
+      +'<br>root partition: odd r mod 2^16 · expected '+expected+' · covered '+Object.keys(seen).length+' · missing '+missing+' · duplicates '+dupes
+      +'<br>total nodes: '+stats.total
+      +'<br>closed nodes: '+stats.closed
+      +'<br>open nodes: '+stats.open
+      +'<br>split nodes: '+stats.split
+      +'<br>max split depth: '+stats.maxDepth
+      +'<br>largest B: '+(stats.largestB===null?'none':shortBig(stats.largestB))
+      +'<br>quotient-only rows: '+stats.quotientOnly
+      +'<br>sampled rows: '+stats.sampled
+      +'<br>split child accounting gaps: '+stats.childrenMissing
+      +'<br>unprocessed queued nodes: '+stats.unprocessed
+      +'<br>node budget hit: '+(stats.budgetHit?'YES':'no')
+      +'<br>win condition: open=0, sampled=0, quotient_only=0, every split child accounted for, finite max depth</div>';
+    if(openRows.length)htmlRows+='<div class="box"><b>OPEN NODE SAMPLE</b><br>These are unresolved proof gates, not counterexamples.</div>'+openRows.map(nodeHtml).join('');
+    if(splitRows.length)htmlRows+='<div class="box"><b>SPLIT NODE SAMPLE</b></div>'+splitRows.map(nodeHtml).join('');
+    if(closedRows.length)htmlRows+='<div class="box"><b>CLOSED NODE SAMPLE</b></div>'+closedRows.map(nodeHtml).join('');
+    htmlRows+='<div class="box"><button id="proofTreeBtn" class="copyBtn">Run Proof Tree Auditor</button></div>';
+    html('proofTreeBox',htmlRows);
+    el('proofTreeBtn').onclick=runProofTreeAuditor;
+
+    out('PROOF TREE AUDITOR'+L
+      +'claim proof-pressure only; no Collatz proof claim'+L
+      +'rootPartition odd r mod 2^16 expected '+expected+' covered '+Object.keys(seen).length+' missing '+missing+' duplicates '+dupes+L
+      +'totalNodes '+stats.total+L
+      +'closedNodes '+stats.closed+L
+      +'openNodes '+stats.open+L
+      +'splitNodes '+stats.split+L
+      +'maxSplitDepth '+stats.maxDepth+L
+      +'largestB '+(stats.largestB===null?'none':String(stats.largestB))+L
+      +'quotientOnlyRows '+stats.quotientOnly+L
+      +'sampledRows '+stats.sampled+L
+      +'splitChildAccountingGaps '+stats.childrenMissing+L
+      +'unprocessedQueuedNodes '+stats.unprocessed+L
+      +'nodeBudgetHit '+(stats.budgetHit?'YES':'no')+L
+      +'finalStatus '+(pass?'PASS':'PRESSURE_FAIL_STILL_OPEN')+L
+      +L+'Next proof sentence target:'+L
+      +'Every lane either closes or splits into smaller lanes, and the split tree is finite.');
+  },30);
+}
+
 function runOmegaTrace(){
   setTimeout(function(){
     var seed=bval(el('omegaSeed').value),max=nval('omegaMax',100000),win=Number(el('omegaWindow').value||0.015);
@@ -1670,6 +2306,12 @@ function reset(){
     lowestEntropy:Infinity,lowestEntropySeed:'',
     stepSum:0,recordEvents:0,lastRecord:'None yet',log:[]};
   renderScore();renderLog();renderRecords();renderThermo();renderInvariants();renderParityBias();renderDescentLemma();
+  proofState.smallestUnresolved=null;
+  proofState.lastClaim=null;
+  renderProofHome();
+  html('proofTreeBox','<div class="box">Proof-pressure only. Treat each residue lane as a proof node, not a seed sample.<br><button id="proofTreeBtn" class="copyBtn">Run Proof Tree Auditor</button></div>');
+  el('proofTreeBtn').onclick=runProofTreeAuditor;
+  html('laneAuditBox','<div class="box">No lane audit yet. This module closes lanes only by symbolic smaller-odd certificates, never by samples.</div>');
   out('Reset done.');
 }
 
@@ -1683,9 +2325,14 @@ el('batchBtn').onclick=runBatchRange;
 el('minBtn').onclick=runMin;
 el('covBtn').onclick=runCoverage;
 el('omegaBtn').onclick=runOmegaTrace;
+el('proofTreeBtn').onclick=runProofTreeAuditor;
+el('claimBtn').onclick=testOddClaim;
+el('inspectBtn').onclick=inspectSmallestUnresolved;
+el('snapshotBtn').onclick=saveProofSnapshot;
+el('laneAuditBtn').onclick=runLaneAuditor;
 el('scoreBtn').onclick=saveScore;
 el('resetBtn').onclick=reset;
-renderScore();renderLog();renderRecords();renderThermo();renderInvariants();renderParityBias();renderDescentLemma();
+renderScore();renderLog();renderRecords();renderThermo();renderInvariants();renderParityBias();renderDescentLemma();renderProofHome();
 })();
 </script>
 </body>
