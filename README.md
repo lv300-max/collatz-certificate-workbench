@@ -12,6 +12,22 @@ exact-state certificates. No proof-critical row relies only on compact quotient
 abstraction. Independent mathematical review is still required before any
 public proof claim.
 
+Remaining reviewer-grade artifact:
+
+One of the following is still needed:
+
+1. `group_membership_full.json` containing all `7,364,628` member rows, or
+2. a formal group-membership rule proving how every member maps into one of the
+   84 symbolic groups.
+
+Current artifact status:
+
+- certificate algebra: verified
+- base partition: complete
+- 84 canonical group certificates: present
+- full group membership rows: not present yet
+- remaining wall: group membership proof/export
+
 ## Large Artifact Notice
 
 `collatz_certificate.json` is approximately 390 MB and is not stored directly in
