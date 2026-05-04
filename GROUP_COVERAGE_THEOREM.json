@@ -1,0 +1,53 @@
+{
+  "audit_statuses": {
+    "formal_verifier": "FORMAL_VERIFIER_PASS_WITH_GROUP_COVERAGE_CAVEAT",
+    "full_framework": "PASS_FULL_FRAMEWORK_EXACT_STATE_CLOSURE",
+    "master_source": "PASS",
+    "residue_density": "PASS_DENSITY_PARTITION",
+    "residue_partition": "PASS_RESIDUE_PARTITION_EXHAUSTIVENESS",
+    "zero_new_cases_d_gold": "D_GOLD_ZERO_NEW_CASES_AUDIT_PASS"
+  },
+  "claim_under_review": "Every odd n enters one audited exact branch or one verified 84-row symbolic certificate group.",
+  "collatz_proven_by_this_packet": false,
+  "exact_state_closure": {
+    "compact_quotient_only_rows": 0,
+    "exact_states_checked": 1235,
+    "parents_checked": 578,
+    "parents_closed": 578,
+    "status": "PASS_FULL_FRAMEWORK_EXACT_STATE_CLOSURE"
+  },
+  "frontier_partition": {
+    "assigned_once": 32768,
+    "bucket_counts": {
+      "deep_parent": 578,
+      "exact_depth_closed_parent": 198,
+      "pre_report_exact_depth_parent": 1338,
+      "shallow_valid_at_k16": 30654
+    },
+    "density_covered_slots": 32768,
+    "density_duplicate_overlap_slots": 0,
+    "density_missing_slots": 0,
+    "density_status": "PASS_DENSITY_PARTITION",
+    "duplicates": 0,
+    "missing": 0,
+    "sampled_as_proof_count": 0,
+    "total_odd_base_residues": 32768,
+    "universe": "odd base residues r0 modulo 2^16"
+  },
+  "generated_utc": "2026-05-04T14:46:09.491893+00:00",
+  "remaining_review_target": "Prove the grouping/partition map from arbitrary odd n to the finite certificate system is exhaustive and conflict-free.",
+  "status_line": "Certificate algebra verified. Coverage theorem still needs review.",
+  "symbolic_certificate_packet": {
+    "affine_denominator": "2^A",
+    "classes_audited": 7364628,
+    "forcing_modulus": "2^(A+1)",
+    "formal_verifier_status": "FORMAL_VERIFIER_PASS_WITH_GROUP_COVERAGE_CAVEAT",
+    "group_count": 84,
+    "group_member_sum": 7364628,
+    "packet_rows_checked": 84,
+    "packet_rows_failed": 0,
+    "packet_rows_passed": 84,
+    "stable_through_k": 41,
+    "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41"
+  }
+}

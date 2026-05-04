@@ -1,0 +1,51 @@
+{
+  "closure_gold": {
+    "compact_quotient_only_rows": 0,
+    "exact_states_checked": 1235,
+    "parents_checked": 578,
+    "parents_closed": 578
+  },
+  "failures": [],
+  "generated_utc": "2026-05-04T14:37:22.123620+00:00",
+  "gold_read": "No new cases are visible in the audited finite certificate system through the recorded partition, exact-state closure, and 84-label k41 recurrence packet.",
+  "next_proof_wall": "Independent review of the grouping/partition argument and a formal theorem write-up.",
+  "packet_checks": {
+    "affine_denominator": "2^A",
+    "class_id_unique": true,
+    "classes_audited": 7364628,
+    "forcing_modulus": "2^(A+1)",
+    "group_member_sum": 7364628,
+    "max_A": 395,
+    "max_B": "242",
+    "max_full_step": 644,
+    "records": 84,
+    "stable_through_k": 41
+  },
+  "partition_gold": {
+    "assigned_once": 32768,
+    "bucket_counts": {
+      "deep_parent": 578,
+      "exact_depth_closed_parent": 198,
+      "pre_report_exact_depth_parent": 1338,
+      "shallow_valid_at_k16": 30654
+    },
+    "density_covered_slots": 32768,
+    "density_duplicate_overlap_slots": 0,
+    "density_missing_slots": 0,
+    "duplicates": 0,
+    "missing": 0,
+    "sampled_as_proof_count": 0,
+    "total_odd_base_residues": 32768
+  },
+  "source_audits": {
+    "full_framework_exact_state_closure": "PASS_FULL_FRAMEWORK_EXACT_STATE_CLOSURE",
+    "master_source_coverage": "PASS",
+    "residue_density_partition": "PASS_DENSITY_PARTITION",
+    "residue_partition_exhaustiveness": "PASS_RESIDUE_PARTITION_EXHAUSTIVENESS"
+  },
+  "status": "D_GOLD_ZERO_NEW_CASES_AUDIT_PASS",
+  "warnings": [
+    "This is a proof-facing audit packet, not a substitute for independent mathematical review.",
+    "The 84 rows are cost-table groups; row-level algebra is exact, while group coverage relies on the recorded partition/grouping audits."
+  ]
+}

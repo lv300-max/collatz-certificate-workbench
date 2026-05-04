@@ -298,7 +298,7 @@
       "has_exact_integer_formula_marker": true,
       "has_random_seed_marker": true,
       "kind": "py",
-      "line_count": 842,
+      "line_count": 925,
       "proof_critical": true,
       "read_status": "ok"
     },
@@ -314,8 +314,8 @@
         "exact_flag": true,
         "local_key_data": true,
         "missing_or_uncovered_keys": false,
-        "modulus_or_depth_k": false,
-        "residue_r_or_r0": false,
+        "modulus_or_depth_k": true,
+        "residue_r_or_r0": true,
         "return_pair": true,
         "sampled_flag": true
       },
@@ -608,7 +608,7 @@
       "has_exact_integer_formula_marker": true,
       "has_random_seed_marker": true,
       "kind": "py",
-      "line_count": 664,
+      "line_count": 1064,
       "proof_critical": true,
       "read_status": "ok"
     },
@@ -786,7 +786,7 @@
       "has_exact_integer_formula_marker": true,
       "has_random_seed_marker": true,
       "kind": "py",
-      "line_count": 390,
+      "line_count": 486,
       "proof_critical": true,
       "read_status": "ok"
     },
