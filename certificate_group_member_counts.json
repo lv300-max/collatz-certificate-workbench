@@ -1,0 +1,2448 @@
+{
+  "classes_audited": 7364628,
+  "full_member_rows_available": false,
+  "generated_utc": "2026-05-04T16:33:07.102100+00:00",
+  "group_count": 84,
+  "group_member_sum": 7364628,
+  "groups": [
+    {
+      "canonical_certificate": {
+        "A": 26,
+        "B": "7",
+        "b": "154904057",
+        "gap": "24062143",
+        "m": 16,
+        "min_n": "1959751",
+        "r": "1959751",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "d16a222744c719f6f3fea0beb4274cab051563b470638b2f563be695ef8de1dd"
+      },
+      "class_id": 1,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 26,
+        "max_B": "7",
+        "max_m": 16,
+        "max_step": 42,
+        "min_min_n": "1863",
+        "word_hash_count": 35957
+      },
+      "group_member_count": 35957,
+      "label": {
+        "bucket": "EXTRA_0",
+        "mod96": 7
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 26,
+        "B": "7",
+        "b": "145883249",
+        "gap": "24062143",
+        "m": 16,
+        "min_n": "1405647",
+        "r": "1405647",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "d886e6a505642457b798052c50ba3fcebea4d3840ed414994264122f80c050aa"
+      },
+      "class_id": 2,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 26,
+        "max_B": "7",
+        "max_m": 16,
+        "max_step": 42,
+        "min_min_n": "1263",
+        "word_hash_count": 35957
+      },
+      "group_member_count": 35957,
+      "label": {
+        "bucket": "EXTRA_0",
+        "mod96": 15
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 26,
+        "B": "8",
+        "b": "171628613",
+        "gap": "24062143",
+        "m": 16,
+        "min_n": "129915899",
+        "r": "129915899",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "939f3863139034bb28d9ad16a06d4cbd807fccc991a0a3300b3b1a267ce07a07"
+      },
+      "class_id": 3,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 26,
+        "max_B": "8",
+        "max_m": 16,
+        "max_step": 42,
+        "min_min_n": "283",
+        "word_hash_count": 35957
+      },
+      "group_member_count": 35957,
+      "label": {
+        "bucket": "EXTRA_0",
+        "mod96": 27
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 26,
+        "B": "7",
+        "b": "145418849",
+        "gap": "24062143",
+        "m": 16,
+        "min_n": "79205599",
+        "r": "79205599",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "3ff7590c34b5e038f343a06a4294b019a4b0c4ec4b0c180aa0d9cda0eed162a4"
+      },
+      "class_id": 4,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 26,
+        "max_B": "7",
+        "max_m": 16,
+        "max_step": 42,
+        "min_min_n": "991",
+        "word_hash_count": 82193
+      },
+      "group_member_count": 82193,
+      "label": {
+        "bucket": "EXTRA_0",
+        "mod96": 31
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 26,
+        "B": "7",
+        "b": "145456217",
+        "gap": "24062143",
+        "m": 16,
+        "min_n": "1591527",
+        "r": "1591527",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "c2db9081b10996f95acb1d7eee3ef855c5468d6b09adfc62a1b3414dd0bce31a"
+      },
+      "class_id": 5,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 26,
+        "max_B": "7",
+        "max_m": 16,
+        "max_step": 42,
+        "min_min_n": "1863",
+        "word_hash_count": 35957
+      },
+      "group_member_count": 35957,
+      "label": {
+        "bucket": "EXTRA_0",
+        "mod96": 39
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 26,
+        "B": "7",
+        "b": "148613489",
+        "gap": "24062143",
+        "m": 16,
+        "min_n": "3475919",
+        "r": "3475919",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "7386d27be5755e587dd79f045f20dc38358bbb9892c2147fde1fa971793ea1d1"
+      },
+      "class_id": 6,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 26,
+        "max_B": "7",
+        "max_m": 16,
+        "max_step": 42,
+        "min_min_n": "1263",
+        "word_hash_count": 35957
+      },
+      "group_member_count": 35957,
+      "label": {
+        "bucket": "EXTRA_0",
+        "mod96": 47
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 26,
+        "B": "8",
+        "b": "171628613",
+        "gap": "24062143",
+        "m": 16,
+        "min_n": "129915899",
+        "r": "129915899",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "939f3863139034bb28d9ad16a06d4cbd807fccc991a0a3300b3b1a267ce07a07"
+      },
+      "class_id": 7,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 26,
+        "max_B": "8",
+        "max_m": 16,
+        "max_step": 42,
+        "min_min_n": "283",
+        "word_hash_count": 35957
+      },
+      "group_member_count": 35957,
+      "label": {
+        "bucket": "EXTRA_0",
+        "mod96": 59
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 26,
+        "B": "7",
+        "b": "152496737",
+        "gap": "24062143",
+        "m": 16,
+        "min_n": "55350495",
+        "r": "55350495",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "8a3dc239e04bc7b073b03a0ae692293f88216348d6012aedd576af1bc3e83f2b"
+      },
+      "class_id": 8,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 26,
+        "max_B": "7",
+        "max_m": 16,
+        "max_step": 42,
+        "min_min_n": "991",
+        "word_hash_count": 82193
+      },
+      "group_member_count": 82193,
+      "label": {
+        "bucket": "EXTRA_0",
+        "mod96": 63
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 26,
+        "B": "7",
+        "b": "148302233",
+        "gap": "24062143",
+        "m": 16,
+        "min_n": "1371047",
+        "r": "1371047",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "d5c9e7faedb0de65feec945ded2579c1bf146014a47bcfac68385f5662bf402f"
+      },
+      "class_id": 9,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 26,
+        "max_B": "7",
+        "max_m": 16,
+        "max_step": 42,
+        "min_min_n": "1863",
+        "word_hash_count": 35957
+      },
+      "group_member_count": 35957,
+      "label": {
+        "bucket": "EXTRA_0",
+        "mod96": 71
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 26,
+        "B": "7",
+        "b": "155331089",
+        "gap": "24062143",
+        "m": 16,
+        "min_n": "1773871",
+        "r": "1773871",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "10a7d65268930f7e9558e255b06c0f9a6e108da62fb0ae90d7a5d01af575de0d"
+      },
+      "class_id": 10,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 26,
+        "max_B": "7",
+        "max_m": 16,
+        "max_step": 42,
+        "min_min_n": "1263",
+        "word_hash_count": 35957
+      },
+      "group_member_count": 35957,
+      "label": {
+        "bucket": "EXTRA_0",
+        "mod96": 79
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 26,
+        "B": "8",
+        "b": "171628613",
+        "gap": "24062143",
+        "m": 16,
+        "min_n": "129915899",
+        "r": "129915899",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "939f3863139034bb28d9ad16a06d4cbd807fccc991a0a3300b3b1a267ce07a07"
+      },
+      "class_id": 11,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 26,
+        "max_B": "8",
+        "max_m": 16,
+        "max_step": 42,
+        "min_min_n": "283",
+        "word_hash_count": 35957
+      },
+      "group_member_count": 35957,
+      "label": {
+        "bucket": "EXTRA_0",
+        "mod96": 91
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 26,
+        "B": "7",
+        "b": "147188321",
+        "gap": "24062143",
+        "m": 16,
+        "min_n": "6132959",
+        "r": "6132959",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "11d6c0be7794eea86567dc2e5275a4040c12edfc21a3638957a74eb5acbb3d66"
+      },
+      "class_id": 12,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 26,
+        "max_B": "7",
+        "max_m": 16,
+        "max_step": 42,
+        "min_min_n": "991",
+        "word_hash_count": 82193
+      },
+      "group_member_count": 82193,
+      "label": {
+        "bucket": "EXTRA_0",
+        "mod96": 95
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 38,
+        "B": "3",
+        "b": "370332372755",
+        "gap": "180734728117",
+        "m": 23,
+        "min_n": "2865319",
+        "r": "2865319",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "3c9a4d885cc140244e692da4e7170f5d79703754cdbb3668cfb9abc8953279c6"
+      },
+      "class_id": 13,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 38,
+        "max_B": "105",
+        "max_m": 23,
+        "max_step": 61,
+        "min_min_n": "871",
+        "word_hash_count": 235162
+      },
+      "group_member_count": 235162,
+      "label": {
+        "bucket": "ENUM_1_12",
+        "mod96": 7
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 38,
+        "B": "3",
+        "b": "400697018203",
+        "gap": "180734728117",
+        "m": 23,
+        "min_n": "666831",
+        "r": "666831",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "3be365ff16573c41c6f2f95d901edc31a3fb4ef415bf9ff0bbc39f908e77b079"
+      },
+      "class_id": 14,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 38,
+        "max_B": "102",
+        "max_m": 23,
+        "max_step": 61,
+        "min_min_n": "111",
+        "word_hash_count": 235404
+      },
+      "group_member_count": 235404,
+      "label": {
+        "bucket": "ENUM_1_12",
+        "mod96": 15
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 38,
+        "B": "3",
+        "b": "382815545431",
+        "gap": "180734728117",
+        "m": 23,
+        "min_n": "1584987",
+        "r": "1584987",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "e1231c620034d94b7abd3d0c08fb15fbc859380fa8f15ff949e16664e5fecf46"
+      },
+      "class_id": 15,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 38,
+        "max_B": "109",
+        "max_m": 23,
+        "max_step": 61,
+        "min_min_n": "795",
+        "word_hash_count": 235489
+      },
+      "group_member_count": 235489,
+      "label": {
+        "bucket": "ENUM_1_12",
+        "mod96": 27
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 38,
+        "B": "3",
+        "b": "369447339691",
+        "gap": "180734728117",
+        "m": 23,
+        "min_n": "123103",
+        "r": "123103",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "a347998a094ac8c2539fabadb6aa17ea5257f068a2c00d0857ce4737bf6d6e5b"
+      },
+      "class_id": 16,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 38,
+        "max_B": "95",
+        "max_m": 23,
+        "max_step": 61,
+        "min_min_n": "223",
+        "word_hash_count": 576543
+      },
+      "group_member_count": 576543,
+      "label": {
+        "bucket": "ENUM_1_12",
+        "mod96": 31
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 38,
+        "B": "3",
+        "b": "365756235859",
+        "gap": "180734728117",
+        "m": 23,
+        "min_n": "1502439",
+        "r": "1502439",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "57a63a08b53f9079c917dd684f217524c907343be157ecd572e519b0490bdd21"
+      },
+      "class_id": 17,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 38,
+        "max_B": "105",
+        "max_m": 23,
+        "max_step": 61,
+        "min_min_n": "1959",
+        "word_hash_count": 235598
+      },
+      "group_member_count": 235598,
+      "label": {
+        "bucket": "ENUM_1_12",
+        "mod96": 39
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 38,
+        "B": "3",
+        "b": "416766838619",
+        "gap": "180734728117",
+        "m": 23,
+        "min_n": "4730063",
+        "r": "4730063",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "b4f4cca69a8fa398e70b65ac3c3c43192768bbb8c46139f51395883fbbb5a295"
+      },
+      "class_id": 18,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 38,
+        "max_B": "102",
+        "max_m": 23,
+        "max_step": 61,
+        "min_min_n": "2543",
+        "word_hash_count": 236050
+      },
+      "group_member_count": 236050,
+      "label": {
+        "bucket": "ENUM_1_12",
+        "mod96": 47
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 38,
+        "B": "3",
+        "b": "420774242935",
+        "gap": "180734728117",
+        "m": 23,
+        "min_n": "3013883",
+        "r": "3013883",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "8e89bb6c0b5aca3b8e882efd645a123072bfcfaa32fcee69dd7cac833c3f9e5e"
+      },
+      "class_id": 19,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 38,
+        "max_B": "106",
+        "max_m": 23,
+        "max_step": 61,
+        "min_min_n": "251",
+        "word_hash_count": 235633
+      },
+      "group_member_count": 235633,
+      "label": {
+        "bucket": "ENUM_1_12",
+        "mod96": 59
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 38,
+        "B": "3",
+        "b": "362417503915",
+        "gap": "180734728117",
+        "m": 23,
+        "min_n": "31275231",
+        "r": "31275231",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "9e6b9977b39d677c5f6bed3b5903d4bb5a89818a5a010de82c10d867a2623ee6"
+      },
+      "class_id": 20,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 38,
+        "max_B": "97",
+        "max_m": 23,
+        "max_step": 61,
+        "min_min_n": "927",
+        "word_hash_count": 577432
+      },
+      "group_member_count": 577432,
+      "label": {
+        "bucket": "ENUM_1_12",
+        "mod96": 63
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 38,
+        "B": "3",
+        "b": "362848320019",
+        "gap": "180734728117",
+        "m": 23,
+        "min_n": "3757991",
+        "r": "3757991",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "aa092437846de1f5862104e0bea19e95f32ea02c6090150e8c36943d771a1a2c"
+      },
+      "class_id": 21,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 38,
+        "max_B": "102",
+        "max_m": 23,
+        "max_step": 61,
+        "min_min_n": "167",
+        "word_hash_count": 235691
+      },
+      "group_member_count": 235691,
+      "label": {
+        "bucket": "ENUM_1_12",
+        "mod96": 71
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 38,
+        "B": "3",
+        "b": "364782624763",
+        "gap": "180734728117",
+        "m": 23,
+        "min_n": "20629231",
+        "r": "20629231",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "314bbd5892ef9cd4ec9f8d8e4d92d6ad7c4708dc4b40681b50d9aff5e7434ad1"
+      },
+      "class_id": 22,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 38,
+        "max_B": "99",
+        "max_m": 23,
+        "max_step": 61,
+        "min_min_n": "3055",
+        "word_hash_count": 235363
+      },
+      "group_member_count": 235363,
+      "label": {
+        "bucket": "ENUM_1_12",
+        "mod96": 79
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 38,
+        "B": "3",
+        "b": "390929542231",
+        "gap": "180734728117",
+        "m": 23,
+        "min_n": "4547419",
+        "r": "4547419",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "8fb57abb99d549524fd6c3b7ece8b7e5fb2b0ac73f8efb1cfb9358028d241245"
+      },
+      "class_id": 23,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 38,
+        "max_B": "109",
+        "max_m": 23,
+        "max_step": 61,
+        "min_min_n": "795",
+        "word_hash_count": 235440
+      },
+      "group_member_count": 235440,
+      "label": {
+        "bucket": "ENUM_1_12",
+        "mod96": 91
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 38,
+        "B": "3",
+        "b": "381799028395",
+        "gap": "180734728117",
+        "m": 23,
+        "min_n": "10252511",
+        "r": "10252511",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "82c68e5c429172148c90ef1815a7ee0c4d7545b4457629bd709c474ac9a025ae"
+      },
+      "class_id": 24,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 38,
+        "max_B": "95",
+        "max_m": 23,
+        "max_step": 61,
+        "min_min_n": "2207",
+        "word_hash_count": 576990
+      },
+      "group_member_count": 576990,
+      "label": {
+        "bucket": "ENUM_1_12",
+        "mod96": 95
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 46,
+        "B": "221",
+        "b": "383292641597531",
+        "gap": "1738366812781",
+        "m": 29,
+        "min_n": "108218599",
+        "r": "108218599",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "0537a9591c51524f8dae4ee45b06e9d859f8b6189c736581ad272f4bb950a150"
+      },
+      "class_id": 25,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 46,
+        "max_B": "221",
+        "max_m": 29,
+        "max_step": 75,
+        "min_min_n": "103",
+        "word_hash_count": 72269
+      },
+      "group_member_count": 72269,
+      "label": {
+        "bucket": "SMALL_13_20",
+        "mod96": 7
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 46,
+        "B": "225",
+        "b": "390587175018275",
+        "gap": "1738366812781",
+        "m": 29,
+        "min_n": "128298447",
+        "r": "128298447",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "f0dc7e81374dfe606e03de3a58b12c5544d694ae1f12a0323237231c5cd4972c"
+      },
+      "class_id": 26,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 46,
+        "max_B": "225",
+        "max_m": 29,
+        "max_step": 75,
+        "min_min_n": "7887",
+        "word_hash_count": 72322
+      },
+      "group_member_count": 72322,
+      "label": {
+        "bucket": "SMALL_13_20",
+        "mod96": 15
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 46,
+        "B": "242",
+        "b": "419255171889343",
+        "gap": "1738366812781",
+        "m": 29,
+        "min_n": "293522523",
+        "r": "293522523",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "10647a6fbd4b0e8f4fcd72118be42fece260e0649cf3cb3b4736df22027286dd"
+      },
+      "class_id": 27,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 46,
+        "max_B": "242",
+        "max_m": 29,
+        "max_step": 75,
+        "min_min_n": "13083",
+        "word_hash_count": 72422
+      },
+      "group_member_count": 72422,
+      "label": {
+        "bucket": "SMALL_13_20",
+        "mod96": 27
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 46,
+        "B": "212",
+        "b": "367230812041427",
+        "gap": "1738366812781",
+        "m": 29,
+        "min_n": "385841215",
+        "r": "385841215",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "3009ea3036c503a7fa8decebd5bdf8cf357ce680255287150324e755f1e31f7d"
+      },
+      "class_id": 28,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 46,
+        "max_B": "212",
+        "max_m": 29,
+        "max_step": 75,
+        "min_min_n": "5119",
+        "word_hash_count": 192867
+      },
+      "group_member_count": 192867,
+      "label": {
+        "bucket": "SMALL_13_20",
+        "mod96": 31
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 46,
+        "B": "219",
+        "b": "379031740099675",
+        "gap": "1738366812781",
+        "m": 29,
+        "min_n": "16051431",
+        "r": "16051431",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "e1abf58ddb8046c0e8f233086e62375cd5283dea85e793031b76d2019db4d70e"
+      },
+      "class_id": 29,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 46,
+        "max_B": "219",
+        "max_m": 29,
+        "max_step": 75,
+        "min_min_n": "1383",
+        "word_hash_count": 71991
+      },
+      "group_member_count": 71991,
+      "label": {
+        "bucket": "SMALL_13_20",
+        "mod96": 39
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 46,
+        "B": "212",
+        "b": "367138250131235",
+        "gap": "1738366812781",
+        "m": 29,
+        "min_n": "290698703",
+        "r": "290698703",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "10cacabcbcf2370336579f2b43ebd2bdb0184e88c585299a40e1bf9bf5a79a0d"
+      },
+      "class_id": 30,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 46,
+        "max_B": "212",
+        "max_m": 29,
+        "max_step": 75,
+        "min_min_n": "14831",
+        "word_hash_count": 72105
+      },
+      "group_member_count": 72105,
+      "label": {
+        "bucket": "SMALL_13_20",
+        "mod96": 47
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 46,
+        "B": "231",
+        "b": "400380852508351",
+        "gap": "1738366812781",
+        "m": 29,
+        "min_n": "362898011",
+        "r": "362898011",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "1186451ff245ff958e32d2892c4b4d127f52922c93df93adfa5c57e153b7937a"
+      },
+      "class_id": 31,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 46,
+        "max_B": "231",
+        "max_m": 29,
+        "max_step": 75,
+        "min_min_n": "155",
+        "word_hash_count": 71893
+      },
+      "group_member_count": 71893,
+      "label": {
+        "bucket": "SMALL_13_20",
+        "mod96": 59
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 46,
+        "B": "220",
+        "b": "382000430234611",
+        "gap": "1738366812781",
+        "m": 29,
+        "min_n": "296106975",
+        "r": "296106975",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "09c2f0e8162c127c59ca255702ba8b5d9a48330bd94a58cb2d6346103b9019f5"
+      },
+      "class_id": 32,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 46,
+        "max_B": "220",
+        "max_m": 29,
+        "max_step": 75,
+        "min_min_n": "447",
+        "word_hash_count": 193093
+      },
+      "group_member_count": 193093,
+      "label": {
+        "bucket": "SMALL_13_20",
+        "mod96": 63
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 46,
+        "B": "220",
+        "b": "381455940300091",
+        "gap": "1738366812781",
+        "m": 29,
+        "min_n": "194438471",
+        "r": "194438471",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "49dc9ec74e375e389595875f22c660b6f7d50a0a6a0ecd7aebf2879592c5ecd0"
+      },
+      "class_id": 33,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 46,
+        "max_B": "220",
+        "max_m": 29,
+        "max_step": 75,
+        "min_min_n": "3431",
+        "word_hash_count": 72211
+      },
+      "group_member_count": 72211,
+      "label": {
+        "bucket": "SMALL_13_20",
+        "mod96": 71
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 46,
+        "B": "224",
+        "b": "389340209861155",
+        "gap": "1738366812781",
+        "m": 29,
+        "min_n": "160058575",
+        "r": "160058575",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "5369b755a5a6802de810fdf1af26a89e5906f215f9c3095ef9476f8394c264dd"
+      },
+      "class_id": 34,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 46,
+        "max_B": "224",
+        "max_m": 29,
+        "max_step": 75,
+        "min_min_n": "4303",
+        "word_hash_count": 72307
+      },
+      "group_member_count": 72307,
+      "label": {
+        "bucket": "SMALL_13_20",
+        "mod96": 79
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 46,
+        "B": "225",
+        "b": "391103020218559",
+        "gap": "1738366812781",
+        "m": 29,
+        "min_n": "108973147",
+        "r": "108973147",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "b00b363afd833e14c624d3a6fed7076dd9e3f85296fcc75ab2680c5e773835a5"
+      },
+      "class_id": 35,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 46,
+        "max_B": "225",
+        "max_m": 29,
+        "max_step": 75,
+        "min_min_n": "91",
+        "word_hash_count": 72146
+      },
+      "group_member_count": 72146,
+      "label": {
+        "bucket": "SMALL_13_20",
+        "mod96": 91
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 46,
+        "B": "216",
+        "b": "374269307489843",
+        "gap": "1738366812781",
+        "m": 29,
+        "min_n": "195620639",
+        "r": "195620639",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "77a333c7baeb9fa788404f14b5ab133548cbcf42097648375298c7de442937e4"
+      },
+      "class_id": 36,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 46,
+        "max_B": "216",
+        "max_m": 29,
+        "max_step": 75,
+        "min_min_n": "671",
+        "word_hash_count": 193468
+      },
+      "group_member_count": 193468,
+      "label": {
+        "bucket": "SMALL_13_20",
+        "mod96": 95
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 66,
+        "B": "7",
+        "b": "250672821746653823531",
+        "gap": "37313979917667420061",
+        "m": 41,
+        "min_n": "111794791",
+        "r": "111794791",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "37cababc15be18a45b7d2d4fbbddbf35046abe06b746828c3e6b268db2fffae6"
+      },
+      "class_id": 37,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 66,
+        "max_B": "586",
+        "max_m": 41,
+        "max_step": 107,
+        "min_min_n": "1639",
+        "word_hash_count": 66504
+      },
+      "group_member_count": 66504,
+      "label": {
+        "bucket": "SMALL_21_40",
+        "mod96": 7
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 66,
+        "B": "7",
+        "b": "233908180544610984179",
+        "gap": "37313979917667420061",
+        "m": 41,
+        "min_n": "264670671",
+        "r": "264670671",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "69acba65be920b1abbea29c7e09d0e0a246e9bf45a8603378fc23895b92c5e33"
+      },
+      "class_id": 38,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 66,
+        "max_B": "608",
+        "max_m": 41,
+        "max_step": 107,
+        "min_min_n": "18543",
+        "word_hash_count": 66455
+      },
+      "group_member_count": 66455,
+      "label": {
+        "bucket": "SMALL_21_40",
+        "mod96": 15
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 66,
+        "B": "7",
+        "b": "240871471496304464111",
+        "gap": "37313979917667420061",
+        "m": 41,
+        "min_n": "56238843",
+        "r": "56238843",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "937170aa545ed6128c222c33e3e6a83283ba401d0d16f657d699364d6a46c1ed"
+      },
+      "class_id": 39,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 66,
+        "max_B": "639",
+        "max_m": 41,
+        "max_step": 107,
+        "min_min_n": "27",
+        "word_hash_count": 66131
+      },
+      "group_member_count": 66131,
+      "label": {
+        "bucket": "SMALL_21_40",
+        "mod96": 27
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 66,
+        "B": "7",
+        "b": "225069844593500168099",
+        "gap": "37313979917667420061",
+        "m": 41,
+        "min_n": "9404479",
+        "r": "9404479",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "99bbfbbea287dd6eaf369d2776b9204d5f673f3f69c3791362a20c497e177813"
+      },
+      "class_id": 40,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 66,
+        "max_B": "579",
+        "max_m": 41,
+        "max_step": 107,
+        "min_min_n": "31",
+        "word_hash_count": 186362
+      },
+      "group_member_count": 186362,
+      "label": {
+        "bucket": "SMALL_21_40",
+        "mod96": 31
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 66,
+        "B": "7",
+        "b": "252237869926545546379",
+        "gap": "37313979917667420061",
+        "m": 41,
+        "min_n": "16187463",
+        "r": "16187463",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "8f1e820c2d062d9cea8e4bcec387b51dae87f0c2a257964b87d572c93c272a6c"
+      },
+      "class_id": 41,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 66,
+        "max_B": "625",
+        "max_m": 41,
+        "max_step": 107,
+        "min_min_n": "3399",
+        "word_hash_count": 66534
+      },
+      "group_member_count": 66534,
+      "label": {
+        "bucket": "SMALL_21_40",
+        "mod96": 39
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 66,
+        "B": "7",
+        "b": "227111515362312735763",
+        "gap": "37313979917667420061",
+        "m": 41,
+        "min_n": "40209263",
+        "r": "40209263",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "4ee3f216973579de013bd0558017b7866339c7e655f592e89198ccf1d4a11344"
+      },
+      "class_id": 42,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 66,
+        "max_B": "542",
+        "max_m": 41,
+        "max_step": 107,
+        "min_min_n": "47",
+        "word_hash_count": 65773
+      },
+      "group_member_count": 65773,
+      "label": {
+        "bucket": "SMALL_21_40",
+        "mod96": 47
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 66,
+        "B": "7",
+        "b": "228394173400706653903",
+        "gap": "37313979917667420061",
+        "m": 41,
+        "min_n": "72692315",
+        "r": "72692315",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "47a301b1abe7075dd83ed676da6e3681346212731b4d5945d5fe3da5f0c5e7d0"
+      },
+      "class_id": 43,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 66,
+        "max_B": "570",
+        "max_m": 41,
+        "max_step": 107,
+        "min_min_n": "6395",
+        "word_hash_count": 66282
+      },
+      "group_member_count": 66282,
+      "label": {
+        "bucket": "SMALL_21_40",
+        "mod96": 59
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 66,
+        "B": "6",
+        "b": "193008406625860608803",
+        "gap": "37313979917667420061",
+        "m": 41,
+        "min_n": "13056447",
+        "r": "13056447",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "5c40f0785fa05e3c9f2cd13d3eafde130bb7f995aabd41ad358f147957d10198"
+      },
+      "class_id": 44,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 66,
+        "max_B": "564",
+        "max_m": 41,
+        "max_step": 107,
+        "min_min_n": "63",
+        "word_hash_count": 185739
+      },
+      "group_member_count": 185739,
+      "label": {
+        "bucket": "SMALL_21_40",
+        "mod96": 63
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 66,
+        "B": "7",
+        "b": "225203697313556285291",
+        "gap": "37313979917667420061",
+        "m": 41,
+        "min_n": "220975271",
+        "r": "220975271",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "f257d18527cfa15a1e35a06fb18b36240f62923bae805dcdeb9f86a56d17550b"
+      },
+      "class_id": 45,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 66,
+        "max_B": "595",
+        "max_m": 41,
+        "max_step": 107,
+        "min_min_n": "71",
+        "word_hash_count": 66181
+      },
+      "group_member_count": 66181,
+      "label": {
+        "bucket": "SMALL_21_40",
+        "mod96": 71
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 66,
+        "B": "7",
+        "b": "234518958767672148979",
+        "gap": "37313979917667420061",
+        "m": 41,
+        "min_n": "40570063",
+        "r": "40570063",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "aeccc5bc0892bcb519606bf065c334b6d368bdb6bd546349b7a6e777f92d0754"
+      },
+      "class_id": 46,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 66,
+        "max_B": "581",
+        "max_m": 41,
+        "max_step": 107,
+        "min_min_n": "2287",
+        "word_hash_count": 66039
+      },
+      "group_member_count": 66039,
+      "label": {
+        "bucket": "SMALL_21_40",
+        "mod96": 79
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 66,
+        "B": "7",
+        "b": "232477057754114384783",
+        "gap": "37313979917667420061",
+        "m": 41,
+        "min_n": "23875099",
+        "r": "23875099",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "e05302b9ed8d2d0ed1e793efe3918cf16e8f9713f85bc575063f94bceac8d408"
+      },
+      "class_id": 47,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 66,
+        "max_B": "626",
+        "max_m": 41,
+        "max_step": 107,
+        "min_min_n": "1819",
+        "word_hash_count": 66638
+      },
+      "group_member_count": 66638,
+      "label": {
+        "bucket": "SMALL_21_40",
+        "mod96": 91
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 66,
+        "B": "6",
+        "b": "189378306067639209251",
+        "gap": "37313979917667420061",
+        "m": 41,
+        "min_n": "39119807",
+        "r": "39119807",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "a8c5660f4383b9482d37a9505b102281f51c8c9b8dc760ed7dc5791419548844"
+      },
+      "class_id": 48,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 66,
+        "max_B": "622",
+        "max_m": 41,
+        "max_step": 107,
+        "min_min_n": "3071",
+        "word_hash_count": 185567
+      },
+      "group_member_count": 185567,
+      "label": {
+        "bucket": "SMALL_21_40",
+        "mod96": 95
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 106,
+        "B": "5",
+        "b": "229905091692406509339720138870113",
+        "gap": "50226484031974069333868363340535",
+        "m": 66,
+        "min_n": "2780263",
+        "r": "2780263",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "c8bb584f4263edf468b85e87e9859098c07cf18ae52bdab183c293dca82a4fcd"
+      },
+      "class_id": 49,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 106,
+        "max_B": "147",
+        "max_m": 66,
+        "max_step": 172,
+        "min_min_n": "14695",
+        "word_hash_count": 27005
+      },
+      "group_member_count": 27005,
+      "label": {
+        "bucket": "MED_41_80",
+        "mod96": 7
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 106,
+        "B": "4",
+        "b": "185532845961500425383903155652889",
+        "gap": "50226484031974069333868363340535",
+        "m": 66,
+        "min_n": "24127599",
+        "r": "24127599",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "4282715267fe2476d5969fa6037088a3b568387084893fe37757d51ec4a94e4a"
+      },
+      "class_id": 50,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 106,
+        "max_B": "130",
+        "max_m": 66,
+        "max_step": 172,
+        "min_min_n": "12399",
+        "word_hash_count": 26770
+      },
+      "group_member_count": 26770,
+      "label": {
+        "bucket": "MED_41_80",
+        "mod96": 15
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 106,
+        "B": "5",
+        "b": "203834722689571470903312340943885",
+        "gap": "50226484031974069333868363340535",
+        "m": 66,
+        "min_n": "18871323",
+        "r": "18871323",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "84c6917209302392bc4d3b2701ec594ac61f9e0cc317835f8fb9db4c1f216619"
+      },
+      "class_id": 51,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 106,
+        "max_B": "148",
+        "max_m": 66,
+        "max_step": 172,
+        "min_min_n": "28923",
+        "word_hash_count": 26827
+      },
+      "group_member_count": 26827,
+      "label": {
+        "bucket": "MED_41_80",
+        "mod96": 27
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 106,
+        "B": "5",
+        "b": "229859075882491392516702099413705",
+        "gap": "50226484031974069333868363340535",
+        "m": 66,
+        "min_n": "28051519",
+        "r": "28051519",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "d1d77f7ad4a3741584a1f03c7397790c825a21d251f16c2f8c0e3040b2b977e7"
+      },
+      "class_id": 52,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 106,
+        "max_B": "136",
+        "max_m": 66,
+        "max_step": 172,
+        "min_min_n": "703",
+        "word_hash_count": 79321
+      },
+      "group_member_count": 79321,
+      "label": {
+        "bucket": "MED_41_80",
+        "mod96": 31
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 106,
+        "B": "5",
+        "b": "219481728996654329603896675002401",
+        "gap": "50226484031974069333868363340535",
+        "m": 66,
+        "min_n": "29996967",
+        "r": "29996967",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "5a9c9e4d4c9596c765a9f39ad4385966cdcfe56ccdd4da10fe4019231eb15b1b"
+      },
+      "class_id": 53,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 106,
+        "max_B": "151",
+        "max_m": 66,
+        "max_step": 172,
+        "min_min_n": "7527",
+        "word_hash_count": 26620
+      },
+      "group_member_count": 26620,
+      "label": {
+        "bucket": "MED_41_80",
+        "mod96": 39
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 106,
+        "B": "5",
+        "b": "243086682690950255155659098094233",
+        "gap": "50226484031974069333868363340535",
+        "m": 66,
+        "min_n": "18866927",
+        "r": "18866927",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "36b843500d77da591f5f3b5ce90199f14b038051be08ac25663f7a211e55f9a3"
+      },
+      "class_id": 54,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 106,
+        "max_B": "137",
+        "max_m": 66,
+        "max_step": 172,
+        "min_min_n": "1583",
+        "word_hash_count": 26878
+      },
+      "group_member_count": 26878,
+      "label": {
+        "bucket": "MED_41_80",
+        "mod96": 47
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 106,
+        "B": "6",
+        "b": "259169991796034822812201455197741",
+        "gap": "50226484031974069333868363340535",
+        "m": 66,
+        "min_n": "389546747",
+        "r": "389546747",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "0dd93dfb9689350814c1ac85a4e59caaa99b0a716bf6dad79d5e7be6e489c061"
+      },
+      "class_id": 55,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 106,
+        "max_B": "146",
+        "max_m": 66,
+        "max_step": 172,
+        "min_min_n": "11291",
+        "word_hash_count": 27022
+      },
+      "group_member_count": 27022,
+      "label": {
+        "bucket": "MED_41_80",
+        "mod96": 59
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 106,
+        "B": "5",
+        "b": "215002612366069532927137235971145",
+        "gap": "50226484031974069333868363340535",
+        "m": 66,
+        "min_n": "73147071",
+        "r": "73147071",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "9b9e83fb1dfb4e82141fbad64d4aa1632a4b8ff12b506bef3a75c00a584057c3"
+      },
+      "class_id": 56,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 106,
+        "max_B": "133",
+        "max_m": 66,
+        "max_step": 172,
+        "min_min_n": "1407",
+        "word_hash_count": 78726
+      },
+      "group_member_count": 78726,
+      "label": {
+        "bucket": "MED_41_80",
+        "mod96": 63
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 106,
+        "B": "5",
+        "b": "220097380301952431205665856220961",
+        "gap": "50226484031974069333868363340535",
+        "m": 66,
+        "min_n": "228599975",
+        "r": "228599975",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "fb46a031038e5b002e0841ea31b126b0cbd46fc1eb2658f4931669dac49b7d5b"
+      },
+      "class_id": 57,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 106,
+        "max_B": "152",
+        "max_m": 66,
+        "max_step": 172,
+        "min_min_n": "18599",
+        "word_hash_count": 26786
+      },
+      "group_member_count": 26786,
+      "label": {
+        "bucket": "MED_41_80",
+        "mod96": 71
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 106,
+        "B": "5",
+        "b": "205630067909182714739773157051321",
+        "gap": "50226484031974069333868363340535",
+        "m": 66,
+        "min_n": "214594255",
+        "r": "214594255",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "78080afd679aeadd8ad3a4abe38c7c91ea0cc4831a3fd452f53cdbb6b9b24843"
+      },
+      "class_id": 58,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 106,
+        "max_B": "137",
+        "max_m": 66,
+        "max_step": 172,
+        "min_min_n": "7279",
+        "word_hash_count": 27133
+      },
+      "group_member_count": 27133,
+      "label": {
+        "bucket": "MED_41_80",
+        "mod96": 79
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 106,
+        "B": "5",
+        "b": "234496026866642435000730814239629",
+        "gap": "50226484031974069333868363340535",
+        "m": 66,
+        "min_n": "242106523",
+        "r": "242106523",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "9877bc186c9bf33adcab63f8e67114358cdbd683ca4eb881a1d6c0920d3a3047"
+      },
+      "class_id": 59,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 106,
+        "max_B": "131",
+        "max_m": 66,
+        "max_step": 172,
+        "min_min_n": "7963",
+        "word_hash_count": 26760
+      },
+      "group_member_count": 26760,
+      "label": {
+        "bucket": "MED_41_80",
+        "mod96": 91
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 106,
+        "B": "5",
+        "b": "207133580144621239072376412957065",
+        "gap": "50226484031974069333868363340535",
+        "m": 66,
+        "min_n": "93667199",
+        "r": "93667199",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "602350746f8dc96ab37a83789f80f92bff28356dfb7f8e4b889595198a79994d"
+      },
+      "class_id": 60,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 106,
+        "max_B": "147",
+        "max_m": 66,
+        "max_step": 172,
+        "min_min_n": "1055",
+        "word_hash_count": 79049
+      },
+      "group_member_count": 79049,
+      "label": {
+        "bucket": "MED_41_80",
+        "mod96": 95
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 186,
+        "B": "16",
+        "b": "480761149236904569653514298915468682329294871756191283963",
+        "gap": "31523777581549064327038660496523304798581687985015313101",
+        "m": 117,
+        "min_n": "82318567",
+        "r": "82318567",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "3ec602ac1ac7977b95c3d3bbf3550b706a5d84d8c7b4162108d6ed39d8a8bd39"
+      },
+      "class_id": 61,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 186,
+        "max_B": "936",
+        "max_m": 117,
+        "max_step": 303,
+        "min_min_n": "10087",
+        "word_hash_count": 4300
+      },
+      "group_member_count": 4300,
+      "label": {
+        "bucket": "HIGH_81_160",
+        "mod96": 7
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 186,
+        "B": "7",
+        "b": "219169244782823025359965666607426963693302578219905935075",
+        "gap": "31523777581549064327038660496523304798581687985015313101",
+        "m": 117,
+        "min_n": "298352751",
+        "r": "298352751",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "9841a2a59e83e0466b18641558efb73e4cd36a61f9ba5bd92a5b384d51ce5cb1"
+      },
+      "class_id": 62,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 186,
+        "max_B": "807",
+        "max_m": 117,
+        "max_step": 303,
+        "min_min_n": "60975",
+        "word_hash_count": 4269
+      },
+      "group_member_count": 4269,
+      "label": {
+        "bucket": "HIGH_81_160",
+        "mod96": 15
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 186,
+        "B": "9",
+        "b": "271593327321485715830800171287561100043282053851295677983",
+        "gap": "31523777581549064327038660496523304798581687985015313101",
+        "m": 117,
+        "min_n": "49859739",
+        "r": "49859739",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "05d714c6e0d1d3ebc41bdaca3bb1351ce827f54b10a08d085e36dad6b47d9999"
+      },
+      "class_id": 63,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 186,
+        "max_B": "637",
+        "max_m": 117,
+        "max_step": 303,
+        "min_min_n": "299259",
+        "word_hash_count": 4347
+      },
+      "group_member_count": 4347,
+      "label": {
+        "bucket": "HIGH_81_160",
+        "mod96": 27
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 186,
+        "B": "12",
+        "b": "363880641953425942338459658612060949062871180513864170163",
+        "gap": "31523777581549064327038660496523304798581687985015313101",
+        "m": 117,
+        "min_n": "201081727",
+        "r": "201081727",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "a581e24a745f86b1b8a46a759b2b8ba420efb06e68cc25ba41d44877c85de2f0"
+      },
+      "class_id": 64,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 186,
+        "max_B": "968",
+        "max_m": 117,
+        "max_step": 303,
+        "min_min_n": "45055",
+        "word_hash_count": 13266
+      },
+      "group_member_count": 13266,
+      "label": {
+        "bucket": "HIGH_81_160",
+        "mod96": 31
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 186,
+        "B": "14",
+        "b": "411167641171687730860176201895850547241448108915836066043",
+        "gap": "31523777581549064327038660496523304798581687985015313101",
+        "m": 117,
+        "min_n": "69855975",
+        "r": "69855975",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "f20716a7a612933e4a5f6161c1a54d0a5804b4c5f2636bba75acd4df0ad720eb"
+      },
+      "class_id": 65,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 186,
+        "max_B": "697",
+        "max_m": 117,
+        "max_step": 303,
+        "min_min_n": "35655",
+        "word_hash_count": 4481
+      },
+      "group_member_count": 4481,
+      "label": {
+        "bucket": "HIGH_81_160",
+        "mod96": 39
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 186,
+        "B": "17",
+        "b": "522998135924619756194730958430827022155440741749532717667",
+        "gap": "31523777581549064327038660496523304798581687985015313101",
+        "m": 117,
+        "min_n": "310065647",
+        "r": "310065647",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "28ae27cb6e7b325f4d2bd631b2a993aaf874fe040120a7dca94c2eb69d292170"
+      },
+      "class_id": 66,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 186,
+        "max_B": "775",
+        "max_m": 117,
+        "max_step": 303,
+        "min_min_n": "126575",
+        "word_hash_count": 4419
+      },
+      "group_member_count": 4419,
+      "label": {
+        "bucket": "HIGH_81_160",
+        "mod96": 47
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 186,
+        "B": "12",
+        "b": "349858702209511197705766305978482490623154800589277507487",
+        "gap": "31523777581549064327038660496523304798581687985015313101",
+        "m": 117,
+        "min_n": "71582747",
+        "r": "71582747",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "930aa0362fd62ab3f15f700c1aea853263922fa94149bf64ca9242f4bc643e7e"
+      },
+      "class_id": 67,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 186,
+        "max_B": "707",
+        "max_m": 117,
+        "max_step": 303,
+        "min_min_n": "432923",
+        "word_hash_count": 4389
+      },
+      "group_member_count": 4389,
+      "label": {
+        "bucket": "HIGH_81_160",
+        "mod96": 59
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 186,
+        "B": "13",
+        "b": "383560594471559872114830466369483633566735690914728713011",
+        "gap": "31523777581549064327038660496523304798581687985015313101",
+        "m": 117,
+        "min_n": "166471167",
+        "r": "166471167",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "52e55a45c8c0fde20fcf796efe69b64f6461d6685adc81e4cccc8cce175de468"
+      },
+      "class_id": 68,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 186,
+        "max_B": "655",
+        "max_m": 117,
+        "max_step": 303,
+        "min_min_n": "37503",
+        "word_hash_count": 13384
+      },
+      "group_member_count": 13384,
+      "label": {
+        "bucket": "HIGH_81_160",
+        "mod96": 63
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 186,
+        "B": "11",
+        "b": "334776875785810718425789439117827779614676388937555405947",
+        "gap": "31523777581549064327038660496523304798581687985015313101",
+        "m": 117,
+        "min_n": "360746087",
+        "r": "360746087",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "6c400b6ac4eeb586832e94ecf7629137e5ed696c8b078e13d3a0d5f052b39601"
+      },
+      "class_id": 69,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 186,
+        "max_B": "777",
+        "max_m": 117,
+        "max_step": 303,
+        "min_min_n": "289127",
+        "word_hash_count": 4365
+      },
+      "group_member_count": 4365,
+      "label": {
+        "bucket": "HIGH_81_160",
+        "mod96": 71
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 186,
+        "B": "16",
+        "b": "477020576495695958926559124191843314145289857498883110819",
+        "gap": "31523777581549064327038660496523304798581687985015313101",
+        "m": 117,
+        "min_n": "199562287",
+        "r": "199562287",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "1b2dd044eaf22f9c9f70bfb0ccf6ce2ee870846284c2ba8cd5a6b48530722b66"
+      },
+      "class_id": 70,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 186,
+        "max_B": "652",
+        "max_m": 117,
+        "max_step": 303,
+        "min_min_n": "192751",
+        "word_hash_count": 4379
+      },
+      "group_member_count": 4379,
+      "label": {
+        "bucket": "HIGH_81_160",
+        "mod96": 79
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 186,
+        "B": "17",
+        "b": "535712925791607571676118683059904073061107203457493387775",
+        "gap": "31523777581549064327038660496523304798581687985015313101",
+        "m": 117,
+        "min_n": "218007547",
+        "r": "218007547",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "41afc12629607dd1ae97785583e4cc42b4ee3b83347586d19707abcc6ca701f8"
+      },
+      "class_id": 71,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 186,
+        "max_B": "984",
+        "max_m": 117,
+        "max_step": 303,
+        "min_min_n": "57115",
+        "word_hash_count": 4236
+      },
+      "group_member_count": 4236,
+      "label": {
+        "bucket": "HIGH_81_160",
+        "mod96": 91
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 186,
+        "B": "18",
+        "b": "554619337404648427454749846554985751845738879135295328467",
+        "gap": "31523777581549064327038660496523304798581687985015313101",
+        "m": 117,
+        "min_n": "256766495",
+        "r": "256766495",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "b67875968356fe1b0be767a9098478876e94fae96ae2098a0ba70670ccd57de3"
+      },
+      "class_id": 72,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 186,
+        "max_B": "942",
+        "max_m": 117,
+        "max_step": 303,
+        "min_min_n": "56255",
+        "word_hash_count": 13226
+      },
+      "group_member_count": 13226,
+      "label": {
+        "bucket": "HIGH_81_160",
+        "mod96": 95
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 335,
+        "B": "5",
+        "b": "93052155419458509632639643081435055795984522456830428045462955301854453456080689472138641248809927395",
+        "gap": "22939301905661793815862976413091630137383203351391923187216628657923478488687051732246155383190077221",
+        "m": 211,
+        "min_n": "245235559",
+        "r": "245235559",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "39538bd35ecf575f01e8708fdba30a6064edcb64a0d641b8287fda95a82358a2"
+      },
+      "class_id": 73,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 335,
+        "max_B": "268",
+        "max_m": 211,
+        "max_step": 546,
+        "min_min_n": "9941863",
+        "word_hash_count": 111
+      },
+      "group_member_count": 111,
+      "label": {
+        "bucket": "TAIL_161_PLUS",
+        "mod96": 7
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 395,
+        "B": "25",
+        "b": "426679004067301721304814524202912529154180390702969877419952639938183513911427981113970018553163923206752748572214064211",
+        "gap": "17134059317950354896825303668001618505716497242863788963610219921599823176701899613382741407924010240231294864638117085",
+        "m": 249,
+        "min_n": "217740015",
+        "r": "217740015",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "c328b0ae9df867f9e7551c552bceb49aede32f7d9004d6d05ae423b5dfacabdb"
+      },
+      "class_id": 74,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 395,
+        "max_B": "492",
+        "max_m": 249,
+        "max_step": 644,
+        "min_min_n": "4053039",
+        "word_hash_count": 131
+      },
+      "group_member_count": 131,
+      "label": {
+        "bucket": "TAIL_161_PLUS",
+        "mod96": 15
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 330,
+        "B": "2",
+        "b": "2564498243494783051806190655259603012848077228213563384445438832137676398421841054207416861652576055",
+        "gap": "1606352931111473803828587475825371321477635869940238673729375165086557721598228049014793840213823637",
+        "m": 207,
+        "min_n": "348236187",
+        "r": "348236187",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "b6db7764278acc659ea94574aa7e623a7403c5430417110f65bd45a039de68d5"
+      },
+      "class_id": 75,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 330,
+        "max_B": "237",
+        "max_m": 207,
+        "max_step": 537,
+        "min_min_n": "7849755",
+        "word_hash_count": 135
+      },
+      "group_member_count": 135,
+      "label": {
+        "bucket": "TAIL_161_PLUS",
+        "mod96": 27
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 363,
+        "B": "108",
+        "b": "59919574311139359067330659948188473528430130681647087535653225544031718692029197540507707552404379801772717363",
+        "gap": "559152372247545095611428461798187812414476338321254472669721858652343148246143580342136771116749264606262925",
+        "m": 229,
+        "min_n": "181930687",
+        "r": "181930687",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "7de87746592ff0a3f6e33608a213a5602bd35bbcd3f1e4775addbd85bd889d13"
+      },
+      "class_id": 76,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 363,
+        "max_B": "946",
+        "max_m": 229,
+        "max_step": 592,
+        "min_min_n": "1126015",
+        "word_hash_count": 400
+      },
+      "group_member_count": 400,
+      "label": {
+        "bucket": "TAIL_161_PLUS",
+        "mod96": 31
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 326,
+        "B": "3",
+        "b": "172383177586580984915885139938980397550411775949867998250681498702842176518055646600645206703478299",
+        "gap": "72158971002100676323957527940156886015069360436050914754788947198022587160944564733834091696248621",
+        "m": 205,
+        "min_n": "195882855",
+        "r": "195882855",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "3fe8253ec7798d7b67754826e5b73bf13064deda74a565cedd5f16da2744e7c8"
+      },
+      "class_id": 77,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 326,
+        "max_B": "162",
+        "max_m": 205,
+        "max_step": 531,
+        "min_min_n": "1345383",
+        "word_hash_count": 127
+      },
+      "group_member_count": 127,
+      "label": {
+        "bucket": "TAIL_161_PLUS",
+        "mod96": 39
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 340,
+        "B": "4",
+        "b": "3495248907584012773649096622007316574564605121427673320017302907878487702937204819028405449058941773257",
+        "gap": "969321267418150340927900719492293432165853599430495915882972270789526399066450544486408303669820696807",
+        "m": 214,
+        "min_n": "290649551",
+        "r": "290649551",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "cfe34ffc03305e20e44f7e8ff16733ae8fd576cb5c991d071c79f2d82466c41e"
+      },
+      "class_id": 78,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 340,
+        "max_B": "347",
+        "max_m": 214,
+        "max_step": 554,
+        "min_min_n": "11249903",
+        "word_hash_count": 126
+      },
+      "group_member_count": 126,
+      "label": {
+        "bucket": "TAIL_161_PLUS",
+        "mod96": 47
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 338,
+        "B": "8",
+        "b": "979680849792641015881402618924841714137467271840597798255743796150810715077110404831640461398217644895",
+        "gap": "136461693957899762762846716450060787545147408373944510719324998516192810423803436047062976783972972621",
+        "m": 213,
+        "min_n": "217987163",
+        "r": "217987163",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "cf56e4acfc52c30b914cc974bfd0acbbf1a5ba517c8f5e71bfec87b7429a3c4b"
+      },
+      "class_id": 79,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 338,
+        "max_B": "329",
+        "max_m": 213,
+        "max_step": 551,
+        "min_min_n": "14912795",
+        "word_hash_count": 132
+      },
+      "group_member_count": 132,
+      "label": {
+        "bucket": "TAIL_161_PLUS",
+        "mod96": 59
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 376,
+        "B": "17",
+        "b": "580527473431335620731409631656330849263042670307730968907684899936778870135811699259753612484887724124530238738003",
+        "gap": "34312382334349119329808524964765179770449285153881508268174777711170286755338359000939103886221453962242378617773",
+        "m": 237,
+        "min_n": "63728127",
+        "r": "63728127",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "6b6244fc33e82feff205309147cabccd48c987a982a8198b3e92581081bc0a05"
+      },
+      "class_id": 80,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 376,
+        "max_B": "270",
+        "max_m": 237,
+        "max_step": 613,
+        "min_min_n": "1327743",
+        "word_hash_count": 385
+      },
+      "group_member_count": 385,
+      "label": {
+        "bucket": "TAIL_161_PLUS",
+        "mod96": 63
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 352,
+        "B": "62",
+        "b": "51506107914573716748650445848784726900133852925298194650649268189970996248361956434140049293044538439059601",
+        "gap": "838746046062197007803861398987722062870309315180072600579707934774335741815885292011461859463182051362887",
+        "m": 222,
+        "min_n": "326610023",
+        "r": "326610023",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "0ecd3c308dd953d158de2312118590f2b398c238ee59b58d0c8be95601bf0c62"
+      },
+      "class_id": 81,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 352,
+        "max_B": "574",
+        "max_m": 222,
+        "max_step": 574,
+        "min_min_n": "6079559",
+        "word_hash_count": 117
+      },
+      "group_member_count": 117,
+      "label": {
+        "bucket": "TAIL_161_PLUS",
+        "mod96": 71
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 344,
+        "B": "43",
+        "b": "65523586424818905668960829100278785788893927739497072696961974618862127180382435314260481920720667079635",
+        "gap": "1534482056334212888921454340039035609139946715042244844940371200715502191812394301943371773097480540253",
+        "m": 217,
+        "min_n": "96883183",
+        "r": "96883183",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "1f2986d7d63a8cd0ae6847981d4ba9253f342bbbd9380752ab1521d76cab8557"
+      },
+      "class_id": 82,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 344,
+        "max_B": "236",
+        "max_m": 217,
+        "max_step": 561,
+        "min_min_n": "3296815",
+        "word_hash_count": 130
+      },
+      "group_member_count": 130,
+      "label": {
+        "bucket": "TAIL_161_PLUS",
+        "mod96": 79
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 314,
+        "B": "41",
+        "b": "157014461904424491874468961880182154141684107586501562507894621760393862982798616228317073184733",
+        "gap": "3862132005611467888668733932701515476307985644778866644358640484545239781844488261399371603495",
+        "m": 198,
+        "min_n": "383606875",
+        "r": "383606875",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "5f061fae812e4a7153b2b3c1a5a5f9a998dfb154613ff5053298ca4f85ccdff5"
+      },
+      "class_id": 83,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 314,
+        "max_B": "1011",
+        "max_m": 198,
+        "max_step": 512,
+        "min_min_n": "6492187",
+        "word_hash_count": 131
+      },
+      "group_member_count": 131,
+      "label": {
+        "bucket": "TAIL_161_PLUS",
+        "mod96": 91
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    },
+    {
+      "canonical_certificate": {
+        "A": 368,
+        "B": "25",
+        "b": "2706491761968597491497575787707316653990361010218824118569984664954581967436006583231980293320216096185355501601",
+        "gap": "109038817361637046697087792340124552030218163091006665590374129044901626007230214407785652755542978265646498015",
+        "m": 232,
+        "min_n": "95592191",
+        "r": "95592191",
+        "status": "84-LABEL SYMBOLIC CERTIFICATE PACKET STABLE THROUGH k41",
+        "valuation_hash": "1310f5e189d91cd6eddc4b1f6f061809fda0af3cb521ee34e66473a1a3ff8675"
+      },
+      "class_id": 84,
+      "full_member_rows_available": false,
+      "group_bounds": {
+        "max_A": 368,
+        "max_B": "372",
+        "max_m": 232,
+        "max_step": 600,
+        "min_min_n": "1689023",
+        "word_hash_count": 459
+      },
+      "group_member_count": 459,
+      "label": {
+        "bucket": "TAIL_161_PLUS",
+        "mod96": 95
+      },
+      "note": "This is a cost-table group; canonical_certificate is the worst-step symbolic lane in the group, not the only lane."
+    }
+  ],
+  "scope": "Grouped 84-row symbolic packet. Full pre-aggregation member rows are not stored in this repo.",
+  "status": "GROUP_MEMBER_COUNTS_ONLY_FULL_MEMBER_ROWS_MISSING",
+  "title": "84 Symbolic Group Member Count Summary"
+}

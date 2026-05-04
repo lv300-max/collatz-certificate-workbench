@@ -1,0 +1,40 @@
+{
+  "base_partition_member_list": {
+    "duplicates": 0,
+    "file": "base_partition_full_member_list.json",
+    "members": 32768,
+    "missing": 0,
+    "status": "exported"
+  },
+  "generated_utc": "2026-05-04T16:33:07.102100+00:00",
+  "needed_next_artifact": {
+    "file": "group_membership_full.json",
+    "minimum_schema": [
+      "member_id",
+      "group_class_id",
+      "group_label",
+      "residue_r",
+      "forcing_A",
+      "forcing_modulus_2_to_A_plus_1",
+      "m",
+      "b",
+      "gap",
+      "B",
+      "min_n",
+      "valuation_hash",
+      "source_branch",
+      "status"
+    ],
+    "required_rows": 7364628
+  },
+  "reviewer_impact": "The base partition is exportable and complete. The 84-group full membership theorem still needs either a full member export or a formal rule proving exactly which lanes belong to each group.",
+  "symbolic_84_group_member_list": {
+    "available_member_rows": 0,
+    "available_summary_file": "certificate_group_member_counts.json",
+    "expected_member_rows": 7364628,
+    "groups": 84,
+    "reason": "The current 84-row packet stores group_member_count and a canonical certificate per group, but not the individual pre-aggregation member lanes.",
+    "status": "blocked"
+  },
+  "title": "Group Member List Export Status"
+}
