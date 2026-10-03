@@ -28,6 +28,10 @@ def ExactStateLedgerArithmetic : Prop :=
   exactStateMaxFinalB < directBridgeH
 
 theorem exact_state_ledger_arithmetic : ExactStateLedgerArithmetic := by
-  decide
+  unfold ExactStateLedgerArithmetic
+  exact ⟨exact_state_partition_count,
+    exact_state_zero_open,
+    exact_state_zero_conflicts,
+    exact_state_max_B_inside_bridge⟩
 
 end CollatzRebuild
