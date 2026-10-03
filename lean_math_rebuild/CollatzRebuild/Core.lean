@@ -25,7 +25,7 @@ theorem iter_add (a b n : Nat) :
   induction a generalizing n with
   | zero => simp [iter]
   | succ a ih =>
-      simpa [Nat.succ_add, iter] using ih b (T n)
+      simpa [Nat.succ_add, iter] using ih (T n)
 
 theorem terminates_of_reaches
     {n v k : Nat}
