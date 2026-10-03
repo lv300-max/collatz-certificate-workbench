@@ -1,0 +1,33 @@
+import CollatzRebuild.Core
+import CollatzRebuild.DescentInduction
+import CollatzRebuild.PowerTwoClosure
+import CollatzRebuild.OneStepIdentity
+import CollatzRebuild.Fingerprint
+import CollatzRebuild.TerminalLanding
+import CollatzRebuild.ModLenses
+import CollatzRebuild.ScaleClosure
+import CollatzRebuild.AffineDescent
+import CollatzRebuild.K12ResidueAudit
+import CollatzRebuild.DirectBridge
+import CollatzRebuild.ExactStateEvidence
+import CollatzRebuild.FrontierEvidence
+import CollatzRebuild.UniversalClosure
+import CollatzRebuild.Examples
+import CollatzRebuild.ClaimAudit
+
+set_option autoImplicit false
+
+namespace CollatzRebuild
+
+#check terminates_from_global_descent
+#check power_two_terminates
+#check combine_one_odd_node
+#check every_N_has_one_final_fingerprint
+#check descent_arithmetic
+#check k12_closed_count
+#check k12_deep_count
+#check direct_bridge
+#check exact_state_ledger_arithmetic
+#check universal_collatz_closure_from_global_descent
+
+end CollatzRebuild
