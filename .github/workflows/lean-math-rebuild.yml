@@ -1,0 +1,24 @@
+name: Lean math rebuild
+
+on:
+  push:
+    branches:
+      - lean-math-rebuild-2026-10-03
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: lean_math_rebuild
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+      - name: Update dependencies
+        run: lake update
+      - name: Build
+        run: lake build CollatzRebuild.All
+      - name: Axiom audit
+        run: lake env lean CollatzRebuild/Audit.lean
