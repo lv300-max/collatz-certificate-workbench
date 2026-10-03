@@ -1,0 +1,56 @@
+name: Lean V4 Audit
+
+on:
+  push:
+    branches:
+      - lean-audit-2026-10-03
+  workflow_dispatch:
+
+jobs:
+  lean-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install elan
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Clone current mathlib
+        run: |
+          git clone --depth 1 https://github.com/leanprover-community/mathlib4.git /tmp/mathlib4
+
+      - name: Install mathlib Lean toolchain and cache
+        run: |
+          cd /tmp/mathlib4
+          "$HOME/.elan/bin/lake" exe cache get
+
+      - name: Compile all V4 Lean files
+        shell: bash
+        run: |
+          set -o pipefail
+          cp "$GITHUB_WORKSPACE/lean_audit/V4_All.lean" /tmp/mathlib4/V4_All.lean
+          cd /tmp/mathlib4
+          "$HOME/.elan/bin/lake" env lean V4_All.lean 2>&1 | tee "$GITHUB_WORKSPACE/lean_audit/V4_BUILD.log"
+
+      - name: Static forbidden-token audit
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "sorry count:"
+            grep -nE '(^|[^A-Za-z])(sorry|admit)([^A-Za-z]|$)' lean_audit/V4_All.lean || true
+            echo "declared axiom count:"
+            grep -nE '^[[:space:]]*axiom[[:space:]]' lean_audit/V4_All.lean || true
+          } | tee lean_audit/STATIC_AUDIT.log
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lean-v4-audit
+          path: |
+            lean_audit/V4_BUILD.log
+            lean_audit/STATIC_AUDIT.log
+          if-no-files-found: warn
