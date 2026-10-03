@@ -1,0 +1,12 @@
+import CollatzRebuild.All
+
+#print axioms CollatzRebuild.terminates_from_global_descent
+#print axioms CollatzRebuild.power_two_terminates
+#print axioms CollatzRebuild.combine_one_odd_node
+#print axioms CollatzRebuild.every_N_has_one_final_fingerprint
+#print axioms CollatzRebuild.descent_arithmetic
+#print axioms CollatzRebuild.k12_closed_count
+#print axioms CollatzRebuild.k12_deep_count
+#print axioms CollatzRebuild.direct_bridge
+#print axioms CollatzRebuild.exact_state_ledger_arithmetic
+#print axioms CollatzRebuild.universal_collatz_closure_from_global_descent
