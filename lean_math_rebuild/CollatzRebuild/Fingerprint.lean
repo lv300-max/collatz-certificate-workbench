@@ -56,9 +56,9 @@ theorem every_N_has_one_final_fingerprint (n : Nat) :
   intro y hy
   exact hy
 
-theorem fingerprint_3152 : (finalFingerprint 3152).code = 26847 := by native_decide
-theorem fingerprint_592  : (finalFingerprint 592).code = 26847 := by native_decide
-theorem fingerprint_40   : (finalFingerprint 40).code = 5 := by native_decide
-theorem fingerprint_152  : (finalFingerprint 152).code = 42689 := by native_decide
+theorem fingerprint_3152 : (finalFingerprint 3152).code = 26847 := by decide
+theorem fingerprint_592  : (finalFingerprint 592).code = 26847 := by decide
+theorem fingerprint_40   : (finalFingerprint 40).code = 5 := by decide
+theorem fingerprint_152  : (finalFingerprint 152).code = 42689 := by decide
 
 end CollatzRebuild
