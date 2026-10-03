@@ -391,16 +391,14 @@ theorem address_cell_unique
     (n c k : Nat) (hc : c < H) (h : n = k*H + c) :
     cell n = c := by
   subst n
-  unfold cell
-  have hc' : c % H = c := Nat.mod_eq_of_lt hc
-  simp [Nat.add_mod, Nat.mul_mod, hc', H]
+  unfold cell H at *
+  omega
 theorem address_level_unique
     (n c k : Nat) (hc : c < H) (h : n = k*H + c) :
     level n = k := by
   subst n
-  unfold level
-  rw [Nat.add_div (k * H) c]
-  simp [Nat.mul_div_left, Nat.div_eq_of_lt hc]
+  unfold level H at *
+  omega
 #print axioms address_reconstructs
 #print axioms address_cell_unique
 #print axioms address_level_unique
