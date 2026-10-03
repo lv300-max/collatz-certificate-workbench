@@ -36,7 +36,7 @@ def directBridgeCheck : Bool :=
     if n = 0 then true else reachesOneWithin 400 n)
 
 theorem direct_bridge_check_pass : directBridgeCheck = true := by
-  native_decide
+  decide
 
 theorem direct_bridge
     (n : Nat)
