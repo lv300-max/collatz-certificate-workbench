@@ -37,8 +37,8 @@ def k12DeepResidues : List Nat :=
 theorem master_modulus_4096 : MASTER_MODULUS = 4096 := by decide
 theorem odd_residue_count : oddResidues.length = 2048 := by decide
 
-theorem k12_closed_count : k12ClosedResidues.length = 1632 := by native_decide
-theorem k12_deep_count : k12DeepResidues.length = 416 := by native_decide
+theorem k12_closed_count : k12ClosedResidues.length = 1632 := by decide
+theorem k12_deep_count : k12DeepResidues.length = 416 := by decide
 
 theorem k12_has_deep_residues : k12DeepResidues ≠ [] := by
   intro h
