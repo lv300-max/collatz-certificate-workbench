@@ -69,7 +69,21 @@ theorem ten_entry_exhaustive (n : Nat) :
     Entry n = [8,4,2,6,8] ∨
     Entry n = [4,2,6,8,9] := by
   have hlt : n % 10 < 10 := Nat.mod_lt n (by omega)
-  omega
+  have hcases :
+      n % 10 = 0 ∨ n % 10 = 1 ∨ n % 10 = 2 ∨ n % 10 = 3 ∨
+      n % 10 = 4 ∨ n % 10 = 5 ∨ n % 10 = 6 ∨ n % 10 = 7 ∨
+      n % 10 = 8 ∨ n % 10 = 9 := by omega
+  rcases hcases with h|h|h|h|h|h|h|h|h|h
+  · exact Or.inl (entry_0 n h)
+  · exact Or.inr (Or.inl (entry_1 n h))
+  · exact Or.inr (Or.inr (Or.inl (entry_2 n h)))
+  · exact Or.inr (Or.inr (Or.inr (Or.inl (entry_3 n h))))
+  · exact Or.inr (Or.inr (Or.inr (Or.inr (Or.inl (entry_4 n h)))))
+  · exact Or.inr (Or.inr (Or.inr (Or.inr (Or.inr (Or.inl (entry_5 n h))))))
+  · exact Or.inr (Or.inr (Or.inr (Or.inr (Or.inr (Or.inr (Or.inl (entry_6 n h)))))))
+  · exact Or.inr (Or.inr (Or.inr (Or.inr (Or.inr (Or.inr (Or.inr (Or.inl (entry_7 n h))))))))
+  · exact Or.inr (Or.inr (Or.inr (Or.inr (Or.inr (Or.inr (Or.inr (Or.inr (Or.inl (entry_8 n h)))))))))
+  · exact Or.inr (Or.inr (Or.inr (Or.inr (Or.inr (Or.inr (Or.inr (Or.inr (Or.inr (entry_9 n h)))))))))
 #print axioms ten_entry_exhaustive
 end VelazquezTenEntry
 
@@ -100,8 +114,16 @@ theorem odd_ending_has_one_of_five
     (m : Nat) (hodd : m % 2 = 1) :
     IsResolvedVLock (phi m) := by
   have hlt : m % 10 < 10 := Nat.mod_lt m (by omega)
-  unfold IsResolvedVLock phi
-  omega
+  have hmod2 : (m % 10) % 2 = 1 := by
+    have hd : 2 ∣ 10 := by omega
+    exact (Nat.mod_mod_of_dvd m hd).trans hodd
+  have hcases :
+      m % 10 = 1 ∨ m % 10 = 3 ∨ m % 10 = 5 ∨ m % 10 = 7 ∨ m % 10 = 9 := by
+    omega
+  rcases hcases with h|h|h|h|h
+  all_goals
+    unfold IsResolvedVLock phi
+    simp [Nat.mul_mod, h]
 #print axioms odd_ending_has_one_of_five
 end VelazquezFiveVLock
 
@@ -187,12 +209,9 @@ theorem owned_residue_unique
 theorem odd_residue_stays_odd
     (n : Nat) (hodd : n % 2 = 1) :
     (laneResidue n) % 2 = 1 := by
-  have hM : M = 2 * 32768 := by norm_num [M, K]
+  have hd : 2 ∣ M := by norm_num [M, K]
   unfold laneResidue
-  rw [hM]
-  have h := Nat.mod_mod_of_dvd n (by norm_num : 2 ∣ 2 * 32768)
-  rw [← h]
-  exact hodd
+  exact (Nat.mod_mod_of_dvd n hd).trans hodd
 #print axioms every_n_has_one_residue
 #print axioms owned_residue_unique
 #print axioms odd_residue_stays_odd
@@ -209,7 +228,7 @@ theorem affine_gap_descent_core
     (hGap : G + 3^s = 2^A)
     (hStrict : b < G * n) :
     y < n := by
-  have hPow : 0 < 2^A := pow_pos (by omega)
+  have hPow : 0 < 2^A := by positivity
   nlinarith
 #print axioms even_descent
 #print axioms affine_gap_descent_core
@@ -268,15 +287,7 @@ lemma collatz_positive
     (n : Nat) (hn : 0 < n) :
     0 < collatz n := by
   unfold collatz
-  split
-  · rename_i hEven
-    have hn2 : 2 ≤ n := by
-      by_contra h
-      have : n = 1 := by omega
-      subst n
-      simp at hEven
-    exact Nat.div_pos (by omega) hn2
-  · omega
+  split <;> omega
 lemma iterate_positive
     (n t : Nat) (hn : 0 < n) :
     0 < Nat.iterate collatz t n := by
@@ -301,7 +312,7 @@ theorem terminates_from_universal_below_self
         have hqPos : 0 < q := iterate_positive n m hn
         have hqTerm : Terminates q := ih q hmLt hqPos
         rcases hqTerm with ⟨j, hj⟩
-        refine ⟨m + j, ?_⟩
+        refine ⟨j + m, ?_⟩
         simpa [q, Function.iterate_add_apply] using hj
 #print axioms terminates_from_universal_below_self
 end VelazquezTermination
@@ -372,23 +383,24 @@ theorem H_exact : H = 43^2 := by norm_num [H]
 theorem address_reconstructs (n : Nat) :
     n = level n * H + cell n := by
   unfold level cell
-  have h := Nat.mod_add_div n H
-  omega
+  simpa [Nat.add_comm, Nat.mul_comm] using (Nat.mod_add_div n H).symm
 theorem cell_in_range (n : Nat) : cell n < H := by
   unfold cell
   exact Nat.mod_lt n (by norm_num [H])
 theorem address_cell_unique
     (n c k : Nat) (hc : c < H) (h : n = k*H + c) :
     cell n = c := by
+  subst n
   unfold cell
-  rw [h]
-  simp [Nat.add_mod, Nat.mul_mod, hc, H]
+  have hc' : c % H = c := Nat.mod_eq_of_lt hc
+  simp [Nat.add_mod, Nat.mul_mod, hc', H]
 theorem address_level_unique
     (n c k : Nat) (hc : c < H) (h : n = k*H + c) :
     level n = k := by
+  subst n
   unfold level
-  rw [h]
-  omega
+  rw [Nat.add_div (k * H) c]
+  simp [Nat.mul_div_left, Nat.div_eq_of_lt hc]
 #print axioms address_reconstructs
 #print axioms address_cell_unique
 #print axioms address_level_unique
